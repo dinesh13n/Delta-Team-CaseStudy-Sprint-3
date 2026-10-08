@@ -10,7 +10,7 @@
 | Status | PROVISIONAL |
 | Evidence sources | runbook/04-OPEN-QUESTIONS-FINAL-REVISION.md; docs/42-executive/final-gate.md; stage gates |
 | Assumptions | Self-assessment by the same agent that built the evidence; no independent reviewer |
-| Unresolved issues | 13 open questions, 0 formally accepted |
+| Unresolved issues | At writing 13 open questions; all 23 were decided by the operator later the same day (see the addendum); none independently confirmed |
 | Residual risks | Statuses reflect the state on 2026-10-08; none of the open questions has an owner decision |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
