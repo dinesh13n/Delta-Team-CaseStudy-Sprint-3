@@ -1,0 +1,102 @@
+{
+ "generated": "2026-10-08",
+ "source_files": [
+  "ai_invocations.csv",
+  "events.jsonl"
+ ],
+ "ai_invocations": {
+  "rows": 354,
+  "token_count_parsed": 353,
+  "unparseable": [
+   ""
+  ],
+  "sum": 904432,
+  "min": 40,
+  "max": 4989,
+  "mean": 2562.1,
+  "p50": 2618.0,
+  "p95": 4794.599999999999,
+  "over_16k": 0,
+  "route_candidates_max": 4979,
+  "human_override_values": {
+   "requires_review": 39,
+   "not_enforced": 31,
+   "approved": 22,
+   "internal": 16,
+   "vendor": 25,
+   "high_risk": 27,
+   "ai_assisted": 24,
+   "normal": 25,
+   "manual": 24,
+   "legacy": 24,
+   "degraded": 23,
+   "rejected": 22,
+   "standard": 30,
+   "pending": 21,
+   "": 1
+  },
+  "distinct_models": {
+   "approved": 21,
+   "manual": 30,
+   "legacy": 26,
+   "degraded": 29,
+   "rejected": 23,
+   "requires_review": 29,
+   "not_enforced": 24,
+   "ai_assisted": 30,
+   "internal": 28,
+   "standard": 34,
+   "high_risk": 20,
+   "vendor": 21,
+   "normal": 22,
+   "pending": 16,
+   "": 1
+  }
+ },
+ "events": {
+  "count": 3000,
+  "cost_units_sum": 6735.29,
+  "cost_mean": 2.2451,
+  "cost_p95": 4.276,
+  "latency_ms": {
+   "min": 15,
+   "p50": 1667,
+   "p95": 13707,
+   "p99": 14774,
+   "max": 14999,
+   "mean": 4382,
+   "p95_nearest_rank": 13707,
+   "method_note": "p95: 13707 by linear interpolation and by nearest-rank; 13709 by index sorted[int(0.95*n)]. Runbook figure 13709 is the index method. All three agree within 2 ms.",
+   "p95_index_method": 13709
+  },
+  "ai_agent_events": 356,
+  "ai_invocations_entity_events": 505,
+  "severity": {
+   "info": 593,
+   "debug": 589,
+   "warn": 630,
+   "error": 590,
+   "critical": 598
+  }
+ },
+ "runbook_figures_check": {
+  "tokens_904432": true,
+  "cost_6735_29": true,
+  "p50_1667": true,
+  "p95_13709": "reproduced by index method (13709); 13707 by interpolation / nearest-rank"
+ },
+ "code_estimator": "token_estimate = len(prompt.split()) * 2 in apps/api/services/ai_gateway.py line 10 (not a measurement)",
+ "note": "All figures from synthetic fixture; dataset-declared, not production telemetry. Currency of cost_units unknown.",
+ "events_have_shipment_id": false,
+ "events_fields": [
+  "event_id",
+  "business_entity",
+  "event_type",
+  "severity",
+  "correlation_id",
+  "actor",
+  "latency_ms",
+  "cost_units",
+  "payload_hash"
+ ]
+}
