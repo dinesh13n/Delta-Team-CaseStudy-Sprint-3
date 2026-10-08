@@ -1,0 +1,79 @@
+# R final verification | 2026-10-08T12:18:15Z | git 217afc5 (+ uncommitted pyproject coverage scope fix, D-013)
+
+/tmp/claude-0/-home-claude/7b5a429d-b1d0-5503-bea8-f837bfd1a87c/scratchpad/r_verify.sh: line 6: v311=1: command not found
+######## Python 3.11.17
+
+$ /tmp/v311/bin/python -m ruff check .
+All checks passed!
+[exit code: 0]
+
+$ /tmp/v311/bin/python -m ruff format --check .
+93 files already formatted
+[exit code: 0]
+
+$ /tmp/v311/bin/python -m mypy --cache-dir=/tmp/mypy-v311
+Success: no issues found in 56 source files
+[exit code: 0]
+
+$ /tmp/v311/bin/python scripts/secret_scan.py
+{"mode": "working-tree", "findings": 0}
+[exit code: 0]
+
+$ /tmp/v311/bin/python etl/run_daily_batch.py --sample
+{'processed': 354, 'malformed': 1, 'sample': True}
+{"run_id": "run-20261008T121820Z", "load_id": "ld-0c0f0315d16f", "totals": {"processed": 2124, "quarantined": 30}, "quarantine_ratio": 0.014124, "status": "pass"}
+[exit code: 0]
+
+$ /tmp/v311/bin/python -m pytest -q -p no:cacheprovider --cov --cov-report=term --cov-fail-under=80 2>&1 | grep -E 'TOTAL|passed|Required'
+TOTAL                                   1521     47    97%
+Required test coverage of 80% reached. Total coverage: 96.91%
+176 passed, 1 skipped, 7 xfailed, 1 warning in 48.07s
+[exit code: 0]
+
+$ /tmp/v311/bin/python scripts/sanity_check.py
+{'status': 'ok', 'repo': '07-logistics-shipment-fleet-routing-ops', 'csv_files': 6, 'events': 3000, 'clean_repo_contract': True, 'semantic_layer': 'valid', 'evidence_dirs': 'ok', 'secret_findings': 0, 'openapi_route_diff': 'clean', 'rego_current': True}
+[exit code: 0]
+
+$ /tmp/v311/bin/python -m pytest -q -p no:cacheprovider ../semantic-layer/tests
+................                                                         [100%]
+16 passed in 0.60s
+[exit code: 0]
+
+/tmp/claude-0/-home-claude/7b5a429d-b1d0-5503-bea8-f837bfd1a87c/scratchpad/r_verify.sh: line 6: v313=1: command not found
+######## Python 3.13.16
+
+$ /tmp/v313/bin/python -m ruff check .
+All checks passed!
+[exit code: 0]
+
+$ /tmp/v313/bin/python -m ruff format --check .
+93 files already formatted
+[exit code: 0]
+
+$ /tmp/v313/bin/python -m mypy --cache-dir=/tmp/mypy-v313
+Success: no issues found in 56 source files
+[exit code: 0]
+
+$ /tmp/v313/bin/python scripts/secret_scan.py
+{"mode": "working-tree", "findings": 0}
+[exit code: 0]
+
+$ /tmp/v313/bin/python etl/run_daily_batch.py --sample
+{'processed': 354, 'malformed': 1, 'sample': True}
+{"run_id": "run-20261008T121916Z", "load_id": "ld-0c0f0315d16f", "totals": {"processed": 2124, "quarantined": 30}, "quarantine_ratio": 0.014124, "status": "pass"}
+[exit code: 0]
+
+$ /tmp/v313/bin/python -m pytest -q -p no:cacheprovider --cov --cov-report=term --cov-fail-under=80 2>&1 | grep -E 'TOTAL|passed|Required'
+TOTAL                                   1521     47    97%
+Required test coverage of 80% reached. Total coverage: 96.91%
+176 passed, 1 skipped, 7 xfailed, 1 warning in 43.63s
+[exit code: 0]
+
+$ /tmp/v313/bin/python scripts/sanity_check.py
+{'status': 'ok', 'repo': '07-logistics-shipment-fleet-routing-ops', 'csv_files': 6, 'events': 3000, 'clean_repo_contract': True, 'semantic_layer': 'valid', 'evidence_dirs': 'ok', 'secret_findings': 0, 'openapi_route_diff': 'clean', 'rego_current': True}
+[exit code: 0]
+
+$ /tmp/v313/bin/python -m pytest -q -p no:cacheprovider ../semantic-layer/tests
+................                                                         [100%]
+16 passed in 0.55s
+[exit code: 0]

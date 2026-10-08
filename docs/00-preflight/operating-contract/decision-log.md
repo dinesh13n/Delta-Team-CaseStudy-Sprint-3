@@ -55,3 +55,8 @@
 - Other statements affected were updated in docs 00, 01, 04, 07, 11, 12 and in the runbook docx. Evidence files are not edited; EVD-A-04c is added and EVD-A-04b is superseded for this figure only.
 - Lesson recorded: a one-pattern grep is not an independent count; profile by value class (null, empty, present).
 - Status: APPLIED.
+
+## D-013 (2026-10-08)
+- Defect found at Stage R verification and confirmed by the first real GitHub Actions run (run 37774970836): the CI and `make cov` gate `--cov --cov-fail-under=80` measured 51% because `[tool.coverage.run] source` also listed `scripts` and `legacy`, which are evidence tooling and a legacy shim with little unit coverage. Every earlier gate document quoted 96-97% for `apps` + `etl`. The gate had never run (DEBT-01), so the mismatch was invisible.
+- Decision: set `source = ["apps","etl"]` (the definition used in H11, I1 and the go/no-go criteria). Scripts are exercised by their own tests and by the evidence runs but are not part of the 80% gate. This narrows what the gate measures; it is disclosed, not hidden.
+- Lesson: a gate that has not been executed in its real environment is not evidence. Status: APPLIED (commit following 4c84af1).

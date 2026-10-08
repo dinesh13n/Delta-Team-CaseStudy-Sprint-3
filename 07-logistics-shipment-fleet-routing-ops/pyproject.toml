@@ -13,7 +13,7 @@ filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`:DeprecationW
 markers = ["characterization: pins baseline brownfield behaviour (see tests/characterization)"]
 
 [tool.coverage.run]
-source = ["apps", "etl", "legacy", "scripts"]
+source = ["apps", "etl"]
 omit = ["*/tests/*"]
 
 [tool.coverage.report]

@@ -1,0 +1,70 @@
+
+X main ci · 37774970836
+Triggered via push about 10 minutes ago
+
+JOBS
+X gates (3.11) in 1m8s (ID 113303418517)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ Run python -m pip install --require-hashes -r requirements-dev.txt
+  ✓ Run python -m ruff check .
+  ✓ Run python -m ruff format --check .
+  ✓ Run python -m mypy --cache-dir=.mypy_cache
+  ✓ Run python scripts/secret_scan.py --json secret-scan.json
+  ✓ Run python etl/run_daily_batch.py --sample
+  X Run python -m pytest -q --cov --cov-report=xml --junitxml=junit.xml --cov-fail-under=80
+  - Run python scripts/sanity_check.py
+  - Run python -m pytest -q ../semantic-layer/tests
+  - Run open-policy-agent/setup-opa@v2
+  - Run opa check policy/opa && opa test policy/opa
+  ✓ Run actions/upload-artifact@v4
+  - Post Run actions/setup-python@v5
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+X gates (3.14) in 1m21s (ID 113303419003)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ Run python -m pip install --require-hashes -r requirements-dev.txt
+  ✓ Run python -m ruff check .
+  ✓ Run python -m ruff format --check .
+  ✓ Run python -m mypy --cache-dir=.mypy_cache
+  ✓ Run python scripts/secret_scan.py --json secret-scan.json
+  ✓ Run python etl/run_daily_batch.py --sample
+  X Run python -m pytest -q --cov --cov-report=xml --junitxml=junit.xml --cov-fail-under=80
+  - Run python scripts/sanity_check.py
+  - Run python -m pytest -q ../semantic-layer/tests
+  - Run open-policy-agent/setup-opa@v2
+  - Run opa check policy/opa && opa test policy/opa
+  ✓ Run actions/upload-artifact@v4
+  - Post Run actions/setup-python@v5
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+gates (3.11): .github#2
+
+X Process completed with exit code 1.
+gates (3.11): .github#38
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+gates (3.11): .github#1
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+gates (3.14): .github#2
+
+X Process completed with exit code 1.
+gates (3.14): .github#38
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+gates (3.14): .github#1
+
+
+ARTIFACTS
+evidence-3.11
+evidence-3.14
+
+To see what failed, try: gh run view 37774970836 --log-failed
+View this run on GitHub: https://github.com/dinesh13n/Delta-Team-CaseStudy-Sprint-3/actions/runs/37774970836
