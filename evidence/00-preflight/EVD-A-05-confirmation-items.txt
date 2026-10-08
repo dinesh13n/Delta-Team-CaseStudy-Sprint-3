@@ -1,0 +1,6 @@
+EVD-A-05  Items flagged for confirmation at later Spine stages (runbook Step A5), 2026-10-08
+Stage 2  (docs/02-stakeholders)     : named holders for all 8 role slots (GOV-01)
+Stage 23 (docs/23-human-control)    : human-approval triggers and autonomy limits
+Stage 25 (docs/25-governance)       : change control, evidence retention (OQ-10), independent review of self-approved gates (GOV-10)
+Stage 37 (docs/37-operating-model)  : environment/access boundaries, target platform (OQ-01)
+Source: docs/00-preflight/operating-contract/operating-contract-readiness.md
