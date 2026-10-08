@@ -63,5 +63,16 @@ Every gate is self-signed by the operator, PROVISIONAL (GOV-10). No gate has an 
 ## Corrections made at this gate
 D-013 (coverage gate scope, found by the first real CI run), D-014 (file modes, test-count note), 58 evidence files late-registered, F-04/F-06 dispositions updated after reading the web app, `OQ-24` reference removed.
 
-## Tag
-`release/v1-production-candidate` is created on the commit that contains this document. It marks a **candidate for a synthetic-data pilot**, not a production release.
+## Tags (not yet on GitHub)
+The cloud workspace could not publish tags: `git push` of a tag and the GitHub API tag endpoints are refused by the session's egress policy (HTTP 403, "Write access to this GitHub API path is not permitted"). This was not worked around. The branch `main` is pushed. The operator creates the three tags from a clone that has pulled `main`:
+
+```
+git pull origin main
+git tag -a baseline/v1-characterized 4c84af1 -m "Characterization tests present; created retroactively on the import commit"
+git tag -a repo/v2-validated 9c1ce82 -m "Transformed repo validated: CI green on Python 3.11 and 3.14"
+git tag -a release/v1-production-candidate <hash of the latest commit on main> -m "Candidate for a synthetic-data pilot, NOT a production release"
+git push origin baseline/v1-characterized repo/v2-validated release/v1-production-candidate
+```
+Honest note on `baseline/v1-characterized` and `repo/v2-validated`: Stages A-P were committed in one import commit (4c84af1), so the runbook's ordering proofs (characterization tests committed before the Stage H changes; thresholds and datasets committed before results) cannot be shown by git history. They rest on file timestamps recorded in the gate documents. `repo/v2-validated` points at the commit whose first CI run failed; the green state is 9c1ce82 and later, so for a validated tag use 9c1ce82 or the final commit instead.
+
+`release/v1-production-candidate` marks a **candidate for a synthetic-data pilot**, not a production release.
