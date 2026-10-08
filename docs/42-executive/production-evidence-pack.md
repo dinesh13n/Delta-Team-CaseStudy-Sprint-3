@@ -19,7 +19,7 @@ This is the delivered `PRODUCTION_EVIDENCE_PACK_TEMPLATE.md` populated: the fift
 
 ## Release Summary
 - Release candidate `release/v1-production-candidate` (tag created in R5). Production release **not performed**; pilot release **not performed**; no environment exists (`docs/30-release/release-outcome.md` (sha256 `f6a82aeadf625e80c38dfb50b8b0e15093343dc6cd4519cb610fdb295d3ce463`)).
-- Decision: NO-GO production on real data; CONDITIONAL GO controlled pilot on synthetic data (`docs/42-executive/production-readiness-decision.md` (sha256 `10af5d5ed2dd0e61fe526c31a4ae67c2607544ba42591553c8f7ea45e7b29fa0`)).
+- Decision: NO-GO production on real data; CONDITIONAL GO controlled pilot on synthetic data (`docs/42-executive/production-readiness-decision.md` (sha256 `acce0feb3526d2c29dc6eb76026e6c5fd5791fa0bf77016cdb72d38f79d23e78`)).
 - Findings: 62 (57 in the baseline register plus F-58..F-62). Final dispositions: 43 fixed, 4 fixed in tree with history residual, 10 partial, 2 changed, 2 deferred, 1 proposed-accepted, 0 unaddressed (`evidence/13-traceability/EVD-F-04b-finding-disposition-final.csv` (sha256 `24dc4df12754670d842a7f1d8fb2d8dfa03eb8214dd35758a7e26577a6e774d1`)).
 
 ## Behavioural Baseline Evidence
@@ -53,7 +53,7 @@ This is the delivered `PRODUCTION_EVIDENCE_PACK_TEMPLATE.md` populated: the fift
 ## AI Security and Guardrails Evidence
 - Allow-listed prompt fields, schema validation, evaluated guardrail, prompt and model locks, approval gate (`evidence/15-modernization/EVD-H-07-ai-gateway-results.json` (sha256 `38fe45eb845bc0d5c3aebbc45d155f9d0a2997ee758cf39c497312d245b1aec6`); `evidence/23-human-control/EVD-K-01-human-control-tests.txt` (sha256 `ebd91a777fa2223e03d14f0f9a949ecafa3b80e17a0da4cf179519ccde821828`)). 192 evaluation cases, 0 failures, thresholds committed before results (`evidence/26-tevv/EVD-L-02-final-eval-run.json` (sha256 `dfdf29d208c4cdc05911c3fe8c76ba6ccfe66ccbd6d9a0677aee10d40c8ee54e`); `evidence/19-intelligence/EVD-J-02-dataset-manifest.json` (sha256 `12f6d1e61249453395f330787076dddd9376797833fe8a27632fd34e3c444479`)).
 - Red team 0 of 12 on the transformed build vs 10 of 12 on the baseline (`evidence/26-tevv/EVD-L-03-redteam-v2.json` (sha256 `b6f65533d6d71145d1d98da52ee5886590871091c704bc514e07984327d03356`)).
-- NOT MET: **no real model was ever called** (`real_model_called: false`); second-model portability not tested (`evidence/40-scale/EVD-Q-01-preregistration.json` (sha256 `d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014`)).
+- NOT MET: **no real model was ever called** (`real_model_called: false`); second-model portability tested once on a subset, same vendor, Model B fails 2 of 8 pre-registered gates (`evidence/40-scale/EVD-Q-06-comparison.csv`; pre-registration `evidence/40-scale/EVD-Q-01-preregistration.json` (sha256 `d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014`)).
 
 ## Performance and Scalability Evidence
 - Loopback, one uvicorn process, deterministic provider: record lookup 189 req/s (p95 6.3 ms) with 1 worker and 244 req/s (p95 33.6 ms) with 8 (`evidence/28-resilience/EVD-M-02-load-probe.json` (sha256 `fe069284369b402e6ad264b65bcec643eafb054804d6877036f375ae34d212af`)). **Not a capacity test.** Model, network and platform latency UNMEASURED (TEVV-R-03).
@@ -72,4 +72,4 @@ This is the delivered `PRODUCTION_EVIDENCE_PACK_TEMPLATE.md` populated: the fift
 - Every finding has a final disposition (`evidence/13-traceability/EVD-F-04b-finding-disposition-final.csv` (sha256 `24dc4df12754670d842a7f1d8fb2d8dfa03eb8214dd35758a7e26577a6e774d1`)).
 
 ## Production Readiness Decision
-`docs/42-executive/production-readiness-decision.md` (sha256 `10af5d5ed2dd0e61fe526c31a4ae67c2607544ba42591553c8f7ea45e7b29fa0`). NO-GO production on real data; CONDITIONAL GO controlled pilot on synthetic data; no risk accepted by any named person; G8-G12 failed.
+`docs/42-executive/production-readiness-decision.md` (sha256 `acce0feb3526d2c29dc6eb76026e6c5fd5791fa0bf77016cdb72d38f79d23e78`). NO-GO production on real data; CONDITIONAL GO controlled pilot on synthetic data; no risk accepted by any named person; G8-G12 failed.

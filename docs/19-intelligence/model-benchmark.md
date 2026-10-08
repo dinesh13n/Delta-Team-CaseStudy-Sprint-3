@@ -15,5 +15,5 @@
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-Candidate models require OQ-02 (selection), OQ-03 (egress) and credentials; none exist. What was benchmarked: Model A = `deterministic 1.0`. Model B = none available. The harness (`evaluation/run_eval.py`) takes any `ModelProvider`, and the datasets are fixed, so Stage Q can compare fairly once a model exists.
+Candidate models require OQ-02 (selection), OQ-03 (egress) and credentials; none exist. What was benchmarked: Model A = `deterministic 1.0`. Model B = none available as a *provider*; for the Stage Q build-portability test a second *builder* (`claude-haiku-5-5`) was run once (`docs/40-scale/model-comparison.md`). The harness (`evaluation/run_eval.py`) takes any `ModelProvider`, and the datasets are fixed, so Stage Q can compare fairly once a model exists.
 No benchmark number for a language model is claimed.

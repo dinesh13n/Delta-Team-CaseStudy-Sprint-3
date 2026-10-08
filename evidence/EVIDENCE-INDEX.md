@@ -15,7 +15,7 @@
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-113 evidence files in 32 stage folders. Verification run 2026-10-08: every manifest row resolves to a file whose SHA-256 matches; no unmanifested evidence file; `EVD-R-03-manifest-verification.json`. Files registered late (stages H-P) carry a note in their manifest row: their hash proves the file is unchanged since 2026-10-08 (R2), not since it was produced.
+134 evidence files in 32 stage folders (113 verified in R2 and recorded in `EVD-R-03-manifest-verification.json`; 21 added by the Stage Q portability run, EVD-Q-04 to -07; re-running `EVD-R-03-verify-manifests.py` gave `EVD-Q-07-manifest-reverification.json`: 133 of 133 manifest rows matched at that time, 0 duplicates, 0 missing; this index is the only file not in a manifest). Files registered late (stages H-P) carry a note in their manifest row: their hash proves the file is unchanged since 2026-10-08 (R2), not since it was produced.
 
 | File | SHA-256 | Step | Cited by |
 |---|---|---|---|
@@ -128,6 +128,27 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 | 39-continuous-improvement/EVD-P-03-drift-check-drifted.json | `702f90ca3f04232249f31c3dc207c67aee97f3e3afa0b9914b9f6df54adc29a4` | P3 | docs of step P3 |
 | 40-scale/EVD-Q-01-preregistration.json | `d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014` | Q1 | semantic-layer-portability-test.md |
 | 40-scale/EVD-Q-02-comparison.csv | `25b4aaddc9c676a3d13545292d79e791d6b3296d750047d7eae28ed004b32656` | Q2 | model-comparison.md |
+| 40-scale/EVD-Q-04-harness-accept.py | `65f2ebc3273aeb575ca6b1d1551fcf12293d567872c79d48e6e4d5347341c433` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-adapter-a.py | `ec136b28fef0c35ad0f1279b7fba6db491ecfa33d27e0a7770fab7af8d7098da` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-build-brief.md | `9756dedad564cf4092e4f784cd961cfcb610f4f1c61f73c37f0b0393dd3afb6c` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-bundle-sha256.txt | `57868ce78c130e64db6e1cca9dc0e1d425a51c060df3eca101991ddaca1b9cc2` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-control-A-eval.json | `ca535583e1339ad66c87fc97de620f2616eb82276dea42417d98b9925e98fb79` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-control-A-http.json | `82350bea067346789f169cb4e3669209320f17a6ac8f12fa062c8901e058217b` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-04-harness-preregistration.json | `8b622a5c88105d75963a352b0007f06a023a32970947beb42d32f395047c2e9b` | Q1 | semantic-layer-portability-test.md |
+| 40-scale/EVD-Q-05-model-b-transcript.jsonl | `7fb1472046dfee8e3edb03cd87e5574d592b085a9ef7e65c69d4885f2c17412d` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-meta.json | `a3f23119b8f49abb20c467029423b67a2b0d071f82b935a351304e2986295afa` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-build.tar.gz | `14d503b12422353fb7c1a0f1bff5166c02c6cfca3570023e89bf3e9bd61f2801` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-notes.md | `86af3789f56bc6fe86c83e69501187c89fe7bf97fcd2040004e247f251939e7f` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-eval.json | `d1c521804b2171cc9f7c091da0e71a90fa93c7c02fa9ea3aa1afbb92de46984e` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-http.json | `8d57a3f6a79ebed41c9ffa07a01882326f4a4dbe1973440463f7c971900eb6d3` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-http-supp-ai_agent.json | `89b7630c1722771b4621d39212412b42718c3d5e4226b98207378a21216eb93f` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-harness-accept-supp.py | `e6344f3f760bb854600cd8d53a8f996ab7f4541dd45bd349938c8dc8890ff0a2` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-posthoc-recommendation-class.txt | `f23bff6e2a539d6609202c0b259581e08a3c5fbc82503554e3b75ffe9804faa3` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-posthoc-recommendation-class.py | `5c7b388638b6d8216d983ef0de2f87ad8e6d674513b224de70f661e4e76f449b` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-model-b-prompt.md | `7fa9ab4ea1864e497629ab86ceb56d18a5125b245d5b71ef3b0fcd6fe98c3f6b` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-05-blindness-check.txt | `d46562a75311829ba853d7d34130692d7684676fc33613179fb7c47465ec30c7` | Q1-Q2 | semantic-layer-portability-test.md; model-comparison.md |
+| 40-scale/EVD-Q-06-comparison.csv | `5a4971acea3e7d7ceb035d17f2c959d34b61202864fba88ef997b41aaa985b3e` | Q2 | model-comparison.md |
+| 40-scale/EVD-Q-07-manifest-reverification.json | `16fa19c6acfce1e404efcc596f3ca6271f01fdc064369e0ff3e2176b073bf557` | Q4 | stage-q-gate.md; EVIDENCE-INDEX.md |
 | 42-executive/EVD-Q-03-demo-rehearsal.txt | `4d74a7e8920cbe67c5729cea0654984e84e1980bb9cf95ac3ed6c0f00f2d0be2` | Q3 | demo-day-script.md |
 | 42-executive/EVD-Q-03-rehearsal-script.sh | `0b5366ba424272f5f658e48bd9bf195e0a523b5989067c1d24c2278c9606866b` | Q3 | demo-day-script.md |
 | 42-executive/EVD-R-03-manifest-verification.json | `067f226daad1e9de98d1631b12e6699c79e901256545e34efeb138aa2d8c4b1c` | R2 | final-gate.md |

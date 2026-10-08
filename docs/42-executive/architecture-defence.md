@@ -27,4 +27,4 @@ Modular monolith with ports (Option B) over hardening the old monolith (A) or mi
 - **Deterministic provider as default**: a model is an option behind the gateway, not a dependency.
 
 ## Where it is weak
-Local file audit sink; in-memory rate limit; single replica; no tracing; bulkhead exists but is not wired to the gateway (F-M3-02). All registered in `docs/42-executive/residual-risks.md` (sha256 `3e193775a8288e3af083a61ece8012e3ec1330bd46af30ca8e0eb5f820a618a5`).
+Local file audit sink; in-memory rate limit; single replica; no tracing; bulkhead exists but is not wired to the gateway (F-M3-02). All registered in `docs/42-executive/residual-risks.md` (sha256 `2dc0588056838f047b74c9026ed238f825059c9c3c9fd7a4ccad595cfe3557b2`).

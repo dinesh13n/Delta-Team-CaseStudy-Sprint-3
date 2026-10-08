@@ -16,5 +16,5 @@
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
 **Implemented**: see `final-capability-map.md` (Delivered rows).
-**Deferred**: availability and AI latency/cost measurement (NFR-2, 9, 10); IdP; platform and IaC; tracing; external audit sink; four-eyes and approval expiry; bulkhead wiring; real model and portability test; ETA, route and copilot capabilities; owner rulings (BR-04, weight discrepancy, `REC-0001` intent); credential revocation; branch protection.
+**Deferred**: availability and AI latency/cost measurement (NFR-2, 9, 10); IdP; platform and IaC; tracing; external audit sink; four-eyes and approval expiry; bulkhead wiring; real model; portability beyond one same-vendor subset run; ETA, route and copilot capabilities; owner rulings (BR-04, weight discrepancy, `REC-0001` intent); credential revocation; branch protection.
 **Rejected**: Angular portal; agentic AI; audit v1 feature flag.

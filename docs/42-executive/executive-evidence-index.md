@@ -49,9 +49,9 @@ Every material claim in the executive documents maps to one of these files. Full
 | 28 | Benefit model, NPV | `evidence/36-benefits/EVD-O-03-benefit-model.json` (sha256 `2afe6092b217cb967a19100ba71c32fb09eadc66e7fdd0bfe0112e7cbffc7e52`) |
 | 29 | Operator exercises (author-run) | `evidence/38-handover/EVD-P-02-operator-exercises.json` (sha256 `0482bd0cf4b1edf59e04ea08f2b7ab4a6ba2d2d45fc2e423b430b1e3be6780ab`) |
 | 30 | Drift check | `evidence/39-continuous-improvement/EVD-P-03-drift-check-drifted.json` (sha256 `702f90ca3f04232249f31c3dc207c67aee97f3e3afa0b9914b9f6df54adc29a4`) |
-| 31 | Portability test pre-registered, not run | `evidence/40-scale/EVD-Q-01-preregistration.json` (sha256 `d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014`) |
+| 31 | Portability test pre-registered, then run once on a subset; Model B fails 2 of 8 pre-registered gates | `evidence/40-scale/EVD-Q-01-preregistration.json` (sha256 `d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014`); `evidence/40-scale/EVD-Q-06-comparison.csv` |
 | 32 | Demo rehearsal (author-run, 28 s) | `evidence/42-executive/EVD-Q-03-demo-rehearsal.txt` (sha256 `4d74a7e8920cbe67c5729cea0654984e84e1980bb9cf95ac3ed6c0f00f2d0be2`) |
 | 33 | CI run 1 failed; run 2 green | `evidence/15-modernization/EVD-R-02-ci-run-2-green.txt` (sha256 `ecc80c2198e52f243b4fad863caae96b5c55ec8c2d8c9f451f5306e8222a6b28`) |
 | 34 | Final verification 3.11 and 3.13 | `evidence/15-modernization/EVD-R-01-final-verification.txt` (sha256 `510e7971405b8f1f097dc385fcbe5cb700a6ed54d5011e7108a64bc83b7db92f`) |
 
-Claims with **no evidence** (stated as such in the documents): any real-model behaviour; any deployment property; any business benefit; independent review; model portability; encryption in transit/at rest.
+Claims with **no evidence** (stated as such in the documents): any real-model behaviour; any deployment property; any business benefit; independent review; model portability beyond one same-vendor subset run; encryption in transit/at rest.

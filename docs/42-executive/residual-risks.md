@@ -25,7 +25,7 @@ Owners are **roles**. No person is named anywhere in this engagement; none was i
 | RA-06 / TEVV-R-01 | Builder and grader are the same agent; no independent review | High | Release approver | nobody | blocks unconditional GO |
 | RA-02 | HS256 shared-secret identity; JWKS stub | High if networked | Security | nobody | before any networked deployment |
 | RA-09 / TEVV-R-02 | Real model untested; zero-tolerance thresholds only valid for the deterministic provider | High before a model | AI governance | nobody | before enabling a model |
-| (Q) | Model portability claimed by design, **not demonstrated** | Medium | AI governance | nobody | run pre-registered protocol (IMP-Q01) |
+| (Q) | Model portability **partly demonstrated** (one same-vendor subset run: safety behaviour yes, AI-output fidelity no; eight specification gaps) | Medium | AI governance | nobody | close IMP-Q04..IMP-Q10, repeat with another vendor family, three runs (IMP-Q12) |
 | RA-04 / HC-R-01 | No four-eyes: the requester can approve their own suggestion | Medium | Product | nobody | before any action integration |
 | RA-12 / DEBT-01 | CI now runs and is green; **branch protection still off** | Medium | Repository owner | nobody | now |
 | DEBT-06, F-48 | Terraform provisions nothing; image never built | Medium | Platform | nobody | with OQ-01 |

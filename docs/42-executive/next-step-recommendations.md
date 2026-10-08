@@ -20,5 +20,5 @@ In order of cost to the CTO, cheapest first:
 2. **This week**: name sponsor, repository owner, security owner, SRE; sign or reject RA-01..RA-12; assign one independent reviewer to this pack (closes G9, G11 in part).
 3. **Days 0-30**: revoke or confirm-fake the five credentials in history; choose platform and identity provider; build and scan the image.
 4. **Days 31-60**: deploy to a test environment; stand up a collector and alert routing; pilot on synthetic then masked data with named reviewers; human tabletop.
-5. **Days 61-90**: choose and evaluate a real model, then run the pre-registered portability protocol (IMP-Q01) with a second model; measure review time and approval rate; rerun the benefit model; go/no-go for a production pilot.
+5. **Days 61-90**: choose and evaluate a real model, then close the portability gaps IMP-Q04..IMP-Q10 and repeat the portability run with a model of another vendor family, three runs each (IMP-Q12); measure review time and approval rate; rerun the benefit model; go/no-go for a production pilot.
 Roadmap detail: `docs/40-scale/90-day-roadmap.md` (sha256 `428ef07a427c9f801ff4ff0f194296f9051ac2e8d398f3cfff7eefad97038da5`). Nobody has committed to any of this.

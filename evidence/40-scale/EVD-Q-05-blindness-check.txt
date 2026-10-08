@@ -1,0 +1,5 @@
+Blindness check over the full Model B transcript (EVD-Q-05-model-b-transcript.jsonl)
+model(s) recorded in transcript: ['claude-haiku-5-5']
+tool calls inspected: 31
+tool calls referencing /home/claude, /root, /opt, git, find /, 07-logistics, red_team, run_eval or evaluation: 0
+Limit: this checks the tool inputs (paths and commands). It cannot see what an allowed command like python -c might read; the transcript contains no such use.

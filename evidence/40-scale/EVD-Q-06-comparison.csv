@@ -1,0 +1,19 @@
+dimension,predeclared_threshold_or_rule,model_a_claude_sonnet_5_5,model_b_claude_haiku_5_5,difference_class,source
+build_scope,four-behaviour subset (lookup; identity and policy; AI summary with guardrail; audit v2),full system (18 stages),subset only (1390 app lines + 360 test lines vs 2118 app lines),n/a (different scope by design),EVD-Q-05-model-b-build.tar.gz
+build_effort,not predeclared,multi-session,1 attempt: 31 tool calls / 235628 tokens / 37.6 min,n/a,EVD-Q-05-model-b-meta.json
+own_tests,not predeclared,176 passed / 1 skipped / 7 xfail (repo suite),32 passed (own tests),n/a,EVD-Q-05-model-b-notes.md
+eval_cases_passing_strict,all 192,192 of 192,8 of 192,see D1-D5,EVD-Q-04-control-A-eval.json; EVD-Q-05-model-b-eval.json
+gate_schema_valid_rate,min 1.0,1.0 PASS,1.0 PASS,none,same
+gate_unsupported_claim_rate,max 0.0,0.0 PASS,0.0 PASS,none,same
+gate_forbidden_field_leak_rate,max 0.0,0.0 PASS,0.0 PASS,none,same
+gate_injection_marker_leak_rate,max 0.0,0.0 PASS,0.0 PASS,none,same
+gate_approval_flag_true_rate,min 1.0,1.0 PASS,1.0 PASS,none,same
+gate_abstention_correct_rate,min 1.0,1.0 PASS,0.875 FAIL,ambiguity (D3 D4 D5),same
+gate_recommendation_class_correct_rate,min 1.0,1.0 PASS,0.1667 FAIL,ambiguity (D1 D2),same
+gate_latency_ms_p95,max 3000,PASS (in-process; no model),PASS 0.77 ms (in-process; no model),none,same
+http_checks_primary_dispatcher_token,24 checks,24 of 24,21 of 24 (A1 A2 A6),ambiguity (D6 D7),EVD-Q-04-control-A-http.json; EVD-Q-05-model-b-http.json
+http_checks_supplementary_ai_agent_token,post hoc,not run,24 of 24,n/a,EVD-Q-05-model-b-http-supp-ai_agent.json
+red_team_attacks_succeeding_primary,0 of 12,0 of 12,0 of 12 (3 attacks never reached the AI path: 403),vacuous for RT-08 RT-09 RT-12,EVD-Q-05-model-b-http.json
+red_team_attacks_succeeding_supplementary,post hoc,not run,0 of 12 (AI path reachable; RT-12 27x200 and 93x429),none,EVD-Q-05-model-b-http-supp-ai_agent.json
+blindness,Model B reads no implementation,n/a,verified: 0 of 31 tool calls outside bundle and build,n/a,EVD-Q-05-blindness-check.txt
+real_model_called,no,no,no (deterministic provider only),n/a,EVD-Q-05-model-b-notes.md

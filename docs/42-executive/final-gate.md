@@ -10,7 +10,7 @@
 | Status | CONDITIONAL; self-signed |
 | Evidence sources | all stage gates; evidence/EVIDENCE-INDEX.md; runbook/04-OPEN-QUESTIONS-FINAL-REVISION.md |
 | Assumptions | See assumptions in body |
-| Unresolved issues | 13 open questions; Q1-Q3 not performed |
+| Unresolved issues | 13 open questions; Q1-Q3 performed once, Model B fails 2 of 8 gates, IMP-Q04..Q13 open |
 | Residual risks | See residual-risks.md |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
@@ -34,7 +34,7 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 | N | docs/31-observability/stage-n-gate.md | CONDITIONAL PASS |
 | O | docs/34-after-kpis/stage-o-gate.md | CONDITIONAL PASS (no benefit) |
 | P | docs/37-operating-model/stage-p-gate.md | PASS design / OPEN people |
-| Q | docs/40-scale/stage-q-gate.md | **CONDITIONAL: Q1-Q3 not performed** |
+| Q | docs/40-scale/stage-q-gate.md | **CONDITIONAL: Q1-Q3 performed once (subset, same vendor); Model B fails 2 of 8 gates** |
 | R | this document | **CONDITIONAL** |
 Every gate is self-signed by the operator, PROVISIONAL (GOV-10). No gate has an independent signature.
 
@@ -55,7 +55,7 @@ Every gate is self-signed by the operator, PROVISIONAL (GOV-10). No gate has an 
 | Criterion (marks) | Strongest evidence | What cannot be claimed |
 |---|---|---|
 | R1 As-Is understanding (20) | EVD-C-02 transcript; 62-finding register; data profile; flow-to-code trace; 5 root causes | RC-1 (partial modernisation ownership) not confirmed by an owner interview |
-| R2 Repo 2.0 design (25) | ADR-0002..0010; semantic layer; specs; red team 10/12 → 0/12; CI green 3.11/3.14 | platform, IaC and traces absent; portability untested |
+| R2 Repo 2.0 design (25) | ADR-0002..0010; semantic layer; specs; red team 10/12 → 0/12; CI green 3.11/3.14 | platform, IaC and traces absent; portability shown for safety behaviour only (one same-vendor subset run) |
 | R3 Governance, security (20) | audit chain and reconstruction; autonomy matrix; threat model; 25 security tests; SBOM | no named owners; 0 of 12 acceptances signed; credentials unrevoked; no independent review |
 | R4 PRD and working app (25) | three PRDs; traceability; 176 tests; running service; Chromium run 10/10 | no real model; thin view only; no deployment |
 | R5 Presentation (10) | demo script (28 s offline beats), pitch, limitations stated voluntarily | rehearsal by author only; no audience |

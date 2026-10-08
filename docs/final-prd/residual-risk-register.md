@@ -15,4 +15,4 @@
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-Maintained in `docs/42-executive/residual-risks.md` (single source, with risk-owner table). Do not duplicate here; open items RA-01..RA-12, TEVV-R-01..08, DEBT-01..14, N-R-01..18, plus the unrun portability test.
+Maintained in `docs/42-executive/residual-risks.md` (single source, with risk-owner table). Do not duplicate here; open items RA-01..RA-12, TEVV-R-01..08, DEBT-01..14, N-R-01..18, plus the portability findings IMP-Q04..IMP-Q13 (single same-vendor run).

@@ -26,6 +26,6 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 | 7 | Container recipe defect found only when exercised from a clean copy (P2) | operator exercise | write runbooks, then run them cold |
 | 8 | AI incident playbook named the wrong counter | N review | align docs with metrics at the end of run |
 | 9 | Builder graded own work throughout | by design of a single-agent run | independent review is a gate, not a courtesy |
-| 10 | Second model never run | OQ-02 unresolved | pre-register the protocol so the later run cannot be shaped by results |
+| 10 | Second model run only after the build was closed (single run, same vendor) | OQ-02 unresolved; the run found eight specification gaps that earlier stages did not | pre-register protocol and harness before the run (done, commit `e13758b`); run the second model before specifications are frozen, not after |
 
 Trade-offs accepted: platform-neutral over platform-specific; HS256 over a stub IdP; deterministic provider over a model; thin operations view over an Angular portal that never existed.

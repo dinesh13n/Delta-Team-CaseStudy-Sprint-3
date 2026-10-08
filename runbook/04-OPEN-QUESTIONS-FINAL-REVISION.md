@@ -20,7 +20,7 @@ Final status of every question in `04-OPEN-QUESTIONS-REGISTER.md`. R-X9 asks for
 | OQ | Subject | Final status | Basis | Owner role |
 |---|---|---|---|---|
 | OQ-01 | Target platform | OPEN | default: platform-neutral container (ADR-0009); nobody accepted | Architecture (UNRESOLVED) |
-| OQ-02 | Model A and Model B | OPEN | no real model; Stage Q not performed | AI governance (UNRESOLVED) |
+| OQ-02 | Model A and Model B | OPEN | no real model; Stage Q run once with a same-vendor builder (claude-haiku-5-5), no second vendor | AI governance (UNRESOLVED) |
 | OQ-03 | Network egress | OPEN | default: none; no model called | Security (UNRESOLVED) |
 | OQ-04 | Regulatory obligations | OPEN | recorded as accepted-unresolved RA-01, unsigned | Compliance (UNRESOLVED) |
 | OQ-05 | Stakeholders and approvers | OPEN | operator self-approves PROVISIONAL; G9 FAIL | Business sponsor (UNRESOLVED) |

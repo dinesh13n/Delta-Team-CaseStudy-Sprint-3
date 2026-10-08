@@ -27,4 +27,4 @@ In: authenticated record and shipment read, exception summary with approval, cur
 14 changes (`docs/17-implementation-prd/prd-change-log.md` (sha256 `7af6c7cc5888a90ba831ee0fd12773f7a0170fd7dd90c98329cbd2509af41e1c`)) plus three since: coverage gate scope (D-013), file modes (D-014), and the withdrawn portability claim (Stage Q).
 
 ## Status
-Dispositions: Changed 2, Deferred 7, Delivered 34, Rejected 3, Superseded 2 (see `requirement-disposition-matrix.md`). Production readiness: NO-GO for real data; CONDITIONAL GO for a controlled synthetic-data pilot (`docs/42-executive/production-readiness-decision.md` (sha256 `10af5d5ed2dd0e61fe526c31a4ae67c2607544ba42591553c8f7ea45e7b29fa0`)).
+Dispositions: Changed 2, Deferred 7, Delivered 34, Rejected 3, Superseded 2 (see `requirement-disposition-matrix.md`). Production readiness: NO-GO for real data; CONDITIONAL GO for a controlled synthetic-data pilot (`docs/42-executive/production-readiness-decision.md` (sha256 `acce0feb3526d2c29dc6eb76026e6c5fd5791fa0bf77016cdb72d38f79d23e78`)).

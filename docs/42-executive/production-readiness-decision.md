@@ -32,7 +32,7 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 | Platform and identity provider | not chosen; HS256 shared-secret tokens; JWKS verifier is a stub | G10 |
 | Independent review | none; one agent built, tested and graded the work | G11 |
 | Regulatory scope and real-data rules | unresolved (RA-01, OQ-04, OQ-21) | G12 |
-| Real AI model | never called; all AI evidence is the deterministic provider; model portability **not tested** (Stage Q) | G2 (partial) |
+| Real AI model | never called; all AI evidence is the deterministic provider; model portability tested once on a subset with a same-vendor model: access, lookup, guardrail and audit carried over, AI-output fidelity did not (Stage Q) | G2 (partial) |
 | Business value | no business KPI is measurable; verified monetary benefit nil; NPV negative at fixture volume | n/a |
 | Secrets | removed from the tree, **not revoked**, still in git history of a **public** repository | RA-07, GOV-07 |
 | Branch protection | not enabled on `main` (GitHub API: HTTP 404 "Branch not protected") | DEBT-01 |
