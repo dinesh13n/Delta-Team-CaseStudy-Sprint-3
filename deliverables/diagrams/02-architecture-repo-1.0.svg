@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">Repo 1.0 as delivered: three generations side by side, no control point</text>
+<rect x="10" y="74" width="180" height="440" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Callers</text>
+<rect x="25" y="124" width="150" height="110" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="100.0" y="155.3" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">API caller</text>
+<text x="100.0" y="174.5" font-size="15" text-anchor="middle" fill="#7B241C">sends an</text>
+<text x="100.0" y="193.7" font-size="15" text-anchor="middle" fill="#7B241C">X-User-Role</text>
+<text x="100.0" y="212.9" font-size="15" text-anchor="middle" fill="#7B241C">header</text>
+<rect x="25" y="264" width="150" height="90" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="100.0" y="304.5" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">Web portal</text>
+<text x="100.0" y="323.7" font-size="15" text-anchor="middle" fill="#7B241C">scaffold only</text>
+<rect x="205" y="74" width="430" height="440" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="215" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Generations 2 and 3: API and AI (apps/api)</text>
+<rect x="225" y="119" width="390" height="90" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="420.0" y="159.5" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">main.py: 3 routes</text>
+<text x="420.0" y="178.7" font-size="15" text-anchor="middle" fill="#7B241C">role taken from the header, never checked</text>
+<rect x="225" y="254" width="120" height="160" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="285.0" y="311.9" font-size="14" text-anchor="middle" fill="#7B241C" font-weight="bold">AI gateway</text>
+<text x="285.0" y="329.8" font-size="14" text-anchor="middle" fill="#7B241C">no auth;</text>
+<text x="285.0" y="347.7" font-size="14" text-anchor="middle" fill="#7B241C">guardrail not</text>
+<text x="285.0" y="365.6" font-size="14" text-anchor="middle" fill="#7B241C">enforced</text>
+<rect x="360" y="254" width="120" height="160" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="420.0" y="311.9" font-size="14" text-anchor="middle" fill="#7B241C" font-weight="bold">Audit writer</text>
+<text x="420.0" y="329.8" font-size="14" text-anchor="middle" fill="#7B241C">no actor, no</text>
+<text x="420.0" y="347.7" font-size="14" text-anchor="middle" fill="#7B241C">correlation</text>
+<text x="420.0" y="365.6" font-size="14" text-anchor="middle" fill="#7B241C">id</text>
+<rect x="495" y="254" width="120" height="160" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="555.0" y="311.9" font-size="14" text-anchor="middle" fill="#7B241C" font-weight="bold">Record lookup</text>
+<text x="555.0" y="329.8" font-size="14" text-anchor="middle" fill="#7B241C">any column; a</text>
+<text x="555.0" y="347.7" font-size="14" text-anchor="middle" fill="#7B241C">row even on a</text>
+<text x="555.0" y="365.6" font-size="14" text-anchor="middle" fill="#7B241C">miss</text>
+<rect x="205" y="529" width="430" height="245" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="215" y="553" font-size="16" font-weight="bold" fill="#0B3C49">Generation 1: legacy batch</text>
+<rect x="225" y="569" width="390" height="80" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="420.0" y="604.5" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">reconcile_legacy.py</text>
+<text x="420.0" y="623.7" font-size="15" text-anchor="middle" fill="#7B241C">counts rows; hard-coded credential</text>
+<rect x="225" y="669" width="390" height="80" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="420.0" y="704.5" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">run_daily_batch.py</text>
+<text x="420.0" y="723.7" font-size="15" text-anchor="middle" fill="#7B241C">counts blanks; validates nothing</text>
+<rect x="650" y="74" width="220" height="700" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="660" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Data (data/synthetic)</text>
+<rect x="665" y="124" width="190" height="250" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="760.0" y="215.7" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">7 synthetic files</text>
+<text x="760.0" y="234.9" font-size="15" text-anchor="middle" fill="#0B3C49">shipments, tracking</text>
+<text x="760.0" y="254.1" font-size="15" text-anchor="middle" fill="#0B3C49">events, vehicles,</text>
+<text x="760.0" y="273.3" font-size="15" text-anchor="middle" fill="#0B3C49">routes, bookings, AI</text>
+<text x="760.0" y="292.5" font-size="15" text-anchor="middle" fill="#0B3C49">calls, event stream</text>
+<rect x="665" y="394" width="190" height="200" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="760.0" y="470.3" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">Seeded defects</text>
+<text x="760.0" y="489.5" font-size="15" text-anchor="middle" fill="#7B241C">duplicates, bad keys,</text>
+<text x="760.0" y="508.7" font-size="15" text-anchor="middle" fill="#7B241C">REC-0001 collision,</text>
+<text x="760.0" y="527.9" font-size="15" text-anchor="middle" fill="#7B241C">placeholder values</text>
+<rect x="885" y="74" width="385" height="700" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="895" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Present but not connected</text>
+<rect x="900" y="119" width="355" height="70" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1077.5" y="149.5" font-size="15" text-anchor="middle" fill="#5F6E71" font-weight="bold">access.rego</text>
+<text x="1077.5" y="168.7" font-size="15" text-anchor="middle" fill="#5F6E71">referenced by no code</text>
+<rect x="900" y="204" width="355" height="70" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1077.5" y="234.5" font-size="15" text-anchor="middle" fill="#5F6E71" font-weight="bold">Terraform</text>
+<text x="1077.5" y="253.7" font-size="15" text-anchor="middle" fill="#5F6E71">one local_file resource</text>
+<rect x="900" y="289" width="355" height="70" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="1077.5" y="319.5" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">.env.example</text>
+<text x="1077.5" y="338.7" font-size="15" text-anchor="middle" fill="#7B241C">credential-shaped values</text>
+<rect x="900" y="374" width="355" height="80" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="1077.5" y="399.9" font-size="15" text-anchor="middle" fill="#7B241C" font-weight="bold">CI and quick-start</text>
+<text x="1077.5" y="419.1" font-size="15" text-anchor="middle" fill="#7B241C">pytest only and never run; quick-start</text>
+<text x="1077.5" y="438.3" font-size="15" text-anchor="middle" fill="#7B241C">fails</text>
+<rect x="900" y="469" width="355" height="80" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1077.5" y="504.5" font-size="15" text-anchor="middle" fill="#5F6E71" font-weight="bold">Docs promise ETA, routing, copilot</text>
+<text x="1077.5" y="523.7" font-size="15" text-anchor="middle" fill="#5F6E71">none of it exists in code</text>
+<rect x="900" y="569" width="355" height="185" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="909" y="621.5" font-size="14" fill="#41545A" xml:space="preserve">Scale</text>
+<text x="909" y="639.4" font-size="14" fill="#41545A" xml:space="preserve">About 140 lines of application code and 3</text>
+<text x="909" y="657.3" font-size="14" fill="#41545A" xml:space="preserve">tests.</text>
+<text x="909" y="675.2" font-size="14" fill="#41545A" xml:space="preserve">Red: defect confirmed at baseline (62</text>
+<text x="909" y="693.1" font-size="14" fill="#41545A" xml:space="preserve">findings in all).</text>
+<text x="909" y="711.1" font-size="14" fill="#41545A" xml:space="preserve">Grey dashed: present, does nothing.</text>
+<line x1="175.0" y1="175.5" x2="225.0" y2="173.1" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="175.0" y1="275.0" x2="320.7" y2="209.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="6 4"/>
+<line x1="384.3" y1="209.0" x2="345.0" y2="258.4" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="420.0" y1="209.0" x2="420.0" y2="254.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="455.7" y1="209.0" x2="495.0" y2="258.4" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="615.0" y1="309.1" x2="665.0" y2="288.4" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="635.0" y1="551.9" x2="665.0" y2="538.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

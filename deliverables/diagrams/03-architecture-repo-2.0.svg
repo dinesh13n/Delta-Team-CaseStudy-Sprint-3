@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">Repo 2.0 as built: a modular monolith with one control point and ports</text>
+<rect x="10" y="74" width="150" height="470" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Callers</text>
+<rect x="22" y="124" width="126" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="85.0" y="151.9" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Operations</text>
+<text x="85.0" y="169.8" font-size="14" text-anchor="middle" fill="#0B3C49">view</text>
+<text x="85.0" y="187.7" font-size="14" text-anchor="middle" fill="#0B3C49">/ops,</text>
+<text x="85.0" y="205.6" font-size="14" text-anchor="middle" fill="#0B3C49">read-only</text>
+<rect x="22" y="264" width="126" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="85.0" y="296.9" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">API client</text>
+<text x="85.0" y="314.8" font-size="14" text-anchor="middle" fill="#0B3C49">bearer token:</text>
+<text x="85.0" y="332.7" font-size="14" text-anchor="middle" fill="#0B3C49">who, role,</text>
+<text x="85.0" y="350.6" font-size="14" text-anchor="middle" fill="#0B3C49">purpose</text>
+<rect x="172" y="74" width="200" height="470" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="182" y="98" font-size="16" font-weight="bold" fill="#0B3C49">API layer</text>
+<rect x="185" y="304" width="174" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="272.0" y="339.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Correlation id</text>
+<text x="272.0" y="357.7" font-size="14" text-anchor="middle" fill="#0B3C49">on every request</text>
+<rect x="185" y="209" width="174" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="272.0" y="244.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Token check</text>
+<text x="272.0" y="262.7" font-size="14" text-anchor="middle" fill="#0B3C49">HS256; JWKS stub</text>
+<rect x="185" y="114" width="174" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="272.0" y="149.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Routes</text>
+<text x="272.0" y="167.7" font-size="14" text-anchor="middle" fill="#0B3C49">10 operations</text>
+<rect x="185" y="399" width="174" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="272.0" y="434.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Error shape</text>
+<text x="272.0" y="452.7" font-size="14" text-anchor="middle" fill="#0B3C49">no internals leak</text>
+<rect x="384" y="74" width="220" height="470" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="394" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Control point</text>
+<rect x="397" y="434" width="194" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="494.0" y="469.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Approvals</text>
+<text x="494.0" y="487.7" font-size="14" text-anchor="middle" fill="#0B3C49">approve or reject, once</text>
+<rect x="397" y="264" width="194" height="70" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="494.0" y="294.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Key pattern check</text>
+<text x="494.0" y="312.7" font-size="14" text-anchor="middle" fill="#0B3C49">else 422</text>
+<rect x="397" y="349" width="194" height="70" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="494.0" y="379.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Rate limit</text>
+<text x="494.0" y="397.7" font-size="14" text-anchor="middle" fill="#0B3C49">else 429</text>
+<rect x="397" y="114" width="194" height="135" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="494.0" y="150.4" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Policy engine</text>
+<text x="494.0" y="168.3" font-size="14" text-anchor="middle" fill="#FFFFFF">deny by default;</text>
+<text x="494.0" y="186.3" font-size="14" text-anchor="middle" fill="#FFFFFF">persona, entity,</text>
+<text x="494.0" y="204.2" font-size="14" text-anchor="middle" fill="#FFFFFF">purpose; rules from the</text>
+<text x="494.0" y="222.1" font-size="14" text-anchor="middle" fill="#FFFFFF">semantic layer</text>
+<rect x="616" y="74" width="240" height="470" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="626" y="98" font-size="16" font-weight="bold" fill="#0B3C49">AI gateway (suggest-only)</text>
+<rect x="629" y="114" width="214" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="736.0" y="145.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Context</text>
+<text x="736.0" y="163.8" font-size="14" text-anchor="middle" fill="#0B3C49">allowed fields only; text</text>
+<text x="736.0" y="181.7" font-size="14" text-anchor="middle" fill="#0B3C49">sanitised</text>
+<rect x="629" y="219" width="214" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="736.0" y="250.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Producer</text>
+<text x="736.0" y="268.8" font-size="14" text-anchor="middle" fill="#0B3C49">deterministic; model slot</text>
+<text x="736.0" y="286.7" font-size="14" text-anchor="middle" fill="#0B3C49">empty</text>
+<rect x="629" y="324" width="214" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="736.0" y="359.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Output checks</text>
+<text x="736.0" y="377.7" font-size="14" text-anchor="middle" fill="#0B3C49">schema, leaks, confidence</text>
+<rect x="629" y="419" width="214" height="95" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="736.0" y="462.3" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Fallback, then abstain</text>
+<text x="736.0" y="480.2" font-size="14" text-anchor="middle" fill="#0B3C49">never an invalid answer</text>
+<rect x="868" y="74" width="402" height="470" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="878" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Ports and adapters</text>
+<rect x="881" y="114" width="182" height="95" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="972.0" y="148.3" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Curated data</text>
+<text x="972.0" y="166.3" font-size="14" text-anchor="middle" fill="#0B3C49">validated; fixture</text>
+<text x="972.0" y="184.2" font-size="14" text-anchor="middle" fill="#0B3C49">untouched</text>
+<rect x="1075" y="114" width="182" height="95" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1166.0" y="148.3" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Audit chain</text>
+<text x="1166.0" y="166.3" font-size="14" text-anchor="middle" fill="#0B3C49">hash-linked; verify</text>
+<text x="1166.0" y="184.2" font-size="14" text-anchor="middle" fill="#0B3C49">endpoint</text>
+<rect x="881" y="224" width="182" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="972.0" y="259.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Metrics, KPIs</text>
+<text x="972.0" y="277.7" font-size="14" text-anchor="middle" fill="#0B3C49">K1 to K10</text>
+<rect x="1075" y="224" width="182" height="80" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1166.0" y="250.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Carrier saga</text>
+<text x="1166.0" y="268.8" font-size="14" text-anchor="middle" fill="#0B3C49">book, confirm,</text>
+<text x="1166.0" y="286.7" font-size="14" text-anchor="middle" fill="#0B3C49">compensate</text>
+<rect x="881" y="319" width="182" height="60" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="972.0" y="353.8" font-size="14" text-anchor="middle" fill="#5F6E71" font-weight="bold">Identity provider</text>
+<rect x="1075" y="319" width="182" height="60" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1166.0" y="353.8" font-size="14" text-anchor="middle" fill="#5F6E71" font-weight="bold">Real AI model</text>
+<rect x="881" y="394" width="182" height="60" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="972.0" y="428.8" font-size="14" text-anchor="middle" fill="#5F6E71" font-weight="bold">Platform, IaC</text>
+<rect x="1075" y="394" width="182" height="60" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1166.0" y="428.8" font-size="14" text-anchor="middle" fill="#5F6E71" font-weight="bold">Tracing collector</text>
+<rect x="881" y="464" width="376" height="60" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="1069.0" y="498.4" font-size="13" text-anchor="middle" fill="#41545A">Grey dashed: not built (owner decisions)</text>
+<rect x="10" y="559" width="1260" height="215" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="583" font-size="16" font-weight="bold" fill="#0B3C49">Batch, definitions and gates</text>
+<rect x="25" y="609" width="165" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="107.5" y="655.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">ETL intake</text>
+<text x="107.5" y="673.8" font-size="14" text-anchor="middle" fill="#0B3C49">same rules as the</text>
+<text x="107.5" y="691.7" font-size="14" text-anchor="middle" fill="#0B3C49">API</text>
+<rect x="205" y="609" width="170" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="290.0" y="646.9" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Curated layer +</text>
+<text x="290.0" y="664.8" font-size="14" text-anchor="middle" fill="#0B3C49">quarantine</text>
+<text x="290.0" y="682.7" font-size="14" text-anchor="middle" fill="#0B3C49">bad rows kept, never</text>
+<text x="290.0" y="700.6" font-size="14" text-anchor="middle" fill="#0B3C49">silently fixed</text>
+<rect x="397" y="609" width="194" height="120" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="494.0" y="655.8" font-size="14" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Semantic layer v2.0</text>
+<text x="494.0" y="673.8" font-size="14" text-anchor="middle" fill="#1B1B1B">feeds policy, ETL rules</text>
+<text x="494.0" y="691.7" font-size="14" text-anchor="middle" fill="#1B1B1B">and AI rules</text>
+<rect x="629" y="609" width="214" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="736.0" y="655.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">Generated policy (Rego)</text>
+<text x="736.0" y="673.8" font-size="14" text-anchor="middle" fill="#0B3C49">built from the layer,</text>
+<text x="736.0" y="691.7" font-size="14" text-anchor="middle" fill="#0B3C49">tested in CI</text>
+<rect x="881" y="609" width="376" height="120" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="1069.0" y="655.8" font-size="14" text-anchor="middle" fill="#1E5631" font-weight="bold">CI gates</text>
+<text x="1069.0" y="673.8" font-size="14" text-anchor="middle" fill="#1E5631">lint, types, 181 tests, 97% coverage, secret</text>
+<text x="1069.0" y="691.7" font-size="14" text-anchor="middle" fill="#1E5631">scan, policy and semantic tests</text>
+<line x1="148.0" y1="167.3" x2="185.0" y2="163.3" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="148.0" y1="295.4" x2="185.0" y2="281.6" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="359.0" y1="222.5" x2="397.0" y2="211.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="591.0" y1="172.5" x2="629.0" y2="168.9" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="736.0" y1="204.0" x2="736.0" y2="219.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="736.0" y1="309.0" x2="736.0" y2="324.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="736.0" y1="404.0" x2="736.0" y2="419.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="190.0" y1="669.0" x2="205.0" y2="669.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="591.0" y1="669.0" x2="629.0" y2="669.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

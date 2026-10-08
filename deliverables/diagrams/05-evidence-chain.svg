@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">How any claim traces to proof</text>
+<rect x="10" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="90.0" y="159.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Claim</text>
+<text x="90.0" y="178.7" font-size="15" text-anchor="middle" fill="#0B3C49">in a document</text>
+<rect x="193" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="273.0" y="159.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Citation</text>
+<text x="273.0" y="178.7" font-size="15" text-anchor="middle" fill="#0B3C49">path + SHA-256</text>
+<rect x="376" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="456.0" y="149.9" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Evidence file</text>
+<text x="456.0" y="169.1" font-size="15" text-anchor="middle" fill="#0B3C49">evidence/&lt;stage&gt;/</text>
+<text x="456.0" y="188.3" font-size="15" text-anchor="middle" fill="#0B3C49">EVD-…</text>
+<rect x="559" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="639.0" y="149.9" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">MANIFEST row</text>
+<text x="639.0" y="169.1" font-size="15" text-anchor="middle" fill="#0B3C49">step, command,</text>
+<text x="639.0" y="188.3" font-size="15" text-anchor="middle" fill="#0B3C49">time, operator</text>
+<rect x="742" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="822.0" y="159.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Evidence index</text>
+<text x="822.0" y="178.7" font-size="15" text-anchor="middle" fill="#0B3C49">146 rows</text>
+<rect x="925" y="104" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1005.0" y="159.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Rubric matrix</text>
+<text x="1005.0" y="178.7" font-size="15" text-anchor="middle" fill="#0B3C49">36 sub-dimensions</text>
+<rect x="1108" y="104" width="160" height="120" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="1188.0" y="159.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Readiness</text>
+<text x="1188.0" y="178.7" font-size="15" text-anchor="middle" fill="#1B1B1B">decision</text>
+<rect x="10" y="259" width="1260" height="225" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="283" font-size="16" font-weight="bold" fill="#0B3C49">Example: one finding, end to end</text>
+<rect x="30" y="309" width="280" height="140" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="170.0" y="374.2" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">F-17 (severity S1)</text>
+<text x="170.0" y="394.7" font-size="16" text-anchor="middle" fill="#7B241C">role header trusted</text>
+<rect x="343" y="309" width="280" height="140" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="483.0" y="374.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Fix</text>
+<text x="483.0" y="394.7" font-size="16" text-anchor="middle" fill="#0B3C49">signed token + policy engine</text>
+<rect x="656" y="309" width="280" height="140" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="796.0" y="364.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Tests</text>
+<text x="796.0" y="384.4" font-size="16" text-anchor="middle" fill="#0B3C49">unit tests; red team RT-02,</text>
+<text x="796.0" y="404.9" font-size="16" text-anchor="middle" fill="#0B3C49">RT-11</text>
+<rect x="969" y="309" width="280" height="140" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="1109.0" y="374.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Proof</text>
+<text x="1109.0" y="394.7" font-size="16" text-anchor="middle" fill="#1E5631">baseline answered 200; now 401</text>
+<rect x="10" y="504" width="1260" height="270" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="528" font-size="16" font-weight="bold" fill="#0B3C49">Automatic checks, re-runnable from the repository</text>
+<rect x="30" y="554" width="280" height="130" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="170.0" y="614.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Manifest check</text>
+<text x="170.0" y="634.7" font-size="16" text-anchor="middle" fill="#1E5631">146 of 146 hashes match</text>
+<rect x="343" y="554" width="280" height="130" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="483.0" y="614.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Citation check</text>
+<text x="483.0" y="634.7" font-size="16" text-anchor="middle" fill="#1E5631">203 of 203 match</text>
+<rect x="656" y="554" width="280" height="130" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="796.0" y="614.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Traceability check</text>
+<text x="796.0" y="634.7" font-size="16" text-anchor="middle" fill="#1E5631">PASS on all four tests</text>
+<rect x="969" y="554" width="280" height="130" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1109.0" y="604.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Append-only</text>
+<text x="1109.0" y="624.4" font-size="16" text-anchor="middle" fill="#0B3C49">older files are superseded,</text>
+<text x="1109.0" y="644.9" font-size="16" text-anchor="middle" fill="#0B3C49">never edited</text>
+<rect x="30" y="704" width="1220" height="50" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="39" y="733.8" font-size="14" fill="#41545A" xml:space="preserve">Scripts: evidence/42-executive/EVD-R-03-verify-manifests.py; evidence/43-rubric-traceability/EVD-S-04-verify-r3.py</text>
+<line x1="170.0" y1="164.0" x2="193.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="353.0" y1="164.0" x2="376.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="536.0" y1="164.0" x2="559.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="719.0" y1="164.0" x2="742.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="902.0" y1="164.0" x2="925.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1085.0" y1="164.0" x2="1108.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="310.0" y1="379.0" x2="343.0" y2="379.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="623.0" y1="379.0" x2="656.0" y2="379.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="936.0" y1="379.0" x2="969.0" y2="379.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

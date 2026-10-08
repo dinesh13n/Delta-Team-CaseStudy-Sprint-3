@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">Semantic layer v2.0: business knowledge owned outside the code and the model</text>
+<rect x="10" y="74" width="820" height="125" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Markdown: for people</text>
+<rect x="25" y="116" width="148" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="99.0" y="152.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">README</text>
+<rect x="185" y="116" width="148" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="259.0" y="152.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Glossary</text>
+<rect x="345" y="116" width="148" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="419.0" y="152.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Domain knowledge</text>
+<rect x="505" y="116" width="148" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="579.0" y="152.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Enum violations</text>
+<rect x="665" y="116" width="148" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="739.0" y="152.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Completeness</text>
+<rect x="10" y="214" width="820" height="230" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="238" font-size="16" font-weight="bold" fill="#0B3C49">YAML: definitions (source of truth)</text>
+<rect x="25" y="256" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="119.0" y="290.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Entities</text>
+<text x="119.0" y="309.7" font-size="15" text-anchor="middle" fill="#1B1B1B">56 of 56 columns</text>
+<rect x="225" y="256" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="319.0" y="300.1" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Status taxonomy</text>
+<rect x="425" y="256" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="519.0" y="290.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Relationships</text>
+<text x="519.0" y="309.7" font-size="15" text-anchor="middle" fill="#1B1B1B">and saga</text>
+<rect x="625" y="256" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="719.0" y="290.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Business rules</text>
+<text x="719.0" y="309.7" font-size="15" text-anchor="middle" fill="#1B1B1B">BR-01 to BR-13</text>
+<rect x="25" y="348" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="119.0" y="382.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Metrics</text>
+<text x="119.0" y="401.7" font-size="15" text-anchor="middle" fill="#1B1B1B">K1 to K10</text>
+<rect x="225" y="348" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="319.0" y="382.5" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Access semantics</text>
+<text x="319.0" y="401.7" font-size="15" text-anchor="middle" fill="#1B1B1B">8 personas</text>
+<rect x="425" y="348" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="519.0" y="392.1" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">AI context policy</text>
+<rect x="625" y="348" width="188" height="78" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="719.0" y="392.1" font-size="15" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Workflow semantics</text>
+<rect x="10" y="459" width="400" height="120" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="483" font-size="16" font-weight="bold" fill="#0B3C49">JSON Schema: validation</text>
+<rect x="25" y="501" width="370" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="210.0" y="527.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">semantic-layer.schema.json</text>
+<text x="210.0" y="545.7" font-size="14" text-anchor="middle" fill="#0B3C49">one definition per file</text>
+<rect x="420" y="459" width="410" height="120" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="430" y="483" font-size="16" font-weight="bold" fill="#0B3C49">JSON: exchange</text>
+<rect x="435" y="501" width="185" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="527.5" y="536.8" font-size="14" text-anchor="middle" fill="#0B3C49" font-weight="bold">api-contract.json</text>
+<rect x="632" y="501" width="185" height="62" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="724.5" y="528.1" font-size="13" text-anchor="middle" fill="#0B3C49" font-weight="bold">Generated layer</text>
+<text x="724.5" y="544.7" font-size="13" text-anchor="middle" fill="#0B3C49">semantic-layer.json</text>
+<rect x="10" y="594" width="820" height="100" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="618" font-size="16" font-weight="bold" fill="#0B3C49">Tests: integrity</text>
+<rect x="25" y="634" width="390" height="48" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="220.0" y="663.1" font-size="15" text-anchor="middle" fill="#1E5631" font-weight="bold">23 layer tests</text>
+<rect x="427" y="634" width="390" height="48" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="622.0" y="663.1" font-size="15" text-anchor="middle" fill="#1E5631" font-weight="bold">5 conformance tests: app matches layer</text>
+<rect x="850" y="74" width="420" height="620" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="860" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Used by</text>
+<rect x="870" y="119" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1060.0" y="159.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Policy engine</text>
+<text x="1060.0" y="178.7" font-size="15" text-anchor="middle" fill="#0B3C49">access decisions</text>
+<rect x="870" y="231" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1060.0" y="271.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">ETL validation</text>
+<text x="1060.0" y="290.7" font-size="15" text-anchor="middle" fill="#0B3C49">rules and taxonomy</text>
+<rect x="870" y="343" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1060.0" y="383.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">AI gateway</text>
+<text x="1060.0" y="402.7" font-size="15" text-anchor="middle" fill="#0B3C49">context and decision rules</text>
+<rect x="870" y="455" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1060.0" y="505.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Generated policy (Rego)</text>
+<rect x="870" y="567" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1060.0" y="607.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">A second model</text>
+<text x="1060.0" y="626.7" font-size="15" text-anchor="middle" fill="#0B3C49">rebuild from the layer (Stage Q)</text>
+<rect x="10" y="709" width="1260" height="70" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="19" y="739.8" font-size="14" fill="#41545A" xml:space="preserve">Stage Q on v1.0: a second model rebuilt a four-behaviour subset; safety gates 5 of 5, fidelity gates 0 of 2. The 8 gaps it exposed are specified in v2.0 but not yet</text>
+<text x="19" y="757.7" font-size="14" fill="#41545A" xml:space="preserve">re-tested.</text>
+<line x1="830.0" y1="364.2" x2="850.0" y2="366.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

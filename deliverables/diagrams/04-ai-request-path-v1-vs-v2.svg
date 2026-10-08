@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">One AI summary request, before and after</text>
+<rect x="10" y="74" width="1260" height="165" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Repo 1.0</text>
+<rect x="30" y="114" width="226" height="100" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="143.0" y="159.2" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Request</text>
+<text x="143.0" y="179.7" font-size="16" text-anchor="middle" fill="#7B241C">no identity needed</text>
+<rect x="276" y="114" width="226" height="100" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="389.0" y="159.2" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Summary</text>
+<text x="389.0" y="179.7" font-size="16" text-anchor="middle" fill="#7B241C">echo of the first column</text>
+<rect x="522" y="114" width="226" height="100" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="635.0" y="159.2" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Guardrail</text>
+<text x="635.0" y="179.7" font-size="16" text-anchor="middle" fill="#7B241C">not_enforced</text>
+<rect x="768" y="114" width="226" height="100" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="881.0" y="149.0" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Audit line</text>
+<text x="881.0" y="169.4" font-size="16" text-anchor="middle" fill="#7B241C">no actor, no correlation</text>
+<text x="881.0" y="189.9" font-size="16" text-anchor="middle" fill="#7B241C">id</text>
+<rect x="1014" y="114" width="226" height="100" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="1127.0" y="159.2" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Response used</text>
+<text x="1127.0" y="179.7" font-size="16" text-anchor="middle" fill="#7B241C">no approval step</text>
+<rect x="10" y="254" width="1260" height="520" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="278" font-size="16" font-weight="bold" fill="#0B3C49">Repo 2.0</text>
+<rect x="30" y="294" width="226" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="143.0" y="339.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Request</text>
+<text x="143.0" y="359.7" font-size="16" text-anchor="middle" fill="#0B3C49">with a bearer token</text>
+<rect x="276" y="294" width="226" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="389.0" y="339.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Verify token</text>
+<text x="389.0" y="359.7" font-size="16" text-anchor="middle" fill="#0B3C49">else 401</text>
+<rect x="522" y="294" width="226" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="635.0" y="329.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Policy check</text>
+<text x="635.0" y="349.4" font-size="16" text-anchor="middle" fill="#0B3C49">persona, entity,</text>
+<text x="635.0" y="369.9" font-size="16" text-anchor="middle" fill="#0B3C49">purpose; else 403</text>
+<rect x="768" y="294" width="226" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="881.0" y="339.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Key pattern</text>
+<text x="881.0" y="359.7" font-size="16" text-anchor="middle" fill="#0B3C49">else 422</text>
+<rect x="1014" y="294" width="226" height="100" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1127.0" y="339.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Rate limit</text>
+<text x="1127.0" y="359.7" font-size="16" text-anchor="middle" fill="#0B3C49">else 429</text>
+<rect x="1014" y="444" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1127.0" y="484.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Build context</text>
+<text x="1127.0" y="504.4" font-size="16" text-anchor="middle" fill="#0B3C49">allowed fields only,</text>
+<text x="1127.0" y="524.9" font-size="16" text-anchor="middle" fill="#0B3C49">text sanitised</text>
+<rect x="768" y="444" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="881.0" y="494.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Producer</text>
+<text x="881.0" y="514.7" font-size="16" text-anchor="middle" fill="#0B3C49">deterministic by default</text>
+<rect x="522" y="444" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="635.0" y="484.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Check output</text>
+<text x="635.0" y="504.4" font-size="16" text-anchor="middle" fill="#0B3C49">schema, leaks,</text>
+<text x="635.0" y="524.9" font-size="16" text-anchor="middle" fill="#0B3C49">confidence</text>
+<rect x="276" y="444" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="389.0" y="494.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Fallback, then abstain</text>
+<text x="389.0" y="514.7" font-size="16" text-anchor="middle" fill="#0B3C49">never an invalid answer</text>
+<rect x="30" y="444" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="143.0" y="494.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Register suggestion</text>
+<text x="143.0" y="514.7" font-size="16" text-anchor="middle" fill="#0B3C49">human approval required</text>
+<rect x="30" y="609" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="143.0" y="659.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Audit event</text>
+<text x="143.0" y="679.7" font-size="16" text-anchor="middle" fill="#0B3C49">hash-chained</text>
+<rect x="276" y="609" width="226" height="110" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="389.0" y="659.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Person decides</text>
+<text x="389.0" y="679.7" font-size="16" text-anchor="middle" fill="#1E5631">approve or reject, once</text>
+<rect x="522" y="609" width="226" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="635.0" y="659.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">A second decision</text>
+<text x="635.0" y="679.7" font-size="16" text-anchor="middle" fill="#0B3C49">refused (409)</text>
+<rect x="768" y="609" width="472" height="110" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="777" y="649.9" font-size="15" fill="#41545A" xml:space="preserve">Every step leaves evidence</text>
+<text x="777" y="669.1" font-size="15" fill="#41545A" xml:space="preserve">who asked, for which purpose, which data, which prompt</text>
+<text x="777" y="688.3" font-size="15" fill="#41545A" xml:space="preserve">version, what came back</text>
+<line x1="256.0" y1="164.0" x2="276.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="502.0" y1="164.0" x2="522.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="748.0" y1="164.0" x2="768.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="994.0" y1="164.0" x2="1014.0" y2="164.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="256.0" y1="344.0" x2="276.0" y2="344.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="502.0" y1="344.0" x2="522.0" y2="344.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="748.0" y1="344.0" x2="768.0" y2="344.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="994.0" y1="344.0" x2="1014.0" y2="344.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1014.0" y1="499.0" x2="994.0" y2="499.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="768.0" y1="499.0" x2="748.0" y2="499.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="522.0" y1="499.0" x2="502.0" y2="499.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="276.0" y1="499.0" x2="256.0" y2="499.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1127.0" y1="394.0" x2="1127.0" y2="444.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="143.0" y1="554.0" x2="143.0" y2="609.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="256.0" y1="664.0" x2="276.0" y2="664.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="502.0" y1="664.0" x2="522.0" y2="664.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

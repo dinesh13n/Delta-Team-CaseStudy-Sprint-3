@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">Delivery journey: from the brownfield repository to a defended readiness decision</text>
+<rect x="10" y="104" width="150" height="330" rx="6" fill="#C0392B" stroke="#C0392B" stroke-width="1.6"/>
+<text x="19" y="139.7" font-size="15" fill="#FFFFFF" font-weight="bold" xml:space="preserve">START</text>
+<text x="19" y="158.9" font-size="15" fill="#FFFFFF" xml:space="preserve">Repo 1.0 as</text>
+<text x="19" y="178.1" font-size="15" fill="#FFFFFF" xml:space="preserve">delivered</text>
+<text x="19" y="197.3" font-size="15" fill="#FFFFFF" xml:space="preserve"></text>
+<text x="19" y="216.5" font-size="15" fill="#FFFFFF" xml:space="preserve">• Quick-start</text>
+<text x="19" y="235.7" font-size="15" fill="#FFFFFF" xml:space="preserve">  fails</text>
+<text x="19" y="254.9" font-size="15" fill="#FFFFFF" xml:space="preserve">• Any caller</text>
+<text x="19" y="274.1" font-size="15" fill="#FFFFFF" xml:space="preserve">  claims any</text>
+<text x="19" y="293.3" font-size="15" fill="#FFFFFF" xml:space="preserve">  role</text>
+<text x="19" y="312.5" font-size="15" fill="#FFFFFF" xml:space="preserve">• AI answers</text>
+<text x="19" y="331.7" font-size="15" fill="#FFFFFF" xml:space="preserve">  unchecked</text>
+<text x="19" y="350.9" font-size="15" fill="#FFFFFF" xml:space="preserve">• Wrong record</text>
+<text x="19" y="370.1" font-size="15" fill="#FFFFFF" xml:space="preserve">  on a miss</text>
+<text x="19" y="389.3" font-size="15" fill="#FFFFFF" xml:space="preserve">• No usable</text>
+<text x="19" y="408.5" font-size="15" fill="#FFFFFF" xml:space="preserve">  audit</text>
+<rect x="1120" y="104" width="150" height="330" rx="6" fill="#2E8B57" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="1129" y="158.9" font-size="15" fill="#FFFFFF" font-weight="bold" xml:space="preserve">GOAL</text>
+<text x="1129" y="178.1" font-size="15" fill="#FFFFFF" xml:space="preserve">A defended</text>
+<text x="1129" y="197.3" font-size="15" fill="#FFFFFF" xml:space="preserve">decision</text>
+<text x="1129" y="216.5" font-size="15" fill="#FFFFFF" xml:space="preserve"></text>
+<text x="1129" y="235.7" font-size="15" fill="#FFFFFF" xml:space="preserve">• Production on</text>
+<text x="1129" y="254.9" font-size="15" fill="#FFFFFF" xml:space="preserve">  real data:</text>
+<text x="1129" y="274.1" font-size="15" fill="#FFFFFF" xml:space="preserve">  NO-GO</text>
+<text x="1129" y="293.3" font-size="15" fill="#FFFFFF" xml:space="preserve">• Pilot on</text>
+<text x="1129" y="312.5" font-size="15" fill="#FFFFFF" xml:space="preserve">  synthetic</text>
+<text x="1129" y="331.7" font-size="15" fill="#FFFFFF" xml:space="preserve">  data:</text>
+<text x="1129" y="350.9" font-size="15" fill="#FFFFFF" xml:space="preserve">  CONDITIONAL GO</text>
+<text x="1129" y="370.1" font-size="15" fill="#FFFFFF" xml:space="preserve">• Six asks of</text>
+<text x="1129" y="389.3" font-size="15" fill="#FFFFFF" xml:space="preserve">  the CTO</text>
+<rect x="175" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="248.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">1 Understand</text>
+<text x="248.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Stages A–C</text>
+<rect x="175" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="184" y="219.9" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="184" y="237.8" font-size="14" fill="#0B3C49" xml:space="preserve">A Mobilise</text>
+<text x="184" y="255.8" font-size="14" fill="#0B3C49" xml:space="preserve">B Problem, value</text>
+<text x="184" y="273.7" font-size="14" fill="#0B3C49" xml:space="preserve">C Baseline, root</text>
+<text x="184" y="291.6" font-size="14" fill="#0B3C49" xml:space="preserve">cause</text>
+<rect x="175" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="184" y="364.5" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">62 findings</text>
+<text x="184" y="381.1" font-size="13" fill="#1E5631" xml:space="preserve">5 root causes</text>
+<text x="184" y="397.7" font-size="13" fill="#1E5631" xml:space="preserve">Behaviour frozen</text>
+<text x="184" y="414.4" font-size="13" fill="#1E5631" xml:space="preserve">in tests</text>
+<rect x="332" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="405.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">2 Define</text>
+<text x="405.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Stages D–G</text>
+<rect x="332" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="341" y="211.0" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="341" y="228.9" font-size="14" fill="#0B3C49" xml:space="preserve">D Semantic layer</text>
+<text x="341" y="246.8" font-size="14" fill="#0B3C49" xml:space="preserve">E AI choice, PRD</text>
+<text x="341" y="264.7" font-size="14" fill="#0B3C49" xml:space="preserve">F Architecture,</text>
+<text x="341" y="282.6" font-size="14" fill="#0B3C49" xml:space="preserve">specs</text>
+<text x="341" y="300.6" font-size="14" fill="#0B3C49" xml:space="preserve">G Migration plan</text>
+<rect x="332" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="341" y="356.1" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">Layer v1 with</text>
+<text x="341" y="372.8" font-size="13" fill="#1E5631" xml:space="preserve">tests</text>
+<text x="341" y="389.4" font-size="13" fill="#1E5631" xml:space="preserve">ADR-0002 to 0010</text>
+<text x="341" y="406.1" font-size="13" fill="#1E5631" xml:space="preserve">48 requirements</text>
+<text x="341" y="422.7" font-size="13" fill="#1E5631" xml:space="preserve">traced</text>
+<rect x="489" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="562.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">3 Build</text>
+<text x="562.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Stages H–J</text>
+<rect x="489" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="498" y="219.9" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="498" y="237.8" font-size="14" fill="#0B3C49" xml:space="preserve">H Repo 2.0</text>
+<text x="498" y="255.8" font-size="14" fill="#0B3C49" xml:space="preserve">I Delivery PRD</text>
+<text x="498" y="273.7" font-size="14" fill="#0B3C49" xml:space="preserve">J AI core, app,</text>
+<text x="498" y="291.6" font-size="14" fill="#0B3C49" xml:space="preserve">integration</text>
+<rect x="489" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="498" y="372.8" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">181 tests pass</text>
+<text x="498" y="389.4" font-size="13" fill="#1E5631" xml:space="preserve">97% coverage</text>
+<text x="498" y="406.1" font-size="13" fill="#1E5631" xml:space="preserve">CI green</text>
+<rect x="645" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="718.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">4 Prove</text>
+<text x="718.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Stages K–N</text>
+<rect x="645" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="654" y="202.0" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="654" y="219.9" font-size="14" fill="#0B3C49" xml:space="preserve">K Controls</text>
+<text x="654" y="237.8" font-size="14" fill="#0B3C49" xml:space="preserve">L Tests, red</text>
+<text x="654" y="255.8" font-size="14" fill="#0B3C49" xml:space="preserve">team</text>
+<text x="654" y="273.7" font-size="14" fill="#0B3C49" xml:space="preserve">M Resilience</text>
+<text x="654" y="291.6" font-size="14" fill="#0B3C49" xml:space="preserve">N Release,</text>
+<text x="654" y="309.5" font-size="14" fill="#0B3C49" xml:space="preserve">operations</text>
+<rect x="645" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="654" y="364.5" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">Red team 10/12 →</text>
+<text x="654" y="381.1" font-size="13" fill="#1E5631" xml:space="preserve">0/12</text>
+<text x="654" y="397.7" font-size="13" fill="#1E5631" xml:space="preserve">5 drills pass</text>
+<text x="654" y="414.4" font-size="13" fill="#1E5631" xml:space="preserve">Hash-chained audit</text>
+<rect x="802" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="875.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">5 Defend</text>
+<text x="875.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Stages O–R</text>
+<rect x="802" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="811" y="202.0" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="811" y="219.9" font-size="14" fill="#0B3C49" xml:space="preserve">O Outcomes</text>
+<text x="811" y="237.8" font-size="14" fill="#0B3C49" xml:space="preserve">P Handover</text>
+<text x="811" y="255.8" font-size="14" fill="#0B3C49" xml:space="preserve">Q Second-model</text>
+<text x="811" y="273.7" font-size="14" fill="#0B3C49" xml:space="preserve">test</text>
+<text x="811" y="291.6" font-size="14" fill="#0B3C49" xml:space="preserve">R Executive</text>
+<text x="811" y="309.5" font-size="14" fill="#0B3C49" xml:space="preserve">defence</text>
+<rect x="802" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="811" y="356.1" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">Proxy KPIs</text>
+<text x="811" y="372.8" font-size="13" fill="#1E5631" xml:space="preserve">unchanged</text>
+<text x="811" y="389.4" font-size="13" fill="#1E5631" xml:space="preserve">Model B safety 5/5</text>
+<text x="811" y="406.1" font-size="13" fill="#1E5631" xml:space="preserve">NO-GO prod, GO</text>
+<text x="811" y="422.7" font-size="13" fill="#1E5631" xml:space="preserve">pilot</text>
+<rect x="959" y="104" width="146" height="62" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="1032.0" y="130.5" font-size="15" text-anchor="middle" fill="#FFFFFF" font-weight="bold">6 Close-out</text>
+<text x="1032.0" y="149.7" font-size="15" text-anchor="middle" fill="#FFFFFF">Runbooks 03–04</text>
+<rect x="959" y="176" width="146" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="968" y="211.0" font-size="14" fill="#0B3C49" font-weight="bold" xml:space="preserve">Stages</text>
+<text x="968" y="228.9" font-size="14" fill="#0B3C49" xml:space="preserve">S Rubric</text>
+<text x="968" y="246.8" font-size="14" fill="#0B3C49" xml:space="preserve">traceability</text>
+<text x="968" y="264.7" font-size="14" fill="#0B3C49" xml:space="preserve">T 23 decisions</text>
+<text x="968" y="282.6" font-size="14" fill="#0B3C49" xml:space="preserve">Semantic layer</text>
+<text x="968" y="300.6" font-size="14" fill="#0B3C49" xml:space="preserve">v2.0</text>
+<rect x="959" y="336" width="146" height="98" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="968" y="364.5" font-size="13" fill="#1E5631" font-weight="bold" xml:space="preserve">36 sub-dimensions</text>
+<text x="968" y="381.1" font-size="13" fill="#1E5631" xml:space="preserve">146 evidence files</text>
+<text x="968" y="397.7" font-size="13" fill="#1E5631" xml:space="preserve">22 decided, 1</text>
+<text x="968" y="414.4" font-size="13" fill="#1E5631" xml:space="preserve">deferred</text>
+<rect x="10" y="459" width="1260" height="175" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="483" font-size="16" font-weight="bold" fill="#0B3C49">Evidence discipline applied in every stage</text>
+<rect x="30" y="504" width="228" height="105" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="144.0" y="542.4" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Header on every file</text>
+<text x="144.0" y="561.6" font-size="15" text-anchor="middle" fill="#0B3C49">stage, status,</text>
+<text x="144.0" y="580.8" font-size="15" text-anchor="middle" fill="#0B3C49">assumptions, risks</text>
+<rect x="278" y="504" width="228" height="105" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="392.0" y="552.0" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">SHA-256 manifest</text>
+<text x="392.0" y="571.2" font-size="15" text-anchor="middle" fill="#0B3C49">in every evidence folder</text>
+<rect x="526" y="504" width="228" height="105" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="640.0" y="552.0" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Claims cite path + hash</text>
+<text x="640.0" y="571.2" font-size="15" text-anchor="middle" fill="#0B3C49">203 of 203 match</text>
+<rect x="774" y="504" width="228" height="105" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="888.0" y="552.0" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Every claim tagged</text>
+<text x="888.0" y="571.2" font-size="15" text-anchor="middle" fill="#0B3C49">[VF] [INF] [ASM] [UNK]</text>
+<rect x="1022" y="504" width="228" height="105" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1136.0" y="552.0" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Exit gate</text>
+<text x="1136.0" y="571.2" font-size="15" text-anchor="middle" fill="#0B3C49">before the next stage</text>
+<rect x="10" y="649" width="1260" height="125" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="673" font-size="16" font-weight="bold" fill="#0B3C49">Milestones (git commits on main)</text>
+<rect x="30" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="98.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Plan</text>
+<text x="98.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Runbooks 00–04</text>
+<rect x="184" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="252.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">698e858</text>
+<text x="252.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Stage A</text>
+<rect x="338" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="406.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">4c84af1</text>
+<text x="406.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Stages A–P</text>
+<rect x="492" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="560.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">c7d94de</text>
+<text x="560.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Stages Q–R</text>
+<rect x="646" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="714.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">ab37ec8</text>
+<text x="714.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Second model</text>
+<rect x="800" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="868.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">1dcf6e8</text>
+<text x="868.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Runbook 03</text>
+<rect x="954" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1022.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">1cde803</text>
+<text x="1022.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Runbook 04</text>
+<rect x="1108" y="689" width="136" height="62" rx="6" fill="#1F7A8C" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1176.0" y="715.8" font-size="14" text-anchor="middle" fill="#FFFFFF" font-weight="bold">ad230eb</text>
+<text x="1176.0" y="733.7" font-size="14" text-anchor="middle" fill="#FFFFFF">Layer v2.0</text>
+<line x1="160.0" y1="260.7" x2="175.0" y2="259.1" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="321.0" y1="135.0" x2="332.0" y2="135.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="478.0" y1="135.0" x2="489.0" y2="135.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="635.0" y1="135.0" x2="645.0" y2="135.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="791.0" y1="135.0" x2="802.0" y2="135.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="948.0" y1="135.0" x2="959.0" y2="135.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1105.0" y1="259.1" x2="1120.0" y2="260.7" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="166.0" y1="720.0" x2="184.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="320.0" y1="720.0" x2="338.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="474.0" y1="720.0" x2="492.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="628.0" y1="720.0" x2="646.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="782.0" y1="720.0" x2="800.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="936.0" y1="720.0" x2="954.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="1090.0" y1="720.0" x2="1108.0" y2="720.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>
