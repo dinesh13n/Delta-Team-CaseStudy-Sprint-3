@@ -1,0 +1,9 @@
+Step A1 tag verification
+UTC: 2026-10-08T08:42:27Z
+Command: git ls-remote --tags https://github.com/dinesh13n/delta-team-casestudy-sprint-3
+232891032304891b1482e0b188437eac8c4b7fea	refs/tags/baseline/v0-as-delivered
+7ba349e894dfbe30baa4433813759d656fa7b925	refs/tags/baseline/v0-as-delivered^{}
+Interpretation: annotated tag baseline/v0-as-delivered -> commit 7ba349e (initial commit).
+Verified Fact: tag exists on origin.
+Verified Fact: 45 of 51 files under 07-logistics-shipment-fleet-routing-ops/ are byte-identical to the delivered files.
+Verified Fact: 6 CSVs under data/synthetic/ differ by line endings only (delivered CRLF, committed LF); content equal after CR removal.
