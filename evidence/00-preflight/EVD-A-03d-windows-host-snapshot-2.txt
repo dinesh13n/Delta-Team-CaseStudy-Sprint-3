@@ -1,0 +1,18 @@
+EVD-A-03d  Windows host snapshot, second paste (operator-run, verbatim)  2026-10-08  PARTIAL
+Operator: Dinesh (Command Prompt). Recorded by Claude agent. Supplements EVD-A-03b (kept unchanged; evidence is append-only).
+Still missing: effective core.autocrlf (global value printed empty), tool presence (the cmd "for %t" line failed).
+
+C:\Users\dines>node --version
+v26.8.1
+
+C:\Users\dines>py -3.14 --version
+Python 3.14.7
+
+C:\Users\dines>py -3.11 --version
+Python 3.11.9
+
+C:\Users\dines>git --version
+git version 2.35.1.windows.2
+
+C:\Users\dines>git config --global core.autocrlf
+t was unexpected at this time.

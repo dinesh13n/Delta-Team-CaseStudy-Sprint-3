@@ -1,0 +1,24 @@
+EVD-A-03b  Windows host snapshot (operator-run, pasted verbatim)  2026-10-08  PARTIAL
+Operator: Dinesh (ran in Command Prompt). Captured by Claude agent.
+Not yet supplied: git --version, core.autocrlf, tool presence (terraform opa docker syft trivy gitleaks ruff mypy make gh), py -3.14/-3.11 versions.
+
+Microsoft Windows [Version 10.0.26200.9457]
+
+C:\Users\dines>python --version
+Python 3.11.9
+
+C:\Users\dines>where python
+C:\Users\dines\AppData\Local\Programs\Python\Python311\python.exe
+C:\Users\dines\AppData\Local\Programs\Python\Python314\python.exe
+C:\Users\dines\AppData\Local\Programs\Python\Python312\python.exe
+C:\Users\dines\anaconda3\python.exe
+C:\Users\dines\AppData\Local\Microsoft\WindowsApps\python.exe
+
+C:\Users\dines>pip --version
+pip 24.0 from C:\Users\dines\AppData\Local\Programs\Python\Python311\Lib\site-packages\pip (python 3.11)
+
+C:\Users\dines>node --version
+v26.8.1
+
+C:\Users\dines>npm --version
+11.19.0

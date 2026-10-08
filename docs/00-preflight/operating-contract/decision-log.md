@@ -20,3 +20,7 @@
 | D-003 | **Baseline byte-exactness.** The six delivered CSVs had CRLF line endings; core.autocrlf converted them to LF at commit, so tag baseline/v0-as-delivered is not byte-exact for them. Content is identical after CR removal (Verified Fact). Remedy: add .gitattributes with -text for the subtree, renormalise, commit, tag baseline/v0.1-as-delivered-bytes. The v0 tag is not moved. The root README and the initial commit message call the baseline byte-identical; that wording is accurate only for the v0.1 tag. | EVD-A-01-delivered-vs-committed.csv | PROPOSED, operator action needed |
 | D-004 | **Authorisation scope.** On 2026-10-08 the operator instructed execution of the runbook to begin. Treated as authorisation for read-only stages A to G (A1 and A2 add only new files outside the subtree). Write authorisation for Stage H (OQ-11, step G4) has NOT been given. | Operator instruction in session | RECORDED |
 | D-005 | **Spine count.** Runbook A-X3 says 43 spine directories. The spine has 44 top-level folders (00 to 42 is 43, plus final-prd) and 5 nested ones, mirrored by 44 evidence folders. Criterion A-X3 should read 44 plus 5. | EVD-A-02-spine-tree.txt | NOTED, runbook text to be corrected |
+
+## D-006 Runtime versions (2026-10-08)
+- Operator requested Python 3.14 and latest Node. Probe EVD-A-03c shows pinned dependencies do not install on 3.14.
+- Decision: baseline (Stage C) on Python 3.11; target runtime 3.14 plus upgraded pins from Stage H. Status: proposed, pending operator confirmation.

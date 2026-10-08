@@ -1,0 +1,11 @@
+EVD-A-03e  Operator statement, third round  2026-10-08  (statement, not raw output)
+Operator Dinesh reported: "all command gives null" for:
+  winget upgrade --id OpenJS.NodeJS -e
+  node --version
+  git config --show-origin core.autocrlf
+  where terraform opa docker syft trivy gitleaks ruff mypy make gh 2>nul
+No raw output was pasted. Recorded as an operator statement only.
+Interpretation (Inference, not verified):
+  - where: empty => none of terraform opa docker syft trivy gitleaks ruff mypy make gh on PATH.
+  - git config: empty => core.autocrlf unset at every level. This conflicts with the earlier observation that 6 CRLF CSVs became LF at commit (see EVD-A-01-delivered-vs-committed.csv). Unresolved; harmless now because .gitattributes (-text) fixes baseline bytes.
+  - node/winget: empty output is unexplained; Node version after upgrade unknown (last seen v26.8.1).

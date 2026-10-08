@@ -1,0 +1,12 @@
+EVD-A-03c  Runtime upgrade and compatibility probe (sandbox)  2026-10-08
+Operator: Claude agent for Dinesh. Repo files untouched; probes used throwaway venvs outside the repo.
+
+Installed (sandbox): Python 3.14.6 and 3.11.15 via uv 0.11.32; Node v26.11.1 via npm package "node" (npm 'latest').
+
+Probe 1: pip-install delivered requirements.txt (pins) on Python 3.14.6
+  RESULT: FAIL. pydantic==2.8.2 -> pydantic-core 2.20.1 has no 3.14 wheel; source build (maturin/PyO3) fails.
+Probe 2: delivered pins + httpx on Python 3.11.15 (CI version)
+  RESULT: OK. fastapi 0.115.0, pydantic 2.8.2.
+Probe 3: unpinned latest on Python 3.14.6
+  RESULT: OK. fastapi 0.142.4, pydantic 2.13.5, uvicorn 0.54.0.
+Conclusion: the pinned stack cannot run on 3.14 unchanged. Stage C baseline must run on 3.11; 3.14 is the Stage H+ target after pin upgrade.
