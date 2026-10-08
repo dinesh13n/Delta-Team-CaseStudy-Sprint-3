@@ -29,7 +29,7 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 [VF] Working tree: 0 findings (EVD-H-03-secret-scan.json). Git history: 10 findings, all in commit `7ba349e` (the as-delivered commit) (EVD-H-03-secret-scan-history.json).
 
 ## 3. History disposition
-[ASM] The values are workshop placeholders, but they are indistinguishable from real credentials and sit in a public repository (dinesh13n/Delta-Team-CaseStudy-Sprint-3). Policy: treat as compromised. History is **not** rewritten (rewriting would break the immutable baseline tags and the evidence hash chain). Disposition: rotate if any value was ever real; otherwise record as "never real" with the owner's attestation.
+[ASM] The values are workshop placeholders, but they are indistinguishable from real credentials and sit in the repository (dinesh13n/Delta-Team-CaseStudy-Sprint-3), which was public until 2026-10-08 and is now private (D-016); earlier clones and forks are outside our control. Policy: treat as compromised. History is **not** rewritten (rewriting would break the immutable baseline tags and the evidence hash chain). Disposition: rotate if any value was ever real; otherwise record as "never real" with the owner's attestation.
 
 ## 4. Rotation plan
 | Secret | Owner | Action | Target date [ASM] |

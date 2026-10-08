@@ -41,3 +41,7 @@ Document 03 listed 13 things the artifacts could not satisfy without an outside 
 
 ## What would move the score most
 Document 03 section 3.3 says R1, most of R2, most of R3 and R5 can be satisfied from the delivered artifacts alone. The blockers that still cost marks are B-1 (R4), B-8 and B-3 (R3), B-4 (R2). Only B-8 is cheap: naming approvers and signing the existing 12 risk acceptances needs people, not work.
+
+## Addendum 2026-10-08 (Runbook 04): gaps now accepted by decision
+After the operator's decisions (`docs/44-decisions/open-questions-register-v2.md`), the blockers above are no longer unanswered questions; they are **gaps knowingly accepted** by one person:
+B-1 and B-2 (OQ-02: no model), B-3 (OQ-04: no regime), B-4 (OQ-01: platform-neutral), B-5 and B-6 (OQ-08, OQ-09: proxies, no money), B-12 (OQ-18: no agent), B-13 (OQ-19: history kept, repo private). B-8 (named approvers) is answered as "the operator approves", which is the problem, not the fix. Acceptance does not recover any mark; it makes the position honest and defensible.

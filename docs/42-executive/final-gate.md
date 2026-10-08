@@ -10,7 +10,7 @@
 | Status | CONDITIONAL; self-signed |
 | Evidence sources | all stage gates; evidence/EVIDENCE-INDEX.md; runbook/04-OPEN-QUESTIONS-FINAL-REVISION.md |
 | Assumptions | See assumptions in body |
-| Unresolved issues | 13 open questions; Q1-Q3 performed once, Model B fails 2 of 8 gates, IMP-Q04..Q13 open |
+| Unresolved issues | 0 open questions (23 decided by the operator on 2026-10-08, none independently confirmed); Q1-Q3 performed once, Model B fails 2 of 8 gates, IMP-Q04..Q13 open |
 | Residual risks | See residual-risks.md |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
@@ -49,7 +49,7 @@ Every gate is self-signed by the operator, PROVISIONAL (GOV-10). No gate has an 
 | R-X6 | Every original requirement classified | **MET**: 48 rows, 0 unclassified | requirement-disposition-matrix.md |
 | R-X7 | Each of the 57 (now 62) findings has a disposition | **PARTIAL**: all 62 dispositioned (43 fixed, 4 fixed in tree, 10 partial, 2 changed, 2 deferred, 1 proposed-accepted); owners are roles, no dates agreed, no approver | EVD-F-04b |
 | R-X8 | Every rubric criterion has mapped evidence; unsatisfiable stated | **MET** (table below) | this document |
-| R-X9 | Every open question resolved or formally accepted | **NOT MET**: 13 open, 0 formally accepted by an owner | 04-OPEN-QUESTIONS-FINAL-REVISION.md |
+| R-X9 | Every open question resolved or formally accepted | **MET on the register's own rule, single-owner**: 23 of 23 have a dated decision by the operator (15 decided, 7 ratified, 1 deferred); none is confirmed by anyone independent (GOV-10) | docs/44-decisions/open-questions-register-v2.md |
 
 ## Rubric coverage (Document 03)
 | Criterion (marks) | Strongest evidence | What cannot be claimed |

@@ -27,3 +27,19 @@ Every owner, approver and decision right in this contract is **PROVISIONAL**. No
 | GOV-08 | Evidence retention | Compliance | A2, K4 | in-repo, hash-manifested | OQ-10 |
 | GOV-09 | Time budget and team size | Transformation Lead | E3, I2 | none stated | OQ-12, OQ-23 |
 | GOV-10 | Independent review of self-approved gates | CTO | final gate | none | new |
+
+## Update 2026-10-08 (Runbook 04)
+The operator recorded decisions for the linked questions (`docs/44-decisions/open-questions-register-v2.md`, evidence `EVD-T-01`). Status of the governance items:
+
+| ID | Status now | Note |
+|---|---|---|
+| GOV-01 | Decided (OQ-05): the operator approves all roles, provisionally | still not independent |
+| GOV-02 | Ratified by the operator (OQ-11) | CTO ratification still recommended |
+| GOV-03 | Decided: platform-neutral (OQ-01) | |
+| GOV-04 | Decided: no model (OQ-02) | |
+| GOV-05 | Decided: no egress (OQ-03) | |
+| GOV-06 | Decided: no regime named, no location limits stated (OQ-04, OQ-21) | candidate set unvalidated |
+| GOV-07 | **Decided: repository private** | was public; history still holds the values |
+| GOV-08 | Ratified: evidence in the repository, hash-manifested (OQ-10) | |
+| GOV-09 | Decided: demo budget 10+5; team is one operator plus the agent; engagement deadline unknown (OQ-12, OQ-23) | |
+| GOV-10 | Open | independent review still absent |

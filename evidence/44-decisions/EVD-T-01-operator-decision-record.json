@@ -1,0 +1,77 @@
+{
+ "purpose": "Operator decisions on the open-questions register, recorded verbatim",
+ "recorded_utc": "2026-10-08T16:40:00Z",
+ "decider": "Dinesh (operator), acting under provisional authority per OQ-05",
+ "method": "Multiple-choice questions put to the operator in the session; the option text below is what was shown; the answer is the option the operator selected",
+ "rounds": [
+  {
+   "round": "A",
+   "question": "OQ-05 / OQ-11: Who approves the gates and authorised the repository changes?",
+   "answer": "I approve everything (Recommended): You (Dinesh) act as Transformation Lead for all roles, provisionally. You also ratify D-009 (the write authorisation) in your own name. CTO review stays recommended."
+  },
+  {
+   "round": "A",
+   "question": "OQ-01: Which target platform should the design name?",
+   "answer": "Stay platform-neutral (Recommended)"
+  },
+  {
+   "round": "A",
+   "question": "OQ-02 / OQ-03: Which model and network egress may the project use?",
+   "answer": "No model, no egress (Recommended): Keep the deterministic provider."
+  },
+  {
+   "round": "A",
+   "question": "OQ-12 / OQ-16 / OQ-17: Time budget and demo format?",
+   "answer": "10 min + 5 Q, local, offline (Recommended)"
+  },
+  {
+   "round": "B",
+   "question": "OQ-19: Planted credentials still in git history.",
+   "answer": "Keep history, treat as compromised (Recommended). Repo stays private."
+  },
+  {
+   "round": "B",
+   "question": "OQ-04 / OQ-21: Which regulatory regime applies, and any location-data limits?",
+   "answer": "None named: keep candidate set (Recommended)"
+  },
+  {
+   "round": "B",
+   "question": "OQ-20: Deployment or readiness decision?",
+   "answer": "Readiness decision only (Recommended)"
+  },
+  {
+   "round": "B",
+   "question": "OQ-08 / OQ-09: Real business data, and are proxy KPIs acceptable?",
+   "answer": "No real data; proxies acceptable (Recommended)"
+  },
+  {
+   "round": "C",
+   "question": "OQ-07: Identity provider?",
+   "answer": "Undecided: keep interim (Recommended)"
+  },
+  {
+   "round": "C",
+   "question": "OQ-15: REC-0001 collision intent known?",
+   "answer": "Don't know: keep treating it as a defect (Recommended)"
+  },
+  {
+   "round": "C",
+   "question": "OQ-18: Agent runtime in scope?",
+   "answer": "Not in scope (Recommended)"
+  },
+  {
+   "round": "C",
+   "question": "OQ-23: Team and skills?",
+   "answer": "You plus the agent only (Recommended)"
+  },
+  {
+   "round": "D",
+   "question": "Ratify OQ-06, OQ-10, OQ-13, OQ-14, OQ-22 as your decisions?",
+   "answer": "Ratify all five (Recommended)"
+  }
+ ],
+ "also_stated_by_operator_earlier_in_session": [
+  "Repository set to private (OQ-19 / GOV-07)"
+ ],
+ "limits": "Each answer is the operator's choice among options I offered, in most cases the option I recommended. Options I did not offer were not considered, except through the free-text field that was available."
+}

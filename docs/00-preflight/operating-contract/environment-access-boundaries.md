@@ -29,4 +29,4 @@ Every owner, approver and decision right in this contract is **PROVISIONAL**. No
 - The agent does not run code from the delivered repository in Stage A. Execution starts in Stage C, in a throwaway virtualenv outside the repo, on Python 3.11 (decision-log D-006).
 - Installs happen only in venvs under `/tmp` or the sandbox, never in the operator's global Python.
 - No outbound call carries repository content to a third-party service other than the operator's own Claude session.
-- The repository is public; nothing sensitive may be committed. Visibility is an open decision (open-governance-decisions.md, GOV-07).
+- The repository was public when this was written; it is now private (decision D-016, 2026-10-08). Nothing sensitive may be committed either way.

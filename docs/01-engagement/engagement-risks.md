@@ -20,7 +20,7 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 | ER-1 | Self-approved gates lack independence | High | Med | CTO (GOV-10) |
 | ER-2 | Cannot run a real second-model comparison without model access | High | High (rubric 2) | AI Governance Owner UNRESOLVED |
 | ER-3 | Effort pulled to governance findings at the expense of the working app (rubric 4) | Med | High | Transformation Lead |
-| ER-4 | Public repo exposes training material and planted credentials | Med | Med | Operator (GOV-07) |
+| ER-4 | Repo (public until 2026-10-08, now private) exposed training material and planted credentials | Med | Med | Operator (GOV-07) |
 | ER-5 | Python 3.14 target breaks pinned dependencies | High | Med | Transformation Lead |
 | ER-6 | Runbook contains other wrong figures | Med | Med | Transformation Lead |
 | ER-7 | No deployment platform means no real release evidence | High | High | Architecture UNRESOLVED |

@@ -33,3 +33,6 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 
 ## Final run over all 143 rows (after every edit of this step)
 result PASS: 143 of 143 rows, 143 manifest rows, 0 unindexed files, 347 evidence paths cited in docs and 0 unresolved, 60 of 62 findings in rows (F-16 and F-48 deferred), all five criteria have rows. Command: `python3 evidence/43-rubric-traceability/EVD-S-04-verify-r3.py . <out>`.
+
+## Addendum 2026-10-08 (Runbook 04)
+Runbook 04 added `EVD-T-01` (the operator decision record). The index was regenerated to 144 rows and the same verifier rerun: PASS, 144 of 144 rows, 0 unindexed files, 0 unresolved citations.

@@ -67,3 +67,6 @@
 
 ## D-015 (2026-10-08)
 - Runbook 03 executed (stage S). Corrections found while doing it: `technical-debt-register.md` lacked F-61 and F-62 (added); `third-party-risk-assessment.md` cited a non-existent evidence path (fixed); Document 03 counts (57 findings, 12 discovery artifacts) are out of date (62 and 13), stated as found. The Stage R2 index (5 columns) was replaced by a 10-column rubric-aware index. Statuses in `docs/43-rubric-traceability/rubric-coverage-matrix.md` are the author's own judgement and are PROVISIONAL. Status: RECORDED.
+
+## D-016 (2026-10-08)
+- Runbook 04 executed. The operator decided or ratified all 23 open questions (15 decided, 7 ratified, 1 deferred); the full record is `evidence/44-decisions/EVD-T-01-operator-decision-record.json` and `docs/44-decisions/open-questions-register-v2.md`. Repository visibility changed to private (GOV-07 / OQ-19). R-X9 is met on the register's own rule, with the stated limit that one person holds every role. Status: RECORDED; independent confirmation still absent (GOV-10).
