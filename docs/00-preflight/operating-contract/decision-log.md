@@ -70,3 +70,6 @@
 
 ## D-016 (2026-10-08)
 - Runbook 04 executed. The operator decided or ratified all 23 open questions (15 decided, 7 ratified, 1 deferred); the full record is `evidence/44-decisions/EVD-T-01-operator-decision-record.json` and `docs/44-decisions/open-questions-register-v2.md`. Repository visibility changed to private (GOV-07 / OQ-19). R-X9 is met on the register's own rule, with the stated limit that one person holds every role. Status: RECORDED; independent confirmation still absent (GOV-10).
+
+## D-017 (2026-10-08)
+- Semantic layer re-aligned to `semantic-layer-build.txt` (v2.0): added workflow-semantics.yaml, domain-knowledge.md, api-contract.json, SEMANTIC-COMPLETENESS.md; extended access-semantics.yaml (closes IMP-Q04 to IMP-Q11 by specification); added application conformance tests. `taxonomy.yaml` and `validation-schema.json` from the suggested structure are mapped to the existing `status-taxonomy.yaml` and `schemas/semantic-layer.schema.json` rather than duplicated. No competitive knowledge exists and none is claimed. v2.0 is not re-tested with a second model. Record: `docs/11-data-context/semantic-layer-v2-alignment.md`.

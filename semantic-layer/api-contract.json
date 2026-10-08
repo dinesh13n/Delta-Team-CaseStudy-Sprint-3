@@ -1,0 +1,20 @@
+{
+ "contract_version": "2.0",
+ "status": "PROVISIONAL",
+ "description": "Behavioural contract of the operations interface, stated without reference to any framework. Authored by hand; paths and methods are checked against the running application by a conformance test.",
+ "authentication": {"scheme": "bearer token", "claims": ["sub", "role", "tenant", "purpose"], "failure": {"status": 401, "audited": true}},
+ "error_shape": {"fields": ["type", "title", "status", "detail", "correlation_id"], "policy_denial_adds": "policy_decision_id"},
+ "common_errors": {"401": "missing or invalid token", "403": "policy denied (persona, entity or purpose)", "422": "identifier or parameter invalid", "429": "rate limit (AI only)", "503": "AI switched off or AI persona not permitted"},
+ "operations": [
+  {"method": "GET", "path": "/health", "auth": "none", "response": {"200": {"status": "ok"}}},
+  {"method": "GET", "path": "/ready", "auth": "none", "response": {"200": "dependency checks", "503": "a dependency is not ready"}},
+  {"method": "GET", "path": "/metrics", "auth": "platform role ops", "entity": null, "response": {"200": "text metrics"}},
+  {"method": "GET", "path": "/shipments", "auth": "persona with read on shipments", "entity": "shipments", "query": {"limit": "integer 1..100, default 20", "offset": "integer >= 0, default 0", "status": "string, max 40"}, "response": {"200": {"items": "records filtered by field_overrides", "total": "integer", "limit": "integer", "offset": "integer"}}},
+  {"method": "GET", "path": "/shipments/{shipment_id}/events", "auth": "persona with read on tracking_events", "entity": "tracking_events", "response": {"200": "events filtered by field_overrides"}},
+  {"method": "GET", "path": "/records/{record_id}", "auth": "persona with read on shipments", "entity": "shipments", "response": {"200": "one record filtered by field_overrides", "404": "no such record (audited with outcome error)"}},
+  {"method": "POST", "path": "/ai/summarize/{record_id}", "auth": "persona with read on shipments; context built as ai_agent", "entity": "shipments", "side_effects": ["registers the suggestion for approval", "audit event"], "response": {"200": {"fields": ["summary_id", "model", "model_version", "prompt_version", "summary", "recommendation", "abstained", "abstain_reason", "guardrail_status", "generated_by", "fallback_reason", "source_count", "sources", "token_estimate", "token_source", "confidence", "requires_human_approval", "config_hash", "correlation_id"], "invariants": ["requires_human_approval is always true", "when abstained, summary and recommendation are null", "abstain_reason is one of insufficient_context, low_confidence, schema_violation"]}, "404": "no such record", "429": "rate limited", "503": "AI off or AI persona not permitted"}},
+  {"method": "POST", "path": "/ai/summaries/{summary_id}/decision", "auth": "persona with write on shipments", "entity": "shipments", "body": {"decision": "approve or reject", "reason": "optional string, max 500"}, "response": {"200": {"fields": ["approval_id", "summary_id", "decision", "decided_by", "decided_at"]}, "404": "no such suggestion", "409": "already decided"}},
+  {"method": "GET", "path": "/audit/verify", "auth": "platform role auditor", "response": {"200": {"valid": "boolean", "records": "integer", "first_bad_index": "integer or null"}}},
+  {"method": "GET", "path": "/kpis", "auth": "persona with read per kpi policy", "response": {"200": "K1 to K10 as defined in metrics.yaml"}}
+ ]
+}

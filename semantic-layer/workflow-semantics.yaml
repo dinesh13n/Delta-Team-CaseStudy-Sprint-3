@@ -1,0 +1,127 @@
+# PROVISIONAL. Workflow, decision and validation semantics. Neutral to any model, framework or vendor.
+# Closes the specification gaps found by the portability test (IMP-Q04 to IMP-Q08). Values marked
+# basis: ASSUMPTION need a business-owner decision (UNRESOLVED).
+status: PROVISIONAL
+workflows:
+  shipment_lifecycle:
+    description: states a shipment moves through; transitions are not enforced by the data (no history field), so they describe intent
+    states: [new, queued, in_progress, manual_hold, exception, failed, closed]
+    transitions:
+    - {from: new, to: [queued]}
+    - {from: queued, to: [in_progress, manual_hold]}
+    - {from: in_progress, to: [closed, exception, manual_hold]}
+    - {from: manual_hold, to: [queued, in_progress, failed]}
+    - {from: exception, to: [in_progress, failed, manual_hold]}
+    terminal: [closed, failed]
+    basis: ASSUMPTION
+    note: the observed data holds one status per shipment, so transitions cannot be verified from it
+  exception_handling:
+    description: what happens when a shipment shows an exception signal
+    signal: status is one of [exception, failed, manual_hold], or at least one tracking event has event_type exception
+    steps:
+    - detect the signal
+    - summarise the facts (suggestion only)
+    - a person with write access to shipments approves or rejects the suggestion
+    - only a person changes the shipment, route or booking
+  carrier_booking_saga:
+    description: book, confirm, compensate (see relationships.yaml saga)
+    invariants: [BR-05, BR-13]
+    retry_ceiling: 5
+    retry_ceiling_rule: BR-13
+  ai_suggestion:
+    description: how an AI-generated or rule-generated suggestion is produced, bounded and approved
+    steps:
+    - authorise the caller (access-semantics.yaml: ai_summarize)
+    - build context from allowed fields only (ai-context-policy.yaml)
+    - produce a structured answer
+    - validate the answer; on failure fall back to the rule-based producer; if that also fails, abstain
+    - register the suggestion for human approval (approved or rejected, once)
+    - audit every step
+ai_decision_semantics:
+  principle: the suggestion is derived from the allowed facts only; it is advice, never an action
+  recommendation_classes:
+  - id: review_exception
+    when: the shipment status is in [exception, failed, manual_hold] OR at least one tracking event has event_type exception
+    meaning: a person should review the exception, confirm the carrier booking and decide on re-booking or re-routing
+    action_taken: none
+  - id: check_booking_retries
+    when: no exception signal AND the highest carrier-booking retry_count is greater than the retry ceiling
+    meaning: a person should check the carrier booking before the next attempt
+    action_taken: none
+  - id: no_action
+    when: no exception signal AND no booking above the retry ceiling
+    meaning: nothing in the available data calls for action
+    action_taken: none
+  precedence: [review_exception, check_booking_retries, no_action]
+  retry_ceiling: {value: 5, rule: BR-13, basis: ASSUMPTION}
+  summary_must_state: [shipment_id, status, service_tier, promised_at, tracking event count by type, latest event, booking count and highest retry_count]
+  wording: free text is allowed; graders and tests must check the recommendation class, never the exact words
+  abstain:
+    reasons:
+    - id: insufficient_context
+      when: the shipment status is missing or is not one of the canonical statuses in status-taxonomy.yaml (this includes the tolerated legacy value approved)
+      note: legacy statuses are never summarised
+    - id: low_confidence
+      when: the producer reports a confidence below 0.5
+      note: no fallback is attempted
+    - id: schema_violation
+      when: the answer is invalid AND the rule-based fallback is also unusable
+      note: a refusal body that is itself valid; never an invalid body
+    not_abstain_cases:
+    - 'no tracking events and no bookings: summarise and state that none are recorded'
+    sources_conflict:
+      implemented: false
+      definition: two bookings both active for one shipment (violates BR-05), or events out of order
+      current_behaviour: the data is summarised as given; the violation is caught at intake (quarantine), not at suggestion time
+      basis: DECLARED_GAP
+  fallback:
+    when: [invalid_output, output_policy_violation, circuit_open, provider_timeout, provider_unavailable, provider_error]
+    to: rule-based producer
+    never_when: [low_confidence]
+  output_policy:
+    forbidden_in_output: values of the forbidden fields (ai-context-policy.yaml); an output containing one is discarded
+  approval:
+    once_only: true
+    states: [pending, approved, rejected]
+    approver: any persona with write access to shipments (see access-semantics.yaml, approver_rule)
+validation_rules:
+  identifiers:
+    shipment_id: 'pattern from entities.yaml; a malformed identifier is rejected with 422 before any lookup'
+  intake:
+    out_of_domain_value: rejected and quarantined (status-taxonomy.yaml rule)
+    legacy_value: accepted and flagged (status-taxonomy.yaml legacy_tolerance)
+    missing_parent: quarantined (relationships.yaml on_missing)
+  response:
+    unknown_record: 404, and the lookup is audited with outcome error
+domain_constraints:
+- id: DC-01
+  statement: an AI component may suggest; it may not change a shipment, route or booking
+- id: DC-02
+  statement: personal and location fields never enter a prompt or an output
+- id: DC-03
+  statement: every read of operational data and every suggestion is attributable to a person, a purpose and a time
+- id: DC-04
+  statement: a value outside a declared domain is never silently accepted or replaced
+- id: DC-05
+  statement: access is denied unless a persona, entity and purpose rule allows it
+context_dependencies:
+- id: CD-01
+  depends_on: customer master data
+  state: external, not in this layer
+  effect: customer_id cannot be checked for existence (REL-4 flag only)
+- id: CD-02
+  depends_on: driver master data
+  state: external, not in this layer
+  effect: driver_id cannot be checked (REL-5 flag only)
+- id: CD-03
+  depends_on: hub, fleet and customer attributes for narrowing scope
+  state: absent from the data model
+  effect: scope phrases (own hub, assigned only) are declared but not enforceable
+- id: CD-04
+  depends_on: a position timestamp and a route override field
+  state: absent from the data
+  effect: freshness and override rules cannot be evaluated
+- id: CD-05
+  depends_on: business-owner decisions on PROPOSED domains
+  state: UNRESOLVED
+  effect: the layer stays PROVISIONAL

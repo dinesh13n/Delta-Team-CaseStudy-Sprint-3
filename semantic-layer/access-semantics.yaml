@@ -253,3 +253,46 @@ personas:
       field_overrides: {}
     ai_invocations:
       access: none
+platform_roles:
+  # Roles that are not business personas. They reach platform endpoints only (never business data).
+  # Previously a table in code marked [ASM] (IMP-Q10); this is now the definition.
+  ops:
+    endpoint_class: metrics
+    business_data: none
+  auditor:
+    endpoint_class: audit_verify
+    business_data: none
+approver_rule:
+  decision_endpoint: 'a suggestion may be approved or rejected by any persona whose access to shipments is write (today: dispatcher)'
+  reviewer: UNKNOWN (the specification names a reviewer role but does not define it; treated as the approver rule)
+  self_approval: the person who requested the suggestion may decide it (not separated); recorded as a residual risk
+ai_summarize:
+  # IMP-Q09. The caller needs read access to shipments for its token purpose; the context itself is built
+  # under the ai_agent persona, which must also be allowed.
+  caller_requires: read on shipments, with the token purpose among that persona's declared purposes
+  context_persona: ai_agent
+  context_purpose: exception_summary
+  callers_allowed_by_matrix: [dispatcher, warehouse_ops, fleet_manager, driver, customs_agent, customer_support, carrier_partner, ai_agent]
+  note: every persona has shipments read today; narrowing this to dispatcher and ai_agent is an owner decision (UNRESOLVED)
+operating_semantics:
+  # IMP-Q11
+  purpose:
+    source: a claim in the bearer token
+    default: when absent, the first purpose declared for the persona and entity
+    rule: a purpose outside the declared list is denied
+  field_mask:
+    token: '***'
+    applies_to: non-empty values only; an empty or null value stays as it is
+    deny: the field is removed from the record
+  audit:
+    on_denied: recorded (action ending .denied) with the decision identifier
+    on_not_found: recorded with outcome error and reason not_found
+    on_audit_write_failure: fail closed; the request fails and no data is returned
+    tamper_evidence: hash-chained; a verify endpoint reports the first bad record
+  scope:
+    enforced: false
+    reason: the data has no hub, fleet or customer attribute (CD-03 in workflow-semantics.yaml)
+    behaviour: the scope phrase is reported in the decision; narrowing is not applied
+  tenant:
+    source: a claim in the bearer token
+    effect: recorded in every audit event; data is not filtered by tenant (single-tenant data)

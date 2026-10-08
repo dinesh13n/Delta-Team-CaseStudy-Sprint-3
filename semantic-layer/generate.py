@@ -2,7 +2,7 @@
 Usage: python semantic-layer/generate.py"""
 import hashlib, json, pathlib, yaml
 HERE = pathlib.Path(__file__).resolve().parent
-FILES = ["entities", "status-taxonomy", "relationships", "business-rules", "metrics", "access-semantics", "ai-context-policy"]
+FILES = ["entities", "status-taxonomy", "relationships", "business-rules", "metrics", "access-semantics", "ai-context-policy", "workflow-semantics"]
 
 def build():
     out = {"generated_from": {}, "layer": {}}
@@ -10,6 +10,9 @@ def build():
         raw = (HERE / (n + ".yaml")).read_bytes()
         out["generated_from"][n + ".yaml"] = hashlib.sha256(raw).hexdigest()
         out["layer"][n] = yaml.safe_load(raw)
+    contract = (HERE / "api-contract.json").read_bytes()
+    out["generated_from"]["api-contract.json"] = hashlib.sha256(contract).hexdigest()
+    out["layer"]["api_contract"] = json.loads(contract)
     return out
 
 if __name__ == "__main__":
