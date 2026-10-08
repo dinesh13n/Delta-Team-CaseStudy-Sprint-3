@@ -79,3 +79,5 @@ Cross-reference to every finding (F-01 to F-57 from Document 01; F-58 to F-60 ad
 | F-58 | S3 | ai_invocations.csv also has an orphan shipment reference (REC-0001 row); not in the original register | R1 |
 | F-59 | S3 | 171 of 351 shipments have actual weight above declared weight (meaning unknown) | R1 |
 | F-60 | S2 | data/README.md claims untrusted text payloads for prompt-injection testing; no free-text field exists (max length 19), so injection test data must be authored | R1,3 |
+| F-61 | S3 | routes.weather_risk holds numeric 1.42 in a categorical field | R1, 2 |
+| F-62 | S3 | Every dataset has one malformed key *-BAD1 | R1, 2 |

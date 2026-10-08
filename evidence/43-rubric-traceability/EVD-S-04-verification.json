@@ -1,0 +1,54 @@
+{
+ "V1_rows": 140,
+ "V1_hash_mismatch_or_missing": [],
+ "V1b_manifest_rows": 140,
+ "V1c_unindexed_files": [],
+ "V2_path_citations": 344,
+ "V2_unresolved": [],
+ "V2_unresolved_count": 0,
+ "V3_findings": 62,
+ "V3_in_index_rows": 60,
+ "V3_not_in_rows": {
+  "F-16": "DEFERRED",
+  "F-48": "DEFERRED"
+ },
+ "V3_not_in_rows_and_not_deferred_or_accepted": [],
+ "V4_rows_per_criterion": {
+  "R1": 30,
+  "R2": 71,
+  "R3": 19,
+  "R4": 20,
+  "R5": 36
+ },
+ "V4_matrix_status_rows": {
+  "R1": {
+   "MET": 24,
+   "PARTIAL": 3
+  },
+  "R2": {
+   "MET": 31,
+   "PARTIAL": 11
+  },
+  "R3": {
+   "MET": 13,
+   "NOT MET": 3,
+   "BLOCKED": 4,
+   "PARTIAL": 5
+  },
+  "R4": {
+   "MET": 10,
+   "PARTIAL": 1,
+   "BLOCKED": 3
+  },
+  "R5": {
+   "MET": 10,
+   "PARTIAL": 1
+  }
+ },
+ "V4_criteria_without_rows": [],
+ "V4_basis_counts": {
+  "stage-default": 116,
+  "matrix": 24
+ },
+ "overall": "PASS"
+}

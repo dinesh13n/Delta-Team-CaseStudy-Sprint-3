@@ -1,0 +1,67 @@
+finding,link_type,file,rationale
+F-04,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-2-green.txt,hash-pinned requirements installed with --require-hashes in the green CI run
+F-04,evidence-file,evidence/15-modernization/EVD-H-02-quickstart-after.txt,hash-pinned requirements installed with --require-hashes in the green CI run
+F-06,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-2-green.txt,lint step runs in the green CI run
+F-08,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-2-green.txt,CODEOWNERS and PR template exist; branch protection not enabled; authorisation record unsigned (PARTIAL)
+F-08,evidence-file,evidence/14-transformation/EVD-G-04-authorisation-record.txt,CODEOWNERS and PR template exist; branch protection not enabled; authorisation record unsigned (PARTIAL)
+F-13,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,tests/test_config.py runs in the full suite
+F-14,evidence-file,evidence/15-modernization/EVD-H-03-secret-scan.json,tree scan clean; history scan shows the credentials still present
+F-14,evidence-file,evidence/15-modernization/EVD-H-03-secret-scan-history.json,tree scan clean; history scan shows the credentials still present
+F-15,evidence-file,evidence/15-modernization/EVD-H-03-secret-scan.json,no credential emitted; tests/test_config.py in suite
+F-15,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,no credential emitted; tests/test_config.py in suite
+F-19,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,attack RT-03 fails on v2; characterization AB-04
+F-19,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,attack RT-03 fails on v2; characterization AB-04
+F-19,evidence-file,evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml,attack RT-03 fails on v2; characterization AB-04
+F-20,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,attack RT-01 fails on v2; characterization AB-06
+F-20,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,attack RT-01 fails on v2; characterization AB-06
+F-20,evidence-file,evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml,attack RT-01 fails on v2; characterization AB-06
+F-21,evidence-file,evidence/15-modernization/EVD-H-04-policy-allow-deny-matrix.csv,Rego generated from access-semantics; opa check and test in CI
+F-21,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-2-green.txt,Rego generated from access-semantics; opa check and test in CI
+F-22,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,"RT-07 and RT-08 succeed on baseline, fail on v2"
+F-22,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,"RT-07 and RT-08 succeed on baseline, fail on v2"
+F-22,evidence-file,evidence/15-modernization/EVD-H-07-ai-gateway-results.json,"RT-07 and RT-08 succeed on baseline, fail on v2"
+F-23,evidence-file,evidence/15-modernization/EVD-H-07-ai-gateway-results.json,no str.format on data; tests/test_ai_gateway.py in suite
+F-23,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,no str.format on data; tests/test_ai_gateway.py in suite
+F-24,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,RT-09 guardrail not_enforced no longer found; AB-07
+F-24,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,RT-09 guardrail not_enforced no longer found; AB-07
+F-24,evidence-file,evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml,RT-09 guardrail not_enforced no longer found; AB-07
+F-26,evidence-file,evidence/23-human-control/EVD-K-01-human-control-tests.txt,approval enforced in code; RT-10 fails on v2
+F-26,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,approval enforced in code; RT-10 fails on v2
+F-26,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,approval enforced in code; RT-10 fails on v2
+F-27,evidence-file,evidence/15-modernization/EVD-H-07-ai-gateway-results.json,prompt and model locks; tests/test_prompt_lock.py in suite
+F-27,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,prompt and model locks; tests/test_prompt_lock.py in suite
+F-29,evidence-file,evidence/15-modernization/EVD-H-07-ai-gateway-results.json,deterministic summary from allow-listed facts; 192 evaluation cases (PARTIAL: no real model)
+F-29,evidence-file,evidence/26-tevv/EVD-L-02-final-eval-run.json,deterministic summary from allow-listed facts; 192 evaluation cases (PARTIAL: no real model)
+F-30,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,RT-06 fails on v2; tests/test_record_lookup.py
+F-30,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,RT-06 fails on v2; tests/test_record_lookup.py
+F-30,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,RT-06 fails on v2; tests/test_record_lookup.py
+F-31,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,RT-04 fails on v2; tests/test_record_lookup.py
+F-31,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,RT-04 fails on v2; tests/test_record_lookup.py
+F-31,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,RT-04 fails on v2; tests/test_record_lookup.py
+F-32,evidence-file,evidence/26-tevv/EVD-L-03-redteam-baseline.json,RT-05 fails on v2; characterization
+F-32,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,RT-05 fails on v2; characterization
+F-32,evidence-file,evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml,RT-05 fails on v2; characterization
+F-34,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,quarantine of defective rows
+F-35,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,quarantine of defective rows
+F-41,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,run_id and load_id in the ETL report
+F-42,evidence-file,evidence/15-modernization/EVD-H-08-trace-sample.json,new events carry a correlation id; reconstruction field coverage (PARTIAL: old events lack it)
+F-42,evidence-file,evidence/31-observability/EVD-N-02-reconstruction.json,new events carry a correlation id; reconstruction field coverage (PARTIAL: old events lack it)
+F-44,evidence-file,evidence/15-modernization/EVD-H-08-trace-sample.json,hash-chained audit and tamper check (PARTIAL: no external sink)
+F-44,evidence-file,evidence/31-observability/EVD-N-02-reconstruction.json,hash-chained audit and tamper check (PARTIAL: no external sink)
+F-45,evidence-file,evidence/15-modernization/EVD-H-08-trace-sample.json,timezone-aware timestamps in the v2 chain
+F-45,evidence-file,evidence/31-observability/EVD-N-02-reconstruction.json,timezone-aware timestamps in the v2 chain
+F-45,evidence-file,evidence/15-modernization/EVD-R-01-final-verification.txt,timezone-aware timestamps in the v2 chain
+F-47,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-1-failed.txt,"first CI run failed on coverage, second green on 3.11 and 3.14 (PARTIAL: no branch protection)"
+F-47,evidence-file,evidence/15-modernization/EVD-R-02-ci-run-2-green.txt,"first CI run failed on coverage, second green on 3.11 and 3.14 (PARTIAL: no branch protection)"
+F-54,evidence-file,evidence/16-repo-validation/EVD-H-09-smoke.txt,curated layer; original smoke assertions kept
+F-54,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,curated layer; original smoke assertions kept
+F-55,evidence-file,evidence/16-repo-validation/EVD-H-09-smoke.txt,sanity_check required paths preserved
+F-56,evidence-file,evidence/29-incident-bcdr/EVD-M-04-tabletop-simulation.json,incident documents and an author-run tabletop
+F-57,evidence-file,evidence/34-after-kpis/EVD-O-01-after-kpis.json,proxy KPIs frozen; no business KPI exists (PARTIAL)
+F-58,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,orphan reference quarantined
+F-59,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,"weight discrepancy flagged in ETL, meaning unresolved (ACCEPTED-PROPOSED)"
+F-60,evidence-file,evidence/26-tevv/EVD-L-03-redteam-v2.json,injection payloads constructed for the red team; README corrected
+F-61,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,enum rule in ETL
+F-62,evidence-file,evidence/15-modernization/EVD-H-06-etl-dq-report.json,malformed key quarantined
+F-16,repo-file,docs/24-security-privacy/privacy-impact-assessment.md,"DEFERRED to GAP-01; documented, no evidence file"
+F-48,repo-file,07-logistics-shipment-fleet-routing-ops/infra/terraform/main.tf,DEFERRED; file emits no credential but provisions nothing

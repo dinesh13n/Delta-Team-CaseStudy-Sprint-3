@@ -1,0 +1,120 @@
+criterion,sub_dimension,status,resolved_file,sha256
+R1,Understanding Repo 1.0,MET,docs/00-preflight/discovery/system-landscape.md,c9e01c93ab63e0158e6c2d8055095cf5fadaef9cb9755f927fc02617627bead3
+R1,Understanding Repo 1.0,MET,docs/00-preflight/discovery/security-observability-overview.md,2a4de67330bd63114e7baf006e29a48538dc895574ae34dae41fd034de1bbb98
+R1,Understanding Repo 1.0,MET,docs/00-preflight/discovery/assumptions-unknowns.md,c6d6d21ccb0e9f84805b8b48466e1c3f91ca5144f69f1afde3515ce52e1deb13
+R1,Understanding Repo 1.0,MET,docs/00-preflight/discovery/test-overview.md,8f6427f52af572ae1148000707e5a3037a0f997007f15aaf3aaaa0b21de012fe
+R1,Understanding Repo 1.0,MET,docs/00-preflight/discovery/environment-snapshot.md,3183093fa1a009c5479a572c026ac4d732cb0234b226424c4e2aff9587aa9c44
+R1,Understanding Repo 1.0,MET,docs/05-current-state/manual-handoffs.md,3bff471d8b925e062cebdd95b1a1d539fc50488674b25a3b66f4caccd305782e
+R1,Understanding Repo 1.0,MET,docs/05-current-state/brownfield-inventory.md,be7a4e9b6064139d8ae3b2ac8722846843abc5208983556123515f0ab0115815
+R1,Understanding Repo 1.0,MET,docs/05-current-state/system-landscape.md,ebaaf6e1ffc7aae411cfd2410f0cf2c9396ff767e342d38b3be843fdbce4d62a
+R1,Understanding Repo 1.0,MET,docs/05-current-state/current-state-summary.md,af98be49a093cacc8c85a9d6e50631553d06fc225fe3e2d8e613fa266ef7ab8b
+R1,Understanding Repo 1.0,MET,docs/05-current-state/dependency-hotspots.md,0676ad01ad5346459505e66bb23967bbf5e4e69fcf3b77b08098796049a3cde2
+R1,Understanding Repo 1.0,MET,docs/07-repo-assessment/repo-assessment.md,0b1f2f8ad6ab41854913dba2a45588ef81cc428eb48946c30cd24a5fbec08b9d
+R1,Identifying gaps and inconsistencies,MET,evidence/04-baseline-kpis/EVD-C-05-data-profile.json,6314f00faa1df6c781714c3be2e946cae1b323858f1b435868989a8f4dced202
+R1,Technical debt,MET,docs/07-repo-assessment/technical-debt-register.md,8a0f91a96a938bc28aeaee98d10bbc8e0d78a53938da02041c9d8faf1e16dff0
+R1,Technical debt,MET,docs/07-repo-assessment/legacy-pattern-register.md,edb42201376a2e648486c82a81e05140801996a44727ddb9d66e4a218fa83e87
+R1,Technical debt,MET,docs/07-repo-assessment/partial-migration-register.md,894dc4bb561387ca6b65b8c22cc3e879c253afcdadf65acb5981cf4542da79f4
+R1,Risk identification,MET,docs/00-preflight/discovery/initial-risk-register.md,f22c36ad03bd6842974df564c2e98bc95a1c003c8944476cac44a026117d2e21
+R1,Risk identification,MET,docs/06-root-cause/evidence-confidence-matrix.md,36ee9b249afcffbc3619c4c422371f1c75be36e8e5fae408d97a34ab712986d9
+R1,Behavioural baseline,MET,evidence/07-repo-assessment/EVD-C-02-quickstart-transcript.txt,74e85bd8cec2ade87fc4ccf8a95b40552928010bfd689e761b21868fdf541581
+R1,Behavioural baseline,MET,evidence/07-repo-assessment/EVD-C-03-junit.xml,1d96dc44eb81588a1155ba4566d8d87ab7ef22d62ba21b803f7835d3926ca8da
+R1,Behavioural baseline,MET,evidence/07-repo-assessment/EVD-C-03-coverage.xml,85210479df1b835c07459cca3a26494695ede817d7399bc85133811e92b607e8
+R1,Behavioural baseline,MET,evidence/07-repo-assessment/EVD-C-03-transcript.txt,e00e2c43b291f1a06e7144f029873e2b4422672353800328fc2534d30060b743
+R1,Behavioural baseline,MET,evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml,b35040581e79ee0e1b912f8399b855e60ef591ad76c24faa27eb7c0169ffd90e
+R1,Business problem,MET,docs/03-problem-value/problem-statement.md,f580a33f48126b2dd1a853ca7c197f3e6e150601e96f73d6f82b82afe3605544
+R1,Business problem,MET,docs/01-engagement/engagement-go-no-go.md,13bfaff9cd0f52c433dc808afa7a787b4a0ec78d031b5a2a4fba06f7403f1cae
+R1,Before/after proof,PARTIAL,evidence/16-repo-validation/EVD-H-10-behaviour-diff.csv,c78a8433c06d9266db854f14d8ee3393ff348a4dd42dc5cdd032114fc0c92b58
+R1,Before/after proof,PARTIAL,evidence/31-observability/EVD-N-02-reconstruction.json,1eed65aa84641d9e7d564b91a99baa04006f1ba05ca26590cdae5a8181e6c241
+R1,Before/after proof,PARTIAL,docs/35-value-leakage/kpi-variance-table.md,dfe3b390918a9e3f07373702c4416a606c748dd502ecb28ef4907d95e49aa106
+R2,Improved architecture,MET,docs/10-architecture/target-architecture.md,0e1d441ad4067f5438fa3097354904ae66f2963b5ad73a55645661aba60abf2e
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0002-supersede-0001-partial-modernization.md,1206a3152b408f7daa856f03bdaf7b656fe5a73ab6ad70d35602d67f415622a0
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0003-target-runtime-and-dependencies.md,944aa4ec55d4b062bd8f3568c02d872a2f833367aea60ec09746ba4f81dabe9b
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0004-identity-and-authentication.md,e4486a7ae1af2411891cb837ab0cb4cbf60061b651a307ae59edddb25d19ebc3
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0005-authorisation-policy-as-code.md,0e8cb35810a4fe4227f00398a2d68f13e4ffc9f4dd15efe11ae00a2a3651a1d5
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0006-data-layer-and-quarantine.md,3391a55d265dd2a0918db91a61b03a0ff9fe9da96f05527316757c309bbebb17
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0007-ai-gateway-boundary.md,6e48c75b58e10398075b0c39c8f90a645c95a53a6d84b03c1416288a46a115ec
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0008-audit-and-correlation.md,b79b95f86b3e9ffda9d04328c407b3ca48a3d8e8736ba9e72fa512372f56ef5f
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0009-platform-neutral-deployment.md,8e92250e0fa79e1ce0e4e2880fc102df3060e551fbd004f3bdd15f678aeedbba
+R2,Improved architecture,MET,docs/10-architecture/adrs/ADR-0010-observability.md,bed0a9089f8dded930fa7578a865e51c4f1a2740dd4763d23afe6d7fa94e94b5
+R2,Improved architecture,MET,07-logistics-shipment-fleet-routing-ops/docs/ADR/0001-partial-modernization.md,03daaa1c3273ce2b27e6a87c86b3f388cbdc9da5e4597353e6d4f99d7dd43ba1
+R2,AI workflow,MET,docs/19-intelligence/prompt-registry.md,3125bbcf7629941e9fb9a904c26e7bf9a7a54a87b0ac07798c7da8206d38d50f
+R2,AI workflow,MET,docs/20-application/deterministic-ai-boundary.md,a9cd8bfd5d8285fbc934e8ff583f79eef6b38cf924bca6e1f22c7c50a878954e
+R2,AI workflow,MET,evidence/15-modernization/EVD-H-07-ai-gateway-results.json,38fe45eb845bc0d5c3aebbc45d155f9d0a2997ee758cf39c497312d245b1aec6
+R2,AI workflow,MET,docs/19-intelligence/quality-latency-cost-results.md,96027379bb6de316dd55d53b5ca35489a8de32f3001710dacb8fae70422882cf
+R2,Data / evidence design,MET,docs/11-data-context/data-contracts.md,78fa0ea4c7e0648be1dd7158466d1484862f792653379f7e369a7782fa5cf921
+R2,Data / evidence design,MET,docs/21-integration/data-contracts.md,3f8403da563e66f63c7e00cc0bfda233be2aeb9add01b3c7d41d1ea792193a51
+R2,Data / evidence design,MET,docs/11-data-context/data-quality-rules.md,8259d91d6ee24d0b50bfee2c001b41784a9db9cb2890da2390497bd728971485
+R2,Data / evidence design,MET,docs/11-data-context/provenance-policy.md,eee09cf8efdb90592ed33946e88d6500d299f1c8fbc0b39ee814ccec2860e766
+R2,Data / evidence design,MET,semantic-layer/README.md,b38fc745d2ddfff755cbb7b92fac68b48d47ea2f7c4b6bae45b757a6de406ec2
+R2,Data / evidence design,MET,semantic-layer/entities.yaml,3d715cf088893a523d37b75fe8f917e9657f495c621478f61d718ce5f51ef8f3
+R2,Data / evidence design,MET,semantic-layer/access-semantics.yaml,5082131647358b428f48d7122b8f043150a768a76b32d90031ce89e1540eef84
+R2,Data / evidence design,MET,semantic-layer/business-rules.yaml,e33b1d31d398865207a92903354eebc4ce7b78410eb0125d73543738260e900f
+R2,Data / evidence design,MET,semantic-layer/ai-context-policy.yaml,b9e7285d1011e6cdad6b3983b83a28828408fd501dfeeb3b7555ca2a8d7ff214
+R2,Decisioning,PARTIAL,semantic-layer/access-semantics.yaml,5082131647358b428f48d7122b8f043150a768a76b32d90031ce89e1540eef84
+R2,Decisioning,PARTIAL,07-logistics-shipment-fleet-routing-ops/policy/opa/access.rego,b133c752e6d05db6470ffbb6c6c2591b88eb72226f0974784f02e9ddb6d96b82
+R2,Decisioning,PARTIAL,07-logistics-shipment-fleet-routing-ops/policy/opa/access_test.rego,7952431293519c447a5e9a57f8a19740cbbdc98135e617a522c9d5c32cdeca63
+R2,Decisioning,PARTIAL,docs/23-human-control/autonomy-matrix.md,b72434cd88a01d18138efaed4861bacf145d003ae5ae3ba24972f82694448b49
+R2,Controls,MET,evidence/15-modernization/EVD-H-03-secret-scan.json,9be399823ccf9be244917852a3f19b4ee67b5e5d2c813fae5b7f4c4fd20c4dab
+R2,Controls,MET,evidence/15-modernization/EVD-H-04-negative-access-tests.txt,c724516d79f2e15cce8017516c2a82a30c2eb663c4fe08b5cc83b181213eb2eb
+R2,Controls,MET,evidence/15-modernization/EVD-H-04-policy-allow-deny-matrix.csv,f838baffa93da9043a972b23f70f36a84f9442848d2805d4a2d029f4a96ad25a
+R2,Controls,MET,evidence/16-repo-validation/EVD-H-09-smoke.txt,e3d44aec2bed164620555f0b9ae4deafa1d4a35c62eecdf6e14cb4417681b80f
+R2,Controls,MET,docs/27-hardening/sbom-summary.md,3516f9766a1da2663b8817f1ab95a14436d1dcc324ad8a969919c118130625d5
+R2,Resilience,PARTIAL,docs/28-resilience/resilience-architecture.md,06f3e9ef4a9d1a570db27744bd5dd0614453e9ada92a3c15bb4a4907df772782
+R2,Resilience,PARTIAL,docs/28-resilience/ai-disabled-mode.md,6661f44edfded7dbb285edaf7db3d6dc3f6e8abe9d6113d1aaf60b142c27cb2e
+R2,Resilience,PARTIAL,evidence/28-resilience/EVD-M-03-resilience-tests-after-drills.txt,9c509bda36ef6a69faa52ede33666646c59e27907c5e1c8e1027767115c4b8a8
+R2,Reproducibility,PARTIAL,evidence/15-modernization/EVD-H-02-quickstart-after.txt,253337ce0f1b3e20361e42b612628b9447c629ce33633ea48bd88696d8310c70
+R2,Reproducibility,PARTIAL,07-logistics-shipment-fleet-routing-ops/Dockerfile,cb01dde9a937699b72ae3328e812a8a527d5a45cfc1f5de4e82d0d4af7a98481
+R2,Delivery pipeline,MET,evidence/15-modernization/EVD-H-01-pipeline-run.txt,943f500b2da991e6bfcf1bba9740cfe8839bde806197ba9ac03d98cad007bd2b
+R2,Delivery pipeline,MET,docs/16-repo-validation/repo-quality-gate.md,176ced5405566c24609c0f26284220f011af7ad652a06b68e441a82e50c9e1d6
+R2,Portability,PARTIAL,evidence/40-scale/EVD-Q-01-preregistration.json,d050b98fe3a419f360f48be9edb646e952ccd3d08488cd5639d41556da875014
+R2,Portability,PARTIAL,evidence/40-scale/EVD-Q-02-comparison.csv,25b4aaddc9c676a3d13545292d79e791d6b3296d750047d7eae28ed004b32656
+R3,Human oversight,MET,docs/23-human-control/autonomy-matrix.md,b72434cd88a01d18138efaed4861bacf145d003ae5ae3ba24972f82694448b49
+R3,Human oversight,MET,docs/23-human-control/approval-gates.md,0c377d65e82a03ce1b751f0104f9f2f161d72c94a49907d6e1838d3429864392
+R3,Human oversight,MET,docs/23-human-control/human-control-test-results.md,b8690608e712597ce34312f45ec4819d0660ac21935de14d037c6cc901a60d83
+R3,Explainability,MET,docs/19-intelligence/prompt-registry.md,3125bbcf7629941e9fb9a904c26e7bf9a7a54a87b0ac07798c7da8206d38d50f
+R3,Explainability,MET,docs/19-intelligence/grounding-results.md,fe47a9175ec81c84e3754cb1c0bede8e902b4e2e10addc62c467f3724afadd09
+R3,Explainability,MET,docs/31-observability/ai-telemetry-spec.md,da032038d4cf7922333e1adf9bffa5ccb0e5a7f7fa65fb29cec126db931b10c6
+R3,Auditability,MET,evidence/15-modernization/EVD-H-08-trace-sample.json,5b79ef4cf9cc76f6b5d6e39dd9300d709b0e7633f933e1c21029adc4b07a1e88
+R3,Auditability,MET,evidence/31-observability/EVD-N-02-reconstruction.json,1eed65aa84641d9e7d564b91a99baa04006f1ba05ca26590cdae5a8181e6c241
+R3,Auditability,MET,docs/25-governance/audit-evidence-index.md,b955248600c2dadf55bc687a3a50ce3be69c35d3830750f1382bff1bdc164e35
+R3,Risk controls,NOT MET,docs/24-security-privacy/security-control-matrix.md,40132faa0d3dc86904f18d83d5e0d8c8fefe8cfcedd5582223f8554be94db092
+R3,Risk controls,NOT MET,docs/24-security-privacy/residual-security-risks.md,f4019e852133fbb5f05db701150dab683253a411c790a839c4c53107cb5fa369
+R3,Risk controls,NOT MET,docs/26-tevv/residual-tevv-risks.md,a4729cd1dcf1b844aba5ccdfe68883806348c3f614f71faa2e352efb70fe5abf
+R3,Security,MET,evidence/26-tevv/EVD-L-03-redteam-v2.json,b6f65533d6d71145d1d98da52ee5886590871091c704bc514e07984327d03356
+R3,Security,MET,evidence/26-tevv/EVD-L-03-redteam-baseline.json,690911c90695c307f620ac56aec88e8d0da9732b4f6405dbf9c381e38df9213f
+R3,Compliance,BLOCKED,docs/25-governance/compliance-obligations.md,4a737b679b823d453d80db8283380a0e9e07b5e9de62ab91d3c23949dba3ae61
+R3,Compliance,BLOCKED,docs/25-governance/model-card.md,8f31e69561272ea62376c18d32002a0425c9a9c4d57e383ddc2b98d57eac2339
+R3,Compliance,BLOCKED,docs/25-governance/system-card.md,7750a7180a6ea60fc2abc5d999a76664a9ca428d84d66ca3e1e0cd42fbd7b558
+R3,Compliance,BLOCKED,docs/25-governance/evidence-retention-policy.md,89335f68900a46974a87e9a2e295b3eabccf2bf5f172ca1a50d346339c9ed5bc
+R3,Observability,PARTIAL,docs/31-observability/slo-sla-definitions.md,716903096d4def95eb05ff85564272c13d1a2404841044f51197fce51a3843ed
+R3,Observability,PARTIAL,docs/31-observability/observability-validation.md,6cb7f4a703daa5f9448f1deef2703402973398b68e958d1a359f210bd31810bb
+R3,Safe AI boundaries,MET,docs/08-ai-qualification/deterministic-vs-ai-boundaries.md,d68db4e1c4d65725540ce87c5f8bffac8ee3587c1075958ed49930819256bbda
+R3,Safe AI boundaries,MET,docs/24-security-privacy/prompt-injection-controls.md,b8f170b83c1fc3bac8935e0ec52e507ec2fe3394d154422d56045aed95c64c40
+R3,Change governance,PARTIAL,evidence/14-transformation/EVD-G-04-authorisation-record.txt,88f1b4321b2f75114ce9c1a23866a289757ac3f81358180c55b323d15d2e4679
+R3,Change governance,PARTIAL,docs/39-continuous-improvement/controlled-change-process.md,ebd3846262d87fc2f0e9c7d4bf996102f0c6bf240c33d1155d04becc6034dd5c
+R3,Change governance,PARTIAL,.github/CODEOWNERS,7d15df156f3bb67926e2a9d3b80c4cccc1315e7bd5e9f7457166d203e7c62ac4
+R4,PRD quality,MET,docs/09-initial-prd/initial-prd.md,0f720473c87dfbceea910344602f3ba928cca6e33baa7d27b716f62e399408af
+R4,PRD quality,MET,docs/17-implementation-prd/implementation-prd.md,c6ea0657f75e58f5c926b3c9ea4034ccbd9d793f09c87462588d236b1e0f89f7
+R4,PRD quality,MET,docs/final-prd/final-as-built-prd.md,47c277c5ada67241abf2f388a1b10e43c687d532dc0a9bdccd4799e633a23b10
+R4,Requirement traceability,MET,docs/13-traceability/requirements-traceability-matrix.md,33c1540cf5e9c6eca2ca5193afe8d0c90f0a2b30ab62b6ec37feff89fcd49dca
+R4,Requirement traceability,MET,evidence/13-traceability/EVD-F-04-finding-coverage-matrix.csv,055a52f15d9daafa8d76bc642da760ea3a404790ac7d0fcefbb9f76ba1016821
+R4,Requirement traceability,MET,docs/final-prd/requirement-disposition-matrix.md,a7619159ed8df89b36c963fb72e36079335c690a7daab01164b7e9a5ff4d4678
+R4,Functional implementation,MET,docs/20-application/application-test-summary.md,ca27f76c7731668495e5306be352b1c8106fff67cdb007e43ca38474d6a13d44
+R4,Functional implementation,MET,docs/21-integration/integration-test-results.md,c612abfaa9cda7dfbac234085b3ecfd4a7745aa6fbc95bf1ab9ad12b6487f9a7
+R4,End-to-end workflow,PARTIAL,evidence/31-observability/EVD-N-02-reconstruction.json,1eed65aa84641d9e7d564b91a99baa04006f1ba05ca26590cdae5a8181e6c241
+R4,Working AI capabilities,BLOCKED,docs/19-intelligence/rag-evaluation-results.md,e6aaad6711f03c8b319028dc1d420c61519d70e97f8a261f09427f411b807d28
+R4,Working AI capabilities,BLOCKED,docs/26-tevv/tevv-results.md,5c67844f416dd5ef4b6292c7c85b0b7caa243ab02695b2b639494d74093f1060
+R4,Working AI capabilities,BLOCKED,docs/19-intelligence/intelligence-release-gate.md,7abbf9dc972cf23a75f7c442c57ae3b4765f8673d7e70d0848a3650a961ebc7e
+R4,Evidence-driven delivery,MET,docs/18-delivery/definition-of-done.md,7a6da85687556ed59c5eb3e1790b72699803b655d8ba5344c29a7d14c23d6d2c
+R4,Evidence-driven delivery,MET,docs/18-delivery/evidence-checklist.md,d8d08a5e1122269f622660b3111132bb21723fa7a66aff4b3ff4dc8e9e31c70a
+R5,Storytelling,MET,docs/42-executive/executive-narrative.md,2b10115740e5c833ac1fb7c2c83b8c355517f577f2d8cd5df6f56f926ab8c90d
+R5,Storytelling,MET,docs/42-executive/problem-to-value-story.md,553d4927a47b304bf6f76fd4aae9bb2ad51c22f1163a13417c90e49a0f6b9e22
+R5,Demo quality,PARTIAL,docs/42-executive/demo-day-script.md,39b94b5382168d2e8d0150d1fc2b368f703c6534b30a9e0537604c839ff1cf2d
+R5,Explaining design choices,MET,docs/42-executive/architecture-defence.md,a6ece1c86ff07e36063b873251eba5fe3f53a8d25aa515226c47d88d8ce599dd
+R5,Explaining design choices,MET,docs/42-executive/ai-decision-defence.md,0e8a5b6181762cfbee037b9105e0b10f9267f5d73d58f24c0603520f62e9aa0d
+R5,Trade-offs and limitations,MET,docs/final-prd/known-limitations.md,a40845b130c038d617aeaef6fb7c62172ec4159517967605adb198b5e105ab18
+R5,Trade-offs and limitations,MET,docs/42-executive/lessons-learned.md,4724d80f8a8c7b2b674b70938c145f524317fc18f70bc70f608145496ad51c3f
+R5,Trade-offs and limitations,MET,docs/42-executive/residual-risks.md,2dc0588056838f047b74c9026ed238f825059c9c3c9fd7a4ccad595cfe3557b2
+R5,Answering evaluator questions,MET,evidence/13-traceability/EVD-F-04-finding-coverage-matrix.csv,055a52f15d9daafa8d76bc642da760ea3a404790ac7d0fcefbb9f76ba1016821
+R5,Answering evaluator questions,MET,evidence/13-traceability/EVD-F-04b-finding-disposition-final.csv,24dc4df12754670d842a7f1d8fb2d8dfa03eb8214dd35758a7e26577a6e774d1
+R5,Answering evaluator questions,MET,evidence/EVIDENCE-INDEX.md,cd744fa5b570efad24d3b8a2b4165ae695516d4d9d1349631a544d9aba27d551

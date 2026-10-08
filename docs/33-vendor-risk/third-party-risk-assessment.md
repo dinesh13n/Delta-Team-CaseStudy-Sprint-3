@@ -8,7 +8,7 @@
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
 | Status | CONDITIONAL |
-| Evidence sources | evidence/27-hardening/pip-audit-runtime.json |
+| Evidence sources | evidence/27-hardening/EVD-M-01-pip-audit-runtime.json |
 | Assumptions | See body |
 | Unresolved issues | None beyond those listed in body |
 | Residual risks | N-R-17 |

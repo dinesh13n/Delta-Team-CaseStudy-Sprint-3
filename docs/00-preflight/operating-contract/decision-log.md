@@ -64,3 +64,6 @@
 ## D-014 (2026-10-08)
 - File modes: importing the operator's Windows working tree into the cloud clone marked all 876 tracked files executable (100755). Normalised to 100644 except the two `.sh` files, so `git diff baseline/v0.1-as-delivered-bytes` shows content changes only (data/synthetic files are byte-identical to the baseline). Status: APPLIED.
 - Test count: gate documents written on the operator machine quote 177 passed; the cloud re-run gives 176 passed + 1 skipped (OPA parity test skipped because no `opa` binary here; it runs in CI and passed there, run 37776230304). Same suite, different environment. Status: RECORDED.
+
+## D-015 (2026-10-08)
+- Runbook 03 executed (stage S). Corrections found while doing it: `technical-debt-register.md` lacked F-61 and F-62 (added); `third-party-risk-assessment.md` cited a non-existent evidence path (fixed); Document 03 counts (57 findings, 12 discovery artifacts) are out of date (62 and 13), stated as found. The Stage R2 index (5 columns) was replaced by a 10-column rubric-aware index. Statuses in `docs/43-rubric-traceability/rubric-coverage-matrix.md` are the author's own judgement and are PROVISIONAL. Status: RECORDED.
