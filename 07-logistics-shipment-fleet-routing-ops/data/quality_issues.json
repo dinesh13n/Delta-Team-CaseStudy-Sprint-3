@@ -1,0 +1,42 @@
+{
+  "seeded_issues": {
+    "shipments": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "tracking_events": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "vehicles": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "routes": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "carrier_bookings": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "ai_invocations": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ]
+  },
+  "domain_authenticity_note": "Defects are intentionally realistic: discoverable through profiling and tests, not only through labels.",
+  "safety_note": "All data is synthetic."
+}

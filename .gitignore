@@ -1,0 +1,61 @@
+# --- Secrets and generated credential artifacts -------------------------------
+# Findings F-10/F-12/F-15: .env.example ships credential-shaped values and the
+# Terraform stub emits a credential file. Never let the real ones in.
+.env
+.env.*
+!.env.example
+generated-env.txt
+*.pem
+*.key
+*.p12
+*.pfx
+
+# --- Runtime audit log --------------------------------------------------------
+# Finding F-44: apps/api/services/audit.py appends to <repo>/logs/audit.log
+# in-process. It is runtime output, not source, and must never be committed.
+logs/
+*.log
+
+# --- Python -------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# --- Node / frontend ----------------------------------------------------------
+node_modules/
+playwright-report/
+test-results/
+.playwright/
+
+# --- Terraform ----------------------------------------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# --- Editors and OS -----------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Explicitly NOT ignored ---------------------------------------------------
+# data/synthetic/*.csv and events.jsonl are the declared test fixture that
+# scripts/sanity_check.py asserts against (354 rows per CSV, 3000 events).
+# They are synthetic, they are source, and they stay in the repository.

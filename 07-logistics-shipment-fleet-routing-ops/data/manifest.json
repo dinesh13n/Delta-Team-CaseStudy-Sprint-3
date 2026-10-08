@@ -1,0 +1,51 @@
+{
+  "repo": "07-logistics-shipment-fleet-routing-ops",
+  "title": "Logistics: Shipment, Fleet, Routing & Exception Operations",
+  "csv_files": {
+    "shipments.csv": 354,
+    "tracking_events.csv": 354,
+    "vehicles.csv": 354,
+    "routes.csv": 354,
+    "carrier_bookings.csv": 354,
+    "ai_invocations.csv": 354
+  },
+  "seeded_defects": {
+    "shipments": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "tracking_events": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "vehicles": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "routes": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "carrier_bookings": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ],
+    "ai_invocations": [
+      "duplicate business key",
+      "blank mandatory fields",
+      "impossible timestamp",
+      "out-of-range score or risk marker"
+    ]
+  },
+  "jsonl_events": 3000
+}
