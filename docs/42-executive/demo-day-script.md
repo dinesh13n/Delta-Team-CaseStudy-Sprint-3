@@ -35,7 +35,7 @@ Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumptio
 
 **What can you still not prove?** Anything about a real model; behaviour under real load or a deployed platform; any business KPI change (none is measurable); that people can follow the incident playbook (the tabletop was one author); portability across models; independent review of any gate (all gates were signed by the operator, PROVISIONAL).
 
-**What would you do with two more weeks?** Name owners and a sponsor (OQ-05, OQ-24); revoke and rotate the H3 credentials; run CI on GitHub with branch protection; run the portability test with a second model; stand up a collector and scrape a deployed instance; get one independent reviewer and one human tabletop; measure real review time to turn the cost formula into a number.
+**What would you do with two more weeks?** Name owners and a sponsor (OQ-05); revoke and rotate the H3 credentials; run CI on GitHub with branch protection; run the portability test with a second model; stand up a collector and scrape a deployed instance; get one independent reviewer and one human tabletop; measure real review time to turn the cost formula into a number.
 
 ## Failure plan
 If a live command fails, show the stored evidence file for that beat (all are in `evidence/`, hashed in the manifests) and say it is a replay.

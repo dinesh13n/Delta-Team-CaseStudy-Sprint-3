@@ -97,3 +97,9 @@ cost.
 
 Rubric coverage, including the criteria the current artifacts cannot yet satisfy, is mapped
 in `runbook/03-EVIDENCE-RUBRIC-TRACEABILITY.md`.
+
+## Execution status (2026-10-08)
+
+All 18 stages (A-R) of `runbook/02-TRANSFORMATION-RUNBOOK.md` have been executed once by a single agent under the operator's instruction. Result: **NO-GO for production on real data; CONDITIONAL GO for a controlled pilot on synthetic data.** Start with `docs/42-executive/production-readiness-decision.md`, then `docs/42-executive/production-evidence-pack.md` and `evidence/EVIDENCE-INDEX.md` (every evidence file is hash-listed).
+
+Not done, stated plainly: Stage Q (second-model portability test; protocol pre-registered), any real AI model, any deployment, any named owner or independent review, revocation of credentials still present in git history, branch protection. See `docs/42-executive/residual-risks.md` and `docs/42-executive/final-gate.md`.

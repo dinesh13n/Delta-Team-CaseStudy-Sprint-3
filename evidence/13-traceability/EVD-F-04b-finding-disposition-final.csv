@@ -1,0 +1,63 @@
+finding,severity,title,final_disposition,evidence,owner_role,target_date,approver,note
+F-01,S1,The repository is not under version control,FIXED,evidence/00-preflight/EVD-A-01-tag-verification.txt,n/a,n/a,n/a,
+F-02,S2,The documented test command cannot run,FIXED,evidence/15-modernization/EVD-H-02-quickstart-after.txt vs evidence/07-repo-assessment/EVD-C-02-quickstart-transcript.txt; CI run 2,n/a,n/a,n/a,
+F-03,S3,The documented run command is wrong,FIXED,README Quick Start; EVD-H-02,n/a,n/a,n/a,
+F-04,S2,No dependency lockfile for either stack,FIXED,hash-pinned requirements.txt/requirements-dev.txt (--require-hashes in CI run 2); apps/web/package-lock.json (lockfileVersion 3),Web lead (UNRESOLVED),none agreed,n/a,npm audit not run (DEBT-14)
+F-05,S2,Documentation claims a portal that does not exist,CHANGED,README corrected; thin static operations view; tests/test_ops_view.py; EVD-J-04-browser-e2e.json,Product owner (UNRESOLVED),none agreed,n/a,Angular portal NOT built; OQ-06 ruling
+F-06,S3,"The frontend lint gate is ""lint"": ""echo scaffold"" — a no-op that reports success.",PARTIAL,apps/web/package.json lint now runs scripts/lint-scaffold.mjs instead of echo,Web lead (UNRESOLVED),none agreed,n/a,"a scaffold check, not a framework linter; no frontend build exists (DEBT-10)"
+F-07,S2,"No containerisation or environment definition: no Dockerfile, no compose file, no devconta",PARTIAL,"Dockerfile, docker-compose.yml, entrypoint; EVD-P-02 exercises",Platform lead (UNRESOLVED),none agreed,n/a,image never built in this workspace (DEBT-06)
+F-08,S2,"No change-control surface: no CONTRIBUTING.md, no PR template, no CODEOWNERS, no branch-pr",PARTIAL,"CODEOWNERS, PR template, CONTRIBUTING.md, SECURITY.md; GitHub API 2026-10-08: main branch not protected (HTTP 404)",Repository owner (UNRESOLVED),none agreed,n/a,branch protection needs admin action
+F-09,S1,A database password is hardcoded in source,FIXED-IN-TREE,EVD-H-03-secret-scan.json (0 findings); tests/test_secret_scan.py,Repository owner (UNRESOLVED),before any deployment,n/a,"value still in git history and in public repo: see F-09 history row DEBT-11, RA-07"
+F-10,S1,.env.example ships a complete DSN with embedded credentials: postgresql://app_shared:Welco,FIXED-IN-TREE,EVD-H-03; scripts/secret_scan.py,Repository owner (UNRESOLVED),before any deployment,n/a,history residual (DEBT-11)
+F-11,S2,.env.example ships AI_GATEWAY_KEY=sk-workshop-hardcoded-example — a key-shaped literal in ,FIXED-IN-TREE,EVD-H-03,Repository owner (UNRESOLVED),before any deployment,n/a,history residual (DEBT-11)
+F-12,S1,.env.example ships OT_VENDOR_TOKEN=replace-me-but-currently-shared — the comment itself do,FIXED-IN-TREE,EVD-H-03,Repository owner (UNRESOLVED),before any deployment,n/a,history residual (DEBT-11)
+F-13,S2,".env.example sets LOG_LEVEL=DEBUG as the default, meaning verbose logging of operational p",FIXED,tests/test_config.py,n/a,n/a,n/a,
+F-14,S1,"No secret detection anywhere: no scanner in CI, no pre-commit hooks, no rotation policy",FIXED,scripts/secret_scan.py in CI run 2; tests/test_secret_scan.py,n/a,n/a,n/a,
+F-15,S2,The IaC emits a credential artifact,FIXED,tests/test_config.py; infra/terraform/main.tf emits no credential,n/a,n/a,n/a,
+F-16,S2,"No encryption posture exists: no TLS configuration, no at-rest statement, no key managemen",DEFERRED,GAP-01; privacy-impact-assessment.md,Platform lead (UNRESOLVED),with OQ-01,n/a,TLS and at-rest encryption belong to an undecided platform
+F-17,S1,Authorisation is a client-supplied HTTP header,FIXED,"tests/test_identity_policy.py; EVD-H-04; EVD-L-03 RT-02/RT-11 baseline succeed, v2 fail",n/a,n/a,n/a,
+F-18,S1,"The role check is a flat five-element allow-list with no resource, tenant, facility, purpo",FIXED,policy engine + access-semantics.yaml; EVD-H-04 allow/deny matrix,n/a,n/a,n/a,scope narrowing by hub/fleet not enforceable (DEBT-05)
+F-19,S1,The allow-list contains a persona from another domain,FIXED,characterization AB-04; RT-03,n/a,n/a,n/a,
+F-20,S1,The AI endpoint has no authorisation check whatsoever,FIXED,characterization AB-06; RT-01,n/a,n/a,n/a,
+F-21,S1,"policy/opa/access.rego is role-only (admin → all, operator → read)",FIXED,policy/opa/access.rego generated from access-semantics; opa check and opa test green in CI run 2,n/a,n/a,n/a,"engine in request path is Python; OPA parity test skipped locally, run in CI"
+F-22,S1,Prompt injection surface,FIXED,"tests/test_ai_gateway.py; RT-07 baseline succeeds, v2 fails",n/a,n/a,n/a,tested with constructed payloads only (F-60)
+F-23,S2,Using str.format() on attacker-influenceable content is additionally a format-string injec,FIXED,tests/test_ai_gateway.py (no str.format on data),n/a,n/a,n/a,
+F-24,S1,"The system self-reports that no guardrail exists: the response literal is ""guardrail_statu",FIXED,characterization AB-07; RT-09,n/a,n/a,n/a,guardrail is deterministic; untested against a real model
+F-25,S1,No output schema validation,FIXED,schema validation in gateway; EVD-H-07,n/a,n/a,n/a,
+F-26,S1,No human approval gate,FIXED,tests/test_human_control.py (9); RT-10,n/a,n/a,n/a,"self-approval still possible (HC-R-01, RA-04)"
+F-27,S1,"Model provenance is a module constant (MODEL_VERSION = ""local-sim-v1"")",FIXED,"prompts.lock.json, models.lock.json, registry; tests/test_prompt_lock.py",n/a,n/a,n/a,
+F-28,S2,Token accounting is fabricated: token_estimate = len(prompt.split()) * 2,PARTIAL,tokens are estimates; EVD-H-07,AI lead (UNRESOLVED),with OQ-02,n/a,real counts only with a real model
+F-29,S1,The AI output is not derived from the record's meaning,PARTIAL,deterministic summary from allow-listed facts (AB-08),AI lead (UNRESOLVED),with OQ-02,n/a,"ETA Prediction, Route Optimization, Exception Copilot remain NOT IMPLEMENTED; answer quality unproven"
+F-30,S1,Cross-entity primary-key collision,FIXED,tests/test_record_lookup.py; RT-06,n/a,n/a,n/a,REC-0001 rejected by key pattern; owner intent OQ-15 unresolved
+F-31,S1,"Record lookup scans every column, not the key",FIXED,tests/test_record_lookup.py; RT-04,n/a,n/a,n/a,
+F-32,S1,A missed lookup silently returns the wrong record,FIXED,characterization + 404/422; RT-05,n/a,n/a,n/a,
+F-33,S2,"Three duplicate business keys in every dataset, at a consistent *-00004, *-00013, *-00019 ",FIXED,tests/test_etl_quarantine.py; EVD-H-06,n/a,n/a,n/a,quarantined to data/quarantine; fixture untouched
+F-34,S2,One fully-blank mandatory row in every dataset — every non-key column empty (10 blank colu,FIXED,tests/test_etl_quarantine.py,n/a,n/a,n/a,
+F-35,S2,One impossible timestamp per timestamped dataset: 1900-01-01T00:00:00 in shipments.promise,FIXED,tests/test_etl_quarantine.py,n/a,n/a,n/a,
+F-36,S2,tracking_events.confidence spans 0.001–1.42,FIXED,ETL validation rules; EVD-H-06,n/a,n/a,n/a,
+F-37,S1,No semantic layer: categorical columns are polluted with workflow-status vocabulary,FIXED,"semantic-layer/ (status-taxonomy, enum-violations.md); enforced in ETL",n/a,n/a,n/a,"enum meaning of 14 tokens is inferred, not owner-confirmed"
+F-38,S2,Referential integrity is unenforced,FIXED,ETL orphan and duplicate-booking checks; EVD-H-06,n/a,n/a,n/a,
+F-39,S1,A retry storm is already visible in the data,FIXED,retry ceiling 5 and idempotency key; tests/test_carrier_saga.py; EVD-J-05,n/a,n/a,n/a,against a simulated carrier only
+F-40,S2,ETL counts defects and discards them,FIXED,tests/characterization; non-zero exit above threshold; EVD-H-06,n/a,n/a,n/a,
+F-41,S2,"The ETL has no run identifier, watermark or idempotency key",FIXED,run_id and load_id in ETL report,n/a,n/a,n/a,
+F-42,S1,About one third of the event stream cannot be correlated,PARTIAL,new events carry correlation id (tests/test_audit_chain.py); N2 reconstruction,Data owner (UNRESOLVED),none agreed,n/a,"historical events.jsonl unchanged: 1,992 of 3,000 unusable (D-012)"
+F-43,S1,"The audit event records only ts, action and details",FIXED,characterization AB-09; EVD-N-02 field coverage 10/10,n/a,n/a,n/a,
+F-44,S1,"The audit sink is a local file written by the application itself — <repo>/logs/audit.log, ",PARTIAL,hash-chained audit; /audit/verify; tamper test,Platform lead (UNRESOLVED),none agreed,n/a,sink still a local file written by the audited process (DEBT-04)
+F-45,S2,datetime.utcnow() yields a naive timestamp with no timezone marker,FIXED,timezone-aware UTC timestamps in the v2 chain; tests/test_audit_chain.py,n/a,n/a,n/a,legacy shim apps/api/services/audit.py still calls utcnow(); documented as not called by the API (DEBT-12)
+F-46,S1,"No tracing, no metrics, no SLOs, no dashboards-as-code, no alerting, no error budget",PARTIAL,"/ready, /metrics, 3 dashboards, 15 alerts as code (EVD-N-01: 31 rules, 0 failed)",SRE (UNRESOLVED),none agreed,n/a,no traces; no collector has ever run; no alert recipients
+F-47,S2,CI executes commands but produces no evidence,PARTIAL,"CI ran on GitHub (runs 37774970836 failed, 37776230304 green on 3.11 and 3.14): lint, types, secret scan, coverage, OPA, evidence artifacts",Repository owner (UNRESOLVED),none agreed,n/a,CI has no SAST or dependency-audit or SBOM step (run locally in M1)
+F-48,S2,"The Terraform is a local_file resource with no provider, no backend, no state management a",DEFERRED,infra/terraform/main.tf emits no credential but provisions nothing,Platform lead (UNRESOLVED),with OQ-01,n/a,M-X2 NOT MET
+F-49,S2,"supply-chain/dependency-risk-register.md correctly names ""no SBOM"" and ""no provenance"" as ",FIXED,"EVD-M-01 SBOM runtime 21 and dev 58 components, pip-audit 0, bandit 12 triaged",n/a,n/a,n/a,SBOM not produced by CI
+F-50,S2,The API contract omits both business endpoints,FIXED,OpenAPI drift test tests/test_contract_ops.py; sanity_check openapi_route_diff clean,n/a,n/a,n/a,
+F-51,S2,The characterization test characterises nothing,FIXED,tests/characterization (11 behaviours); EVD-C-08,n/a,n/a,n/a,
+F-52,S2,tests/playwright/operations.spec.ts asserts that body is visible against an application th,CHANGED,Playwright spec replaced in effect by tests/test_ops_view.py and EVD-J-04 Chromium run,Dev lead (UNRESOLVED),none agreed,n/a,spec not run with npx (TEVV-R-07)
+F-53,S2,A known architectural divergence is documented and unmanaged,FIXED,docs/10-architecture/adrs/ADR-0002 supersedes ADR-0001,n/a,n/a,n/a,
+F-54,S2,Data remediation will break the repository's own contract test,FIXED,curated layer; fixture immutable; make smoke original assertions kept,n/a,n/a,n/a,
+F-55,S3,"scripts/sanity_check.py hard-requires the paths docs/transformation-roadmap.md, docs/domai",FIXED,sanity_check required paths preserved,n/a,n/a,n/a,
+F-56,S2,"The incident runbook declares itself *""intentionally incomplete""*",FIXED,docs/29-incident-bcdr (13 docs),n/a,n/a,n/a,tabletop was one author (TT-1); no on-call exists (GAP-06)
+F-57,S2,No business KPI data exists,PARTIAL,baseline KPI proxies frozen (C1); after-KPIs unchanged (O1),Business sponsor (UNRESOLVED),none agreed,n/a,no business KPI exists; verified monetary benefit nil
+F-58,S3,ai_invocations.csv also has an orphan shipment reference (REC-0001 row); not in the origin,FIXED,tests/test_etl_quarantine.py,n/a,n/a,n/a,
+F-59,S3,171 of 351 shipments have actual weight above declared weight (meaning unknown),ACCEPTED-PROPOSED,flagged in ETL; DEBT-09,Business owner (UNRESOLVED),none agreed,NONE (unsigned),"approver: NONE; 171 rows actual>declared, meaning unknown"
+F-60,S2,data/README.md claims untrusted text payloads for prompt-injection testing; no free-text f,FIXED,data/README.md corrected; tests use constructed payloads,n/a,n/a,n/a,
+F-61,S3,routes.weather_risk holds numeric 1.42 in a categorical field,FIXED,ETL enum rule,n/a,n/a,n/a,
+F-62,S3,Every dataset has one malformed key *-BAD1,FIXED,tests/test_etl_quarantine.py,n/a,n/a,n/a,
