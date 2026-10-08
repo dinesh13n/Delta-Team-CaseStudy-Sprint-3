@@ -8,16 +8,26 @@ Distributed workflows + real-time data + failure engineering + cost
 
 ## Quick Start
 
+Requires Python 3.11 or 3.14 and the repository root layout (the `semantic-layer/` folder sits next to this directory).
+
 ```bash
-python -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-pytest -q
-python etl/run_daily_batch.py --sample
-uvicorn apps/api.main:app --reload
+make install          # venv + hash-pinned dependencies (pip --require-hashes)
+make etl              # builds data/curated and data/quarantine from the immutable fixture
+export AUTH_SECRET="$(python3 -c 'import secrets; print(secrets.token_urlsafe(48))')"   # local only, never committed
+make test             # unit, contract and characterization tests
+make run              # uvicorn apps.api.main:app --reload  (module path uses dots, not slashes)
 ```
 
-The Angular portal is represented as a lightweight scaffold under `apps/web/` with components, services, route definitions, forms, and Playwright tests. It is deliberately not fully wired, so participants can modernize it without fighting framework setup.
+Get a development token (local only) and call the API:
+
+```bash
+TOKEN=$(.venv/bin/python -c "import os; from apps.api.security.tokens import issue_dev_token as t; print(t(os.environ['AUTH_SECRET'], 'me', 'dispatcher'))")
+curl -H "Authorization: Bearer $TOKEN" http://127.0.0.1:8000/records/SHI-00002
+```
+
+Gates: `make gates` runs lint, types, secret scan, ETL, tests, semantic-layer tests and the smoke check.
+
+`apps/web/` is a small TypeScript scaffold (one service, one component, one Playwright spec). It is not an Angular application: there is no framework dependency, routing or build (finding F-05, open question OQ-06). `npm run lint` checks that the sources parse. The operational view for the MVP is the OpenAPI UI at `/docs`.
 
 ## Synthetic Data
 

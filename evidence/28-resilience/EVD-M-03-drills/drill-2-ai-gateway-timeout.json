@@ -1,0 +1,74 @@
+{
+  "findings": [
+    "F-M3-02: a timed-out provider call cannot be killed; the worker thread is abandoned and keeps running until the provider returns. The pool is bounded (8 workers) but a hanging provider can exhaust it. The Bulkhead primitive exists and is tested but is NOT wired to the gateway. Accepted for the pilot (no real model); wire it before a model is enabled."
+  ],
+  "hypothesis": "When the model hangs or fails the AI endpoint degrades to the deterministic fallback within the timeout, the core workflow stays up, the breaker stops calling the dependency, and the system recovers by itself.",
+  "id": "DRILL-2",
+  "method": "Replace the gateway provider with (a) a provider that sleeps 2 s (timeout 0.3 s), (b) a provider that always raises (breaker threshold 3, reset 1 s), (c) a healthy provider after the reset window, (d) AI switched off. Core endpoints are called throughout.",
+  "name": "AI gateway timeout and core-workflow degradation",
+  "observations": {
+    "metrics_ai_fallback_lines": [
+      "ai_fallback_total{reason=\"circuit_open\"} 4",
+      "ai_fallback_total{reason=\"provider_error\"} 2",
+      "ai_fallback_total{reason=\"provider_timeout\"} 1"
+    ],
+    "phase0_deterministic": {
+      "ai_p50_ms": 7.15,
+      "core_group_p50_ms": 24.13
+    },
+    "phase1_slow_provider": {
+      "ai_status": 200,
+      "ai_wall_ms": 308.3,
+      "core_group_ms": 22.6,
+      "core_while_provider_hangs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "fallback_reason": "provider_timeout",
+      "generated_by": "fallback",
+      "provider_sleep_ms": 2000,
+      "timeout_ms": 300
+    },
+    "phase2_provider_down": {
+      "provider_calls": 2,
+      "reasons_in_order": [
+        "provider_error",
+        "provider_error",
+        "circuit_open",
+        "circuit_open",
+        "circuit_open",
+        "circuit_open"
+      ],
+      "requests": 6
+    },
+    "phase3_recovery": {
+      "first_after_reset": [
+        "model",
+        null
+      ],
+      "provider_calls": 2,
+      "second": [
+        "model",
+        null
+      ]
+    },
+    "phase4_ai_disabled": {
+      "ai_status": 503,
+      "core": [
+        200,
+        200,
+        200
+      ]
+    }
+  },
+  "pass_criteria": [
+    "slow provider: 200 fallback provider_timeout in < 1.2 s; core 200",
+    "down provider: 2 errors then circuit_open (the timeout in phase 1 already counted as the first of 3 failures), provider called 2 times",
+    "after reset window the next call reaches the provider and succeeds",
+    "AI off: 503 on AI, 200 on core"
+  ],
+  "run_utc": "2026-10-08T11:17:29Z",
+  "verdict": "PASS"
+}

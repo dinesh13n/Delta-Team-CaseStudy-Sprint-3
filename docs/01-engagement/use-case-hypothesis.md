@@ -1,24 +1,22 @@
-# Use Case Hypothesis
+# Use-Case Hypothesis
 
 | Field | Value |
 |---|---|
-| Stage | B: Qualification (Spine 1) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 1) |
 | Runbook step | B1 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-01, OQ-02, OQ-03, OQ-05, OQ-11 (see open-qualification-questions.md) |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/00-preflight/ (A4, A5, A6 packs); runbook/04-OPEN-QUESTIONS-REGISTER.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-Hypotheses to test, not decisions (technology choice happens in Stage E).
-| ID | Hypothesis | Test | Class |
-|---|---|---|---|
-| H-1 | Operators lose time and trust because the record shown is not reliably the record requested | Stage C characterization tests on lookup behaviour | [INF] |
-| H-2 | Exception investigation needs a decision trail (who, what data, what advice, what approval) that does not exist | Reconstruct one event end to end (Stage N) | [INF] |
-| H-3 | Duplicate carrier bookings and unbounded retries create avoidable cost and partner risk | C5 data profile on carrier_bookings | [INF] |
-| H-4 | A governed assistant for exception triage may help, but only if bounded and reviewable | Stage E AI-vs-no-AI matrix | [ASM] |
+Hypotheses to be tested, not decisions:
+- H1 [ASM]: the highest-value use is exception investigation (flow 4), because it is the only flow with partial code.
+- H2 [ASM]: most value comes from trustworthy data and traceable decisions, not from a model.
+- H3 [ASM]: the existing AI summary adds little until inputs, approvals and audit are fixed.
+- Evidence needed: KPI baseline (C1), data quality baseline (C5), AI-versus-no-AI decision (E1). No hypothesis is accepted at this stage.

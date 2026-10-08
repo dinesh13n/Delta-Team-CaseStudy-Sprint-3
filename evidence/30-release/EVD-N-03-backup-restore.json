@@ -1,0 +1,58 @@
+{
+  "run_utc": "2026-10-08T11:37:18Z",
+  "scope": "published data layers, audit log, approval store; one process; fixture volume",
+  "backup": {
+    "files": 16,
+    "bytes": 58372,
+    "archive_sha256": "d3e068c7e18dfaa3671ce4eb356affa2f900248553f4eacae212e6aec68285db",
+    "audit_records": 5,
+    "seconds": 0.016
+  },
+  "restore": {
+    "seconds_to_serving": 0.169,
+    "files_restored": 16,
+    "hash_mismatches": []
+  },
+  "before": {
+    "record": "dddfec7636de05044a9be208793826747418b4fe448aea1d54b6dae49d29a47b",
+    "list": "65aaa1af652a606dadd38d1a27f8f6c7f4259662de82d193245c8263b2a5a15a",
+    "data_load_id": "ld-89446323a790",
+    "audit_verify": {
+      "valid": true,
+      "records": 5,
+      "first_bad_index": null
+    },
+    "ready": 200
+  },
+  "after": {
+    "record": "dddfec7636de05044a9be208793826747418b4fe448aea1d54b6dae49d29a47b",
+    "list": "65aaa1af652a606dadd38d1a27f8f6c7f4259662de82d193245c8263b2a5a15a",
+    "data_load_id": "ld-89446323a790",
+    "audit_verify": {
+      "valid": true,
+      "records": 7,
+      "first_bad_index": null
+    },
+    "ready": 200
+  },
+  "checks": {
+    "all_file_hashes_match": true,
+    "same_record_response": true,
+    "same_list_response": true,
+    "same_data_load_id": true,
+    "audit_chain_valid_after_restore": true,
+    "audit_record_count_preserved": true,
+    "audit_extends_after_restore": true,
+    "ready_after_restore": true,
+    "corrupted_backup_detected_by_hash": true,
+    "corrupted_backup_detected_by_chain": true
+  },
+  "all_ok": true,
+  "not_proven": [
+    "restore on a platform, from remote storage, or by a person other than the author",
+    "backup encryption, retention and offsite copy (no storage exists; OQ-01)",
+    "RTO/RPO at production volume: timings are for a 354-row fixture",
+    "restore of secrets or identity configuration (excluded by design)",
+    "point-in-time recovery: only whole-state snapshots exist, so the RPO is the interval between snapshots, which is undefined until a schedule exists"
+  ]
+}

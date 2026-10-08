@@ -1,0 +1,732 @@
+{
+ "datasets": {
+  "shipments.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "shipment_id",
+   "duplicate_keys": {
+    "SHI-00004": 2,
+    "SHI-00013": 2,
+    "SHI-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {
+    "promised_at": {
+     "min": "1900-01-01T00:00:00",
+     "max": "2026-09-21T01:57:00",
+     "out_of_domain": [
+      "1900-01-01T00:00:00"
+     ]
+    }
+   },
+   "numeric": {
+    "declared_weight_kg": {
+     "min": 3.1,
+     "max": 9995.99,
+     "mean": 4934.866,
+     "negative": 0
+    },
+    "actual_weight_kg": {
+     "min": 33.96,
+     "max": 9978.66,
+     "mean": 5064.04,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "origin": {
+     "standard": 21,
+     "manual": 20,
+     "approved": 32,
+     "internal": 25,
+     "requires_review": 27,
+     "legacy": 35,
+     "normal": 25,
+     "pending": 21,
+     "vendor": 29,
+     "degraded": 22,
+     "rejected": 26,
+     "not_enforced": 27,
+     "ai_assisted": 22,
+     "high_risk": 21,
+     "": 1
+    },
+    "destination": {
+     "internal": 23,
+     "requires_review": 24,
+     "approved": 23,
+     "rejected": 23,
+     "legacy": 27,
+     "high_risk": 27,
+     "pending": 31,
+     "manual": 28,
+     "degraded": 20,
+     "normal": 31,
+     "vendor": 24,
+     "not_enforced": 21,
+     "standard": 29,
+     "ai_assisted": 22,
+     "": 1
+    },
+    "service_tier": {
+     "not_enforced": 25,
+     "approved": 25,
+     "requires_review": 34,
+     "vendor": 20,
+     "ai_assisted": 27,
+     "legacy": 26,
+     "manual": 20,
+     "pending": 25,
+     "degraded": 33,
+     "internal": 26,
+     "high_risk": 26,
+     "normal": 19,
+     "rejected": 26,
+     "standard": 21,
+     "": 1
+    },
+    "status": {
+     "queued": 43,
+     "new": 37,
+     "in_progress": 54,
+     "failed": 53,
+     "closed": 38,
+     "approved": 46,
+     "manual_hold": 35,
+     "exception": 47,
+     "": 1
+    },
+    "customs_required": {
+     "false": 189,
+     "true": 164,
+     "": 1
+    },
+    "temperature_controlled": {
+     "false": 173,
+     "true": 180,
+     "": 1
+    }
+   }
+  },
+  "tracking_events.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "event_id",
+   "duplicate_keys": {
+    "EVE-00004": 2,
+    "EVE-00013": 2,
+    "EVE-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {
+    "event_time": {
+     "min": "1900-01-01T00:00:00",
+     "max": "2026-09-20T23:49:00",
+     "out_of_domain": [
+      "1900-01-01T00:00:00"
+     ]
+    }
+   },
+   "numeric": {
+    "sequence_no": {
+     "min": 41.0,
+     "max": 4998.0,
+     "mean": 2398.717,
+     "negative": 0
+    },
+    "confidence": {
+     "min": 0.001,
+     "max": 1.42,
+     "mean": 0.514,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "event_type": {
+     "internal": 20,
+     "high_risk": 24,
+     "standard": 31,
+     "requires_review": 34,
+     "normal": 32,
+     "rejected": 22,
+     "legacy": 23,
+     "vendor": 15,
+     "degraded": 25,
+     "manual": 23,
+     "pending": 36,
+     "ai_assisted": 31,
+     "not_enforced": 21,
+     "approved": 16,
+     "": 1
+    },
+    "source_system": {
+     "high_risk": 36,
+     "legacy": 21,
+     "standard": 25,
+     "vendor": 27,
+     "ai_assisted": 30,
+     "rejected": 23,
+     "normal": 23,
+     "not_enforced": 29,
+     "manual": 21,
+     "internal": 23,
+     "approved": 23,
+     "degraded": 26,
+     "pending": 20,
+     "requires_review": 26,
+     "": 1
+    },
+    "location": {
+     "normal": 26,
+     "vendor": 27,
+     "legacy": 32,
+     "standard": 32,
+     "approved": 25,
+     "rejected": 18,
+     "pending": 24,
+     "not_enforced": 26,
+     "internal": 20,
+     "degraded": 34,
+     "manual": 27,
+     "ai_assisted": 23,
+     "requires_review": 21,
+     "high_risk": 18,
+     "": 1
+    },
+    "duplicate_flag": {
+     "true": 190,
+     "false": 163,
+     "": 1
+    },
+    "timezone": {
+     "pending": 27,
+     "approved": 26,
+     "requires_review": 22,
+     "manual": 18,
+     "ai_assisted": 23,
+     "rejected": 36,
+     "vendor": 22,
+     "not_enforced": 28,
+     "high_risk": 20,
+     "legacy": 34,
+     "standard": 26,
+     "internal": 27,
+     "degraded": 26,
+     "normal": 18,
+     "": 1
+    }
+   }
+  },
+  "vehicles.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "vehicle_id",
+   "duplicate_keys": {
+    "VEH-00004": 2,
+    "VEH-00013": 2,
+    "VEH-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {},
+   "numeric": {
+    "capacity_kg": {
+     "min": 49.44,
+     "max": 9992.94,
+     "mean": 5108.369,
+     "negative": 0
+    },
+    "fuel_level_pct": {
+     "min": 0.0,
+     "max": 0.997,
+     "mean": 0.497,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "vehicle_type": {
+     "standard": 31,
+     "normal": 16,
+     "requires_review": 30,
+     "legacy": 33,
+     "internal": 24,
+     "not_enforced": 31,
+     "approved": 21,
+     "vendor": 35,
+     "pending": 27,
+     "high_risk": 24,
+     "degraded": 20,
+     "ai_assisted": 19,
+     "rejected": 25,
+     "manual": 17,
+     "": 1
+    },
+    "current_location": {
+     "vendor": 21,
+     "pending": 22,
+     "not_enforced": 31,
+     "approved": 14,
+     "manual": 28,
+     "standard": 23,
+     "rejected": 21,
+     "requires_review": 24,
+     "normal": 28,
+     "high_risk": 26,
+     "legacy": 28,
+     "internal": 29,
+     "ai_assisted": 22,
+     "degraded": 36,
+     "": 1
+    },
+    "maintenance_status": {
+     "requires_review": 22,
+     "normal": 29,
+     "rejected": 22,
+     "standard": 16,
+     "degraded": 28,
+     "vendor": 34,
+     "high_risk": 27,
+     "approved": 34,
+     "legacy": 24,
+     "ai_assisted": 14,
+     "internal": 26,
+     "pending": 31,
+     "manual": 25,
+     "not_enforced": 21,
+     "": 1
+    },
+    "cold_chain_capable": {
+     "true": 178,
+     "false": 175,
+     "": 1
+    },
+    "region": {
+     "central-5": 65,
+     "north-1": 60,
+     "east-4": 60,
+     "remote-6": 49,
+     "south-2": 68,
+     "west-3": 51,
+     "": 1
+    }
+   }
+  },
+  "routes.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "route_id",
+   "duplicate_keys": {
+    "ROU-00004": 2,
+    "ROU-00013": 2,
+    "ROU-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {},
+   "numeric": {
+    "distance_km": {
+     "min": 24.08,
+     "max": 9985.94,
+     "mean": 5105.227,
+     "negative": 0
+    },
+    "estimated_cost": {
+     "min": 26.61,
+     "max": 9995.55,
+     "mean": 4935.48,
+     "negative": 0
+    },
+    "eta_minutes": {
+     "min": 3.0,
+     "max": 4995.0,
+     "mean": 2498.858,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "origin": {
+     "pending": 35,
+     "vendor": 25,
+     "legacy": 29,
+     "manual": 23,
+     "high_risk": 26,
+     "ai_assisted": 19,
+     "rejected": 24,
+     "approved": 22,
+     "degraded": 23,
+     "standard": 27,
+     "normal": 21,
+     "internal": 26,
+     "requires_review": 26,
+     "not_enforced": 27,
+     "": 1
+    },
+    "destination": {
+     "degraded": 23,
+     "ai_assisted": 27,
+     "not_enforced": 28,
+     "high_risk": 25,
+     "legacy": 22,
+     "manual": 37,
+     "internal": 16,
+     "vendor": 25,
+     "approved": 29,
+     "pending": 28,
+     "rejected": 26,
+     "requires_review": 19,
+     "standard": 20,
+     "normal": 28,
+     "": 1
+    },
+    "restricted_zone_flag": {
+     "true": 173,
+     "false": 180,
+     "": 1
+    },
+    "weather_risk": {
+     "internal": 36,
+     "legacy": 34,
+     "high_risk": 30,
+     "normal": 32,
+     "requires_review": 20,
+     "rejected": 24,
+     "manual": 24,
+     "ai_assisted": 27,
+     "pending": 22,
+     "standard": 14,
+     "degraded": 24,
+     "approved": 25,
+     "not_enforced": 20,
+     "vendor": 20,
+     "": 1,
+     "1.42": 1
+    },
+    "border_risk": {
+     "approved": 27,
+     "legacy": 19,
+     "degraded": 37,
+     "ai_assisted": 28,
+     "high_risk": 23,
+     "standard": 16,
+     "internal": 27,
+     "requires_review": 28,
+     "rejected": 29,
+     "vendor": 17,
+     "not_enforced": 35,
+     "pending": 28,
+     "manual": 14,
+     "normal": 25,
+     "": 1
+    }
+   }
+  },
+  "carrier_bookings.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "booking_id",
+   "duplicate_keys": {
+    "BOO-00004": 2,
+    "BOO-00013": 2,
+    "BOO-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {
+    "created_at": {
+     "min": "1900-01-01T00:00:00",
+     "max": "2026-09-21T17:00:00",
+     "out_of_domain": [
+      "1900-01-01T00:00:00"
+     ]
+    }
+   },
+   "numeric": {
+    "retry_count": {
+     "min": 51.0,
+     "max": 4995.0,
+     "mean": 2508.462,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "carrier": {
+     "legacy": 36,
+     "manual": 27,
+     "not_enforced": 21,
+     "normal": 28,
+     "internal": 18,
+     "requires_review": 25,
+     "standard": 29,
+     "pending": 25,
+     "high_risk": 19,
+     "ai_assisted": 23,
+     "degraded": 23,
+     "approved": 29,
+     "vendor": 31,
+     "rejected": 19,
+     "": 1
+    },
+    "status": {
+     "new": 43,
+     "closed": 49,
+     "approved": 36,
+     "manual_hold": 51,
+     "queued": 48,
+     "failed": 50,
+     "in_progress": 41,
+     "exception": 35,
+     "": 1
+    },
+    "compensation_required": {
+     "false": 168,
+     "true": 185,
+     "": 1
+    }
+   }
+  },
+  "ai_invocations.csv": {
+   "rows": 354,
+   "manifest_expected": 354,
+   "key": "ai_call_id",
+   "duplicate_keys": {
+    "AI_-00004": 2,
+    "AI_-00013": 2,
+    "AI_-00019": 2
+   },
+   "rows_with_blank": [
+    353
+   ],
+   "fully_blank_rows": 0,
+   "first_row_key": "REC-0001",
+   "rec_prefixed_keys": [
+    "REC-0001"
+   ],
+   "timestamps": {},
+   "numeric": {
+    "route_candidates": {
+     "min": 16.0,
+     "max": 4979.0,
+     "mean": 2505.632,
+     "negative": 0
+    },
+    "token_count": {
+     "min": 40.0,
+     "max": 4989.0,
+     "mean": 2562.13,
+     "negative": 0
+    }
+   },
+   "categorical": {
+    "use_case": {
+     "standard": 24,
+     "not_enforced": 27,
+     "legacy": 26,
+     "requires_review": 29,
+     "approved": 27,
+     "vendor": 32,
+     "ai_assisted": 35,
+     "normal": 27,
+     "rejected": 18,
+     "pending": 16,
+     "degraded": 28,
+     "internal": 21,
+     "manual": 20,
+     "high_risk": 23,
+     "": 1
+    },
+    "model": {
+     "approved": 21,
+     "manual": 30,
+     "legacy": 26,
+     "degraded": 29,
+     "rejected": 23,
+     "requires_review": 29,
+     "not_enforced": 24,
+     "ai_assisted": 30,
+     "internal": 28,
+     "standard": 34,
+     "high_risk": 20,
+     "vendor": 21,
+     "normal": 22,
+     "pending": 16,
+     "": 1
+    },
+    "constraint_violations": {
+     "alpha": 62,
+     "modernized": 67,
+     "legacy": 98,
+     "gamma": 60,
+     "beta": 66,
+     "": 1
+    },
+    "recommendation": {
+     "pending": 28,
+     "normal": 27,
+     "rejected": 28,
+     "degraded": 20,
+     "high_risk": 21,
+     "standard": 32,
+     "vendor": 32,
+     "not_enforced": 20,
+     "legacy": 21,
+     "approved": 15,
+     "requires_review": 34,
+     "internal": 30,
+     "ai_assisted": 19,
+     "manual": 26,
+     "": 1
+    },
+    "human_override": {
+     "requires_review": 39,
+     "not_enforced": 31,
+     "approved": 22,
+     "internal": 16,
+     "vendor": 25,
+     "high_risk": 27,
+     "ai_assisted": 24,
+     "normal": 25,
+     "manual": 24,
+     "legacy": 24,
+     "degraded": 23,
+     "rejected": 22,
+     "standard": 30,
+     "pending": 21,
+     "": 1
+    }
+   }
+  }
+ },
+ "range_anomalies": {
+  "tracking_confidence_gt1": 1,
+  "vehicle_fuel_gt1_or_lt0": 0,
+  "shipments_actual_gt_declared": 171
+ },
+ "referential_integrity": {
+  "tracking_events.csv": {
+   "orphan_count": 1,
+   "orphan_keys": [
+    "REC-0001"
+   ]
+  },
+  "carrier_bookings.csv": {
+   "orphan_count": 1,
+   "orphan_keys": [
+    "REC-0001"
+   ],
+   "shipments_with_multiple_bookings": 3
+  },
+  "ai_invocations.csv": {
+   "orphan_count": 1,
+   "orphan_keys": [
+    "REC-0001"
+   ]
+  }
+ },
+ "carrier_retry": {
+  "min": 51,
+  "max": 4995,
+  "mean": 2508.5
+ },
+ "ai_tokens": {
+  "rows_parsed": 353,
+  "sum": 904432
+ },
+ "events": {
+  "count": 3000,
+  "manifest_expected": 3000,
+  "null_correlation_id": 983,
+  "correlation_complete_pct": 67.2,
+  "severity": {
+   "info": 593,
+   "debug": 589,
+   "warn": 630,
+   "error": 590,
+   "critical": 598
+  },
+  "error_plus_critical": 1188,
+  "latency_ms": {
+   "p50": 1667,
+   "p95": 13709,
+   "p99": 14776,
+   "max": 14999
+  },
+  "cost_units": {
+   "total": 6735.29,
+   "mean": 2.2451
+  },
+  "by_entity": {
+   "routes": {
+    "events": 527,
+    "cost": 1197.56,
+    "cost_per_event": 2.272
+   },
+   "vehicles": {
+    "events": 475,
+    "cost": 1069.13,
+    "cost_per_event": 2.251
+   },
+   "shipments": {
+    "events": 474,
+    "cost": 1063.77,
+    "cost_per_event": 2.244
+   },
+   "carrier_bookings": {
+    "events": 519,
+    "cost": 1131.77,
+    "cost_per_event": 2.181
+   },
+   "tracking_events": {
+    "events": 500,
+    "cost": 1121.66,
+    "cost_per_event": 2.243
+   },
+   "ai_invocations": {
+    "events": 505,
+    "cost": 1151.39,
+    "cost_per_event": 2.28
+   }
+  },
+  "duplicate_event_ids": 0,
+  "actors_not_in_api_role_list": [
+   "carrier_partner",
+   "customer_support",
+   "customs_agent",
+   "dispatcher",
+   "driver",
+   "fleet_manager",
+   "warehouse_ops"
+  ]
+ }
+}

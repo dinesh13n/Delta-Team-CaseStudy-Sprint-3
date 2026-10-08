@@ -1,0 +1,40 @@
+2026-10-08T10:30:54Z
+...xxxxxxx.............................................................. [ 77%]
+.....................                                                    [100%]
+=============================== warnings summary ===============================
+../../../fde/venv314/lib/python3.14/site-packages/fastapi/testclient.py:1
+  /sessions/rcw-01ybvx9i8yefdrry45yviml9/fde/venv314/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.7-final-0 ________________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+apps/api/ai/gateway.py                  116     12    90%   152-153, 172, 174, 177, 198-199, 212-213, 229-231
+apps/api/ai/providers.py                 55      2    96%   79, 95
+apps/api/ai/registry.py                  24      0   100%
+apps/api/ai/sanitize.py                  20      0   100%
+apps/api/approvals.py                    41      3    93%   25-27
+apps/api/audit_chain.py                  74      1    99%   83
+apps/api/config.py                       57      2    96%   21, 25
+apps/api/correlation.py                  17      0   100%
+apps/api/data/repository.py              72      2    97%   50-51
+apps/api/errors.py                       29      1    97%   58
+apps/api/kpis.py                         41      0   100%
+apps/api/main.py                        206     12    94%   72-73, 117-118, 161-162, 203-206, 219, 236, 251
+apps/api/metrics.py                      47      0   100%
+apps/api/security/policy.py              63      0   100%
+apps/api/security/tokens.py              36      1    97%   50
+apps/api/services/ai_gateway.py           1      1     0%   7
+apps/api/services/audit.py                9      9     0%   6-18
+apps/api/services/domain_service.py      15      2    87%   26-27
+etl/run_daily_batch.py                   83      1    99%   130
+etl/validation.py                       121      1    99%   91
+-------------------------------------------------------------------
+TOTAL                                  1127     50    96%
+
+7 empty files skipped.
+=========================== short test summary info ============================
+86 passed, 7 xfailed, 1 warning in 16.30s

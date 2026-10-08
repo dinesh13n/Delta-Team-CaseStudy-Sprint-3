@@ -1,0 +1,255 @@
+# PROVISIONAL (owners UNRESOLVED). Persona x entity x field x purpose. Proposals [ASM], not confirmed policy.
+status: PROVISIONAL
+principle: deny by default; access depends on persona, entity, field, purpose and scope; sensitive fields are masked
+  unless explicitly allowed
+sensitive_fields:
+- shipments.customer_id
+- tracking_events.location
+- vehicles.current_location
+- vehicles.driver_id
+personas:
+  dispatcher:
+    shipments:
+      access: write
+      scope: all active
+      purposes:
+      - dispatch
+      field_overrides:
+        customer_id: mask
+    tracking_events:
+      access: read
+      scope: all
+      purposes:
+      - dispatch
+      field_overrides:
+        location: allow
+    vehicles:
+      access: read
+      scope: all
+      purposes:
+      - dispatch
+      field_overrides:
+        current_location: allow
+        driver_id: mask
+    routes:
+      access: write
+      scope: all
+      purposes:
+      - dispatch
+      - route_planning
+      field_overrides: {}
+    carrier_bookings:
+      access: read
+      scope: all
+      purposes:
+      - dispatch
+      field_overrides: {}
+    ai_invocations:
+      access: read
+      scope: all
+      purposes:
+      - dispatch
+      field_overrides: {}
+  warehouse_ops:
+    shipments:
+      access: read
+      scope: own hub
+      purposes:
+      - handling
+      field_overrides:
+        customer_id: deny
+    tracking_events:
+      access: write
+      scope: own hub
+      purposes:
+      - handling
+      field_overrides:
+        location: mask
+    vehicles:
+      access: read
+      scope: own hub
+      purposes:
+      - handling
+      field_overrides:
+        current_location: mask
+        driver_id: deny
+    routes:
+      access: read
+      scope: own hub
+      purposes:
+      - handling
+      field_overrides: {}
+    carrier_bookings:
+      access: none
+    ai_invocations:
+      access: none
+  fleet_manager:
+    shipments:
+      access: read
+      scope: own fleet
+      purposes:
+      - fleet_management
+      field_overrides:
+        customer_id: deny
+    tracking_events:
+      access: read
+      scope: own fleet
+      purposes:
+      - fleet_management
+      field_overrides:
+        location: allow
+    vehicles:
+      access: write
+      scope: own fleet
+      purposes:
+      - fleet_management
+      field_overrides:
+        current_location: allow
+        driver_id: allow
+    routes:
+      access: read
+      scope: own fleet
+      purposes:
+      - fleet_management
+      field_overrides: {}
+    carrier_bookings:
+      access: none
+    ai_invocations:
+      access: none
+  driver:
+    shipments:
+      access: read
+      scope: assigned only
+      purposes:
+      - delivery
+      field_overrides:
+        customer_id: deny
+    tracking_events:
+      access: none
+    vehicles:
+      access: read
+      scope: own vehicle
+      purposes:
+      - delivery
+      field_overrides:
+        current_location: allow
+        driver_id: allow
+    routes:
+      access: read
+      scope: assigned only
+      purposes:
+      - delivery
+      field_overrides: {}
+    carrier_bookings:
+      access: none
+    ai_invocations:
+      access: none
+  customs_agent:
+    shipments:
+      access: read
+      scope: customs cases
+      purposes:
+      - customs_clearance
+      field_overrides:
+        customer_id: allow
+    tracking_events:
+      access: read
+      scope: customs cases
+      purposes:
+      - customs_clearance
+      field_overrides:
+        location: mask
+    vehicles:
+      access: none
+    routes:
+      access: none
+    carrier_bookings:
+      access: none
+    ai_invocations:
+      access: none
+  customer_support:
+    shipments:
+      access: read
+      scope: own customers
+      purposes:
+      - customer_support
+      field_overrides:
+        customer_id: allow
+    tracking_events:
+      access: read
+      scope: own customers
+      purposes:
+      - customer_support
+      field_overrides:
+        location: mask
+    vehicles:
+      access: none
+    routes:
+      access: none
+    carrier_bookings:
+      access: read
+      scope: own customers
+      purposes:
+      - customer_support
+      field_overrides: {}
+    ai_invocations:
+      access: read
+      scope: own customers
+      purposes:
+      - customer_support
+      field_overrides: {}
+  carrier_partner:
+    shipments:
+      access: read
+      scope: own bookings
+      purposes:
+      - booking
+      field_overrides:
+        customer_id: deny
+        origin: allow
+        destination: allow
+    tracking_events:
+      access: none
+    vehicles:
+      access: none
+    routes:
+      access: none
+    carrier_bookings:
+      access: write
+      scope: own carrier only
+      purposes:
+      - booking
+      field_overrides: {}
+    ai_invocations:
+      access: none
+  ai_agent:
+    shipments:
+      access: read
+      scope: request-scoped
+      purposes:
+      - exception_summary
+      field_overrides:
+        customer_id: deny
+    tracking_events:
+      access: read
+      scope: request-scoped
+      purposes:
+      - exception_summary
+      field_overrides:
+        location: deny
+    vehicles:
+      access: none
+    routes:
+      access: read
+      scope: request-scoped
+      purposes:
+      - exception_summary
+      field_overrides: {}
+    carrier_bookings:
+      access: read
+      scope: request-scoped
+      purposes:
+      - exception_summary
+      field_overrides: {}
+    ai_invocations:
+      access: none

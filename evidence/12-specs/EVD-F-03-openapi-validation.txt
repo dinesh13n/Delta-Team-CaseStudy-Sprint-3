@@ -1,0 +1,1 @@
+openapi-spec-validator: VALID (OpenAPI 3.0.3), 10 paths, 10 operations, 2026-10-08

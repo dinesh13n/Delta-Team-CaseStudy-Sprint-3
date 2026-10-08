@@ -1,0 +1,37 @@
+EVD-H-02 documented Quick Start executed on a CLEAN COPY of the transformed tree. 2026-10-08T10:25:50Z
+Interpreter: Python 3.14.7 ; host: Linux 6.8.0-138-generic
+
+$ /sessions/rcw-01ybvx9i8yefdrry45yviml9/.local/share/uv/python/cpython-3.14-linux-x86_64-gnu/bin/python3.14 -m venv .venv
+[exit code: 0]
+
+$ .venv/bin/python -m pip install --require-hashes -r requirements-dev.txt
+Installing collected packages: distlib, typing-extensions, types-pyyaml, six, ruff, rpds-py, pyyaml, python-dotenv, pyjwt, pygments, pluggy, platformdirs, pathspec, pathable, packaging, nodeenv, mypy-extensions, librt, lazy-object-proxy, iniconfig, idna, identify, h11, filelock, coverage, click, cfgv, certifi, attrs, ast-serialize, annotated-types, annotated-doc, uvicorn, typing-inspection, rfc3339-validator, referencing, python-discovery, pytest, pydantic-core, opentelemetry-api, mypy, httpcore, anyio, virtualenv, starlette, pytest-cov, pydantic, jsonschema-specifications, jsonschema-path, httpx, pydantic-settings, pre-commit, jsonschema, fastapi, openapi-schema-validator, openapi-spec-validator
+
+Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 ast-serialize-0.12.1 attrs-26.1.0 certifi-2026.7.22 cfgv-3.5.0 click-8.5.0 coverage-7.16.2 distlib-0.4.3 fastapi-0.142.4 filelock-4.0.12 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 identify-2.6.20 idna-3.20 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-path-0.5.0 jsonschema-specifications-2025.9.1 lazy-object-proxy-1.12.0 librt-0.16.0 mypy-2.4.0 mypy-extensions-1.1.0 nodeenv-1.11.0 openapi-schema-validator-0.9.0 openapi-spec-validator-0.9.0 opentelemetry-api-1.45.1 packaging-26.3 pathable-0.6.0 pathspec-1.1.1 platformdirs-4.12.4 pluggy-1.6.0 pre-commit-4.6.2 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pygments-2.21.0 pyjwt-2.15.1 pytest-9.1.1 pytest-cov-7.1.0 python-discovery-1.6.1 python-dotenv-1.2.4 pyyaml-6.0.3 referencing-0.37.0 rfc3339-validator-0.1.4 rpds-py-2026.9.1 ruff-0.16.10 six-1.17.0 starlette-1.7.0 types-pyyaml-6.0.12.20260906 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0 virtualenv-21.14.5
+[exit code: 0]
+
+$ make etl PYTHON=.venv/bin/python
+.venv/bin/python etl/run_daily_batch.py --sample
+{'processed': 354, 'malformed': 1, 'sample': True}
+{"run_id": "run-20261008T102614Z", "load_id": "ld-0c0f0315d16f", "totals": {"processed": 2124, "quarantined": 30}, "quarantine_ratio": 0.014124, "status": "pass"}
+[exit code: 0]
+
+$ .venv/bin/python -m pytest -q
+XFAIL tests/characterization/test_characterization_baseline.py::test_ai_guardrail_status_not_enforced - APPROVED CHANGE AB-07: guardrail_status is evaluated (enforced or blocked) (F-24) (spec FR-11, AC-12)
+XFAIL tests/characterization/test_characterization_baseline.py::test_ai_summary_echoes_first_column - APPROVED CHANGE AB-08: summary is derived from allow-listed record facts (F-29) (spec FR-09, AC-12)
+XFAIL tests/characterization/test_characterization_baseline.py::test_audit_event_has_no_actor_or_correlation - APPROVED CHANGE AB-09: audit v2 carries actor, correlation id, tenant, resource, policy decision (F-43) (spec FR-13, AC-18)
+85 passed, 1 skipped, 7 xfailed, 1 warning in 7.68s
+[exit code: 0]
+
+$ make run (uvicorn apps.api.main:app, 6 s)
+--- GET /health
+{"status":"ok","repo":"07-logistics-shipment-fleet-routing-ops"}  [http 200]
+--- GET /ready
+{"status": "ready", "checks": {"data:shipments": true, "data:tracking_events": true, "data:vehicles": true, "data:routes": true, "data:carrier_bookings": true, "data:ai_invocations": true, "auth_confi
+--- GET /records/SHI-00002 without token
+{"type":"about:blank","title":"Unauthorized","status":401,"detail":"missing or invalid bearer token","correlation_id":"corr-415c81ea89774a1e"}  [http 401]
+--- GET /records/SHI-00002 with token
+{"shipment_id":"SHI-00002","customer_id":"***","origin":"manual","destination":"requires_review","service_tier":"approved","declared_weight_kg":2034.82,"actual_weight_kg":600.31,"promised_at":"2026-08-15T10:05:00","status":"new","customs_required":false,"temperature_controlled":true,"data_quality_fl
+--- GET /records/SHI-99999 with token
+{"type":"about:blank","title":"Not found","status":404,"detail":"no such record","correlation_id":"corr-e879733f1cc9464c"}  [http 404]
+server stopped

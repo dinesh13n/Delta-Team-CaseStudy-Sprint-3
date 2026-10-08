@@ -1,0 +1,13 @@
+# One-command local environment (F-07). Build context is the repository root; run from this directory.
+# NOT RUN: no container runtime was available (CONDITIONAL).
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: 07-logistics-shipment-fleet-routing-ops/Dockerfile
+    ports: ["8000:8000"]
+    environment:
+      APP_ENV: local
+      AUTH_SECRET: ${AUTH_SECRET:?set AUTH_SECRET in your shell or .env (never commit it)}
+    volumes:
+      - ./logs:/app/logs

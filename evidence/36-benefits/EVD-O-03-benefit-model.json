@@ -1,0 +1,202 @@
+{
+  "run_utc": "2026-10-08T11:44:08Z",
+  "status": "ASSUMPTION MODEL: no verified benefit exists (see EVD-O-01/O-02); parameters are illustrative",
+  "unit": "analyst-hours (multiply by a labour rate when OQ-09 is answered)",
+  "horizon_months": 36,
+  "annual_discount": 0.1,
+  "base_volume_per_month": 354,
+  "scenarios": {
+    "optimistic": {
+      "parameters": {
+        "volume_x": 10,
+        "adoption": 0.8,
+        "approval": 0.9,
+        "minutes_saved": 5.0,
+        "ops_hours_month": 16,
+        "build_hours": 600
+      },
+      "monthly_net_hours": 196.4,
+      "npv_hours_36m": 5525.0,
+      "payback_months": 3.1,
+      "break_even_minutes_saved": 0.38,
+      "roi_36m": 10.78
+    },
+    "expected": {
+      "parameters": {
+        "volume_x": 1,
+        "adoption": 0.5,
+        "approval": 0.7,
+        "minutes_saved": 2.0,
+        "ops_hours_month": 16,
+        "build_hours": 600
+      },
+      "monthly_net_hours": -11.9,
+      "npv_hours_36m": -970.2,
+      "payback_months": null,
+      "break_even_minutes_saved": 7.75,
+      "roi_36m": -1.71
+    },
+    "downside": {
+      "parameters": {
+        "volume_x": 1,
+        "adoption": 0.2,
+        "approval": 0.5,
+        "minutes_saved": -1.0,
+        "ops_hours_month": 40,
+        "build_hours": 1200
+      },
+      "monthly_net_hours": -40.6,
+      "npv_hours_36m": -2465.9,
+      "payback_months": null,
+      "break_even_minutes_saved": 67.8,
+      "roi_36m": -2.22
+    }
+  },
+  "sensitivity_on_expected": [
+    {
+      "parameter": "volume_x",
+      "low": 1,
+      "high": 10,
+      "npv_at_low": -970.2,
+      "npv_at_high": 189.0,
+      "swing": 1159.2
+    },
+    {
+      "parameter": "ops_hours_month",
+      "low": 8,
+      "high": 40,
+      "npv_at_low": -720.7,
+      "npv_at_high": -1718.7,
+      "swing": 998.0
+    },
+    {
+      "parameter": "build_hours",
+      "low": 300,
+      "high": 1200,
+      "npv_at_low": -670.2,
+      "npv_at_high": -1570.2,
+      "swing": 900.0
+    },
+    {
+      "parameter": "minutes_saved",
+      "low": -1.0,
+      "high": 5.0,
+      "npv_at_low": -1163.4,
+      "npv_at_high": -777.0,
+      "swing": 386.4
+    },
+    {
+      "parameter": "adoption",
+      "low": 0.2,
+      "high": 0.8,
+      "npv_at_low": -1047.5,
+      "npv_at_high": -892.9,
+      "swing": 154.6
+    },
+    {
+      "parameter": "approval",
+      "low": 0.5,
+      "high": 0.9,
+      "npv_at_low": -1007.0,
+      "npv_at_high": -933.4,
+      "swing": 73.6
+    }
+  ],
+  "volume_vs_minutes_grid": [
+    {
+      "volume_x": 1,
+      "minutes_saved": 0.0,
+      "monthly_net_hours": -16.0,
+      "payback_months": null,
+      "npv_hours_36m": -1099.0
+    },
+    {
+      "volume_x": 1,
+      "minutes_saved": 1.0,
+      "monthly_net_hours": -13.9,
+      "payback_months": null,
+      "npv_hours_36m": -1034.6
+    },
+    {
+      "volume_x": 1,
+      "minutes_saved": 2.0,
+      "monthly_net_hours": -11.9,
+      "payback_months": null,
+      "npv_hours_36m": -970.2
+    },
+    {
+      "volume_x": 1,
+      "minutes_saved": 5.0,
+      "monthly_net_hours": -5.7,
+      "payback_months": null,
+      "npv_hours_36m": -777.0
+    },
+    {
+      "volume_x": 10,
+      "minutes_saved": 0.0,
+      "monthly_net_hours": -16.0,
+      "payback_months": null,
+      "npv_hours_36m": -1099.0
+    },
+    {
+      "volume_x": 10,
+      "minutes_saved": 1.0,
+      "monthly_net_hours": 4.6,
+      "payback_months": 129.0,
+      "npv_hours_36m": -455.0
+    },
+    {
+      "volume_x": 10,
+      "minutes_saved": 2.0,
+      "monthly_net_hours": 25.3,
+      "payback_months": 23.7,
+      "npv_hours_36m": 189.0
+    },
+    {
+      "volume_x": 10,
+      "minutes_saved": 5.0,
+      "monthly_net_hours": 87.2,
+      "payback_months": 6.9,
+      "npv_hours_36m": 2121.0
+    },
+    {
+      "volume_x": 100,
+      "minutes_saved": 0.0,
+      "monthly_net_hours": -16.0,
+      "payback_months": null,
+      "npv_hours_36m": -1099.0
+    },
+    {
+      "volume_x": 100,
+      "minutes_saved": 1.0,
+      "monthly_net_hours": 190.5,
+      "payback_months": 3.1,
+      "npv_hours_36m": 5341.0
+    },
+    {
+      "volume_x": 100,
+      "minutes_saved": 2.0,
+      "monthly_net_hours": 397.0,
+      "payback_months": 1.5,
+      "npv_hours_36m": 11781.0
+    },
+    {
+      "volume_x": 100,
+      "minutes_saved": 5.0,
+      "monthly_net_hours": 1016.5,
+      "payback_months": 0.6,
+      "npv_hours_36m": 31101.0
+    }
+  ],
+  "excluded_to_avoid_double_counting": [
+    "error-avoidance value counted only through minutes saved, not again as separate rework savings",
+    "audit effort saved is NOT added: it is the same review time seen from the auditor's side and has no measured basis",
+    "token cost: 271 tokens per request is below 0.001 analyst-hours at any plausible wage and is omitted"
+  ],
+  "not_modelled": [
+    "revenue effects",
+    "risk-reduction value (no loss data)",
+    "the cost of the incident the controls prevent",
+    "ongoing governance and compliance effort beyond ops_hours_month"
+  ]
+}

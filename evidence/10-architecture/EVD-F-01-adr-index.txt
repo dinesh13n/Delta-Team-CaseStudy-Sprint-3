@@ -1,0 +1,11 @@
+ADR index (generated 2026-10-08)
+ADR-0002-supersede-0001-partial-modernization.md | 1206a3152b408f7d | ADR-0002: Supersedes ADR-0001 (partial modernisation, never revisited)
+ADR-0003-target-runtime-and-dependencies.md | 944aa4ec55d4b062 | ADR-0003: Target runtime and locked dependencies
+ADR-0004-identity-and-authentication.md | e4486a7ae1af2411 | ADR-0004: Verified identity via signed bearer tokens (resolves OQ-07 provisionally)
+ADR-0005-authorisation-policy-as-code.md | 0e8cb35810a4fe42 | ADR-0005: Contextual authorisation from the semantic layer
+ADR-0006-data-layer-and-quarantine.md | 3391a55d265dd2a0 | ADR-0006: Curated layer derived from an immutable fixture (rules OQ-14)
+ADR-0007-ai-gateway-boundary.md | 6e48c75b58e10398 | ADR-0007: Governed model gateway with deterministic fallback
+ADR-0008-audit-and-correlation.md | b79b95f86b3e9ffd | ADR-0008: Hash-chained audit with correlation ids
+ADR-0009-platform-neutral-deployment.md | 8e92250e0fa79e1c | ADR-0009: Container-based, platform-neutral deployment (resolves OQ-01 provisionally)
+ADR-0010-observability.md | bed0a9089f8dded9 | ADR-0010: Structured logs, metrics and traces-ready correlation
+ADR-0001 (subtree docs/ADR/0001-partial-modernization.md): superseded by ADR-0002; the supersession note inside 0001 is applied at Step H12 because the subtree is frozen until Stage H (decision D-009).

@@ -1,0 +1,67 @@
+EVD-C-03 transcript, copy of as-delivered subtree, httpx and pytest-cov installed in venv only. 2026-10-08T09:44:32Z
+
+$ pytest -q --junitxml=junit.xml --cov=apps --cov=etl --cov=legacy --cov=scripts --cov-report=xml --cov-report=term-missing
+...                                                                      [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/starlette/testclient.py:40
+  /sessions/rcw-01ybvx9i8yefdrry45yviml9/work/cbase/repo/.venv/lib/python3.11/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /sessions/rcw-01ybvx9i8yefdrry45yviml9/mnt/Delta-Team-CaseStudy-Sprint-3/evidence/07-repo-assessment/EVD-C-03-junit.xml -
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.11.16-final-0 _______________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+apps/__init__.py                          0      0   100%
+apps/api/__init__.py                      0      0   100%
+apps/api/main.py                         19      5    74%   13-17
+apps/api/services/__init__.py             0      0   100%
+apps/api/services/ai_gateway.py           8      0   100%
+apps/api/services/audit.py                9      0   100%
+apps/api/services/domain_service.py      15      2    87%   18-19
+etl/__init__.py                           0      0   100%
+etl/run_daily_batch.py                   17     17     0%   1-20
+legacy/__init__.py                        0      0   100%
+legacy/reconcile_legacy.py               10     10     0%   2-14
+scripts/sanity_check.py                  20     20     0%   1-33
+-------------------------------------------------------------------
+TOTAL                                    98     54    45%
+Coverage XML written to file /sessions/rcw-01ybvx9i8yefdrry45yviml9/mnt/Delta-Team-CaseStudy-Sprint-3/evidence/07-repo-assessment/EVD-C-03-coverage.xml
+3 passed, 1 warning in 1.10s
+[exit code: 0]
+
+$ make smoke
+python3 scripts/sanity_check.py
+{'status': 'ok', 'repo': '07-logistics-shipment-fleet-routing-ops', 'csv_files': 6, 'events': 3000, 'clean_repo_contract': True}
+[exit code: 0]
+
+$ make etl
+python3 etl/run_daily_batch.py --sample
+{'processed': 354, 'malformed': 1, 'sample': True}
+[exit code: 0]
+
+$ pip freeze (venv)
+annotated-types==0.8.0
+anyio==4.15.1
+certifi==2026.7.22
+click==8.5.0
+coverage==7.16.2
+fastapi==0.115.0
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.20
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.6.0
+pydantic==2.8.2
+pydantic_core==2.20.1
+pytest==8.3.2
+pytest-cov==7.1.0
+python-dotenv==1.0.1
+PyYAML==6.0.2
+starlette==0.38.6
+typing_extensions==4.16.0
+uvicorn==0.30.6

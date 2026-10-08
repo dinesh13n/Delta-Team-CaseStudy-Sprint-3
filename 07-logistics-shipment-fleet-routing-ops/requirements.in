@@ -1,0 +1,7 @@
+# Direct runtime dependencies (loose). The hashed lock is requirements.txt (see ADR-0003, finding F-04).
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.8
+PyYAML>=6.0
+PyJWT>=2.9
+jsonschema>=4.23

@@ -20,6 +20,6 @@ This data is fully synthetic and designed for realistic workshop discovery. It i
 - blank mandatory fields
 - stale or impossible timestamps
 - out-of-range scores
-- untrusted text payloads suitable for prompt-injection testing
+- categorical columns polluted with workflow vocabulary (no free-text injection payloads are present; maximum field length is 19 characters, see F-60). Injection tests use constructed payloads in tests/test_ai_gateway.py
 - missing correlation identifiers
 - mixed legacy and modern source-system semantics

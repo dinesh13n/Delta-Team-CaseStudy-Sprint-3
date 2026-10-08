@@ -1,0 +1,85 @@
+# Alert rules as code (Prometheus rule format). Validated by scripts/validate_observability.py (syntax + every metric/label exists).
+# Thresholds are PROPOSED starting values from the fixture load probe, not tuned on production traffic [ASM].
+groups:
+  - name: logistics-api
+    rules:
+      - alert: ApiHighErrorRate
+        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.02
+        for: 10m
+        labels: {severity: page, slo: availability}
+        annotations: {summary: "More than 2% of requests return 5xx", runbook: "docs/31-observability/operational-runbook.md#a-01"}
+      - alert: ApiLatencyP95High
+        expr: histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m]))) > 0.5
+        for: 10m
+        labels: {severity: ticket, slo: latency}
+        annotations: {summary: "p95 request latency above 500 ms", runbook: "docs/31-observability/operational-runbook.md#a-02"}
+      - alert: AuthDeniedSpike
+        expr: sum(rate(auth_denied_total[5m])) > 1
+        for: 5m
+        labels: {severity: ticket, slo: security}
+        annotations: {summary: "Sustained rejected credentials", runbook: "docs/31-observability/operational-runbook.md#a-03"}
+      - alert: PolicyDeniedSpike
+        expr: sum(rate(policy_denied_total[5m])) > 1
+        for: 5m
+        labels: {severity: ticket, slo: security}
+        annotations: {summary: "Sustained policy denials (probing or a role mis-mapping)", runbook: "docs/31-observability/operational-runbook.md#a-04"}
+      - alert: AiRateLimitHits
+        expr: sum(increase(http_requests_total{status="429"}[10m])) > 10
+        for: 0m
+        labels: {severity: ticket, slo: ai}
+        annotations: {summary: "AI endpoint is rate limiting callers", runbook: "docs/31-observability/operational-runbook.md#a-05"}
+  - name: logistics-ai
+    rules:
+      - alert: AiOutputLeakBlocked
+        # the output leak check increments ai_fallback_total{reason="output_policy_violation"}; ai_guardrail_blocked_total counts schema violations only
+        expr: increase(ai_fallback_total{reason="output_policy_violation"}[15m]) > 0
+        for: 0m
+        labels: {severity: page, slo: ai-safety}
+        annotations: {summary: "A model output contained a forbidden value and was replaced", runbook: "docs/29-incident-bcdr/ai-incident-playbook.md"}
+      - alert: AiSchemaViolations
+        expr: increase(ai_guardrail_blocked_total[15m]) > 3
+        for: 0m
+        labels: {severity: ticket, slo: ai-safety}
+        annotations: {summary: "Model output repeatedly fails the schema", runbook: "docs/31-observability/operational-runbook.md#a-07"}
+      - alert: AiFallbackRateHigh
+        expr: sum(rate(ai_fallback_total[15m])) / sum(rate(ai_requests_total[15m])) > 0.2
+        for: 15m
+        labels: {severity: ticket, slo: ai-quality}
+        annotations: {summary: "More than 20% of AI requests fall back", runbook: "docs/31-observability/operational-runbook.md#a-08"}
+      - alert: AiCircuitOpen
+        expr: ai_circuit_open == 1
+        for: 5m
+        labels: {severity: ticket, slo: ai}
+        annotations: {summary: "AI circuit breaker is open: the deterministic provider is serving", runbook: "docs/28-resilience/failure-mode-analysis.md"}
+      - alert: AiLatencyP95High
+        expr: histogram_quantile(0.95, sum by (le) (rate(ai_request_duration_seconds_bucket[10m]))) > 5
+        for: 10m
+        labels: {severity: ticket, slo: ai}
+        annotations: {summary: "AI p95 latency above 5 s", runbook: "docs/31-observability/operational-runbook.md#a-10"}
+      - alert: AiSuggestionsRejectedHigh
+        expr: sum(increase(ai_decisions_total{decision="reject"}[1d])) / sum(increase(ai_decisions_total[1d])) > 0.5
+        for: 0m
+        labels: {severity: ticket, slo: ai-quality}
+        annotations: {summary: "Reviewers reject more than half of AI suggestions (drift or usefulness signal)", runbook: "docs/31-observability/operational-runbook.md#a-11"}
+  - name: logistics-integrity
+    rules:
+      - alert: AuditChainBroken
+        expr: audit_chain_valid == 0
+        for: 0m
+        labels: {severity: page, slo: integrity}
+        annotations: {summary: "Audit hash chain failed verification", runbook: "docs/29-incident-bcdr/incident-response-plan.md"}
+      - alert: DataStale
+        expr: data_load_age_seconds > 90000
+        for: 0m
+        labels: {severity: ticket, slo: freshness}
+        annotations: {summary: "Last published data load older than 25 h", runbook: "docs/31-observability/operational-runbook.md#a-13"}
+      - alert: DataLoadMissing
+        expr: data_load_age_seconds < 0
+        for: 5m
+        labels: {severity: page, slo: freshness}
+        annotations: {summary: "No readable data load report", runbook: "docs/31-observability/operational-runbook.md#a-14"}
+      - alert: MetricsAbsent
+        expr: absent(http_requests_total)
+        for: 10m
+        labels: {severity: page, slo: observability}
+        annotations: {summary: "No request metrics: service or scrape is down", runbook: "docs/31-observability/operational-runbook.md#a-15"}

@@ -59,3 +59,16 @@ $RECYCLE.BIN/
 # data/synthetic/*.csv and events.jsonl are the declared test fixture that
 # scripts/sanity_check.py asserts against (354 rows per CSV, 3000 events).
 # They are synthetic, they are source, and they stay in the repository.
+
+# --- Derived data layers (Stage H6): regenerate with `make etl`; the fixture data/synthetic is tracked ---------
+07-logistics-shipment-fleet-routing-ops/data/curated/
+07-logistics-shipment-fleet-routing-ops/data/quarantine/
+07-logistics-shipment-fleet-routing-ops/data/reports/
+.coverage
+coverage.xml
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.venv/
+_to_delete/
+.coverage*

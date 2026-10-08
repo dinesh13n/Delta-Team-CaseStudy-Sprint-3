@@ -1,0 +1,152 @@
+{
+ "entities": {
+  "ai_invocations": {
+   "curated": 349,
+   "flags": {
+    "enum_violation:constraint_violations": 165,
+    "enum_violation:human_override": 249,
+    "enum_violation:recommendation": 248,
+    "enum_violation:use_case": 353
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-K-ai_invocations": 3,
+    "BR-P-ai_invocations": 2,
+    "REL-3": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-K-ai_invocations": 6,
+    "BR-P-ai_invocations": 2,
+    "REL-3": 2
+   }
+  },
+  "carrier_bookings": {
+   "curated": 349,
+   "flags": {
+    "enum_violation:status": 36,
+    "rule:BR-13": 353
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-05": 2,
+    "BR-12": 2,
+    "BR-K-carrier_bookings": 3,
+    "BR-P-carrier_bookings": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-05": 2,
+    "BR-12": 2,
+    "BR-13": 353,
+    "BR-K-carrier_bookings": 6,
+    "BR-P-carrier_bookings": 2,
+    "REL-2": 2
+   }
+  },
+  "routes": {
+   "curated": 349,
+   "flags": {
+    "enum_violation:border_risk": 268,
+    "enum_violation:weather_risk": 267
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-K-routes": 3,
+    "BR-P-routes": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-K-routes": 6,
+    "BR-P-routes": 2
+   }
+  },
+  "shipments": {
+   "curated": 349,
+   "flags": {
+    "actual_gt_declared": 171,
+    "enum_violation:service_tier": 332,
+    "enum_violation:status": 46
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-10": 1,
+    "BR-11": 1,
+    "BR-K-shipments": 3,
+    "BR-P-shipments": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-10": 1,
+    "BR-11": 1,
+    "BR-K-shipments": 6,
+    "BR-P-shipments": 2
+   }
+  },
+  "tracking_events": {
+   "curated": 349,
+   "flags": {
+    "enum_violation:event_type": 353,
+    "enum_violation:source_system": 231,
+    "rule:BR-04": 354
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-01": 2,
+    "BR-02": 3,
+    "BR-08": 1,
+    "BR-K-tracking_events": 3,
+    "BR-P-tracking_events": 2,
+    "REL-1": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-01": 4,
+    "BR-02": 6,
+    "BR-04": 354,
+    "BR-08": 1,
+    "BR-K-tracking_events": 6,
+    "BR-P-tracking_events": 2,
+    "REL-1": 2
+   }
+  },
+  "vehicles": {
+   "curated": 349,
+   "flags": {
+    "enum_violation:maintenance_status": 243,
+    "enum_violation:vehicle_type": 322
+   },
+   "processed": 354,
+   "quarantine_by_rule": {
+    "BR-K-vehicles": 3,
+    "BR-P-vehicles": 2
+   },
+   "quarantined": 5,
+   "rule_offending_rows": {
+    "BR-09": 0,
+    "BR-K-vehicles": 6,
+    "BR-P-vehicles": 2
+   }
+  }
+ },
+ "input_hash": "89446323a7903aec3cb96451878a06c299af0d44e3b2b93dc718a94ed817e815",
+ "legacy_compat": {
+  "malformed": 1,
+  "processed": 354,
+  "sample": false
+ },
+ "load_id": "ld-89446323a790",
+ "multiple_active_bookings": {
+  "SHI-00005": 2,
+  "SHI-00019": 2
+ },
+ "quarantine_ratio": 0.014124,
+ "run_id": "run-20261008T102704Z",
+ "sample": false,
+ "status": "pass",
+ "threshold": 0.05,
+ "totals": {
+  "processed": 2124,
+  "quarantined": 30
+ }
+}

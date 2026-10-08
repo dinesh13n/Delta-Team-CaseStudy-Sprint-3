@@ -1,0 +1,18 @@
+EVD-H-04 negative and positive access tests 2026-10-08T10:27:54Z
+tests/test_identity_policy.py::test_ac04_no_token_is_401 PASSED         
+tests/test_identity_policy.py::test_ac05_role_header_is_ignored PASSED  
+tests/test_identity_policy.py::test_clinician_token_is_denied PASSED    
+tests/test_identity_policy.py::test_f20_ai_endpoint_requires_auth PASSED
+tests/test_identity_policy.py::test_expired_and_wrong_key_tokens_are_401 PASSED
+tests/test_identity_policy.py::test_alg_none_token_is_rejected PASSED   
+tests/test_identity_policy.py::test_token_without_role_is_rejected PASSED
+tests/test_identity_policy.py::test_ac06_customer_id_masked_for_dispatcher_allowed_for_support PASSED
+tests/test_identity_policy.py::test_denied_field_is_absent PASSED       
+tests/test_identity_policy.py::test_ac07_denial_is_403_problem_and_audited PASSED
+tests/test_identity_policy.py::test_policy_unknown_persona_and_action_denied PASSED
+tests/test_identity_policy.py::test_write_requires_write_level PASSED   
+tests/test_identity_policy.py::test_scope_is_reported_not_enforced_for_narrow_scopes PASSED
+tests/test_identity_policy.py::test_issued_token_round_trip PASSED      
+tests/test_identity_policy.py::test_generated_rego_is_current PASSED    
+tests/test_identity_policy.py::test_python_engine_and_rego_agree_on_full_grid PASSED
+======================== 16 passed, 1 warning in 2.25s =========================

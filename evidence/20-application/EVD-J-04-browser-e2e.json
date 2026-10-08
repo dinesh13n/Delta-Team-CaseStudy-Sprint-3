@@ -1,0 +1,57 @@
+{
+  "started_utc": "2026-10-08T10:45:44Z",
+  "browser": "chromium (playwright, headless)",
+  "steps": [
+    {
+      "step": "view served",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "step": "CSP header present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "step": "shipments listed",
+      "ok": true,
+      "detail": "10 rows; 1-10 of 349"
+    },
+    {
+      "step": "status filter works",
+      "ok": true,
+      "detail": "10 rows, all exception"
+    },
+    {
+      "step": "record shown with customer_id masked",
+      "ok": true,
+      "detail": "shipment_id | SHI-00027 | customer_id | *** | origin | vendor | destination | ai_assisted | service_tier | high_risk | declared_weight_kg | 6488.21 | actual_wei"
+    },
+    {
+      "step": "AI suggestion shown as suggestion only",
+      "ok": true,
+      "detail": "Summary: Shipment SHI-00027 has status 'exception' (service tier '[unrecognised]', promised 2026-05-20T17:34:00). 1 tracking events recorded ([unrecognised]: 1); latest is '[unrecognised]' at 2026-05-17T20:39:00. 1 carri"
+    },
+    {
+      "step": "decision recorded",
+      "ok": true,
+      "detail": "Recorded: approve by e2e-user at 2026-10-08T10:45:45.438Z (approval apr-362f02bb457442cb)"
+    },
+    {
+      "step": "buttons disabled after decision",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "step": "bad token: error shown, no rows",
+      "ok": true,
+      "detail": "401 Unauthorized: missing or invalid bearer token"
+    },
+    {
+      "step": "no console errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "all_ok": true
+}

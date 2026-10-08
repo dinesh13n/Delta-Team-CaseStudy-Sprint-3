@@ -1,0 +1,177 @@
+{
+ "BR-K-shipments": {
+  "entity": "shipments",
+  "type": "unique",
+  "statement": "shipment_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-shipments": {
+  "entity": "shipments",
+  "type": "pattern",
+  "statement": "shipment_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-K-tracking_events": {
+  "entity": "tracking_events",
+  "type": "unique",
+  "statement": "event_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-tracking_events": {
+  "entity": "tracking_events",
+  "type": "pattern",
+  "statement": "event_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-K-vehicles": {
+  "entity": "vehicles",
+  "type": "unique",
+  "statement": "vehicle_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-vehicles": {
+  "entity": "vehicles",
+  "type": "pattern",
+  "statement": "vehicle_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-K-routes": {
+  "entity": "routes",
+  "type": "unique",
+  "statement": "route_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-routes": {
+  "entity": "routes",
+  "type": "pattern",
+  "statement": "route_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-K-carrier_bookings": {
+  "entity": "carrier_bookings",
+  "type": "unique",
+  "statement": "booking_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-carrier_bookings": {
+  "entity": "carrier_bookings",
+  "type": "pattern",
+  "statement": "booking_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-K-ai_invocations": {
+  "entity": "ai_invocations",
+  "type": "unique",
+  "statement": "ai_call_id is unique",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-P-ai_invocations": {
+  "entity": "ai_invocations",
+  "type": "pattern",
+  "statement": "ai_call_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-01": {
+  "entity": "tracking_events",
+  "type": "unique",
+  "statement": "the same business event is recorded once",
+  "status": "evaluated",
+  "violations": 4
+ },
+ "BR-02": {
+  "entity": "tracking_events",
+  "type": "unique",
+  "statement": "sequence_no is unique within a shipment",
+  "status": "evaluated",
+  "violations": 6
+ },
+ "BR-03": {
+  "entity": "vehicles",
+  "type": "freshness",
+  "statement": "a vehicle position older than the limit is stale and must not drive assignment; the dataset has no position timestamp (data gap); limit is an ASSUMPTION",
+  "status": "data_gap",
+  "violations": null
+ },
+ "BR-04": {
+  "entity": "tracking_events",
+  "type": "enum_or_reference",
+  "statement": "event_time is interpreted in a valid declared time zone",
+  "status": "evaluated",
+  "violations": 354
+ },
+ "BR-05": {
+  "entity": "carrier_bookings",
+  "type": "at_most_one_active",
+  "statement": "a shipment has at most one active carrier booking",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-06": {
+  "entity": "routes",
+  "type": "forbid_unless",
+  "statement": "a route in a restricted zone is not assigned without an explicit override; the dataset has no override field (data gap)",
+  "status": "data_gap",
+  "violations": null
+ },
+ "BR-07": {
+  "entity": "vehicles",
+  "type": "field_exposure",
+  "statement": "location and driver identity are exposed only to personas and purposes listed in the access semantics",
+  "status": "static",
+  "violations": null
+ },
+ "BR-08": {
+  "entity": "tracking_events",
+  "type": "range",
+  "statement": "confidence is between 0 and 1",
+  "status": "evaluated",
+  "violations": 1
+ },
+ "BR-09": {
+  "entity": "vehicles",
+  "type": "range",
+  "statement": "fuel level is a fraction between 0 and 1",
+  "status": "evaluated",
+  "violations": 0
+ },
+ "BR-10": {
+  "entity": "shipments",
+  "type": "not_blank",
+  "statement": "mandatory fields are present",
+  "status": "evaluated",
+  "violations": 1
+ },
+ "BR-11": {
+  "entity": "shipments",
+  "type": "timestamp_after",
+  "statement": "timestamps are real; 1900-01-01 is a placeholder and invalid",
+  "status": "evaluated",
+  "violations": 1
+ },
+ "BR-12": {
+  "entity": "carrier_bookings",
+  "type": "reference_exists",
+  "statement": "a booking refers to an existing shipment",
+  "status": "evaluated",
+  "violations": 2
+ },
+ "BR-13": {
+  "entity": "carrier_bookings",
+  "type": "range",
+  "statement": "retries are bounded (limit is an ASSUMPTION; observed 51 to 4995)",
+  "status": "evaluated",
+  "violations": 353
+ }
+}

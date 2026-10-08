@@ -1,29 +1,30 @@
-# Engagement Go / No-Go
+# Engagement Go / Conditional Go / No-Go
 
 | Field | Value |
 |---|---|
-| Stage | B: Qualification (Spine 1) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 1) |
 | Runbook step | B1 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-01, OQ-02, OQ-03, OQ-05, OQ-11 (see open-qualification-questions.md) |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/00-preflight/ (A4, A5, A6 packs); runbook/04-OPEN-QUESTIONS-REGISTER.md |
+| Assumptions | See body |
+| Unresolved issues | Owners are role slots; dates are proposed by the agent |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
 ## Decision: **CONDITIONAL GO** (PROVISIONAL, self-issued)
-| Condition | Owner | Date needed | Status |
+
+Basis: 23 or more S1 findings, unresolved platform, models, egress, approvers (OQ-01/02/03/05), yet the work is bounded, reversible (baseline tags) and fully recordable.
+
+| # | Condition | Owner (role) | Due (proposed) |
 |---|---|---|---|
-| C-1 Written write-authorisation for Stage H from Repository Owner/CTO, or accepted operator authorisation with CTO review at final gate | CTO (UNRESOLVED) | before Stage H | operator instruction recorded 2026-10-08; CTO review pending |
-| C-2 Named approvers, or provisional governance accepted as a residual risk | Business Sponsor (UNRESOLVED) | before Stage K | open |
-| C-3 Models chosen (two) or Stage Q declared not-performed | AI Governance (UNRESOLVED) | before Stage J | open; default local open-weights |
-| C-4 Platform chosen or neutral design accepted | Architecture (UNRESOLVED) | before Stage F1 | open; default neutral |
-| C-5 Proxy KPIs ratified | Sponsor/Data Owner (UNRESOLVED) | before C1 freeze | open; default yes |
-## Why not No-Go
-The system and data are accessible, defects are reproducible, and every missing decision has a workable default recorded.
-## Why not unconditional Go
-Five blocking questions have no named owner; progress rests on defaults.
+| 1 | CTO ratifies write authorisation (D-009, GOV-02) | CTO UNRESOLVED | before Stage H gate, 2026-10-09 |
+| 2 | Named approvers supplied (OQ-05) | Business Sponsor UNRESOLVED | 2026-10-10 |
+| 3 | Two models and egress policy decided (OQ-02, OQ-03) | AI Governance and Security Owners UNRESOLVED | before Stage Q, 2026-10-12 |
+| 4 | Platform chosen (OQ-01) or readiness-only scope accepted (OQ-20) | Architecture and CTO UNRESOLVED | before Stage N, 2026-10-12 |
+| 5 | Repository visibility decision (GOV-07) | Operator | 2026-10-09 |
+
+If conditions 3 or 4 are not met, deliverables that depend on them are reported BLOCKED, not simulated.

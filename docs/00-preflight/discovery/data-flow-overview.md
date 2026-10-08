@@ -30,7 +30,7 @@ Classification key: **[VF]** Verified Fact (read in a cited file), **[INF]** Inf
 
 ## 3. Data observations (EVD-A-04b, measured on files matching the A1 baseline hashes)
 - [VF] Each CSV: 354 data rows, 3 duplicated primary-key values, 1 row with a blank field, exactly 1 key with the `REC-` prefix (the first row, e.g. `REC-0001` in all six files, including the vehicles and routes files).
-- [VF] `events.jsonl`: 3,000 events; `correlation_id` is null in 983 (32.8%); 529 distinct correlation ids, each used at most 6 times; no duplicate `event_id` or `payload_hash`; every event carries `actor`, `latency_ms`, `cost_units`.
+- [VF] `events.jsonl`: 3,000 events; `correlation_id` is null in 983 (32.8%) and the empty string in 1,009 (33.6%), so 1,992 (66.4%) have no usable id and 1,008 (33.6%) do; 529 distinct correlation ids, each used at most 6 times; no duplicate `event_id` or `payload_hash`; every event carries `actor`, `latency_ms`, `cost_units`.
 - [VF] Categorical columns hold values that do not match their column meaning (e.g. `shipments.origin` = `standard`, `routes.origin` = `pending`; `ai_invocations.use_case` = `not_enforced`).
 - [INF] The generator filled categorical columns from a shared word list; domain semantics are weak outside identifiers and numerics.
 - [UNK] Data volumes, freshness and retention in any real system.

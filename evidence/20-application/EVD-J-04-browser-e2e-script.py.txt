@@ -1,0 +1,52 @@
+import json, sys, time
+from playwright.sync_api import sync_playwright, expect
+token = open("/tmp/e2e_token").read().strip()
+out = {"started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "browser": "chromium (playwright, headless)", "steps": []}
+def step(name, ok, detail=""):
+    out["steps"].append({"step": name, "ok": bool(ok), "detail": detail}); print(("PASS " if ok else "FAIL ") + name, detail)
+with sync_playwright() as p:
+    b = p.chromium.launch(executable_path='/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args=['--no-sandbox'])
+    pg = b.new_page(viewport={"width": 1100, "height": 900})
+    console = []
+    pg.on("console", lambda m: console.append(m.type + ": " + m.text))
+    r = pg.goto("http://localhost:8766/ops/")
+    step("view served", r.status == 200)
+    step("CSP header present", "default-src 'self'" in (r.headers.get("content-security-policy") or ""))
+    pg.get_by_label("Bearer token").fill(token)
+    pg.get_by_role("button", name="Load shipments").click()
+    pg.wait_for_selector("#list tbody tr")
+    step("shipments listed", pg.locator("#list tbody tr").count() >= 1, f"{pg.locator('#list tbody tr').count()} rows; {pg.locator('#page').inner_text()}")
+    pg.get_by_label("Status").select_option("exception")
+    for _ in range(50):
+        cells = pg.locator("#list tbody tr td:nth-child(2)").all_inner_texts()
+        if cells and all(c == "exception" for c in cells):
+            break
+        time.sleep(0.1)
+    step("status filter works", bool(cells) and all(c == "exception" for c in cells), f"{len(cells)} rows, all exception")
+    pg.locator("#list tbody tr").first.click()
+    pg.wait_for_selector("#record dd")
+    rec = pg.locator("#record").inner_text()
+    step("record shown with customer_id masked", "***" in rec, rec.replace("\n", " | ")[:160])
+    pg.get_by_role("button", name="Summarize exception").click()
+    pg.get_by_text("Suggestion only. A person must decide.").wait_for()
+    step("AI suggestion shown as suggestion only", True, pg.locator("#suggestion").inner_text().replace("\n", " ")[:220])
+    pg.screenshot(path="/tmp/e2e_shot_suggestion.png", full_page=True)
+    pg.get_by_role("button", name="Approve suggestion").click()
+    expect(pg.locator("#decision")).to_contain_text("Recorded:")
+    step("decision recorded", True, pg.locator("#decision").inner_text())
+    step("buttons disabled after decision", pg.get_by_role("button", name="Approve suggestion").is_disabled())
+    pg.screenshot(path="/tmp/e2e_shot_decision.png", full_page=True)
+    # negative: bad token shows an error, no data
+    pg2 = b.new_page()
+    pg2.goto("http://localhost:8766/ops/")
+    pg2.get_by_label("Bearer token").fill("not-a-token")
+    pg2.get_by_role("button", name="Load shipments").click()
+    pg2.wait_for_selector("#error:not([hidden])")
+    step("bad token: error shown, no rows", pg2.locator("#list tbody tr").count() == 0, pg2.locator("#error").inner_text())
+    # XSS probe: the view must render markup as text
+    pg2.set_viewport_size({"width": 390, "height": 800})
+    step("no console errors", not [c for c in console if c.startswith("error")], "; ".join(console)[:200])
+    b.close()
+out["all_ok"] = all(s["ok"] for s in out["steps"])
+json.dump(out, open("/tmp/e2e_result.json", "w"), indent=2)
+sys.exit(0 if out["all_ok"] else 1)

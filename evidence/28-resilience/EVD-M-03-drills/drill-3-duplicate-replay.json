@@ -1,0 +1,54 @@
+{
+  "findings": [
+    "F-M3-03: idempotency is by business key (BR-01/BR-02) in the batch and by (shipment, carrier) key in the saga. A replay with a changed business key (e.g. a shifted event_time) is a new fact and is NOT caught. Stated limit, not a defect."
+  ],
+  "hypothesis": "Replayed events do not create second facts, and replayed booking requests do not create second bookings.",
+  "id": "DRILL-3",
+  "method": "(A) append 40 replayed tracking events (new event ids, same business key and sequence number) and run the ETL; (B) run the ETL twice on the same input; (C) replay one booking request 50 times, then 20 times concurrently, then after a simulated restart on the same store file.",
+  "name": "Duplicate event replay against idempotency",
+  "observations": {
+    "etl_replay": {
+      "baseline_report_load_id": "ld-89446323a790",
+      "curated_after": 349,
+      "curated_before": 349,
+      "events_replayed": 40,
+      "quarantined_after": 45,
+      "quarantined_before": 5,
+      "replayed_rows_in_curated": 0,
+      "replayed_rows_quarantined": 40,
+      "rules_that_caught_them": [
+        "BR-01",
+        "BR-02"
+      ]
+    },
+    "etl_same_input_twice": {
+      "curated_bytes_identical": true,
+      "load_id_run1": "ld-89446323a790",
+      "load_id_run2": "ld-89446323a790"
+    },
+    "saga_after_restart": {
+      "carrier_book_calls": 0,
+      "duplicate_suppressed": true
+    },
+    "saga_concurrent_20": {
+      "carrier_book_calls": 1,
+      "live_bookings": 1,
+      "outcomes": {
+        "booked": 1,
+        "suppressed": 19
+      }
+    },
+    "saga_sequential_50": {
+      "carrier_book_calls": 1,
+      "duplicates_suppressed": 49,
+      "live_bookings": 1
+    }
+  },
+  "pass_criteria": [
+    "all replayed events quarantined, none curated, curated count unchanged",
+    "second ETL run is byte-identical",
+    "exactly one carrier call and one live booking per shipment, also concurrently and after restart"
+  ],
+  "run_utc": "2026-10-08T11:17:30Z",
+  "verdict": "PASS"
+}

@@ -1,0 +1,6 @@
+EVD-A-07 Stage A exit-criteria checks, 2026-10-08T09:41:34Z
+A-X1: tag baseline/v0.1-as-delivered-bytes -> 48af6fdaf5e234f59cd15299c783210fe8a1090f
+A-X2: sha256sum -c of 51 files: non-OK lines = 0
+A-X3: top-level docs dirs = 44; evidence dirs = 44; nested adrs/features = 2
+A-X4: artifacts under docs/00-preflight = 39; missing runbook-step header row = 0
+A-X8: git diff vs tag on subtree files changed = 0

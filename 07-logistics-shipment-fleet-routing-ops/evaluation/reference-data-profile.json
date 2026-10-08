@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "ai_invocations": {
+      "flag_rates": {
+        "enum_violation:constraint_violations": 0.4661,
+        "enum_violation:human_override": 0.7034,
+        "enum_violation:recommendation": 0.7006,
+        "enum_violation:use_case": 0.9972
+      },
+      "processed": 354,
+      "quarantined": 5
+    },
+    "carrier_bookings": {
+      "flag_rates": {
+        "enum_violation:status": 0.1017,
+        "rule:BR-13": 0.9972
+      },
+      "processed": 354,
+      "quarantined": 5
+    },
+    "routes": {
+      "flag_rates": {
+        "enum_violation:border_risk": 0.7571,
+        "enum_violation:weather_risk": 0.7542
+      },
+      "processed": 354,
+      "quarantined": 5
+    },
+    "shipments": {
+      "flag_rates": {
+        "actual_gt_declared": 0.4831,
+        "enum_violation:service_tier": 0.9379,
+        "enum_violation:status": 0.1299
+      },
+      "processed": 354,
+      "quarantined": 5
+    },
+    "tracking_events": {
+      "flag_rates": {
+        "enum_violation:event_type": 0.9972,
+        "enum_violation:source_system": 0.6525,
+        "rule:BR-04": 1.0
+      },
+      "processed": 354,
+      "quarantined": 5
+    },
+    "vehicles": {
+      "flag_rates": {
+        "enum_violation:maintenance_status": 0.6864,
+        "enum_violation:vehicle_type": 0.9096
+      },
+      "processed": 354,
+      "quarantined": 5
+    }
+  },
+  "load_id": "ld-89446323a790",
+  "quarantine_ratio": 0.014124
+}

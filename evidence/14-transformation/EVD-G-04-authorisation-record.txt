@@ -1,0 +1,4 @@
+UNSIGNED authorisation record (G4)
+Operator instruction 2026-10-08 (decision D-009): "Complete the 02-TRANSFORMATION-RUNBOOK runbook your own, and push the code in repository".
+Repository Owner: UNRESOLVED. Business Sponsor: UNRESOLVED. No signed document exists; the runbook-named EVD-G-04 PDF could not be produced.
+Status: CONDITIONAL pending ratification.

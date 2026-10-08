@@ -1,0 +1,35 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Semantic layer schema (one definition per YAML file)",
+ "$defs": {
+  "status": {"enum": ["PROVISIONAL", "FROZEN", "APPROVED"]},
+  "entities": {
+   "type": "object", "required": ["semantic_layer_version", "status", "entities"],
+   "properties": {
+    "semantic_layer_version": {"type": "string"}, "status": {"$ref": "#/$defs/status"},
+    "entities": {"type": "object", "minProperties": 1, "additionalProperties": {
+     "type": "object", "required": ["description", "dataset", "business_key", "fields"],
+     "properties": {"fields": {"type": "object", "minProperties": 1, "additionalProperties": {
+      "type": "object", "required": ["type", "description", "nullable", "business_key", "example", "observed"],
+      "properties": {"type": {"enum": ["string", "integer", "decimal", "boolean", "timestamp", "enum", "location_ref", "carrier_ref", "model_ref", "timezone"]},
+       "nullable": {"type": "boolean"}, "business_key": {"type": "boolean"}, "observed": {"type": "object", "required": ["blank_count"]}}}}}}}
+   }
+  },
+  "status_taxonomy": {
+   "type": "object", "required": ["status", "enums", "references", "rule"],
+   "properties": {"enums": {"type": "object", "additionalProperties": {"type": "object", "required": ["values", "basis"],
+     "properties": {"values": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "basis": {"enum": ["OBSERVED", "PROPOSED", "UNKNOWN_MEANING"]}}}},
+    "references": {"type": "object"}, "legacy_tolerance": {"type": "array"}}
+  },
+  "relationships": {"type": "object", "required": ["status", "relationships", "ordering", "saga"],
+   "properties": {"relationships": {"type": "array", "items": {"type": "object", "required": ["id", "from", "to", "cardinality", "required", "on_missing"]}}}},
+  "business_rules": {"type": "object", "required": ["status", "rules"],
+   "properties": {"rules": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "gap", "entity", "type", "severity", "statement"],
+    "properties": {"type": {"enum": ["unique", "pattern", "freshness", "enum_or_reference", "at_most_one_active", "forbid_unless", "field_exposure", "range", "not_blank", "timestamp_after", "reference_exists"]}, "severity": {"enum": ["block", "flag"]}}}}}},
+  "metrics": {"type": "object", "required": ["status", "metrics"],
+   "properties": {"metrics": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "name", "meaning", "formula", "unit", "owner", "source", "period", "segmentation"]}}}},
+  "access_semantics": {"type": "object", "required": ["status", "principle", "sensitive_fields", "personas"],
+   "properties": {"personas": {"type": "object", "minProperties": 8}}},
+  "ai_context_policy": {"type": "object", "required": ["status", "principle", "allowed_fields", "forbidden_fields", "max_context_tokens", "provenance_required", "output", "human_approval"]}
+ }
+}

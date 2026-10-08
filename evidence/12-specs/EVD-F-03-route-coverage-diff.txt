@@ -1,0 +1,30 @@
+Route coverage diff: apps/api/main.py (brownfield) vs docs/12-specs/api-contracts/openapi.yaml
+
+routes in code: 3
+  GET /health
+  GET /records/{record_id}
+  POST /ai/summarize/{record_id}
+
+operations in contract: 10
+  GET /audit/verify
+  GET /health
+  GET /kpis
+  GET /metrics
+  GET /ready
+  GET /records/{record_id}
+  GET /shipments
+  GET /shipments/{shipment_id}/events
+  POST /ai/summaries/{summary_id}/decision
+  POST /ai/summarize/{record_id}
+
+in code but NOT in contract: []
+in contract but not yet in code (to be built in Stage H): 7
+  GET /audit/verify
+  GET /kpis
+  GET /metrics
+  GET /ready
+  GET /shipments
+  GET /shipments/{shipment_id}/events
+  POST /ai/summaries/{summary_id}/decision
+
+RESULT: PASS

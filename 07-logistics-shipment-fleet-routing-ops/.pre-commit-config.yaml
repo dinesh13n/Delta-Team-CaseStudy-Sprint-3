@@ -1,0 +1,32 @@
+# Local hooks only, so they run offline and from the same pinned tools as CI (make install).
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff check
+        entry: ruff check
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format --check
+        entry: ruff format --check
+        language: system
+        types: [python]
+      - id: mypy
+        name: mypy
+        entry: mypy --cache-dir=.mypy_cache
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: secret-scan
+        name: secret scan (working tree)
+        entry: python scripts/secret_scan.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: rego-current
+        name: generated Rego is current
+        entry: python scripts/generate_rego.py --check
+        language: system
+        pass_filenames: false
+        files: ^(semantic-layer|policy)/

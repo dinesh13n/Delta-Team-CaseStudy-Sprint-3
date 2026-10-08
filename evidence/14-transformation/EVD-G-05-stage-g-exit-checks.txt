@@ -1,0 +1,4 @@
+sha256sum -c EVD-A-01 manifest: 51 OK, 0 non-OK (run from repo root, 2026-10-08)
+git diff baseline/v0.1-as-delivered-bytes -- 07-logistics-shipment-fleet-routing-ops (tracked files): EMPTY
+untracked additive: 07-.../tests/characterization/ (C8, D-010)
+backlog finding coverage: see EVD-G-01 (uncovered: none)

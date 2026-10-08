@@ -1,0 +1,2149 @@
+{
+ "generated_from": {
+  "access-semantics.yaml": "5082131647358b428f48d7122b8f043150a768a76b32d90031ce89e1540eef84",
+  "ai-context-policy.yaml": "b9e7285d1011e6cdad6b3983b83a28828408fd501dfeeb3b7555ca2a8d7ff214",
+  "business-rules.yaml": "e33b1d31d398865207a92903354eebc4ce7b78410eb0125d73543738260e900f",
+  "entities.yaml": "3d715cf088893a523d37b75fe8f917e9657f495c621478f61d718ce5f51ef8f3",
+  "metrics.yaml": "57461956c93b63cff61e57c025ddbaca3e8c690dfcd227c4ae3271a60884560c",
+  "relationships.yaml": "262e006b86d8965dc2b3ec36f5353c5f3cdd88fb3ae3673dd9debafd8a810b00",
+  "status-taxonomy.yaml": "e1573d7580f16635294203c03974c905300f27a5fb5ac6439a083518d7e81008"
+ },
+ "layer": {
+  "access-semantics": {
+   "personas": {
+    "ai_agent": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "exception_summary"
+      ],
+      "scope": "request-scoped"
+     },
+     "routes": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "exception_summary"
+      ],
+      "scope": "request-scoped"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "deny"
+      },
+      "purposes": [
+       "exception_summary"
+      ],
+      "scope": "request-scoped"
+     },
+     "tracking_events": {
+      "access": "read",
+      "field_overrides": {
+       "location": "deny"
+      },
+      "purposes": [
+       "exception_summary"
+      ],
+      "scope": "request-scoped"
+     },
+     "vehicles": {
+      "access": "none"
+     }
+    },
+    "carrier_partner": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "write",
+      "field_overrides": {},
+      "purposes": [
+       "booking"
+      ],
+      "scope": "own carrier only"
+     },
+     "routes": {
+      "access": "none"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "deny",
+       "destination": "allow",
+       "origin": "allow"
+      },
+      "purposes": [
+       "booking"
+      ],
+      "scope": "own bookings"
+     },
+     "tracking_events": {
+      "access": "none"
+     },
+     "vehicles": {
+      "access": "none"
+     }
+    },
+    "customer_support": {
+     "ai_invocations": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "customer_support"
+      ],
+      "scope": "own customers"
+     },
+     "carrier_bookings": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "customer_support"
+      ],
+      "scope": "own customers"
+     },
+     "routes": {
+      "access": "none"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "allow"
+      },
+      "purposes": [
+       "customer_support"
+      ],
+      "scope": "own customers"
+     },
+     "tracking_events": {
+      "access": "read",
+      "field_overrides": {
+       "location": "mask"
+      },
+      "purposes": [
+       "customer_support"
+      ],
+      "scope": "own customers"
+     },
+     "vehicles": {
+      "access": "none"
+     }
+    },
+    "customs_agent": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "none"
+     },
+     "routes": {
+      "access": "none"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "allow"
+      },
+      "purposes": [
+       "customs_clearance"
+      ],
+      "scope": "customs cases"
+     },
+     "tracking_events": {
+      "access": "read",
+      "field_overrides": {
+       "location": "mask"
+      },
+      "purposes": [
+       "customs_clearance"
+      ],
+      "scope": "customs cases"
+     },
+     "vehicles": {
+      "access": "none"
+     }
+    },
+    "dispatcher": {
+     "ai_invocations": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "dispatch"
+      ],
+      "scope": "all"
+     },
+     "carrier_bookings": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "dispatch"
+      ],
+      "scope": "all"
+     },
+     "routes": {
+      "access": "write",
+      "field_overrides": {},
+      "purposes": [
+       "dispatch",
+       "route_planning"
+      ],
+      "scope": "all"
+     },
+     "shipments": {
+      "access": "write",
+      "field_overrides": {
+       "customer_id": "mask"
+      },
+      "purposes": [
+       "dispatch"
+      ],
+      "scope": "all active"
+     },
+     "tracking_events": {
+      "access": "read",
+      "field_overrides": {
+       "location": "allow"
+      },
+      "purposes": [
+       "dispatch"
+      ],
+      "scope": "all"
+     },
+     "vehicles": {
+      "access": "read",
+      "field_overrides": {
+       "current_location": "allow",
+       "driver_id": "mask"
+      },
+      "purposes": [
+       "dispatch"
+      ],
+      "scope": "all"
+     }
+    },
+    "driver": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "none"
+     },
+     "routes": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "delivery"
+      ],
+      "scope": "assigned only"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "deny"
+      },
+      "purposes": [
+       "delivery"
+      ],
+      "scope": "assigned only"
+     },
+     "tracking_events": {
+      "access": "none"
+     },
+     "vehicles": {
+      "access": "read",
+      "field_overrides": {
+       "current_location": "allow",
+       "driver_id": "allow"
+      },
+      "purposes": [
+       "delivery"
+      ],
+      "scope": "own vehicle"
+     }
+    },
+    "fleet_manager": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "none"
+     },
+     "routes": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "fleet_management"
+      ],
+      "scope": "own fleet"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "deny"
+      },
+      "purposes": [
+       "fleet_management"
+      ],
+      "scope": "own fleet"
+     },
+     "tracking_events": {
+      "access": "read",
+      "field_overrides": {
+       "location": "allow"
+      },
+      "purposes": [
+       "fleet_management"
+      ],
+      "scope": "own fleet"
+     },
+     "vehicles": {
+      "access": "write",
+      "field_overrides": {
+       "current_location": "allow",
+       "driver_id": "allow"
+      },
+      "purposes": [
+       "fleet_management"
+      ],
+      "scope": "own fleet"
+     }
+    },
+    "warehouse_ops": {
+     "ai_invocations": {
+      "access": "none"
+     },
+     "carrier_bookings": {
+      "access": "none"
+     },
+     "routes": {
+      "access": "read",
+      "field_overrides": {},
+      "purposes": [
+       "handling"
+      ],
+      "scope": "own hub"
+     },
+     "shipments": {
+      "access": "read",
+      "field_overrides": {
+       "customer_id": "deny"
+      },
+      "purposes": [
+       "handling"
+      ],
+      "scope": "own hub"
+     },
+     "tracking_events": {
+      "access": "write",
+      "field_overrides": {
+       "location": "mask"
+      },
+      "purposes": [
+       "handling"
+      ],
+      "scope": "own hub"
+     },
+     "vehicles": {
+      "access": "read",
+      "field_overrides": {
+       "current_location": "mask",
+       "driver_id": "deny"
+      },
+      "purposes": [
+       "handling"
+      ],
+      "scope": "own hub"
+     }
+    }
+   },
+   "principle": "deny by default; access depends on persona, entity, field, purpose and scope; sensitive fields are masked unless explicitly allowed",
+   "sensitive_fields": [
+    "shipments.customer_id",
+    "tracking_events.location",
+    "vehicles.current_location",
+    "vehicles.driver_id"
+   ],
+   "status": "PROVISIONAL"
+  },
+  "ai-context-policy": {
+   "allowed_fields": {
+    "carrier_bookings": [
+     "status",
+     "retry_count",
+     "compensation_required"
+    ],
+    "routes": [
+     "distance_km",
+     "restricted_zone_flag",
+     "weather_risk",
+     "border_risk",
+     "eta_minutes"
+    ],
+    "shipments": [
+     "shipment_id",
+     "service_tier",
+     "status",
+     "promised_at",
+     "customs_required",
+     "temperature_controlled"
+    ],
+    "tracking_events": [
+     "event_type",
+     "event_time",
+     "sequence_no",
+     "source_system"
+    ]
+   },
+   "forbidden_fields": [
+    "vehicles.driver_id",
+    "vehicles.current_location",
+    "tracking_events.location",
+    "shipments.customer_id"
+   ],
+   "human_approval": {
+    "approver": "persona with write access to the entity",
+    "not_required_for": [
+     "read-only summaries shown to a person"
+    ],
+    "required_for": [
+     "any recommendation that changes a shipment, route or booking"
+    ]
+   },
+   "max_context_tokens": 8000,
+   "max_record_tokens": 2000,
+   "output": {
+    "abstain_when": "required fields are missing or sources conflict",
+    "format": "structured, validated against a declared schema",
+    "must_include": [
+     "summary",
+     "recommendation",
+     "sources",
+     "confidence",
+     "model_version",
+     "prompt_version"
+    ]
+   },
+   "principle": "only declared fields enter a prompt; untrusted values are data, never instructions",
+   "provenance_required": [
+    "source dataset",
+    "record identifier",
+    "retrieval time",
+    "semantic layer version"
+   ],
+   "redact_or_tokenise": [
+    "shipments.customer_id",
+    "vehicles.driver_id",
+    "vehicles.current_location",
+    "tracking_events.location"
+   ],
+   "status": "PROVISIONAL",
+   "untrusted_text_handling": "delimit and label every free-text value as data; strip control sequences; reject template syntax; never concatenate into instructions"
+  },
+  "business-rules": {
+   "rules": [
+    {
+     "entity": "shipments",
+     "fields": [
+      "shipment_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-shipments",
+     "severity": "block",
+     "statement": "shipment_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "shipments",
+     "field": "shipment_id",
+     "gap": "identity",
+     "id": "BR-P-shipments",
+     "match": "full",
+     "pattern": "SHI-[0-9]{5}",
+     "severity": "block",
+     "statement": "shipment_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "tracking_events",
+     "fields": [
+      "event_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-tracking_events",
+     "severity": "block",
+     "statement": "event_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "tracking_events",
+     "field": "event_id",
+     "gap": "identity",
+     "id": "BR-P-tracking_events",
+     "match": "full",
+     "pattern": "EVE-[0-9]{5}",
+     "severity": "block",
+     "statement": "event_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "vehicles",
+     "fields": [
+      "vehicle_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-vehicles",
+     "severity": "block",
+     "statement": "vehicle_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "vehicles",
+     "field": "vehicle_id",
+     "gap": "identity",
+     "id": "BR-P-vehicles",
+     "match": "full",
+     "pattern": "VEH-[0-9]{5}",
+     "severity": "block",
+     "statement": "vehicle_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "routes",
+     "fields": [
+      "route_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-routes",
+     "severity": "block",
+     "statement": "route_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "routes",
+     "field": "route_id",
+     "gap": "identity",
+     "id": "BR-P-routes",
+     "match": "full",
+     "pattern": "ROU-[0-9]{5}",
+     "severity": "block",
+     "statement": "route_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "carrier_bookings",
+     "fields": [
+      "booking_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-carrier_bookings",
+     "severity": "block",
+     "statement": "booking_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "carrier_bookings",
+     "field": "booking_id",
+     "gap": "identity",
+     "id": "BR-P-carrier_bookings",
+     "match": "full",
+     "pattern": "BOO-[0-9]{5}",
+     "severity": "block",
+     "statement": "booking_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "ai_invocations",
+     "fields": [
+      "ai_call_id"
+     ],
+     "gap": "identity",
+     "id": "BR-K-ai_invocations",
+     "severity": "block",
+     "statement": "ai_call_id is unique",
+     "type": "unique"
+    },
+    {
+     "entity": "ai_invocations",
+     "field": "ai_call_id",
+     "gap": "identity",
+     "id": "BR-P-ai_invocations",
+     "match": "full",
+     "pattern": "AI_-[0-9]{5}",
+     "severity": "block",
+     "statement": "ai_call_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid",
+     "type": "pattern"
+    },
+    {
+     "entity": "tracking_events",
+     "fields": [
+      "shipment_id",
+      "event_type",
+      "event_time",
+      "source_system"
+     ],
+     "gap": "duplicate_tracking_events",
+     "id": "BR-01",
+     "severity": "block",
+     "statement": "the same business event is recorded once",
+     "type": "unique"
+    },
+    {
+     "entity": "tracking_events",
+     "fields": [
+      "shipment_id",
+      "sequence_no"
+     ],
+     "gap": "duplicate_tracking_events",
+     "id": "BR-02",
+     "severity": "block",
+     "statement": "sequence_no is unique within a shipment",
+     "type": "unique"
+    },
+    {
+     "data_gap": true,
+     "entity": "vehicles",
+     "field": "location_updated_at",
+     "gap": "stale_gps",
+     "id": "BR-03",
+     "max_age_minutes": 15,
+     "severity": "flag",
+     "statement": "a vehicle position older than the limit is stale and must not drive assignment; the dataset has no position timestamp (data gap); limit is an ASSUMPTION",
+     "type": "freshness"
+    },
+    {
+     "entity": "tracking_events",
+     "field": "timezone",
+     "gap": "timezone_mismatch",
+     "id": "BR-04",
+     "reference": "timezone",
+     "severity": "block",
+     "statement": "event_time is interpreted in a valid declared time zone",
+     "type": "enum_or_reference"
+    },
+    {
+     "entity": "carrier_bookings",
+     "gap": "duplicate_carrier_booking",
+     "group_by": "shipment_id",
+     "id": "BR-05",
+     "inactive_statuses": [
+      "closed",
+      "failed"
+     ],
+     "severity": "block",
+     "statement": "a shipment has at most one active carrier booking",
+     "type": "at_most_one_active"
+    },
+    {
+     "condition": {
+      "equals": "true",
+      "field": "restricted_zone_flag"
+     },
+     "data_gap": true,
+     "entity": "routes",
+     "gap": "route_ignores_restrictions",
+     "id": "BR-06",
+     "severity": "block",
+     "statement": "a route in a restricted zone is not assigned without an explicit override; the dataset has no override field (data gap)",
+     "type": "forbid_unless",
+     "unless": "override_id present"
+    },
+    {
+     "entity": "vehicles",
+     "fields": [
+      "current_location",
+      "driver_id"
+     ],
+     "gap": "location_data_overexposure",
+     "id": "BR-07",
+     "policy": "access-semantics.yaml",
+     "severity": "block",
+     "statement": "location and driver identity are exposed only to personas and purposes listed in the access semantics",
+     "type": "field_exposure"
+    },
+    {
+     "entity": "tracking_events",
+     "field": "confidence",
+     "gap": "range",
+     "id": "BR-08",
+     "max": 1,
+     "min": 0,
+     "severity": "block",
+     "statement": "confidence is between 0 and 1",
+     "type": "range"
+    },
+    {
+     "entity": "vehicles",
+     "field": "fuel_level_pct",
+     "gap": "range",
+     "id": "BR-09",
+     "max": 1,
+     "min": 0,
+     "severity": "block",
+     "statement": "fuel level is a fraction between 0 and 1",
+     "type": "range"
+    },
+    {
+     "entity": "shipments",
+     "fields": [
+      "customer_id",
+      "origin",
+      "destination",
+      "service_tier",
+      "status",
+      "promised_at"
+     ],
+     "gap": "completeness",
+     "id": "BR-10",
+     "severity": "block",
+     "statement": "mandatory fields are present",
+     "type": "not_blank"
+    },
+    {
+     "after": "2000-01-01T00:00:00",
+     "entity": "shipments",
+     "field": "promised_at",
+     "gap": "timestamp",
+     "id": "BR-11",
+     "severity": "block",
+     "statement": "timestamps are real; 1900-01-01 is a placeholder and invalid",
+     "type": "timestamp_after"
+    },
+    {
+     "entity": "carrier_bookings",
+     "field": "shipment_id",
+     "gap": "referential",
+     "id": "BR-12",
+     "severity": "block",
+     "statement": "a booking refers to an existing shipment",
+     "to": "shipments.shipment_id",
+     "type": "reference_exists"
+    },
+    {
+     "entity": "carrier_bookings",
+     "field": "retry_count",
+     "gap": "retry_ceiling",
+     "id": "BR-13",
+     "max": 5,
+     "min": 0,
+     "severity": "flag",
+     "statement": "retries are bounded (limit is an ASSUMPTION; observed 51 to 4995)",
+     "type": "range"
+    }
+   ],
+   "status": "PROVISIONAL"
+  },
+  "entities": {
+   "entities": {
+    "ai_invocations": {
+     "business_key": "ai_call_id",
+     "dataset": "ai_invocations.csv",
+     "description": "A call to automated assistance about a shipment",
+     "fields": {
+      "ai_call_id": {
+       "business_key": true,
+       "description": "Unique identifier of an automated-assistance call, prefix AI_-",
+       "example": "AI_-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "constraint_violations": {
+       "business_key": false,
+       "description": "Constraint violation class reported",
+       "domain": "constraint_class",
+       "example": "alpha",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 5,
+        "values": [
+         "alpha",
+         "beta",
+         "gamma",
+         "legacy",
+         "modernized"
+        ]
+       },
+       "type": "enum"
+      },
+      "human_override": {
+       "business_key": false,
+       "description": "Human decision on the recommendation",
+       "domain": "human_decision",
+       "example": "approved",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "model": {
+       "business_key": false,
+       "description": "Identifier of the model that served the call",
+       "example": "model-registry-id (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "model",
+       "type": "model_ref"
+      },
+      "recommendation": {
+       "business_key": false,
+       "description": "Outcome recommended by the assistance",
+       "domain": "recommendation",
+       "example": "approved",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "route_candidates": {
+       "business_key": false,
+       "description": "Number of route candidates considered",
+       "example": "1508",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 4979.0,
+        "min": 16.0
+       },
+       "type": "integer",
+       "unit": "count"
+      },
+      "shipment_id": {
+       "business_key": false,
+       "description": "Shipment the call concerned",
+       "example": "SHI-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "references": "shipments.shipment_id",
+       "type": "string"
+      },
+      "token_count": {
+       "business_key": false,
+       "description": "Declared tokens consumed by the call",
+       "example": "357",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 4989.0,
+        "min": 40.0
+       },
+       "type": "integer",
+       "unit": "tokens"
+      },
+      "use_case": {
+       "business_key": false,
+       "description": "Capability invoked",
+       "domain": "ai_use_case",
+       "example": "exception_summary",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      }
+     }
+    },
+    "carrier_bookings": {
+     "business_key": "booking_id",
+     "dataset": "carrier_bookings.csv",
+     "description": "A booking of a shipment with a carrier partner",
+     "fields": {
+      "booking_id": {
+       "business_key": true,
+       "description": "Unique booking identifier, prefix BOO-",
+       "example": "BOO-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "carrier": {
+       "business_key": false,
+       "description": "Carrier reference",
+       "example": "CAR-001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "carrier",
+       "type": "carrier_ref"
+      },
+      "compensation_required": {
+       "business_key": false,
+       "description": "Whether a compensating action is needed",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      },
+      "created_at": {
+       "business_key": false,
+       "description": "When the booking was created",
+       "example": "2026-08-15T10:05:00",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 351
+       },
+       "type": "timestamp",
+       "unit": "ISO-8601 local"
+      },
+      "partner_ref": {
+       "business_key": false,
+       "description": "Reference at the carrier partner, prefix PAR-",
+       "example": "PAR-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "type": "string"
+      },
+      "retry_count": {
+       "business_key": false,
+       "description": "Booking attempts made",
+       "example": "1307",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 4995.0,
+        "min": 51.0
+       },
+       "type": "integer",
+       "unit": "count"
+      },
+      "shipment_id": {
+       "business_key": false,
+       "description": "Shipment being booked",
+       "example": "SHI-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "references": "shipments.shipment_id",
+       "type": "string"
+      },
+      "status": {
+       "business_key": false,
+       "description": "Booking state",
+       "domain": "shipment_status",
+       "example": "new",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 8,
+        "values": [
+         "approved",
+         "closed",
+         "exception",
+         "failed",
+         "in_progress",
+         "manual_hold",
+         "new",
+         "queued"
+        ]
+       },
+       "type": "enum"
+      }
+     }
+    },
+    "routes": {
+     "business_key": "route_id",
+     "dataset": "routes.csv",
+     "description": "A planned path between two locations",
+     "fields": {
+      "border_risk": {
+       "business_key": false,
+       "description": "Border crossing risk class",
+       "domain": "risk_level",
+       "example": "normal",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "destination": {
+       "business_key": false,
+       "description": "Route destination",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "distance_km": {
+       "business_key": false,
+       "description": "Route length",
+       "example": "4431.22",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 9985.94,
+        "min": 24.08
+       },
+       "type": "decimal",
+       "unit": "km"
+      },
+      "estimated_cost": {
+       "business_key": false,
+       "description": "Estimated cost of the route",
+       "example": "4885.07",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 9995.55,
+        "min": 26.61
+       },
+       "type": "decimal",
+       "unit": "cost units"
+      },
+      "eta_minutes": {
+       "business_key": false,
+       "description": "Estimated travel time",
+       "example": "4744",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 4995.0,
+        "min": 3.0
+       },
+       "type": "integer",
+       "unit": "minutes"
+      },
+      "origin": {
+       "business_key": false,
+       "description": "Route origin",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "restricted_zone_flag": {
+       "business_key": false,
+       "description": "Route crosses a restricted zone",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      },
+      "route_id": {
+       "business_key": true,
+       "description": "Unique route identifier, prefix ROU-",
+       "example": "ROU-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "weather_risk": {
+       "business_key": false,
+       "description": "Weather risk class",
+       "domain": "risk_level",
+       "example": "normal",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 15,
+        "values": [
+         "1.42",
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      }
+     }
+    },
+    "shipments": {
+     "business_key": "shipment_id",
+     "dataset": "shipments.csv",
+     "description": "A consignment moving from origin to destination",
+     "fields": {
+      "actual_weight_kg": {
+       "business_key": false,
+       "description": "Weight measured at handling",
+       "example": "600.31",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 9978.66,
+        "min": 33.96
+       },
+       "type": "decimal",
+       "unit": "kg"
+      },
+      "customer_id": {
+       "business_key": false,
+       "description": "Customer reference, prefix CUS- (customer entity is outside the dataset)",
+       "example": "CUS-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "references": "customer",
+       "type": "string"
+      },
+      "customs_required": {
+       "business_key": false,
+       "description": "Whether customs clearance applies",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      },
+      "declared_weight_kg": {
+       "business_key": false,
+       "description": "Weight declared by the customer",
+       "example": "2034.82",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 9995.99,
+        "min": 3.1
+       },
+       "type": "decimal",
+       "unit": "kg"
+      },
+      "destination": {
+       "business_key": false,
+       "description": "Destination location reference",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "origin": {
+       "business_key": false,
+       "description": "Origin location reference",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "promised_at": {
+       "business_key": false,
+       "description": "Delivery time promised to the customer",
+       "example": "2026-08-15T10:05:00",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 351
+       },
+       "type": "timestamp",
+       "unit": "ISO-8601 local"
+      },
+      "service_tier": {
+       "business_key": false,
+       "description": "Contracted service level",
+       "domain": "service_tier",
+       "example": "standard",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "shipment_id": {
+       "business_key": true,
+       "description": "Unique business identifier of a shipment, prefix SHI-",
+       "example": "SHI-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "status": {
+       "business_key": false,
+       "description": "Lifecycle state of the shipment",
+       "domain": "shipment_status",
+       "example": "new",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 8,
+        "values": [
+         "approved",
+         "closed",
+         "exception",
+         "failed",
+         "in_progress",
+         "manual_hold",
+         "new",
+         "queued"
+        ]
+       },
+       "type": "enum"
+      },
+      "temperature_controlled": {
+       "business_key": false,
+       "description": "Whether cold chain handling applies",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      }
+     }
+    },
+    "tracking_events": {
+     "business_key": "event_id",
+     "dataset": "tracking_events.csv",
+     "description": "A recorded event in the movement of a shipment",
+     "fields": {
+      "confidence": {
+       "business_key": false,
+       "description": "Confidence of the event record",
+       "example": "0.929",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 1.42,
+        "min": 0.001
+       },
+       "type": "decimal",
+       "unit": "ratio 0..1"
+      },
+      "duplicate_flag": {
+       "business_key": false,
+       "description": "Producer-declared duplicate marker",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      },
+      "event_id": {
+       "business_key": true,
+       "description": "Unique identifier of a tracking event, prefix EVE-",
+       "example": "EVE-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "event_time": {
+       "business_key": false,
+       "description": "When the event occurred",
+       "example": "2026-08-15T10:05:00",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 351
+       },
+       "type": "timestamp",
+       "unit": "ISO-8601 local"
+      },
+      "event_type": {
+       "business_key": false,
+       "description": "Kind of tracking event",
+       "domain": "tracking_event_type",
+       "example": "scan",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "location": {
+       "business_key": false,
+       "description": "Where the event occurred (location data)",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "sequence_no": {
+       "business_key": false,
+       "description": "Ordering number of the event within its shipment",
+       "example": "1007",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 4998.0,
+        "min": 41.0
+       },
+       "type": "integer"
+      },
+      "shipment_id": {
+       "business_key": false,
+       "description": "Shipment the event belongs to",
+       "example": "SHI-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "references": "shipments.shipment_id",
+       "type": "string"
+      },
+      "source_system": {
+       "business_key": false,
+       "description": "System that produced the event",
+       "domain": "source_system",
+       "example": "legacy",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "timezone": {
+       "business_key": false,
+       "description": "Time zone of event_time",
+       "example": "Asia/Kolkata",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "timezone",
+       "type": "timezone"
+      }
+     }
+    },
+    "vehicles": {
+     "business_key": "vehicle_id",
+     "dataset": "vehicles.csv",
+     "description": "A vehicle that can carry shipments",
+     "fields": {
+      "capacity_kg": {
+       "business_key": false,
+       "description": "Load capacity",
+       "example": "3798.13",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 9992.94,
+        "min": 49.44
+       },
+       "type": "decimal",
+       "unit": "kg"
+      },
+      "cold_chain_capable": {
+       "business_key": false,
+       "description": "Can carry temperature-controlled goods",
+       "domain": "boolean",
+       "example": "true",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 2,
+        "values": [
+         "false",
+         "true"
+        ]
+       },
+       "type": "boolean"
+      },
+      "current_location": {
+       "business_key": false,
+       "description": "Last known position (location data)",
+       "example": "LOC-0001 (illustrative)",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "reference": "location",
+       "type": "location_ref"
+      },
+      "driver_id": {
+       "business_key": false,
+       "description": "Assigned driver, prefix DRI- (personal identifier)",
+       "example": "DRI-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 350
+       },
+       "type": "string"
+      },
+      "fuel_level_pct": {
+       "business_key": false,
+       "description": "Fuel level as a fraction",
+       "example": "0.672",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "max": 0.997,
+        "min": 0.0
+       },
+       "type": "decimal",
+       "unit": "ratio 0..1"
+      },
+      "maintenance_status": {
+       "business_key": false,
+       "description": "Maintenance state",
+       "domain": "maintenance_status",
+       "example": "normal",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      },
+      "region": {
+       "business_key": false,
+       "description": "Operating region",
+       "domain": "region",
+       "example": "north-1",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 6,
+        "values": [
+         "central-5",
+         "east-4",
+         "north-1",
+         "remote-6",
+         "south-2",
+         "west-3"
+        ]
+       },
+       "type": "enum"
+      },
+      "vehicle_id": {
+       "business_key": true,
+       "description": "Unique vehicle identifier, prefix VEH-",
+       "example": "VEH-00002",
+       "nullable": false,
+       "observed": {
+        "blank_count": 0,
+        "distinct": 351
+       },
+       "type": "string"
+      },
+      "vehicle_type": {
+       "business_key": false,
+       "description": "Vehicle class",
+       "domain": "vehicle_type",
+       "example": "standard",
+       "nullable": false,
+       "observed": {
+        "blank_count": 1,
+        "distinct": 14,
+        "values": [
+         "ai_assisted",
+         "approved",
+         "degraded",
+         "high_risk",
+         "internal",
+         "legacy",
+         "manual",
+         "normal",
+         "not_enforced",
+         "pending",
+         "rejected",
+         "requires_review",
+         "standard",
+         "vendor"
+        ]
+       },
+       "type": "enum"
+      }
+     }
+    }
+   },
+   "semantic_layer_version": "1.0.0",
+   "status": "PROVISIONAL"
+  },
+  "metrics": {
+   "metrics": [
+    {
+     "formula": "percentile (index method, sorted[int(p/100*n)]) of `latency_ms`",
+     "id": "K1",
+     "meaning": "time recorded per event",
+     "name": "Event latency",
+     "owner": "SRE Owner UNRESOLVED",
+     "period": "fixture, span unknown",
+     "segmentation": "by business_entity",
+     "source": "events.jsonl",
+     "unit": "ms"
+    },
+    {
+     "formula": "sum(cost_units)/count(events)",
+     "id": "K2",
+     "meaning": "declared cost units per event",
+     "name": "Cost per event",
+     "owner": "Business Sponsor UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by business_entity",
+     "source": "events.jsonl",
+     "unit": "cost units"
+    },
+    {
+     "formula": "(error+critical)/total",
+     "id": "K3",
+     "meaning": "share of events with severity error or critical",
+     "name": "Severe-event share",
+     "owner": "SRE Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by event_type",
+     "source": "events.jsonl",
+     "unit": "%"
+    },
+    {
+     "formula": "usable/total",
+     "id": "K4",
+     "meaning": "events with a non-null, non-empty correlation_id (amended D-012)",
+     "name": "Correlation completeness",
+     "owner": "Compliance Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by actor",
+     "source": "events.jsonl",
+     "unit": "%"
+    },
+    {
+     "formula": "sum(token_count), parseable rows",
+     "id": "K5",
+     "meaning": "token_count summed over invocations",
+     "name": "Declared AI tokens",
+     "owner": "AI Governance Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by use_case",
+     "source": "ai_invocations.csv",
+     "unit": "tokens"
+    },
+    {
+     "formula": "min/mean/max of retry_count",
+     "id": "K6",
+     "meaning": "retry_count distribution",
+     "name": "Carrier retry level",
+     "owner": "Operations Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by carrier",
+     "source": "carrier_bookings.csv",
+     "unit": "count"
+    },
+    {
+     "formula": "count over all six datasets",
+     "id": "K7",
+     "meaning": "keys appearing more than once",
+     "name": "Duplicate business keys",
+     "owner": "Data Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by dataset",
+     "source": "six CSVs",
+     "unit": "keys"
+    },
+    {
+     "formula": "count over six datasets",
+     "id": "K8",
+     "meaning": "rows with any blank field",
+     "name": "Incomplete rows",
+     "owner": "Data Owner UNRESOLVED",
+     "period": "fixture",
+     "segmentation": "by dataset",
+     "source": "six CSVs",
+     "unit": "rows"
+    },
+    {
+     "formula": "pytest result",
+     "id": "K9",
+     "meaning": "passing tests / collected",
+     "name": "Baseline test result",
+     "owner": "Repository Owner UNRESOLVED",
+     "period": "run date",
+     "segmentation": "n/a",
+     "source": "EVD-C-03",
+     "unit": "tests"
+    },
+    {
+     "formula": "coverage.py",
+     "id": "K10",
+     "meaning": "statement coverage of apps, etl, legacy, scripts",
+     "name": "Baseline coverage",
+     "owner": "Repository Owner UNRESOLVED",
+     "period": "run date",
+     "segmentation": "by module",
+     "source": "EVD-C-03",
+     "unit": "%"
+    }
+   ],
+   "status": "FROZEN"
+  },
+  "relationships": {
+   "ordering": [
+    {
+     "entity": "tracking_events",
+     "order_by": "sequence_no",
+     "rule": "sequence_no strictly increases with event_time within a shipment",
+     "scope": "shipment_id"
+    }
+   ],
+   "relationships": [
+    {
+     "cardinality": "many-to-one",
+     "from": "tracking_events.shipment_id",
+     "id": "REL-1",
+     "on_missing": "quarantine",
+     "required": true,
+     "to": "shipments.shipment_id"
+    },
+    {
+     "cardinality": "many-to-one",
+     "from": "carrier_bookings.shipment_id",
+     "id": "REL-2",
+     "on_missing": "quarantine",
+     "required": true,
+     "to": "shipments.shipment_id"
+    },
+    {
+     "cardinality": "many-to-one",
+     "from": "ai_invocations.shipment_id",
+     "id": "REL-3",
+     "on_missing": "quarantine",
+     "required": true,
+     "to": "shipments.shipment_id"
+    },
+    {
+     "cardinality": "many-to-one",
+     "from": "shipments.customer_id",
+     "id": "REL-4",
+     "on_missing": "flag",
+     "required": true,
+     "to": "customer (external master)"
+    },
+    {
+     "cardinality": "many-to-one",
+     "from": "vehicles.driver_id",
+     "id": "REL-5",
+     "on_missing": "flag",
+     "required": false,
+     "to": "driver (external master)"
+    }
+   ],
+   "saga": [
+    {
+     "between": "shipments to carrier_bookings",
+     "invariant": "at most one active booking per shipment; retries bounded; compensation_required=true triggers the compensate step",
+     "name": "carrier_booking",
+     "steps": [
+      "book",
+      "confirm",
+      "compensate_if_required"
+     ]
+    }
+   ],
+   "status": "PROVISIONAL"
+  },
+  "status-taxonomy": {
+   "enums": {
+    "ai_use_case": {
+     "basis": "PROPOSED",
+     "values": [
+      "exception_summary",
+      "eta_prediction",
+      "route_optimization"
+     ]
+    },
+    "boolean": {
+     "basis": "OBSERVED",
+     "values": [
+      "true",
+      "false"
+     ]
+    },
+    "constraint_class": {
+     "basis": "UNKNOWN_MEANING",
+     "values": [
+      "alpha",
+      "beta",
+      "gamma"
+     ]
+    },
+    "human_decision": {
+     "basis": "OBSERVED",
+     "values": [
+      "approved",
+      "rejected",
+      "pending",
+      "requires_review"
+     ]
+    },
+    "maintenance_status": {
+     "basis": "OBSERVED",
+     "values": [
+      "normal",
+      "degraded",
+      "requires_review",
+      "pending"
+     ]
+    },
+    "recommendation": {
+     "basis": "OBSERVED",
+     "values": [
+      "approved",
+      "rejected",
+      "pending",
+      "requires_review"
+     ]
+    },
+    "region": {
+     "basis": "OBSERVED",
+     "values": [
+      "north-1",
+      "south-2",
+      "west-3",
+      "east-4",
+      "central-5",
+      "remote-6"
+     ]
+    },
+    "risk_level": {
+     "basis": "OBSERVED",
+     "values": [
+      "normal",
+      "degraded",
+      "high_risk"
+     ]
+    },
+    "service_tier": {
+     "basis": "PROPOSED",
+     "values": [
+      "standard",
+      "express",
+      "economy"
+     ]
+    },
+    "shipment_status": {
+     "basis": "OBSERVED",
+     "values": [
+      "new",
+      "queued",
+      "in_progress",
+      "manual_hold",
+      "exception",
+      "failed",
+      "closed"
+     ]
+    },
+    "source_system": {
+     "basis": "OBSERVED",
+     "values": [
+      "legacy",
+      "manual",
+      "vendor",
+      "internal",
+      "ai_assisted"
+     ]
+    },
+    "tracking_event_type": {
+     "basis": "PROPOSED",
+     "values": [
+      "scan",
+      "departure",
+      "arrival",
+      "delay",
+      "exception",
+      "delivered"
+     ]
+    },
+    "vehicle_type": {
+     "basis": "PROPOSED",
+     "values": [
+      "standard",
+      "refrigerated",
+      "heavy"
+     ]
+    }
+   },
+   "legacy_tolerance": [
+    {
+     "field": "shipments.status",
+     "rule": "accept and flag; owner to map or reject",
+     "value": "approved"
+    },
+    {
+     "field": "carrier_bookings.status",
+     "rule": "accept and flag; owner to map or reject",
+     "value": "approved"
+    }
+   ],
+   "references": {
+    "carrier": "carrier master reference",
+    "location": "location reference (identifier from a location master)",
+    "model": "model registry identifier",
+    "timezone": "IANA time zone name"
+   },
+   "rule": "A value outside the declared domain is rejected at intake and quarantined, never silently accepted or replaced.",
+   "status": "PROVISIONAL"
+  }
+ }
+}

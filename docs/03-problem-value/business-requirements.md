@@ -2,27 +2,26 @@
 
 | Field | Value |
 |---|---|
-| Stage | B: Problem Framing (Spine 3) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 3) |
 | Runbook step | B3 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/*; docs/domain-specific-spec.md (repo) |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-08, OQ-24 |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | runbook/01-BASELINE-ASSESSMENT.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-| ID | Requirement | Source |
-|---|---|---|
-| BR-1 | A request for a shipment returns exactly that shipment or a clear not-found | problem statement, F-31/F-32 |
-| BR-2 | Every action records who acted, on what, when, and under which approval | F-43 |
-| BR-3 | Events for one business case can be linked together | F-42 |
-| BR-4 | A shipment is never booked twice with a partner by accident, and retries are bounded | F-38, F-39 |
-| BR-5 | Records meet defined quality rules or are held aside with a reason | F-33..F-37 |
-| BR-6 | Advice given to staff is bounded, labelled, reviewable and never acted on without a recorded human decision | challenge guide ch. 9 |
-| BR-7 | Personal location data is exposed only where an operational purpose exists | location_data_overexposure |
-| BR-8 | Cost of handling can be tied to shipments | F-57, domain spec |
-| BR-9 | The environment can be rebuilt by a new team from documented steps | challenge 5 |
+| ID | Requirement | Persona | Finding link |
+|---|---|---|---|
+| BR-1 | Return exactly the requested record or a clear not-found, never a different one | dispatcher, support | F-30, F-33 |
+| BR-2 | Each business record has a unique, validated identifier | all | F-30..F-38 |
+| BR-3 | Access depends on who the person is and what they are doing | all | F-17..F-20 |
+| BR-4 | Every decision is recorded with actor, time, request and basis | compliance | F-42..F-46 |
+| BR-5 | Invalid or duplicate incoming data is held aside, counted and reported | data owner | F-35, F-36 |
+| BR-6 | Any automated recommendation is bounded, explainable, reviewable and costed | sponsor, AI governance | F-25..F-29 |
+| BR-7 | Secrets are never stored in source | security | F-09..F-12 |
+| BR-8 | The system can be rebuilt and tested from a clean checkout | engineering | F-02, F-03 |

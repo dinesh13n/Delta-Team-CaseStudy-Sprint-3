@@ -1,0 +1,25 @@
+{
+  "builder": "evaluation/build_datasets.py",
+  "built_utc": "2026-10-08T10:38:22Z",
+  "dataset_version": "1.0",
+  "files": {
+    "adversarial.jsonl": {
+      "cases": 43,
+      "sha256": "8f87fdf9e70649bb303f7d02d43b802de06c46d7476ba838b0a40c392aef7b6d"
+    },
+    "edge.jsonl": {
+      "cases": 20,
+      "sha256": "ca27858cb6fbd95b385ede3f6564c76e7741a21793228d57e3da2394dc1709ba"
+    },
+    "failure.jsonl": {
+      "cases": 9,
+      "sha256": "a104558fe29a923d7cb3e201a7fc98bb2e98296aed053df94354d0aa64d3d5eb"
+    },
+    "golden.jsonl": {
+      "cases": 120,
+      "sha256": "05f589b456bb14c18051ac6a75fbedbc65d3e1ced4663311505921f7fb75f08f"
+    }
+  },
+  "note": "Adversarial payloads are constructed here: the fixture contains no injection text (F-60).",
+  "source": "data/curated (derived from immutable data/synthetic by etl.run_daily_batch)"
+}

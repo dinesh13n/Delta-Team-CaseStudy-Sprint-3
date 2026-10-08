@@ -1,0 +1,49 @@
+{
+  "findings": [
+    "F-M3-04: staleness is only detected when DATA_MAX_AGE_S is set; the default is off. Set it in every deployed environment.",
+    "F-M3-05: the AI summary and the dispatcher both act on the last loaded copy, not the master. The data-version header now lets an investigator tie any response to a load; the audit event does not yet store the load id (backlog DB-16).",
+    "stale_gps (BR-03) is NOT testable: the vehicles dataset has no position timestamp, so a stale position cannot be told from a fresh one."
+  ],
+  "hypothesis": "A change in the master data that has not been loaded is visible (readiness, data-version header) and its downstream effect (record, AI summary, audit input hash) is traceable and heals on reload.",
+  "id": "DRILL-4",
+  "method": "Change one shipment's status in the source file without re-running the ETL; read the record and the AI summary; age the last ETL report to 30 h; check /ready with DATA_MAX_AGE_S=24 h; re-run the ETL; read again; compare audit input hashes.",
+  "name": "Stale master data traced downstream",
+  "observations": {
+    "ai_output_before": [
+      false,
+      "Shipment SHI-00027 has status 'exception' (service tier '[unrecognised]', promised 2026-05-20T17:34:00). 1 tracking events recorded ([unrecognised]: 1); latest is '[unrecognised]' at 2026-05-17T20:39:00. 1 carrier booking(s); highest retry_count 1190.",
+      "Review the exception with the dispatcher, confirm the carrier booking and decide on re-booking or re-routing. Suggestion only; no action has been taken."
+    ],
+    "ai_output_changed_after_etl": true,
+    "ai_output_unchanged_while_stale": true,
+    "audit_ai_summary_input_hashes": [
+      "7fc0857b52e01916f802302a9ec5fe614354cafbe6eff834aba2879dd61240b0",
+      "7fc0857b52e01916f802302a9ec5fe614354cafbe6eff834aba2879dd61240b0",
+      "20009f63d7480f4580228ac309691bdfffd7ac051213fc842b6f5503feb416ab"
+    ],
+    "data_load_id": {
+      "served_after_etl": "ld-85c84f380135",
+      "served_before": "ld-89446323a790",
+      "served_while_stale": "ld-89446323a790"
+    },
+    "input_hash_changed_after_etl": true,
+    "master_status_changed_to": "manual_hold",
+    "ready_after_etl": 200,
+    "ready_when_report_30h_old": 503,
+    "ready_when_report_30h_old_detail": "failing: data_fresh",
+    "ready_while_report_recent": 200,
+    "record_status_after_etl": "manual_hold",
+    "record_status_after_master_change_before_etl": "exception",
+    "record_status_before_change": "exception",
+    "shipment": "SHI-00027"
+  },
+  "pass_criteria": [
+    "stale value is served until reload (the behaviour is understood, not hidden)",
+    "/ready fails when the last load is older than the limit",
+    "after reload record and summary change",
+    "audit input hash differs between the stale and reloaded summaries",
+    "every response names the data load it came from"
+  ],
+  "run_utc": "2026-10-08T11:17:30Z",
+  "verdict": "PASS"
+}

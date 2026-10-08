@@ -41,3 +41,6 @@ scope-boundaries, repository-write-boundaries, environment-access-boundaries, da
 
 ## 5. Precedence
 If a document conflicts with this contract, this contract wins; if this contract conflicts with a named approver's written instruction, the instruction wins and the contract is amended through change-control-rules.
+
+## Update at G4 (2026-10-08)
+Stage H write scope is authorised by the operator under D-009 for the components named in docs/14-transformation/transformation-authorisation.md. The contract status stays PROVISIONAL because the Repository Owner and Business Sponsor are UNRESOLVED.

@@ -1,0 +1,149 @@
+{
+  "run_utc": "2026-10-08T11:43:07Z",
+  "definitions": {
+    "kpis_in_dictionary": 10,
+    "kpis_in_yaml": 10,
+    "status_in_yaml": "FROZEN",
+    "field_diffs": [],
+    "dictionary_definitions_sha256": "98c21c39cfe977a086f48d1028f6c9de6e01a52b6d2dab713d1c17d196258330",
+    "identical": true
+  },
+  "comparability": {
+    "baseline_tag": "baseline/v0.1-as-delivered-bytes",
+    "files": [
+      {
+        "file": "ai_invocations.csv",
+        "sha256_now": "5cef9d905900268fd3e1821b8b6f1214c07bb9d4ce4d8a7c0ce2f14b11448142",
+        "sha256_baseline": "5cef9d905900268fd3e1821b8b6f1214c07bb9d4ce4d8a7c0ce2f14b11448142",
+        "identical": true
+      },
+      {
+        "file": "carrier_bookings.csv",
+        "sha256_now": "e251adaf60720139334319e6bb2528910b9a352dfec122522291da0176956b66",
+        "sha256_baseline": "e251adaf60720139334319e6bb2528910b9a352dfec122522291da0176956b66",
+        "identical": true
+      },
+      {
+        "file": "events.jsonl",
+        "sha256_now": "9951775fdf6ed98790818e236288a3dbde5d9fe55fe65c7c3736bd880de73d44",
+        "sha256_baseline": "9951775fdf6ed98790818e236288a3dbde5d9fe55fe65c7c3736bd880de73d44",
+        "identical": true
+      },
+      {
+        "file": "routes.csv",
+        "sha256_now": "4720bb621e967edd857fc7f331e44a491ac475095b4bb7f0aba9bc0ad64f4d96",
+        "sha256_baseline": "4720bb621e967edd857fc7f331e44a491ac475095b4bb7f0aba9bc0ad64f4d96",
+        "identical": true
+      },
+      {
+        "file": "shipments.csv",
+        "sha256_now": "8c3840d9e3cb68339fe8a7f04e478a81897f13ff3ae3e3a95d1c5a89e2940d71",
+        "sha256_baseline": "8c3840d9e3cb68339fe8a7f04e478a81897f13ff3ae3e3a95d1c5a89e2940d71",
+        "identical": true
+      },
+      {
+        "file": "tracking_events.csv",
+        "sha256_now": "705410379bb240b45c73e49fa5bef4f12f0b0533afb13e01a3012a200849470d",
+        "sha256_baseline": "705410379bb240b45c73e49fa5bef4f12f0b0533afb13e01a3012a200849470d",
+        "identical": true
+      },
+      {
+        "file": "vehicles.csv",
+        "sha256_now": "cdfbf3d50a462d4a22109c41a3d061ccab039e17ca8ff6832fde5906b06ed038",
+        "sha256_baseline": "cdfbf3d50a462d4a22109c41a3d061ccab039e17ca8ff6832fde5906b06ed038",
+        "identical": true
+      }
+    ],
+    "population_identical": true
+  },
+  "kpis": [
+    {
+      "kpi": "K1",
+      "baseline": {
+        "p50": 1667,
+        "p95": 13709,
+        "max": 14999
+      },
+      "after_raw_fixture": {
+        "p50": 1667.0,
+        "p95": 13709.0,
+        "max": 14999.0
+      },
+      "equal": true,
+      "note": "latency is a column of the static fixture; the intervention does not change it"
+    },
+    {
+      "kpi": "K2",
+      "baseline": 2.2451,
+      "after_raw_fixture": 2.2451,
+      "equal": true,
+      "note": "static fixture"
+    },
+    {
+      "kpi": "K3",
+      "baseline": 39.6,
+      "after_raw_fixture": 39.6,
+      "equal": true,
+      "note": "static fixture"
+    },
+    {
+      "kpi": "K4",
+      "baseline": 33.6,
+      "after_raw_fixture": 33.6,
+      "equal": true,
+      "note": "source event stream unchanged (F-M3-01); API audit correlation is a different population"
+    },
+    {
+      "kpi": "K5",
+      "baseline": 904432,
+      "after_raw_fixture": 904432,
+      "equal": true,
+      "note": "declared tokens in the fixture; not model usage"
+    },
+    {
+      "kpi": "K6",
+      "baseline": {
+        "min": 51,
+        "mean": 2508.5,
+        "max": 4995
+      },
+      "after_raw_fixture": {
+        "min": 51.0,
+        "mean": 2508.5,
+        "max": 4995.0
+      },
+      "equal": true,
+      "note": "static fixture"
+    },
+    {
+      "kpi": "K7",
+      "baseline": 18,
+      "after_raw_fixture": 18,
+      "equal": true,
+      "note": "raw layer, same definition"
+    },
+    {
+      "kpi": "K8",
+      "baseline": 6,
+      "after_raw_fixture": 6,
+      "equal": true,
+      "note": "raw layer, same definition"
+    }
+  ],
+  "curated_layer_view": {
+    "K7_duplicate_keys_in_curated": 0.0,
+    "K8_incomplete_rows_in_curated": 0.0,
+    "note": "the curated layer holds only rows that passed the contract; duplicates and incomplete rows were moved to quarantine, so these are different populations from the raw counts and are NOT an improvement of K7/K8"
+  },
+  "k9_k10": {
+    "tests": "170 passed, 7 xfailed",
+    "coverage": "97% (apps + etl)",
+    "baseline": {
+      "K9": "3 of 3 pass (0 of 3 collected without httpx)",
+      "K10": "45%"
+    },
+    "note": "test counts and coverage measure the repository, not operations; they grew because tests were written, not because of use"
+  },
+  "all_proxy_kpis_equal_baseline": true,
+  "conclusion": "No business improvement can be demonstrated: the measured KPIs are properties of a static synthetic fixture, the population and definitions are unchanged, and no operational data exists."
+}

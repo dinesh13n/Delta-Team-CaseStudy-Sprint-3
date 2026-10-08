@@ -1,0 +1,47 @@
+# PROVISIONAL. Owners are role slots (UNRESOLVED). Neutral to any model, framework or vendor.
+status: PROVISIONAL
+relationships:
+- id: REL-1
+  from: tracking_events.shipment_id
+  to: shipments.shipment_id
+  cardinality: many-to-one
+  required: true
+  on_missing: quarantine
+- id: REL-2
+  from: carrier_bookings.shipment_id
+  to: shipments.shipment_id
+  cardinality: many-to-one
+  required: true
+  on_missing: quarantine
+- id: REL-3
+  from: ai_invocations.shipment_id
+  to: shipments.shipment_id
+  cardinality: many-to-one
+  required: true
+  on_missing: quarantine
+- id: REL-4
+  from: shipments.customer_id
+  to: customer (external master)
+  cardinality: many-to-one
+  required: true
+  on_missing: flag
+- id: REL-5
+  from: vehicles.driver_id
+  to: driver (external master)
+  cardinality: many-to-one
+  required: false
+  on_missing: flag
+ordering:
+- entity: tracking_events
+  scope: shipment_id
+  order_by: sequence_no
+  rule: sequence_no strictly increases with event_time within a shipment
+saga:
+- name: carrier_booking
+  steps:
+  - book
+  - confirm
+  - compensate_if_required
+  between: shipments to carrier_bookings
+  invariant: at most one active booking per shipment; retries bounded; compensation_required=true triggers the compensate
+    step

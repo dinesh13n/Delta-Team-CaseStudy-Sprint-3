@@ -1,18 +1,7 @@
-import os, time
+"""Compatibility shim. The AI gateway moved to apps.api.ai.gateway (H7, F-22..F-29).
 
-MODEL_VERSION = "local-sim-v1"
-PROMPT_TEMPLATE = "Summarize this operational record and recommend next action: {record}"
+The previous implementation formatted a prompt with str.format() from record data and reported
+guardrail_status "not_enforced"; it has been removed with no flag to bring it back (FF-05).
+"""
 
-def summarize_record(record: dict):
-    # Brownfield issues: prompt is hardcoded, untrusted fields are interpolated, no schema validation.
-    prompt = PROMPT_TEMPLATE.format(record=record)
-    time.sleep(0.01)
-    token_estimate = len(prompt.split()) * 2
-    return {
-        "model": MODEL_VERSION,
-        "summary": "Synthetic summary for " + str(next(iter(record.values()), "unknown")),
-        "recommendation": "Review and approve before action",
-        "token_estimate": token_estimate,
-        "source_count": 1,
-        "guardrail_status": "not_enforced"
-    }
+from apps.api.ai.gateway import AiGateway  # noqa: F401

@@ -1,0 +1,7 @@
+declared_gap,rule_ids,data_gap
+duplicate_tracking_events,BR-01;BR-02,False
+stale_gps,BR-03,True
+timezone_mismatch,BR-04,False
+duplicate_carrier_booking,BR-05,False
+route_ignores_restrictions,BR-06,True
+location_data_overexposure,BR-07,False

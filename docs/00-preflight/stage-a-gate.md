@@ -2,41 +2,45 @@
 
 | Field | Value |
 |---|---|
-| Stage | A: Engagement Mobilisation |
+| Stage | A |
 | Runbook step | A7 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | evidence/00-preflight/MANIFEST.md; git diff and sha256 checks run 2026-10-08 |
-| Assumptions | See assumptions in body |
-| Unresolved issues | See open questions |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | evidence/00-preflight/EVD-A-07-stage-a-exit-checks.txt |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-## 1. Exit criteria (runbook 02, Stage A)
-| # | Criterion | Result | Verification (run 2026-10-08 on the pushed repo, commit 698e858) |
+## Exit criteria
+| # | Criterion | Result | Evidence |
 |---|---|---|---|
-| A-X1 | Repository version-controlled; baseline tag resolves | PASS | tags `baseline/v0-as-delivered` and `baseline/v0.1-as-delivered-bytes` (48af6fd) resolve on origin |
-| A-X2 | As-delivered commit byte-identical to what was received | PASS for v0.1 tag; v0 tag differs in 6 CSVs (CRLF) | `sha256sum -c EVD-A-01-baseline-file-manifest.sha256` at the v0.1 tag: 0 failures of 51 |
-| A-X3 | Spine directories exist | PASS | 44 docs top-level, 44 evidence top-level (runbook corrected from 43, D-005/D-008) |
-| A-X4 | All Stage A artifacts exist with the mandatory header | PASS | discovery 13/13, operating-contract 13/13, ai-economics 13/13 files carry a Runbook-step header row (39 files; runbook said 37, because environment-snapshot and decision-log are extra) |
-| A-X5 | Statements classified Fact/Inference/Assumption/Unknown | PASS (author check) | sampled 10 statements in each of 5 artifacts; independent reviewer not available (GOV-10) |
-| A-X6 | No transformation recommendation in any 0A artifact | PASS | read-through of docs/00-preflight/discovery/: risk register lists risks only; no remedies |
-| A-X7 | Unresolved owners marked PROVISIONAL, none invented | PASS | operating-contract role table; open-governance-decisions.md |
-| A-X8 | No application file changed since baseline | PASS | `git diff baseline/v0.1-as-delivered-bytes main -- 07-logistics-shipment-fleet-routing-ops` empty |
+| A-X1 | Version control; v0.1 tag resolves | **PASS**: tag resolves to 48af6fd | EVD-A-07 |
+| A-X2 | Byte-identical to received | **PASS**: 51 of 51 hashes OK | EVD-A-01, EVD-A-07 |
+| A-X3 | 44 top-level (plus 5 nested) spine dirs and evidence mirror | **PASS**: 44 docs, 44 evidence, 5 nested | EVD-A-02, EVD-A-07 |
+| A-X4 | 37 Stage-A artifacts with full header | **PASS**: 39 files under docs/00-preflight (37 required plus environment-snapshot and decision-log), every file has the header block | EVD-A-07 |
+| A-X5 | Statements classified (>=10 per artifact) | **CONDITIONAL**: tags are present in 12 of 13 discovery files but several carry fewer than 10 tagged statements (for example assumptions-unknowns 5, discovery-summary 9); environment-snapshot and the contract/economics packs classify by section rather than per statement | grep count, this review |
+| A-X6 | No recommendation in 0A artifacts | **PASS** after one wording fix: environment-snapshot.md contained "should be sought" and was reworded | grep of discovery/*.md |
+| A-X7 | Unresolved owners PROVISIONAL, listed, none invented | **PASS**: 8 role slots UNRESOLVED; GOV-01 to GOV-10 | operating-contract/ |
+| A-X8 | No application file modified | **PASS**: 0 changed files vs tag | EVD-A-07 |
 
-## 2. Stage status
-**CONDITIONAL PASS.** Amber items:
-1. A-X2 is met only against the v0.1 tag; the v0 tag stays for history (decision D-003).
-2. A-X5 and every gate signature are self-issued by the operator (PROVISIONAL; GOV-01, GOV-10).
-3. Windows host facts are partly unverified (EVD-A-03e is a statement, not output).
+## Stage status
+**CONDITIONAL PASS.** The only gap is A-X5 (density of per-statement tags). It does not change any conclusion; per-statement tagging is applied from Stage B onward.
 
-## 3. Key findings carried forward
-- Runbook F-42 was wrong (983 of 3,000, 32.8%); corrected (D-007, D-008).
-- Pinned dependencies fail on Python 3.14 (EVD-A-03c); Stage C runs on 3.11.
-- No real model, platform, approver or authorisation exists yet (OQ-01, 02, 03, 05, 11).
+## Required Final Response
+- **Status:** CONDITIONAL PASS.
+- **Key findings:** repo had no version control; baseline byte issue fixed (D-003); runbook F-42 figure wrong (D-007, corrected D-008); pinned dependencies fail on Python 3.14 (EVD-A-03c).
+- **Major risks:** self-issued approvals; public repo with planted credentials (GOV-07).
+- **Assumptions and unknowns:** AI-economics limits are assumptions; platform, models, egress, approvers unknown.
+- **Artifacts created:** 39 under docs/00-preflight; evidence EVD-A-01 to A-07.
+- **Blocking issues:** none for Stages B to G. OQ-11 gates Stage H (see D-009).
+- **Next action:** Stage B.
 
-## 4. Required final response
-Status CONDITIONAL PASS. Risks: provisional governance; fixture-only data. Assumptions/unknowns: assumptions-unknowns.md. Artifacts: 39 docs, 13 evidence files in evidence/00-preflight/. Blocking issues: none for Stage B. Next: Stage B, Step B1.
+## New unknowns raised to Document 04
+None new beyond GOV-07 and GOV-10 (already in open-governance-decisions.md).
+
+## Sign-off
+Transformation Lead: Dinesh (acting, PROVISIONAL, self-issued).

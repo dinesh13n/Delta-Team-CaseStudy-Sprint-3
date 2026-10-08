@@ -1,0 +1,362 @@
+[
+ {
+  "id": "F-01",
+  "sev": "S1",
+  "rubric": "1, 3",
+  "title": "The repository is not under version control"
+ },
+ {
+  "id": "F-02",
+  "sev": "S2",
+  "rubric": "1, 4",
+  "title": "The documented test command cannot run"
+ },
+ {
+  "id": "F-03",
+  "sev": "S3",
+  "rubric": "1",
+  "title": "The documented run command is wrong"
+ },
+ {
+  "id": "F-04",
+  "sev": "S2",
+  "rubric": "2",
+  "title": "No dependency lockfile for either stack"
+ },
+ {
+  "id": "F-05",
+  "sev": "S2",
+  "rubric": "1, 4",
+  "title": "Documentation claims a portal that does not exist"
+ },
+ {
+  "id": "F-06",
+  "sev": "S3",
+  "rubric": "2",
+  "title": "The frontend lint gate is \"lint\": \"echo scaffold\" \u2014 a no-op that reports success."
+ },
+ {
+  "id": "F-07",
+  "sev": "S2",
+  "rubric": "2",
+  "title": "No containerisation or environment definition: no Dockerfile, no compose file, no devcontainer"
+ },
+ {
+  "id": "F-08",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "No change-control surface: no CONTRIBUTING.md, no PR template, no CODEOWNERS, no branch-protection evidence."
+ },
+ {
+  "id": "F-09",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "A database password is hardcoded in source"
+ },
+ {
+  "id": "F-10",
+  "sev": "S1",
+  "rubric": "3",
+  "title": ".env.example ships a complete DSN with embedded credentials: postgresql://app_shared:Welcome123@localhost:5432"
+ },
+ {
+  "id": "F-11",
+  "sev": "S2",
+  "rubric": "3",
+  "title": ".env.example ships AI_GATEWAY_KEY=sk-workshop-hardcoded-example \u2014 a key-shaped literal in a committed file, te"
+ },
+ {
+  "id": "F-12",
+  "sev": "S1",
+  "rubric": "3",
+  "title": ".env.example ships OT_VENDOR_TOKEN=replace-me-but-currently-shared \u2014 the comment itself documents an active sh"
+ },
+ {
+  "id": "F-13",
+  "sev": "S2",
+  "rubric": "3",
+  "title": ".env.example sets LOG_LEVEL=DEBUG as the default, meaning verbose logging of operational payloads is the out-o"
+ },
+ {
+  "id": "F-14",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "No secret detection anywhere: no scanner in CI, no pre-commit hooks, no rotation policy"
+ },
+ {
+  "id": "F-15",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "The IaC emits a credential artifact"
+ },
+ {
+  "id": "F-16",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "No encryption posture exists: no TLS configuration, no at-rest statement, no key management, no field-level ha"
+ },
+ {
+  "id": "F-17",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "Authorisation is a client-supplied HTTP header"
+ },
+ {
+  "id": "F-18",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "The role check is a flat five-element allow-list with no resource, tenant, facility, purpose or risk scoping"
+ },
+ {
+  "id": "F-19",
+  "sev": "S1",
+  "rubric": "1, 3",
+  "title": "The allow-list contains a persona from another domain"
+ },
+ {
+  "id": "F-20",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "The AI endpoint has no authorisation check whatsoever"
+ },
+ {
+  "id": "F-21",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "policy/opa/access.rego is role-only (admin \u2192 all, operator \u2192 read)"
+ },
+ {
+  "id": "F-22",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "Prompt injection surface"
+ },
+ {
+  "id": "F-23",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "Using str.format() on attacker-influenceable content is additionally a format-string injection surface: brace "
+ },
+ {
+  "id": "F-24",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "The system self-reports that no guardrail exists: the response literal is \"guardrail_status\": \"not_enforced\"."
+ },
+ {
+  "id": "F-25",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "No output schema validation"
+ },
+ {
+  "id": "F-26",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "No human approval gate"
+ },
+ {
+  "id": "F-27",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "Model provenance is a module constant (MODEL_VERSION = \"local-sim-v1\")"
+ },
+ {
+  "id": "F-28",
+  "sev": "S2",
+  "rubric": "2, 3",
+  "title": "Token accounting is fabricated: token_estimate = len(prompt.split()) * 2"
+ },
+ {
+  "id": "F-29",
+  "sev": "S1",
+  "rubric": "1, 4",
+  "title": "The AI output is not derived from the record's meaning"
+ },
+ {
+  "id": "F-30",
+  "sev": "S1",
+  "rubric": "1, 2",
+  "title": "Cross-entity primary-key collision"
+ },
+ {
+  "id": "F-31",
+  "sev": "S1",
+  "rubric": "2",
+  "title": "Record lookup scans every column, not the key"
+ },
+ {
+  "id": "F-32",
+  "sev": "S1",
+  "rubric": "1, 2",
+  "title": "A missed lookup silently returns the wrong record"
+ },
+ {
+  "id": "F-33",
+  "sev": "S2",
+  "rubric": "1",
+  "title": "Three duplicate business keys in every dataset, at a consistent *-00004, *-00013, *-00019 pattern (e.g"
+ },
+ {
+  "id": "F-34",
+  "sev": "S2",
+  "rubric": "1",
+  "title": "One fully-blank mandatory row in every dataset \u2014 every non-key column empty (10 blank columns in shipments.csv"
+ },
+ {
+  "id": "F-35",
+  "sev": "S2",
+  "rubric": "1",
+  "title": "One impossible timestamp per timestamped dataset: 1900-01-01T00:00:00 in shipments.promised_at, tracking_event"
+ },
+ {
+  "id": "F-36",
+  "sev": "S2",
+  "rubric": "1, 2",
+  "title": "tracking_events.confidence spans 0.001\u20131.42"
+ },
+ {
+  "id": "F-37",
+  "sev": "S1",
+  "rubric": "1, 2",
+  "title": "No semantic layer: categorical columns are polluted with workflow-status vocabulary"
+ },
+ {
+  "id": "F-38",
+  "sev": "S2",
+  "rubric": "1, 2",
+  "title": "Referential integrity is unenforced"
+ },
+ {
+  "id": "F-39",
+  "sev": "S1",
+  "rubric": "2",
+  "title": "A retry storm is already visible in the data"
+ },
+ {
+  "id": "F-40",
+  "sev": "S2",
+  "rubric": "2",
+  "title": "ETL counts defects and discards them"
+ },
+ {
+  "id": "F-41",
+  "sev": "S2",
+  "rubric": "2",
+  "title": "The ETL has no run identifier, watermark or idempotency key"
+ },
+ {
+  "id": "F-42",
+  "sev": "S1",
+  "rubric": "1, 3",
+  "title": "About one third of the event stream cannot be correlated"
+ },
+ {
+  "id": "F-43",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "The audit event records only ts, action and details"
+ },
+ {
+  "id": "F-44",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "The audit sink is a local file written by the application itself \u2014 <repo>/logs/audit.log, appended in-process"
+ },
+ {
+  "id": "F-45",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "datetime.utcnow() yields a naive timestamp with no timezone marker"
+ },
+ {
+  "id": "F-46",
+  "sev": "S1",
+  "rubric": "3",
+  "title": "No tracing, no metrics, no SLOs, no dashboards-as-code, no alerting, no error budget"
+ },
+ {
+  "id": "F-47",
+  "sev": "S2",
+  "rubric": "2, 3",
+  "title": "CI executes commands but produces no evidence"
+ },
+ {
+  "id": "F-48",
+  "sev": "S2",
+  "rubric": "2",
+  "title": "The Terraform is a local_file resource with no provider, no backend, no state management and no infrastructure"
+ },
+ {
+  "id": "F-49",
+  "sev": "S2",
+  "rubric": "2, 3",
+  "title": "supply-chain/dependency-risk-register.md correctly names \"no SBOM\" and \"no provenance\" as targets, but no SBOM"
+ },
+ {
+  "id": "F-50",
+  "sev": "S2",
+  "rubric": "2, 4",
+  "title": "The API contract omits both business endpoints"
+ },
+ {
+  "id": "F-51",
+  "sev": "S2",
+  "rubric": "1",
+  "title": "The characterization test characterises nothing"
+ },
+ {
+  "id": "F-52",
+  "sev": "S2",
+  "rubric": "4",
+  "title": "tests/playwright/operations.spec.ts asserts that body is visible against an application that does not exist (F"
+ },
+ {
+  "id": "F-53",
+  "sev": "S2",
+  "rubric": "1, 2",
+  "title": "A known architectural divergence is documented and unmanaged"
+ },
+ {
+  "id": "F-54",
+  "sev": "S2",
+  "rubric": "1, 2",
+  "title": "Data remediation will break the repository's own contract test"
+ },
+ {
+  "id": "F-55",
+  "sev": "S3",
+  "rubric": "2",
+  "title": "scripts/sanity_check.py hard-requires the paths docs/transformation-roadmap.md, docs/domain-specific-spec.md, "
+ },
+ {
+  "id": "F-56",
+  "sev": "S2",
+  "rubric": "3",
+  "title": "The incident runbook declares itself *\"intentionally incomplete\"*"
+ },
+ {
+  "id": "F-57",
+  "sev": "S2",
+  "rubric": "1, 4",
+  "title": "No business KPI data exists"
+ },
+ {
+  "id": "F-58",
+  "sev": "S3",
+  "rubric": "1",
+  "title": "ai_invocations.csv also has an orphan shipment reference (REC-0001 row); not in the original register"
+ },
+ {
+  "id": "F-59",
+  "sev": "S3",
+  "rubric": "1",
+  "title": "171 of 351 shipments have actual weight above declared weight (meaning unknown)"
+ },
+ {
+  "id": "F-60",
+  "sev": "S2",
+  "rubric": "1,3",
+  "title": "data/README.md claims untrusted text payloads for prompt-injection testing; no free-text field exists (max length 19), so injection test data must be authored"
+ }
+]

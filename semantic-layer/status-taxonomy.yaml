@@ -1,0 +1,109 @@
+# Legal values for every categorical field. PROVISIONAL: PROPOSED domains need Data Owner confirmation.
+status: PROVISIONAL
+enums:
+  boolean:
+    values:
+    - 'true'
+    - 'false'
+    basis: OBSERVED
+  shipment_status:
+    values:
+    - new
+    - queued
+    - in_progress
+    - manual_hold
+    - exception
+    - failed
+    - closed
+    basis: OBSERVED
+  region:
+    values:
+    - north-1
+    - south-2
+    - west-3
+    - east-4
+    - central-5
+    - remote-6
+    basis: OBSERVED
+  service_tier:
+    values:
+    - standard
+    - express
+    - economy
+    basis: PROPOSED
+  tracking_event_type:
+    values:
+    - scan
+    - departure
+    - arrival
+    - delay
+    - exception
+    - delivered
+    basis: PROPOSED
+  source_system:
+    values:
+    - legacy
+    - manual
+    - vendor
+    - internal
+    - ai_assisted
+    basis: OBSERVED
+  vehicle_type:
+    values:
+    - standard
+    - refrigerated
+    - heavy
+    basis: PROPOSED
+  maintenance_status:
+    values:
+    - normal
+    - degraded
+    - requires_review
+    - pending
+    basis: OBSERVED
+  risk_level:
+    values:
+    - normal
+    - degraded
+    - high_risk
+    basis: OBSERVED
+  ai_use_case:
+    values:
+    - exception_summary
+    - eta_prediction
+    - route_optimization
+    basis: PROPOSED
+  constraint_class:
+    values:
+    - alpha
+    - beta
+    - gamma
+    basis: UNKNOWN_MEANING
+  recommendation:
+    values:
+    - approved
+    - rejected
+    - pending
+    - requires_review
+    basis: OBSERVED
+  human_decision:
+    values:
+    - approved
+    - rejected
+    - pending
+    - requires_review
+    basis: OBSERVED
+references:
+  location: location reference (identifier from a location master)
+  timezone: IANA time zone name
+  carrier: carrier master reference
+  model: model registry identifier
+legacy_tolerance:
+- field: shipments.status
+  value: approved
+  rule: accept and flag; owner to map or reject
+- field: carrier_bookings.status
+  value: approved
+  rule: accept and flag; owner to map or reject
+rule: A value outside the declared domain is rejected at intake and quarantined, never
+  silently accepted or replaced.

@@ -1,28 +1,22 @@
-# Jobs to Be Done
+# Jobs To Be Done
 
 | Field | Value |
 |---|---|
-| Stage | B: Problem Framing (Spine 3) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 3) |
 | Runbook step | B3 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/*; docs/domain-specific-spec.md (repo) |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-08, OQ-24 |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/domain-specific-spec.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-[INF] derived from persona names and business flows.
-| Persona | Job | Success looks like |
-|---|---|---|
-| dispatcher | Find the right shipment and decide a route fast | Exact record or a clear not-found |
-| warehouse_ops | Record scans in order without duplicates | One event per scan, ordered |
-| fleet_manager | Match vehicles to loads within constraints | No restricted route assigned unflagged |
-| driver | Complete a job with minimal exposure of personal data | Location shown only for operational need |
-| customs_agent | Clear shipments with accurate flags | Flags consistent with the record |
-| customer_support | Explain what happened | A trace with reasons |
-| carrier_partner | Receive one clear booking | No duplicates or repeated retries |
-| ai_agent (as actor) | Prepare a recommendation | Bounded, reviewable, never self-executing |
+1. When a shipment is at risk, I need the correct record and its history so I can act without checking elsewhere (dispatcher, support).
+2. When a booking is made or retried, I need to be sure it happens once (carrier_partner, dispatcher).
+3. When an exception occurs, I need the evidence from pickup to delivery in one view (customer_support, customs_agent).
+4. When vehicles are assigned, I need current location and readiness (fleet_manager).
+5. When I am audited, I need to show who did what and why (all, via Compliance).

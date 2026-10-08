@@ -480,7 +480,7 @@ totals. Compare results against `data/manifest.json` and `data/quality_issues.js
 3 duplicate keys per CSV at the `*-00004`/`*-00013`/`*-00019` pattern; 1 fully-blank row per
 CSV; `1900-01-01T00:00:00` in each timestamp column; `confidence` max 1.42; `REC-0001` as the
 first-row key of all six CSVs; 1 orphan FK each in `tracking_events` and `carrier_bookings`;
-3 shipments with duplicate carrier bookings; 983 of 3,000 events (32.8%) with null `correlation_id`.
+3 shipments with duplicate carrier bookings; 1,992 of 3,000 events (66.4%) with a null or empty `correlation_id` (983 null, 1,009 empty).
 
 **Inputs.** `data/synthetic/*`; `data/manifest.json`; `data/quality_issues.json`.
 **Depends on.** **A1** — profiling must run against the tagged baseline so the figures are
@@ -1830,7 +1830,7 @@ is a static literal. **Rubric.** 3.
 decision → data accessed → model and prompt version → recommendation → human approval → final
 action → audit record → trace ID. Produce the **before/after** comparison showing what could
 not be reconstructed on `baseline/v0.1-as-delivered-bytes` and what can now.
-**Inputs.** N1 instrumentation; H8 audit; C5 correlation baseline (32.8% null, 983 of 3,000).
+**Inputs.** N1 instrumentation; H8 audit; C5 correlation baseline (66.4% missing: 983 null + 1,009 empty, 1,992 of 3,000).
 **Depends on.** **N1** (traces), **H8** (audit schema), **C5** (the before-state measurement).
 **Why.** This is simultaneously the Challenge 8 acceptance standard (*explain one business
 event end to end*) and the Challenge 14 acceptance standard (*show what happened, who

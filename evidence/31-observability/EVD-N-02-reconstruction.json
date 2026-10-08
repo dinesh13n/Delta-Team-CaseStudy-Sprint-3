@@ -1,0 +1,128 @@
+{
+  "run_utc": "2026-10-08T11:35:28Z",
+  "scenario": "dispatcher alice reads a shipment, requests an AI summary, approves it; noise traffic from 3 other callers",
+  "participants": "none: author-run, in process, deterministic provider",
+  "reconstruction": {
+    "query": {
+      "correlation_id": "trace-n2-0001",
+      "summary_id": null,
+      "subject": null,
+      "resource": null
+    },
+    "events_matched": 3,
+    "timeline": [
+      "2026-10-08T11:35:28.492Z | record.read | by alice (dispatcher) | on shipment SHI-00027 | policy=allow rule=access:dispatcher.shipments | outcome=success | corr=trace-n2-0001",
+      "2026-10-08T11:35:28.509Z | ai.summary | by alice (dispatcher) | on shipment SHI-00027 | policy=allow rule=access:dispatcher.shipments | outcome=success | ai=deterministic | guardrail=enforced | data=ld-89446323a790 | corr=trace-n2-0001",
+      "2026-10-08T11:35:28.518Z | ai.decision | by alice (dispatcher) | on ai_summary sum-d4963cc98e6d4348 | policy=allow rule=access:dispatcher.shipments | outcome=success | approval=apr-df2ba395f38747d4 | corr=trace-n2-0001"
+    ],
+    "chain_of_evidence": {
+      "actor": {
+        "auth_method": "jwt",
+        "role": "dispatcher",
+        "subject": "alice"
+      },
+      "request": {
+        "correlation_id": "trace-n2-0001",
+        "action": "ai.summary",
+        "resource": {
+          "id": "SHI-00027",
+          "type": "shipment"
+        },
+        "http_echo": "trace-n2-0001"
+      },
+      "policy_decision": {
+        "decision": "allow",
+        "decision_id": "pd-89059f6cfb6f",
+        "rule": "access:dispatcher.shipments"
+      },
+      "data_load_id": "ld-89446323a790",
+      "data_load_id_response_header": "ld-89446323a790",
+      "producer": {
+        "generated_by": "deterministic",
+        "fallback_reason": null,
+        "guardrail_status": "enforced",
+        "prompt_version": "exception_summary_v1",
+        "latency_ms": 4.2
+      },
+      "recommendation_ref": {
+        "summary_id": "sum-d4963cc98e6d4348",
+        "requires_human_approval": true
+      },
+      "human_approval": [
+        {
+          "kind": "suggested",
+          "summary_id": "sum-d4963cc98e6d4348",
+          "requested_by": "alice",
+          "decision": null,
+          "decided_by": null,
+          "decided_at": null,
+          "correlation_id": "trace-n2-0001"
+        },
+        {
+          "kind": "decision",
+          "summary_id": "sum-d4963cc98e6d4348",
+          "requested_by": null,
+          "decision": "approve",
+          "decided_by": "alice",
+          "decided_at": "2026-10-08T11:35:28.518Z",
+          "correlation_id": null
+        }
+      ],
+      "decision_event": {
+        "action": "ai.decision",
+        "outcome": "success",
+        "actor": {
+          "auth_method": "jwt",
+          "role": "dispatcher",
+          "subject": "alice"
+        }
+      },
+      "audit_chain": {
+        "valid": true,
+        "records": 10,
+        "tip_hash": "79f1d9c9e4540fff5277b02c21be1664618ba31cad4eb5d76ac281fb42f4abcf",
+        "trusted": true
+      },
+      "trace_id": "trace-n2-0001"
+    }
+  },
+  "chain_complete": true,
+  "audit_field_coverage": {
+    "correlation_id": {
+      "present": 10,
+      "of": 10
+    },
+    "actor_subject": {
+      "present": 10,
+      "of": 10
+    },
+    "policy_decision": {
+      "present": 10,
+      "of": 10
+    },
+    "resource_id": {
+      "present": 10,
+      "of": 10
+    }
+  },
+  "baseline_comparison": {
+    "baseline_source_stream": "docs/04-baseline-kpis/baseline-data-quality.md: correlation usable on 1,008 of 3,000 events (33.6%); no actor, tenant or approval in the baseline audit (F-43)",
+    "after_audit_events": "10 of 10 audit events carry a correlation id and actor",
+    "not_improved": "the SOURCE event stream still has no correlation column (F-M3-01); lineage for stored events is load_id + source_row"
+  },
+  "tamper_test": {
+    "edited": "actor.subject of audit record 1",
+    "chain_valid": false,
+    "trusted": false,
+    "note": "CHAIN BROKEN: treat the timeline as untrusted and preserve the file"
+  },
+  "observations": [
+    "the decision record in the approval store carries no correlation id of its own (null); it is joined to the request through summary_id and through the ai.decision audit event, which does carry it",
+    "requester and decider are the same subject (alice): the system permits self-approval (HC-R-01, four-eyes not implemented)"
+  ],
+  "not_shown": [
+    "the exact model text (not stored in audit by design)",
+    "reconstruction by a person other than the author",
+    "behaviour with a real model or IdP"
+  ]
+}

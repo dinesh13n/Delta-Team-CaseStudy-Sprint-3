@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "audit-event.schema.json",
+  "title": "AuditEvent",
+  "description": "Closes F-43. Hash-chained, append-only. tenant is an ASSUMPTION (single tenant 'default') until OQ on multi-tenancy is ruled.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "ts",
+    "action",
+    "actor",
+    "correlation_id",
+    "tenant",
+    "resource",
+    "policy_decision",
+    "prev_hash",
+    "hash"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "action": {
+      "type": "string",
+      "pattern": "^[a-z_]+(\\.[a-z_]+){1,2}$"
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "subject",
+        "role"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string"
+        },
+        "auth_method": {
+          "type": "string",
+          "enum": [
+            "jwt",
+            "service",
+            "anonymous"
+          ]
+        }
+      }
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "tenant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "policy_decision": {
+      "type": "object",
+      "required": [
+        "decision",
+        "rule"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "deny"
+          ]
+        },
+        "rule": {
+          "type": "string"
+        },
+        "decision_id": {
+          "type": "string"
+        }
+      }
+    },
+    "model": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "prompt_version": {
+          "type": "string"
+        },
+        "generated_by": {
+          "type": "string",
+          "enum": [
+            "deterministic",
+            "model",
+            "fallback"
+          ]
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "input_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "approval_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "success",
+        "denied",
+        "error"
+      ]
+    },
+    "retention_class": {
+      "type": "string",
+      "enum": [
+        "operational",
+        "security",
+        "ai_trace"
+      ]
+    },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "detail": {
+      "type": "object",
+      "description": "Action specific, non-sensitive details (no tokens, no raw prompts)"
+    }
+  },
+  "$comment": "v1.1 (Stage H7/H8): added model.config_hash and detail; additive."
+}

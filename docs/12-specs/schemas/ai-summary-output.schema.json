@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-summary-output.schema.json",
+  "title": "AiSummaryOutput",
+  "description": "Closes F-25. Output of the exception-summary use case (I9). Either a summary with a recommendation, or an abstention with a reason. Never an action.",
+  "type": "object",
+  "required": [
+    "summary_id",
+    "model",
+    "model_version",
+    "prompt_version",
+    "summary",
+    "recommendation",
+    "abstained",
+    "guardrail_status",
+    "generated_by",
+    "source_count",
+    "requires_human_approval",
+    "correlation_id",
+    "token_source",
+    "sources",
+    "config_hash"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "summary_id": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "type": "string"
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 1200
+    },
+    "recommendation": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 400
+    },
+    "abstained": {
+      "type": "boolean"
+    },
+    "abstain_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "insufficient_context",
+        "low_confidence",
+        "schema_violation",
+        "policy_blocked",
+        "provider_unavailable",
+        null
+      ]
+    },
+    "guardrail_status": {
+      "type": "string",
+      "enum": [
+        "enforced",
+        "blocked",
+        "not_applicable"
+      ]
+    },
+    "generated_by": {
+      "type": "string",
+      "enum": [
+        "deterministic",
+        "model",
+        "fallback"
+      ]
+    },
+    "fallback_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "token_estimate": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "requires_human_approval": {
+      "type": "boolean",
+      "const": true
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "token_source": {
+      "type": "string",
+      "enum": [
+        "estimate",
+        "provider"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dataset",
+          "record_id"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "dataset": {
+            "type": "string"
+          },
+          "record_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "config_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "abstained": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "summary": {
+            "type": "null"
+          },
+          "recommendation": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "abstain_reason"
+        ]
+      },
+      "else": {
+        "properties": {
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recommendation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ],
+  "$comment": "v1.1 (Stage H7): added token_source, confidence, sources, config_hash; confidence and sources are required by ai-context-policy.yaml output.must_include."
+}

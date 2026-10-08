@@ -1,0 +1,29 @@
+{
+  "drills": [
+    {
+      "id": "DRILL-1",
+      "name": "Missing correlation IDs in event streams",
+      "verdict": "PASS"
+    },
+    {
+      "id": "DRILL-2",
+      "name": "AI gateway timeout and core-workflow degradation",
+      "verdict": "PASS"
+    },
+    {
+      "id": "DRILL-3",
+      "name": "Duplicate event replay against idempotency",
+      "verdict": "PASS"
+    },
+    {
+      "id": "DRILL-4",
+      "name": "Stale master data traced downstream",
+      "verdict": "PASS"
+    },
+    {
+      "id": "DRILL-5",
+      "name": "Legacy batch partial failure and audit-evidence completeness",
+      "verdict": "PASS"
+    }
+  ]
+}

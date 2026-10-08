@@ -1,0 +1,455 @@
+{
+  "validated_utc": "2026-10-08T11:31:53Z",
+  "workload_run_utc": "2026-10-08T11:31:52Z",
+  "workload_paths": [
+    [
+      "ok record",
+      "200"
+    ],
+    [
+      "ok list",
+      "200"
+    ],
+    [
+      "not found",
+      "422"
+    ],
+    [
+      "auth denied: no token",
+      "401"
+    ],
+    [
+      "auth denied: bad token",
+      "401"
+    ],
+    [
+      "policy denied",
+      "403"
+    ],
+    [
+      "ai deterministic",
+      "200"
+    ],
+    [
+      "human decision",
+      "200"
+    ],
+    [
+      "ai schema violation",
+      "200"
+    ],
+    [
+      "ai output leak",
+      "200"
+    ],
+    [
+      "ai provider down",
+      "200"
+    ],
+    [
+      "ai provider down",
+      "200"
+    ],
+    [
+      "ai rate limited (limit 6/min)",
+      "200"
+    ],
+    [
+      "ai rate limited (limit 6/min)",
+      "429"
+    ],
+    [
+      "ai rate limited (limit 6/min)",
+      "429"
+    ],
+    [
+      "metrics scrape",
+      "200"
+    ]
+  ],
+  "promql_syntax_checked": true,
+  "families_exported": [
+    "ai_circuit_open",
+    "ai_decisions_total",
+    "ai_fallback_total",
+    "ai_guardrail_blocked_total",
+    "ai_request_duration_seconds",
+    "ai_request_duration_seconds_bucket",
+    "ai_request_duration_seconds_count",
+    "ai_request_duration_seconds_sum",
+    "ai_requests_total",
+    "ai_tokens_total",
+    "audit_chain_valid",
+    "auth_denied_total",
+    "data_load_age_seconds",
+    "http_request_duration_seconds",
+    "http_request_duration_seconds_bucket",
+    "http_request_duration_seconds_count",
+    "http_request_duration_seconds_sum",
+    "http_requests_total",
+    "policy_denied_total"
+  ],
+  "required_families_missing": [],
+  "rules_checked": 31,
+  "rules_failed": 0,
+  "label_values_not_exercised": [
+    "ai_requests_total{abstained=\"true\"} not produced by this workload",
+    "http_requests_total{status=~\"5..\"} matched no series in this workload"
+  ],
+  "rows": [
+    {
+      "source": "alert",
+      "name": "ApiHighErrorRate",
+      "expr": "sum(rate(http_requests_total{status=~\"5..\"}[5m])) / sum(rate(http_requests_total[5m])) > 0.02",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [
+        "http_requests_total{status=~\"5..\"} matched no series in this workload"
+      ],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "ApiLatencyP95High",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m]))) > 0.5",
+      "metrics": [
+        "http_request_duration_seconds_bucket"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AuthDeniedSpike",
+      "expr": "sum(rate(auth_denied_total[5m])) > 1",
+      "metrics": [
+        "auth_denied_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "PolicyDeniedSpike",
+      "expr": "sum(rate(policy_denied_total[5m])) > 1",
+      "metrics": [
+        "policy_denied_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiRateLimitHits",
+      "expr": "sum(increase(http_requests_total{status=\"429\"}[10m])) > 10",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiOutputLeakBlocked",
+      "expr": "increase(ai_fallback_total{reason=\"output_policy_violation\"}[15m]) > 0",
+      "metrics": [
+        "ai_fallback_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiSchemaViolations",
+      "expr": "increase(ai_guardrail_blocked_total[15m]) > 3",
+      "metrics": [
+        "ai_guardrail_blocked_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiFallbackRateHigh",
+      "expr": "sum(rate(ai_fallback_total[15m])) / sum(rate(ai_requests_total[15m])) > 0.2",
+      "metrics": [
+        "ai_fallback_total",
+        "ai_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiCircuitOpen",
+      "expr": "ai_circuit_open == 1",
+      "metrics": [
+        "ai_circuit_open"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiLatencyP95High",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(ai_request_duration_seconds_bucket[10m]))) > 5",
+      "metrics": [
+        "ai_request_duration_seconds_bucket"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AiSuggestionsRejectedHigh",
+      "expr": "sum(increase(ai_decisions_total{decision=\"reject\"}[1d])) / sum(increase(ai_decisions_total[1d])) > 0.5",
+      "metrics": [
+        "ai_decisions_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "AuditChainBroken",
+      "expr": "audit_chain_valid == 0",
+      "metrics": [
+        "audit_chain_valid"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "DataStale",
+      "expr": "data_load_age_seconds > 90000",
+      "metrics": [
+        "data_load_age_seconds"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "DataLoadMissing",
+      "expr": "data_load_age_seconds < 0",
+      "metrics": [
+        "data_load_age_seconds"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "alert",
+      "name": "MetricsAbsent",
+      "expr": "absent(http_requests_total)",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/AI requests by provider",
+      "expr": "sum by (generated_by) (rate(ai_requests_total[5m]))",
+      "metrics": [
+        "ai_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Abstain share",
+      "expr": "sum(rate(ai_requests_total{abstained=\"true\"}[15m])) / sum(rate(ai_requests_total[15m]))",
+      "metrics": [
+        "ai_requests_total"
+      ],
+      "problems": [],
+      "notes": [
+        "ai_requests_total{abstained=\"true\"} not produced by this workload"
+      ],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Fallbacks by reason",
+      "expr": "sum by (reason) (rate(ai_fallback_total[15m]))",
+      "metrics": [
+        "ai_fallback_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Schema violations",
+      "expr": "increase(ai_guardrail_blocked_total[1h])",
+      "metrics": [
+        "ai_guardrail_blocked_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/AI p95 latency",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(ai_request_duration_seconds_bucket[10m])))",
+      "metrics": [
+        "ai_request_duration_seconds_bucket"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Token estimate rate",
+      "expr": "rate(ai_tokens_total[5m])",
+      "metrics": [
+        "ai_tokens_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Human decisions",
+      "expr": "sum by (decision) (increase(ai_decisions_total[1d]))",
+      "metrics": [
+        "ai_decisions_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "ai-quality/Circuit open",
+      "expr": "ai_circuit_open",
+      "metrics": [
+        "ai_circuit_open"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "integrity-data/Audit chain valid",
+      "expr": "audit_chain_valid",
+      "metrics": [
+        "audit_chain_valid"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "integrity-data/Data load age",
+      "expr": "data_load_age_seconds",
+      "metrics": [
+        "data_load_age_seconds"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "integrity-data/Rate-limited AI calls",
+      "expr": "sum(increase(http_requests_total{status=\"429\"}[1h]))",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "service-red/Request rate by route",
+      "expr": "sum by (route) (rate(http_requests_total[5m]))",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "service-red/5xx ratio",
+      "expr": "sum(rate(http_requests_total{status=~\"5..\"}[5m])) / sum(rate(http_requests_total[5m]))",
+      "metrics": [
+        "http_requests_total"
+      ],
+      "problems": [],
+      "notes": [
+        "http_requests_total{status=~\"5..\"} matched no series in this workload"
+      ],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "service-red/p95 latency",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))",
+      "metrics": [
+        "http_request_duration_seconds_bucket"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "service-red/Auth denied by reason",
+      "expr": "sum by (reason) (rate(auth_denied_total[5m]))",
+      "metrics": [
+        "auth_denied_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    },
+    {
+      "source": "dashboard",
+      "name": "service-red/Policy denied by entity",
+      "expr": "sum by (entity) (rate(policy_denied_total[5m]))",
+      "metrics": [
+        "policy_denied_total"
+      ],
+      "problems": [],
+      "notes": [],
+      "ok": true
+    }
+  ],
+  "limits": [
+    "Syntax and reference checks only: no Prometheus or Grafana instance evaluated these rules, so no alert has been seen to FIRE or to route.",
+    "Thresholds are proposed starting values, not tuned on production traffic.",
+    "Exposition has no # HELP / # TYPE lines (hand-rolled renderer); a real Prometheus accepts this but typed tooling will not know counters from gauges."
+  ],
+  "all_ok": true
+}

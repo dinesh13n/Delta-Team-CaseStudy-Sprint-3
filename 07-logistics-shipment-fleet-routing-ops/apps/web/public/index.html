@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations view (read-only)</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Shipment exceptions: operations view</h1>
+    <p class="note">Read-only. AI output is a suggestion; a person decides. Build: thin view per OQ-06.</p>
+  </header>
+  <main>
+    <section aria-labelledby="auth-h">
+      <form id="auth" autocomplete="off">
+      <h2 id="auth-h">1. Identity</h2>
+      <label for="token">Bearer token (kept in memory only)</label>
+      <input id="token" type="password" autocomplete="off" spellcheck="false">
+      <button id="load" type="submit">Load shipments</button>
+      <span id="whoami" role="status"></span>
+      </form>
+    </section>
+    <section aria-labelledby="list-h">
+      <h2 id="list-h">2. Shipments</h2>
+      <label for="status">Status</label>
+      <select id="status"><option value="">any</option><option>new</option><option>queued</option><option>in_progress</option>
+        <option>manual_hold</option><option>exception</option><option>failed</option><option>closed</option></select>
+      <button id="prev" type="button">Previous</button><button id="next" type="button">Next</button>
+      <span id="page" role="status"></span>
+      <table id="list" aria-label="Shipments"><thead><tr><th>Shipment</th><th>Status</th><th>Tier</th><th>Promised</th></tr></thead><tbody></tbody></table>
+    </section>
+    <section aria-labelledby="detail-h">
+      <h2 id="detail-h">3. Record</h2>
+      <dl id="record"></dl>
+      <h3>Events</h3>
+      <ol id="events"></ol>
+      <button id="summarize" type="button" disabled>Summarize exception (AI, suggest-only)</button>
+    </section>
+    <section aria-labelledby="ai-h">
+      <h2 id="ai-h">4. Suggestion and decision</h2>
+      <div id="suggestion" aria-live="polite"></div>
+      <label for="reason">Reason (optional)</label>
+      <input id="reason" maxlength="500">
+      <button id="approve" type="button" disabled>Approve suggestion</button>
+      <button id="reject" type="button" disabled>Reject suggestion</button>
+      <div id="decision" role="status"></div>
+    </section>
+    <section id="error" role="alert" hidden></section>
+  </main>
+  <footer><small id="cid"></small></footer>
+  <script src="app.js"></script>
+</body>
+</html>

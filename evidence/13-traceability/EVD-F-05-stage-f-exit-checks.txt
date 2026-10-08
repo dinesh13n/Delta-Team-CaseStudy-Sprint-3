@@ -1,0 +1,3 @@
+EVD-F-04 rows: 62
+subtree git status (expect only characterization tests untracked):
+?? 07-logistics-shipment-fleet-routing-ops/tests/characterization/

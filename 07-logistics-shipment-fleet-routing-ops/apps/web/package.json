@@ -1,10 +1,11 @@
 {
   "scripts": {
     "test": "playwright test",
-    "lint": "echo scaffold"
+    "lint": "node scripts/lint-scaffold.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "^1.46.0"
+    "@playwright/test": "^1.46.0",
+    "typescript": "^5.6.0"
   },
   "dependencies": {}
 }

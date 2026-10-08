@@ -2,21 +2,20 @@
 
 | Field | Value |
 |---|---|
-| Stage | B: Stakeholders (Spine 2) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 2) |
 | Runbook step | B2 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/* |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-05 |
-| Residual risks | No independent approver exists |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/00-preflight/ (A4, A5, A6 packs); runbook/04-OPEN-QUESTIONS-REGISTER.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-No real stakeholders have been consulted, so no conflict is evidenced. Tensions inherent in the roles [INF]:
-- Delivery speed (operator) versus independent approval (CTO review).
-- Data cleanliness (Data Owner) versus a fixture contract that fails if rows change (scripts/sanity_check.py, F-54).
-- Baseline integrity versus secret hygiene (OQ-19).
-- Public portfolio visibility versus employer training IP (GOV-07).
+- C1 [INF]: Speed (training schedule) versus evidence depth (rubric rewards proof).
+- C2 [INF]: Governance findings (31 of 57) versus working application weight (25 marks): effort trade-off to settle at Step I2.
+- C3 [VF]: Independence of review versus a single-operator engagement (GOV-10).
+- C4 [INF]: Preserving defects as baseline versus fixing them: resolved by Stage ordering (baseline in C, fixes in H).

@@ -1,0 +1,57 @@
+{
+  "run_utc": "2026-10-08T11:47:37Z",
+  "load_id": "ld-89446323a790",
+  "overall": "OK",
+  "results": [
+    {
+      "check": "data.quarantine_ratio",
+      "status": "OK",
+      "detail": "0.0141 (reference 0.0141)"
+    },
+    {
+      "check": "data.entity.ai_invocations",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.carrier_bookings",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.routes",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.shipments",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.tracking_events",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.vehicles",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "prompt.lock",
+      "status": "OK",
+      "detail": "prompt matches prompts.lock.json"
+    },
+    {
+      "check": "model.lock",
+      "status": "OK",
+      "detail": "models.lock.json readable and self-consistent"
+    },
+    {
+      "check": "evaluation.thresholds",
+      "status": "OK",
+      "detail": "overall PASS, 0 failing case(s) of 192"
+    }
+  ]
+}

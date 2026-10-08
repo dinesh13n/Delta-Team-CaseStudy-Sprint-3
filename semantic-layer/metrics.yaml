@@ -1,0 +1,94 @@
+# PROVISIONAL. Owners are role slots (UNRESOLVED). Neutral to any model, framework or vendor.
+# Frozen definitions copied from docs/04-baseline-kpis/kpi-dictionary.md. Do not change to improve results.
+status: FROZEN
+metrics:
+- id: K1
+  name: Event latency
+  meaning: time recorded per event
+  formula: percentile (index method, sorted[int(p/100*n)]) of `latency_ms`
+  unit: ms
+  owner: SRE Owner UNRESOLVED
+  source: events.jsonl
+  period: fixture, span unknown
+  segmentation: by business_entity
+- id: K2
+  name: Cost per event
+  meaning: declared cost units per event
+  formula: sum(cost_units)/count(events)
+  unit: cost units
+  owner: Business Sponsor UNRESOLVED
+  source: events.jsonl
+  period: fixture
+  segmentation: by business_entity
+- id: K3
+  name: Severe-event share
+  meaning: share of events with severity error or critical
+  formula: (error+critical)/total
+  unit: '%'
+  owner: SRE Owner UNRESOLVED
+  source: events.jsonl
+  period: fixture
+  segmentation: by event_type
+- id: K4
+  name: Correlation completeness
+  meaning: events with a non-null, non-empty correlation_id (amended D-012)
+  formula: usable/total
+  unit: '%'
+  owner: Compliance Owner UNRESOLVED
+  source: events.jsonl
+  period: fixture
+  segmentation: by actor
+- id: K5
+  name: Declared AI tokens
+  meaning: token_count summed over invocations
+  formula: sum(token_count), parseable rows
+  unit: tokens
+  owner: AI Governance Owner UNRESOLVED
+  source: ai_invocations.csv
+  period: fixture
+  segmentation: by use_case
+- id: K6
+  name: Carrier retry level
+  meaning: retry_count distribution
+  formula: min/mean/max of retry_count
+  unit: count
+  owner: Operations Owner UNRESOLVED
+  source: carrier_bookings.csv
+  period: fixture
+  segmentation: by carrier
+- id: K7
+  name: Duplicate business keys
+  meaning: keys appearing more than once
+  formula: count over all six datasets
+  unit: keys
+  owner: Data Owner UNRESOLVED
+  source: six CSVs
+  period: fixture
+  segmentation: by dataset
+- id: K8
+  name: Incomplete rows
+  meaning: rows with any blank field
+  formula: count over six datasets
+  unit: rows
+  owner: Data Owner UNRESOLVED
+  source: six CSVs
+  period: fixture
+  segmentation: by dataset
+- id: K9
+  name: Baseline test result
+  meaning: passing tests / collected
+  formula: pytest result
+  unit: tests
+  owner: Repository Owner UNRESOLVED
+  source: EVD-C-03
+  period: run date
+  segmentation: n/a
+- id: K10
+  name: Baseline coverage
+  meaning: statement coverage of apps, etl, legacy, scripts
+  formula: coverage.py
+  unit: '%'
+  owner: Repository Owner UNRESOLVED
+  source: EVD-C-03
+  period: run date
+  segmentation: by module

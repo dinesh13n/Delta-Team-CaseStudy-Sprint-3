@@ -1,0 +1,57 @@
+{
+  "title": "Logistics API: rate, errors, duration",
+  "panels": [
+    {
+      "title": "Request rate by route",
+      "type": "timeseries",
+      "unit": "reqps",
+      "targets": [
+        {
+          "expr": "sum by (route) (rate(http_requests_total[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "5xx ratio",
+      "type": "timeseries",
+      "unit": "percentunit",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{status=~\"5..\"}[5m])) / sum(rate(http_requests_total[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "p95 latency",
+      "type": "timeseries",
+      "unit": "s",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))"
+        }
+      ]
+    },
+    {
+      "title": "Auth denied by reason",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "sum by (reason) (rate(auth_denied_total[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "Policy denied by entity",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "sum by (entity) (rate(policy_denied_total[5m]))"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "note": "Grafana-style panel list; datasource is a variable ${DS_PROMETHEUS} to be bound at deploy [ASM: no real Grafana tested]"
+}

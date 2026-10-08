@@ -1,0 +1,29 @@
+generated 2026-10-08T10:32:01.837282Z by H11 import-graph check
+apps/api/__init__.py -> -
+apps/api/ai/__init__.py -> -
+apps/api/ai/gateway.py -> apps.api.ai, apps.api.ai.providers, apps.api.ai.sanitize, apps.api.audit_chain, apps.api.data.repository
+apps/api/ai/providers.py -> -
+apps/api/ai/registry.py -> -
+apps/api/ai/sanitize.py -> -
+apps/api/approvals.py -> apps.api.audit_chain
+apps/api/audit_chain.py -> -
+apps/api/config.py -> -
+apps/api/correlation.py -> -
+apps/api/data/__init__.py -> -
+apps/api/data/repository.py -> -
+apps/api/errors.py -> apps.api
+apps/api/kpis.py -> -
+apps/api/main.py -> apps.api, apps.api.ai.gateway, apps.api.ai.providers, apps.api.approvals, apps.api.audit_chain, apps.api.config, apps.api.data.repository, apps.api.errors, apps.api.metrics, apps.api.security.policy, apps.api.security.tokens, apps.api.services
+apps/api/metrics.py -> -
+apps/api/security/__init__.py -> -
+apps/api/security/policy.py -> -
+apps/api/security/tokens.py -> -
+apps/api/services/__init__.py -> -
+apps/api/services/ai_gateway.py -> apps.api.ai.gateway
+apps/api/services/audit.py -> -
+apps/api/services/domain_service.py -> -
+etl/__init__.py -> -
+etl/run_daily_batch.py -> apps.api.config, etl.validation
+etl/validation.py -> -
+RULES: no module except main imports main; security does not import data/ai; data does not import ai/security; etl does not import main
+VIOLATIONS: none

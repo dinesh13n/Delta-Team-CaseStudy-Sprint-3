@@ -1,0 +1,8 @@
+# PROVISIONAL ownership (decision-log D-009; owners UNRESOLVED, OQ-05). No real owner has been invented:
+# the repository owner account is used as a placeholder until the Repository Owner and Security Owner are named.
+*                       @dinesh13n
+/07-logistics-shipment-fleet-routing-ops/policy/                @dinesh13n
+/07-logistics-shipment-fleet-routing-ops/semantic-layer/        @dinesh13n
+/07-logistics-shipment-fleet-routing-ops/apps/api/security/     @dinesh13n
+/07-logistics-shipment-fleet-routing-ops/apps/api/ai/           @dinesh13n
+/07-logistics-shipment-fleet-routing-ops/.github/               @dinesh13n

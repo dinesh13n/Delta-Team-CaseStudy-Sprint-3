@@ -1,9 +1,53 @@
+[project]
+name = "07-logistics-shipment-fleet-routing-ops"
+version = "0.2.0"
+description = "Logistics shipment, fleet, routing and exception operations (AI-FDE transformed brownfield repo)"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`:DeprecationWarning"]
+markers = ["characterization: pins baseline brownfield behaviour (see tests/characterization)"]
 
-[project]
-name = "07-logistics-shipment-fleet-routing-ops"
-version = "0.1.0"
-description = "Brownfield AI-FDE workshop repo"
-requires-python = ">=3.10"
+[tool.coverage.run]
+source = ["apps", "etl", "legacy", "scripts"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+extend-exclude = ["data", "apps/web"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM"]
+ignore = ["S101"]  # asserts are used in tests; production code does not rely on assert
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "S108", "S603", "S607", "B008", "E501", "SIM117"]
+"scripts/**" = ["S603", "S607", "S105"]
+"etl/**" = ["S105"]
+"scripts/sanity_check.py" = ["E501", "E401", "E702", "SIM"]  # delivered asset (DNC-1); extended, not restyled
+"apps/api/main.py" = ["B008"]  # FastAPI Depends/Query defaults are the framework idiom
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["apps", "etl", "scripts"]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_optional = true
+
+[[tool.mypy.overrides]]
+module = ["apps.api.services.*", "scripts.sanity_check"]
+ignore_errors = true
+
+[tool.ruff.format]
+exclude = ["apps/api/services", "legacy", "scripts/sanity_check.py", "apps/web", "data"]

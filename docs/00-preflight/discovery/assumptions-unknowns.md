@@ -34,7 +34,7 @@ Classification key: **[VF]** Verified Fact (read in a cited file), **[INF]** Inf
 | UNK-7 | Real runtime topology, users and systems of record | none yet |
 | UNK-8 | Windows host tools and exact Node version | EVD-A-03d/e |
 
-## 3. Discrepancy found against the runbook (cross-check, not copy)
-- [VF] Runbook finding F-42 (and the Overview and README headline "two-thirds") states 1,992 of 3,000 events (66.4%) have `correlation_id: null`. Independent count on the baseline-hash-verified file: `grep -c '"correlation_id": null'` = **983 (32.8%)**. The runbook figure is wrong. Corrected statement: about one third are uncorrelated (about 41% if events whose correlation id appears only once are included: 1,225).
-- [VF] The finding's direction holds (a large share of events cannot be correlated); its magnitude and the "two-thirds" wording do not.
-- Action: recorded as decision-log D-007; runbook text correction pending operator approval. Other quantitative findings (F-01 to F-57) are not yet re-verified and should be treated as unverified until Stage C.
+## 3. Cross-check of the runbook figure for F-42 (RESOLVED, reversed by D-012)
+- [VF] Runbook finding F-42 states 1,992 of 3,000 events (66.4%) have no correlation id. An earlier count here used `grep -c '"correlation_id": null'` = 983 (32.8%) and wrongly called the runbook figure wrong. That count missed events whose `correlation_id` is the empty string.
+- [VF] Re-count on the baseline-hash-verified file (EVD-A-04c): null 983, empty string 1,009, non-empty 1,008. Null or empty = 1,992 = 66.4%. The runbook figure was right.
+- Action: D-007, D-008 and D-010 (as far as they concern F-42 and C1) are superseded by D-012. Other quantitative findings were re-verified in Stage C.

@@ -1,0 +1,12 @@
+:root { --bg:#fff; --fg:#14213d; --muted:#5c677d; --line:#d0d7e2; --accent:#1d4ed8; --warn:#9a3412; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0b1220; --fg:#e5e9f0; --muted:#9aa5b8; --line:#273247; --accent:#7aa2ff; --warn:#fdba74; } }
+body { margin:0; font:16px/1.5 system-ui, sans-serif; background:var(--bg); color:var(--fg); }
+header, main, footer { max-width: 60rem; margin: 0 auto; padding: 0.5rem 1rem; }
+section { border-top:1px solid var(--line); padding: 0.75rem 0; }
+.note, small { color: var(--muted); }
+table { border-collapse: collapse; width:100%; } th, td { text-align:left; padding:.25rem .5rem; border-bottom:1px solid var(--line); }
+tbody tr { cursor:pointer; } tbody tr:focus, tbody tr:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); outline: none; }
+button { margin: .25rem .25rem .25rem 0; padding:.35rem .8rem; } input, select { padding:.3rem; }
+#error { color: var(--warn); font-weight: 600; }
+.suggestion { border-left: 4px solid var(--accent); padding-left: .75rem; }
+@media (max-width: 40rem) { table { font-size: .9rem; } }

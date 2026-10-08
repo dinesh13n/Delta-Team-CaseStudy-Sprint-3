@@ -1,0 +1,11 @@
+2026-10-08T10:54:39Z
+tests/test_human_control.py::test_no_endpoint_lets_the_system_change_a_shipment_route_or_booking PASSED [ 11%]
+tests/test_human_control.py::test_every_suggestion_requires_human_approval_even_when_abstained PASSED [ 22%]
+tests/test_human_control.py::test_ai_persona_cannot_approve_its_own_suggestion PASSED [ 33%]
+tests/test_human_control.py::test_read_only_personas_cannot_decide PASSED [ 44%]
+tests/test_human_control.py::test_only_one_decision_per_suggestion_and_it_is_final PASSED [ 55%]
+tests/test_human_control.py::test_decision_input_is_validated PASSED     [ 66%]
+tests/test_human_control.py::test_decision_is_audited_with_actor_and_approval_id_and_chain_stays_valid PASSED [ 77%]
+tests/test_human_control.py::test_denied_decision_attempts_are_audited PASSED [ 88%]
+tests/test_human_control.py::test_low_confidence_model_output_becomes_an_abstention PASSED [100%]
+========================= 9 passed, 1 warning in 2.06s =========================

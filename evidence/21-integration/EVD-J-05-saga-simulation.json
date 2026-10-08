@@ -1,0 +1,21 @@
+{
+  "baseline_in_fixture": {
+    "duplicate_booking_ids": 3,
+    "max_retry_count": 4995,
+    "rows": 354
+  },
+  "carrier_book_calls": 533,
+  "configured_max_attempts": 3,
+  "duplicate_requests_suppressed": 631,
+  "hard_retry_ceiling": 5,
+  "live_bookings_at_carrier": 355,
+  "max_attempts_for_any_booking": 3,
+  "outcomes_by_state": {
+    "CONFIRMED": 962,
+    "FAILED": 38
+  },
+  "requests": 1000,
+  "run_note": "deterministic simulation with a scripted flaky carrier; no real carrier was called",
+  "shipments_with_more_than_one_live_booking": 0,
+  "unique_shipments_requested": 400
+}

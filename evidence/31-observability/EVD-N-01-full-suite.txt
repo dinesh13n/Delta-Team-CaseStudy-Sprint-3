@@ -1,0 +1,49 @@
+...xxxxxxx.............................................................. [ 40%]
+........................................................................ [ 81%]
+.................................                                        [100%]
+=============================== warnings summary ===============================
+../../../fde/venv314/lib/python3.14/site-packages/fastapi/testclient.py:1
+  /sessions/rcw-01ybvx9i8yefdrry45yviml9/fde/venv314/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.7-final-0 ________________
+
+Name                                   Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------
+apps/api/ai/gateway.py                   153      3    98%   260-261, 279
+apps/api/ai/providers.py                  55      0   100%
+apps/api/ai/registry.py                   36      2    94%   46-47
+apps/api/ai/sanitize.py                   36      0   100%
+apps/api/approvals.py                     41      3    93%   25-27
+apps/api/audit_chain.py                   74      1    99%   83
+apps/api/config.py                        65      4    94%   21, 25, 90, 92
+apps/api/correlation.py                   17      0   100%
+apps/api/data/repository.py               72      0   100%
+apps/api/errors.py                        29      1    97%   58
+apps/api/integration/carrier_saga.py     156      4    97%   118, 149, 179, 222
+apps/api/kpis.py                          41      0   100%
+apps/api/main.py                         262     10    96%   206-207, 253-254, 298-301, 314, 331, 349
+apps/api/metrics.py                       47      0   100%
+apps/api/resilience.py                    68      1    99%   39
+apps/api/security/policy.py               63      0   100%
+apps/api/security/tokens.py               36      1    97%   50
+apps/api/services/ai_gateway.py            1      1     0%   7
+apps/api/services/audit.py                 9      9     0%   6-18
+apps/api/services/domain_service.py       15      2    87%   26-27
+etl/run_daily_batch.py                   114      1    99%   176
+etl/validation.py                        121      1    99%   91
+--------------------------------------------------------------------
+TOTAL                                   1511     44    97%
+
+8 empty files skipped.
+=========================== short test summary info ============================
+XFAIL tests/characterization/test_characterization_baseline.py::test_records_without_role_header_succeeds - APPROVED CHANGE AB-03: no identity now gives 401, role header ignored (F-17) (spec FR-03, AC-04, AC-05)
+XFAIL tests/characterization/test_characterization_baseline.py::test_records_clinician_role_succeeds - APPROVED CHANGE AB-04: clinician persona removed, token with that role is 403 (F-19) (spec FR-04, access-semantics.yaml)
+XFAIL tests/characterization/test_characterization_baseline.py::test_unknown_role_is_forbidden_with_http_200 - APPROVED CHANGE AB-05: denial is HTTP 401/403 problem+json, not 200 (F-18) (spec FR-05, AC-07, error-handling-spec)
+XFAIL tests/characterization/test_characterization_baseline.py::test_ai_summary_without_any_role - APPROVED CHANGE AB-06: AI endpoint requires a verified token and policy (F-20) (spec FR-03, AC-04)
+XFAIL tests/characterization/test_characterization_baseline.py::test_ai_guardrail_status_not_enforced - APPROVED CHANGE AB-07: guardrail_status is evaluated (enforced or blocked) (F-24) (spec FR-11, AC-12)
+XFAIL tests/characterization/test_characterization_baseline.py::test_ai_summary_echoes_first_column - APPROVED CHANGE AB-08: summary is derived from allow-listed record facts (F-29) (spec FR-09, AC-12)
+XFAIL tests/characterization/test_characterization_baseline.py::test_audit_event_has_no_actor_or_correlation - APPROVED CHANGE AB-09: audit v2 carries actor, correlation id, tenant, resource, policy decision (F-43) (spec FR-13, AC-18)
+170 passed, 7 xfailed, 1 warning in 30.73s

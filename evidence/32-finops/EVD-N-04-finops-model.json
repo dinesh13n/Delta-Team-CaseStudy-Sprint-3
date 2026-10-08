@@ -1,0 +1,80 @@
+{
+  "run_utc": "2026-10-08T11:39:50Z",
+  "basis": "every shipment id in the fixture summarised once with the deterministic provider; no model called; token numbers are len/4 estimates",
+  "measured_per_request": {
+    "requests_measured": 349,
+    "tokens_est_mean": 271.2,
+    "tokens_est_p95": 274,
+    "tokens_est_max": 275,
+    "response_bytes_mean": 1016.1,
+    "by_producer": {
+      "deterministic": 346,
+      "fallback": 3
+    }
+  },
+  "measured_storage_and_telemetry": {
+    "audit_bytes_per_ai_request": 1170.2,
+    "audit_events": 349,
+    "audit_bytes_total": 408395,
+    "approval_bytes_per_ai_request": 190.0,
+    "metric_series_exposed": 53
+  },
+  "wall_seconds_for_all_requests": 3.33,
+  "envelope_from_A6": {
+    "tokens_typical_max": 3000,
+    "tokens_hard_cap": 5000,
+    "baseline_mean_tokens_per_request": 2562,
+    "baseline_cost_units_per_request": 2.245
+  },
+  "within_envelope": {
+    "mean_vs_typical": true,
+    "max_vs_hard_cap": true
+  },
+  "scenarios": [
+    {
+      "volume": "1x (354 per period)",
+      "ai_requests_per_period": 354,
+      "tokens_per_period_est": 96000,
+      "audit_mb_per_period": 0.41,
+      "usd_per_period_at_illustrative_usd_per_million_tokens": {
+        "1.0": 0.096,
+        "5.0": 0.48,
+        "15.0": 1.44
+      }
+    },
+    {
+      "volume": "10x",
+      "ai_requests_per_period": 3540,
+      "tokens_per_period_est": 959999,
+      "audit_mb_per_period": 4.14,
+      "usd_per_period_at_illustrative_usd_per_million_tokens": {
+        "1.0": 0.96,
+        "5.0": 4.8,
+        "15.0": 14.4
+      }
+    },
+    {
+      "volume": "100x",
+      "ai_requests_per_period": 35400,
+      "tokens_per_period_est": 9599993,
+      "audit_mb_per_period": 41.43,
+      "usd_per_period_at_illustrative_usd_per_million_tokens": {
+        "1.0": 9.6,
+        "5.0": 48.0,
+        "15.0": 143.9999
+      }
+    }
+  ],
+  "review_share_scenarios": {
+    "all suggestions reviewed": 1.0,
+    "half reviewed": 0.5
+  },
+  "price_note": "prices are parameters, not facts: the three USD-per-million-token points are illustrative spread values, not quotes from any provider; a real model changes input/output split, adds a system prompt and may use more tokens than this estimate",
+  "not_included": [
+    "model price, input/output split, caching",
+    "compute, storage and network of any platform (none exists)",
+    "human review time (largest real cost, unmeasured)",
+    "evaluation and red-team runs",
+    "engineering and operations effort"
+  ]
+}

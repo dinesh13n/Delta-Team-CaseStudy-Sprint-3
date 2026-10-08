@@ -1,0 +1,231 @@
+# PROVISIONAL. Owners are role slots (UNRESOLVED). Neutral to any model, framework or vendor.
+status: PROVISIONAL
+rules:
+- id: BR-K-shipments
+  gap: identity
+  entity: shipments
+  type: unique
+  fields:
+  - shipment_id
+  severity: block
+  statement: shipment_id is unique
+- id: BR-P-shipments
+  gap: identity
+  entity: shipments
+  type: pattern
+  field: shipment_id
+  pattern: SHI-[0-9]{5}
+  match: full
+  severity: block
+  statement: shipment_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-K-tracking_events
+  gap: identity
+  entity: tracking_events
+  type: unique
+  fields:
+  - event_id
+  severity: block
+  statement: event_id is unique
+- id: BR-P-tracking_events
+  gap: identity
+  entity: tracking_events
+  type: pattern
+  field: event_id
+  pattern: EVE-[0-9]{5}
+  match: full
+  severity: block
+  statement: event_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-K-vehicles
+  gap: identity
+  entity: vehicles
+  type: unique
+  fields:
+  - vehicle_id
+  severity: block
+  statement: vehicle_id is unique
+- id: BR-P-vehicles
+  gap: identity
+  entity: vehicles
+  type: pattern
+  field: vehicle_id
+  pattern: VEH-[0-9]{5}
+  match: full
+  severity: block
+  statement: vehicle_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-K-routes
+  gap: identity
+  entity: routes
+  type: unique
+  fields:
+  - route_id
+  severity: block
+  statement: route_id is unique
+- id: BR-P-routes
+  gap: identity
+  entity: routes
+  type: pattern
+  field: route_id
+  pattern: ROU-[0-9]{5}
+  match: full
+  severity: block
+  statement: route_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-K-carrier_bookings
+  gap: identity
+  entity: carrier_bookings
+  type: unique
+  fields:
+  - booking_id
+  severity: block
+  statement: booking_id is unique
+- id: BR-P-carrier_bookings
+  gap: identity
+  entity: carrier_bookings
+  type: pattern
+  field: booking_id
+  pattern: BOO-[0-9]{5}
+  match: full
+  severity: block
+  statement: booking_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-K-ai_invocations
+  gap: identity
+  entity: ai_invocations
+  type: unique
+  fields:
+  - ai_call_id
+  severity: block
+  statement: ai_call_id is unique
+- id: BR-P-ai_invocations
+  gap: identity
+  entity: ai_invocations
+  type: pattern
+  field: ai_call_id
+  pattern: AI_-[0-9]{5}
+  match: full
+  severity: block
+  statement: ai_call_id matches the entity prefix; cross-entity keys such as REC-0001 are invalid
+- id: BR-01
+  gap: duplicate_tracking_events
+  entity: tracking_events
+  type: unique
+  fields:
+  - shipment_id
+  - event_type
+  - event_time
+  - source_system
+  severity: block
+  statement: the same business event is recorded once
+- id: BR-02
+  gap: duplicate_tracking_events
+  entity: tracking_events
+  type: unique
+  fields:
+  - shipment_id
+  - sequence_no
+  severity: block
+  statement: sequence_no is unique within a shipment
+- id: BR-03
+  gap: stale_gps
+  entity: vehicles
+  type: freshness
+  field: location_updated_at
+  max_age_minutes: 15
+  severity: flag
+  data_gap: true
+  statement: a vehicle position older than the limit is stale and must not drive assignment; the dataset has no position timestamp
+    (data gap); limit is an ASSUMPTION
+- id: BR-04
+  gap: timezone_mismatch
+  entity: tracking_events
+  type: enum_or_reference
+  field: timezone
+  reference: timezone
+  severity: block
+  statement: event_time is interpreted in a valid declared time zone
+- id: BR-05
+  gap: duplicate_carrier_booking
+  entity: carrier_bookings
+  type: at_most_one_active
+  group_by: shipment_id
+  inactive_statuses:
+  - closed
+  - failed
+  severity: block
+  statement: a shipment has at most one active carrier booking
+- id: BR-06
+  gap: route_ignores_restrictions
+  entity: routes
+  type: forbid_unless
+  condition:
+    field: restricted_zone_flag
+    equals: 'true'
+  unless: override_id present
+  data_gap: true
+  severity: block
+  statement: a route in a restricted zone is not assigned without an explicit override; the dataset has no override field
+    (data gap)
+- id: BR-07
+  gap: location_data_overexposure
+  entity: vehicles
+  type: field_exposure
+  fields:
+  - current_location
+  - driver_id
+  policy: access-semantics.yaml
+  severity: block
+  statement: location and driver identity are exposed only to personas and purposes listed in the access semantics
+- id: BR-08
+  gap: range
+  entity: tracking_events
+  type: range
+  field: confidence
+  min: 0
+  max: 1
+  severity: block
+  statement: confidence is between 0 and 1
+- id: BR-09
+  gap: range
+  entity: vehicles
+  type: range
+  field: fuel_level_pct
+  min: 0
+  max: 1
+  severity: block
+  statement: fuel level is a fraction between 0 and 1
+- id: BR-10
+  gap: completeness
+  entity: shipments
+  type: not_blank
+  fields:
+  - customer_id
+  - origin
+  - destination
+  - service_tier
+  - status
+  - promised_at
+  severity: block
+  statement: mandatory fields are present
+- id: BR-11
+  gap: timestamp
+  entity: shipments
+  type: timestamp_after
+  field: promised_at
+  after: '2000-01-01T00:00:00'
+  severity: block
+  statement: timestamps are real; 1900-01-01 is a placeholder and invalid
+- id: BR-12
+  gap: referential
+  entity: carrier_bookings
+  type: reference_exists
+  field: shipment_id
+  to: shipments.shipment_id
+  severity: block
+  statement: a booking refers to an existing shipment
+- id: BR-13
+  gap: retry_ceiling
+  entity: carrier_bookings
+  type: range
+  field: retry_count
+  min: 0
+  max: 5
+  severity: flag
+  statement: retries are bounded (limit is an ASSUMPTION; observed 51 to 4995)

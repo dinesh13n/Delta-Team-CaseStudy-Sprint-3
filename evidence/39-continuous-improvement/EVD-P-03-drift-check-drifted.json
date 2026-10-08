@@ -1,0 +1,52 @@
+{
+  "run_utc": "2026-10-08T11:47:45Z",
+  "load_id": "ld-e8701dad3a02",
+  "overall": "INVESTIGATE",
+  "results": [
+    {
+      "check": "data.quarantine_ratio",
+      "status": "INVESTIGATE",
+      "detail": "0.1946 above the contract limit 0.05"
+    },
+    {
+      "check": "data.entity.ai_invocations",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.carrier_bookings",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.routes",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.shipments",
+      "status": "INVESTIGATE",
+      "detail": "row count changed 34%; flag rate moved ['actual_gt_declared']"
+    },
+    {
+      "check": "data.entity.tracking_events",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "data.entity.vehicles",
+      "status": "OK",
+      "detail": "rows 354 (reference 354)"
+    },
+    {
+      "check": "prompt.lock",
+      "status": "OK",
+      "detail": "prompt matches prompts.lock.json"
+    },
+    {
+      "check": "model.lock",
+      "status": "OK",
+      "detail": "models.lock.json readable and self-consistent"
+    }
+  ]
+}

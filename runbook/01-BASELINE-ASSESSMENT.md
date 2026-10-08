@@ -141,7 +141,7 @@ and are reproducible by Step C5.
 
 | ID | Finding | Evidence | Sev | Rubric |
 |---|---|---|---|---|
-| **F-42** | **About one third of the event stream cannot be correlated.** 983 of 3,000 events in `events.jsonl` (32.8%) have `correlation_id: null` (corrected 2026-10-08 by independent re-count, see decision-log D-007). End-to-end reconstruction of a business event — the Challenge 8 acceptance standard — is impossible for that share of traffic. | Profiling 2026-10-08 | S1 | 1, 3 |
+| **F-42** | **About two thirds of the event stream cannot be correlated.** 1,992 of 3,000 events in `events.jsonl` (66.4%) carry no usable `correlation_id`: 983 are `null` and 1,009 are the empty string (re-counted 2026-10-08, decision-log D-012; an earlier null-only count of 983 was incomplete). End-to-end reconstruction of a business event — the Challenge 8 acceptance standard — is impossible for that share of traffic. | Profiling 2026-10-08 | S1 | 1, 3 |
 | **F-43** | The audit event records only `ts`, `action` and `details`. No actor, no correlation ID, no tenant, no model or prompt version, no policy decision, no approval ID. `observability/otel-notes.md` independently confirms this list of omissions. | `apps/api/services/audit.py:8-12`; `observability/otel-notes.md` | S1 | 3 |
 | **F-44** | **The audit sink is a local file written by the application itself** — `<repo>/logs/audit.log`, appended in-process. It is tamperable by the audited process, non-durable, never shipped, has no retention classification, and (per F-01, no `.gitignore`) is committable into source control. | `apps/api/services/audit.py:6,11-13` | S1 | 3 |
 | **F-45** | `datetime.utcnow()` yields a naive timestamp with no timezone marker. Correlating it against `tracking_events.timezone` — itself polluted (F-37) — is unsafe, and `timezone_mismatch` is a declared brownfield concern. | `apps/api/services/audit.py:10`; `docs/architecture/known-gaps.md` | S2 | 3 |
@@ -185,7 +185,7 @@ why the runbook sequences them as subsystems (Steps H4, H7, H8) rather than as a
 
 **6.1 — Nothing is provable yet (F-01, F-42, F-43, F-44, F-47).**
 The system's deficiency is not primarily code quality; it is that the repository has no
-version control, no correlation across about one third of its events, an audit record without an
+version control, no correlation across about two thirds of its events, an audit record without an
 actor, a tamperable local audit sink, and a pipeline that produces no evidence. Four of the
 five rubric criteria are scored on demonstrable proof. **Evidence infrastructure is therefore
 not a late-stage activity in this runbook — it is Stage A.**

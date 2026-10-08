@@ -1,0 +1,6 @@
+EVD-A-04c correlation_id recount (supersedes the null-only count in EVD-A-04b for F-42)
+file: 07-.../data/synthetic/events.jsonl sha256=9951775fdf6ed98790818e236288a3dbde5d9fe55fe65c7c3736bd880de73d44
+counts over 3000 events: {'non_empty': 1008, 'null': 983, 'empty_string': 1009}
+null or empty (no usable id): 1992 = 66.4%
+non-empty (usable id): 1008 = 33.6%
+command: python json.loads per line; value None -> null, '' -> empty_string

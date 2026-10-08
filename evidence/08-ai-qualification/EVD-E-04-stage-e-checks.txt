@@ -1,0 +1,6 @@
+EVD-E-04 Stage E checks 2026-10-08T09:55:03Z
+E-X1 matrix rows=10 blank cells=0
+E-X4 requirements=20 orphan rows=0
+E-X5 KPI rows PRD=10 dictionary=10 identical=True
+E-X3 retired assumptions struck through (~~) count=3
+E-X6 OQ-06 ruling present=True

@@ -1,0 +1,96 @@
+{
+  "run_utc": "2026-10-08T11:50:52Z",
+  "performed_by": "the author (agent) from a clean copy of the source tree; NOT the receiving team",
+  "what_this_proves": "the written procedures work from a clean copy with only documented commands and environment variables",
+  "what_this_does_not_prove": "that a different team can find, follow and complete them; that anything works on a platform; timing under pressure",
+  "exercises": [
+    {
+      "id": "EX-1",
+      "skill": "deploy",
+      "command": "python -m etl.run_daily_batch ; uvicorn apps.api.main:create_app --factory (APP_ENV=staging, env vars only)",
+      "expected": "ETL exit 0; /health 200; /ready 200 with fresh data; /docs 404 outside local; authenticated read 200; unauthenticated 401",
+      "observed": {
+        "etl_exit": 0,
+        "health": 200,
+        "ready": 200,
+        "ready_body": {
+          "status": "ready",
+          "checks": {
+            "data:shipments": true,
+            "data:tracking_events": true,
+            "data:vehicles": true,
+            "data:routes": true,
+            "data:carrier_bookings": true,
+            "data:ai_invocations": true,
+            "auth_configured": true,
+            "data_fresh": true,
+            "audit_writable": true
+          }
+        },
+        "docs": 404,
+        "read": 200,
+        "no_auth": 401,
+        "data_load_id": "ld-0c0f0315d16f"
+      },
+      "pass": true
+    },
+    {
+      "id": "EX-2",
+      "skill": "observe",
+      "command": "GET /metrics with an ops token; look for the series the dashboards use",
+      "expected": "series present; chain valid; circuit closed; the denied probe is visible",
+      "observed": {
+        "status": 200,
+        "present": {
+          "http_requests_total": true,
+          "ai_requests_total": true,
+          "policy_denied_total": true,
+          "audit_chain_valid 1": true,
+          "data_load_age_seconds": true,
+          "ai_circuit_open 0": true
+        },
+        "dispatcher_denied_metrics": 403
+      },
+      "pass": true
+    },
+    {
+      "id": "EX-3",
+      "skill": "diagnose",
+      "command": "python -m scripts.reconstruct --audit <audit> --correlation-id trace-exercise-0001",
+      "expected": "chain valid; the AI event for SHI-00027 is found with its data load",
+      "observed": {
+        "exit": 0,
+        "output": [
+          "chain valid: edits to past events would have been detected",
+          "2026-10-08T11:50:47.520Z | ai.summary | by operator (dispatcher) | on shipment SHI-00027 | policy=allow rule=access:dispatcher.shipments | outcome=success | ai=deterministic | guardrail=enforced | data=ld-0c0f0315d16f | corr=trace-exercise-0001"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "EX-4",
+      "skill": "roll back",
+      "command": "AI_ENABLED=false restart; then edit the prompt, observe refusal, restore the file, restart",
+      "expected": "AI 503 with core 200; edited prompt refuses to start; restored file serves AI 200",
+      "observed": {
+        "ai_off_status": 503,
+        "core_while_off": 200,
+        "edited_prompt_refused": true,
+        "after_restore_ai": 200
+      },
+      "pass": true
+    },
+    {
+      "id": "EX-5",
+      "skill": "recover",
+      "command": "python -m scripts.backup_restore --out <file>",
+      "expected": "all restore checks pass from the clean copy",
+      "observed": {
+        "exit": 0,
+        "all_ok": true
+      },
+      "pass": true
+    }
+  ],
+  "all_pass": true
+}

@@ -1,0 +1,933 @@
+# Source of truth for entity and field definitions. Human explanation: glossary.md.
+# Observed values are measured facts from the baseline fixture; domains are the target definition.
+semantic_layer_version: 1.0.0
+status: PROVISIONAL
+entities:
+  shipments:
+    description: A consignment moving from origin to destination
+    dataset: shipments.csv
+    business_key: shipment_id
+    fields:
+      shipment_id:
+        type: string
+        description: Unique business identifier of a shipment, prefix SHI-
+        nullable: false
+        business_key: true
+        example: SHI-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      customer_id:
+        type: string
+        description: Customer reference, prefix CUS- (customer entity is outside the dataset)
+        nullable: false
+        business_key: false
+        references: customer
+        example: CUS-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      origin:
+        type: location_ref
+        description: Origin location reference
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      destination:
+        type: location_ref
+        description: Destination location reference
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      service_tier:
+        type: enum
+        description: Contracted service level
+        nullable: false
+        business_key: false
+        domain: service_tier
+        example: standard
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      declared_weight_kg:
+        type: decimal
+        description: Weight declared by the customer
+        nullable: false
+        business_key: false
+        unit: kg
+        example: '2034.82'
+        observed:
+          blank_count: 1
+          min: 3.1
+          max: 9995.99
+      actual_weight_kg:
+        type: decimal
+        description: Weight measured at handling
+        nullable: false
+        business_key: false
+        unit: kg
+        example: '600.31'
+        observed:
+          blank_count: 1
+          min: 33.96
+          max: 9978.66
+      promised_at:
+        type: timestamp
+        description: Delivery time promised to the customer
+        nullable: false
+        business_key: false
+        unit: ISO-8601 local
+        example: '2026-08-15T10:05:00'
+        observed:
+          blank_count: 1
+          distinct: 351
+      status:
+        type: enum
+        description: Lifecycle state of the shipment
+        nullable: false
+        business_key: false
+        domain: shipment_status
+        example: new
+        observed:
+          blank_count: 1
+          distinct: 8
+          values:
+          - approved
+          - closed
+          - exception
+          - failed
+          - in_progress
+          - manual_hold
+          - new
+          - queued
+      customs_required:
+        type: boolean
+        description: Whether customs clearance applies
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+      temperature_controlled:
+        type: boolean
+        description: Whether cold chain handling applies
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+  tracking_events:
+    description: A recorded event in the movement of a shipment
+    dataset: tracking_events.csv
+    business_key: event_id
+    fields:
+      event_id:
+        type: string
+        description: Unique identifier of a tracking event, prefix EVE-
+        nullable: false
+        business_key: true
+        example: EVE-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      shipment_id:
+        type: string
+        description: Shipment the event belongs to
+        nullable: false
+        business_key: false
+        references: shipments.shipment_id
+        example: SHI-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      event_type:
+        type: enum
+        description: Kind of tracking event
+        nullable: false
+        business_key: false
+        domain: tracking_event_type
+        example: scan
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      event_time:
+        type: timestamp
+        description: When the event occurred
+        nullable: false
+        business_key: false
+        unit: ISO-8601 local
+        example: '2026-08-15T10:05:00'
+        observed:
+          blank_count: 1
+          distinct: 351
+      source_system:
+        type: enum
+        description: System that produced the event
+        nullable: false
+        business_key: false
+        domain: source_system
+        example: legacy
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      location:
+        type: location_ref
+        description: Where the event occurred (location data)
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      sequence_no:
+        type: integer
+        description: Ordering number of the event within its shipment
+        nullable: false
+        business_key: false
+        example: '1007'
+        observed:
+          blank_count: 1
+          min: 41.0
+          max: 4998.0
+      duplicate_flag:
+        type: boolean
+        description: Producer-declared duplicate marker
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+      timezone:
+        type: timezone
+        description: Time zone of event_time
+        nullable: false
+        business_key: false
+        reference: timezone
+        example: Asia/Kolkata
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      confidence:
+        type: decimal
+        description: Confidence of the event record
+        nullable: false
+        business_key: false
+        unit: ratio 0..1
+        example: '0.929'
+        observed:
+          blank_count: 1
+          min: 0.001
+          max: 1.42
+  vehicles:
+    description: A vehicle that can carry shipments
+    dataset: vehicles.csv
+    business_key: vehicle_id
+    fields:
+      vehicle_id:
+        type: string
+        description: Unique vehicle identifier, prefix VEH-
+        nullable: false
+        business_key: true
+        example: VEH-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      vehicle_type:
+        type: enum
+        description: Vehicle class
+        nullable: false
+        business_key: false
+        domain: vehicle_type
+        example: standard
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      capacity_kg:
+        type: decimal
+        description: Load capacity
+        nullable: false
+        business_key: false
+        unit: kg
+        example: '3798.13'
+        observed:
+          blank_count: 1
+          min: 49.44
+          max: 9992.94
+      current_location:
+        type: location_ref
+        description: Last known position (location data)
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      driver_id:
+        type: string
+        description: Assigned driver, prefix DRI- (personal identifier)
+        nullable: false
+        business_key: false
+        example: DRI-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      maintenance_status:
+        type: enum
+        description: Maintenance state
+        nullable: false
+        business_key: false
+        domain: maintenance_status
+        example: normal
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      cold_chain_capable:
+        type: boolean
+        description: Can carry temperature-controlled goods
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+      fuel_level_pct:
+        type: decimal
+        description: Fuel level as a fraction
+        nullable: false
+        business_key: false
+        unit: ratio 0..1
+        example: '0.672'
+        observed:
+          blank_count: 1
+          min: 0.0
+          max: 0.997
+      region:
+        type: enum
+        description: Operating region
+        nullable: false
+        business_key: false
+        domain: region
+        example: north-1
+        observed:
+          blank_count: 1
+          distinct: 6
+          values:
+          - central-5
+          - east-4
+          - north-1
+          - remote-6
+          - south-2
+          - west-3
+  routes:
+    description: A planned path between two locations
+    dataset: routes.csv
+    business_key: route_id
+    fields:
+      route_id:
+        type: string
+        description: Unique route identifier, prefix ROU-
+        nullable: false
+        business_key: true
+        example: ROU-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      origin:
+        type: location_ref
+        description: Route origin
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      destination:
+        type: location_ref
+        description: Route destination
+        nullable: false
+        business_key: false
+        reference: location
+        example: LOC-0001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      distance_km:
+        type: decimal
+        description: Route length
+        nullable: false
+        business_key: false
+        unit: km
+        example: '4431.22'
+        observed:
+          blank_count: 1
+          min: 24.08
+          max: 9985.94
+      restricted_zone_flag:
+        type: boolean
+        description: Route crosses a restricted zone
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+      weather_risk:
+        type: enum
+        description: Weather risk class
+        nullable: false
+        business_key: false
+        domain: risk_level
+        example: normal
+        observed:
+          blank_count: 1
+          distinct: 15
+          values:
+          - '1.42'
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      border_risk:
+        type: enum
+        description: Border crossing risk class
+        nullable: false
+        business_key: false
+        domain: risk_level
+        example: normal
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      estimated_cost:
+        type: decimal
+        description: Estimated cost of the route
+        nullable: false
+        business_key: false
+        unit: cost units
+        example: '4885.07'
+        observed:
+          blank_count: 1
+          min: 26.61
+          max: 9995.55
+      eta_minutes:
+        type: integer
+        description: Estimated travel time
+        nullable: false
+        business_key: false
+        unit: minutes
+        example: '4744'
+        observed:
+          blank_count: 1
+          min: 3.0
+          max: 4995.0
+  carrier_bookings:
+    description: A booking of a shipment with a carrier partner
+    dataset: carrier_bookings.csv
+    business_key: booking_id
+    fields:
+      booking_id:
+        type: string
+        description: Unique booking identifier, prefix BOO-
+        nullable: false
+        business_key: true
+        example: BOO-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      shipment_id:
+        type: string
+        description: Shipment being booked
+        nullable: false
+        business_key: false
+        references: shipments.shipment_id
+        example: SHI-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      carrier:
+        type: carrier_ref
+        description: Carrier reference
+        nullable: false
+        business_key: false
+        reference: carrier
+        example: CAR-001 (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      status:
+        type: enum
+        description: Booking state
+        nullable: false
+        business_key: false
+        domain: shipment_status
+        example: new
+        observed:
+          blank_count: 1
+          distinct: 8
+          values:
+          - approved
+          - closed
+          - exception
+          - failed
+          - in_progress
+          - manual_hold
+          - new
+          - queued
+      retry_count:
+        type: integer
+        description: Booking attempts made
+        nullable: false
+        business_key: false
+        unit: count
+        example: '1307'
+        observed:
+          blank_count: 1
+          min: 51.0
+          max: 4995.0
+      partner_ref:
+        type: string
+        description: Reference at the carrier partner, prefix PAR-
+        nullable: false
+        business_key: false
+        example: PAR-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      created_at:
+        type: timestamp
+        description: When the booking was created
+        nullable: false
+        business_key: false
+        unit: ISO-8601 local
+        example: '2026-08-15T10:05:00'
+        observed:
+          blank_count: 1
+          distinct: 351
+      compensation_required:
+        type: boolean
+        description: Whether a compensating action is needed
+        nullable: false
+        business_key: false
+        domain: boolean
+        example: 'true'
+        observed:
+          blank_count: 1
+          distinct: 2
+          values:
+          - 'false'
+          - 'true'
+  ai_invocations:
+    description: A call to automated assistance about a shipment
+    dataset: ai_invocations.csv
+    business_key: ai_call_id
+    fields:
+      ai_call_id:
+        type: string
+        description: Unique identifier of an automated-assistance call, prefix AI_-
+        nullable: false
+        business_key: true
+        example: AI_-00002
+        observed:
+          blank_count: 0
+          distinct: 351
+      shipment_id:
+        type: string
+        description: Shipment the call concerned
+        nullable: false
+        business_key: false
+        references: shipments.shipment_id
+        example: SHI-00002
+        observed:
+          blank_count: 1
+          distinct: 350
+      use_case:
+        type: enum
+        description: Capability invoked
+        nullable: false
+        business_key: false
+        domain: ai_use_case
+        example: exception_summary
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      model:
+        type: model_ref
+        description: Identifier of the model that served the call
+        nullable: false
+        business_key: false
+        reference: model
+        example: model-registry-id (illustrative)
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      route_candidates:
+        type: integer
+        description: Number of route candidates considered
+        nullable: false
+        business_key: false
+        unit: count
+        example: '1508'
+        observed:
+          blank_count: 1
+          min: 16.0
+          max: 4979.0
+      token_count:
+        type: integer
+        description: Declared tokens consumed by the call
+        nullable: false
+        business_key: false
+        unit: tokens
+        example: '357'
+        observed:
+          blank_count: 1
+          min: 40.0
+          max: 4989.0
+      constraint_violations:
+        type: enum
+        description: Constraint violation class reported
+        nullable: false
+        business_key: false
+        domain: constraint_class
+        example: alpha
+        observed:
+          blank_count: 1
+          distinct: 5
+          values:
+          - alpha
+          - beta
+          - gamma
+          - legacy
+          - modernized
+      recommendation:
+        type: enum
+        description: Outcome recommended by the assistance
+        nullable: false
+        business_key: false
+        domain: recommendation
+        example: approved
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor
+      human_override:
+        type: enum
+        description: Human decision on the recommendation
+        nullable: false
+        business_key: false
+        domain: human_decision
+        example: approved
+        observed:
+          blank_count: 1
+          distinct: 14
+          values:
+          - ai_assisted
+          - approved
+          - degraded
+          - high_risk
+          - internal
+          - legacy
+          - manual
+          - normal
+          - not_enforced
+          - pending
+          - rejected
+          - requires_review
+          - standard
+          - vendor

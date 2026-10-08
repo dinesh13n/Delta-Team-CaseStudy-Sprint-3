@@ -35,7 +35,7 @@ Read-only snapshot of the cloud sandbox where Stages A to G will run. Nothing wa
 - CI (.github/workflows/ci.yml) uses Python 3.11; sandbox has 3.10.12.
 
 ## 3. Inferences
-- Stage C behavioural baseline needs a venv with pinned deps plus httpx; Python 3.11 should be sought to match CI.
+- Stage C behavioural baseline needs a venv with pinned deps plus httpx; CI uses Python 3.11 and the host default is 3.11.9.
 - Terraform, OPA, container, SBOM and secret-scan steps (later stages) need tools installed, or an alternative runner, before they can produce evidence. Network egress for installs is governed by OQ-03.
 
 ## 3a. Windows host (Verified Facts, EVD-A-03b, operator-pasted)

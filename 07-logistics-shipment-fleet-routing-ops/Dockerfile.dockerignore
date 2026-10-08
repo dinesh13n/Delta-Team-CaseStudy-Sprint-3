@@ -1,0 +1,16 @@
+.git
+.github
+_to_delete
+docs
+evidence
+**/__pycache__
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.coverage*
+**/node_modules
+07-logistics-shipment-fleet-routing-ops/tests
+07-logistics-shipment-fleet-routing-ops/logs
+07-logistics-shipment-fleet-routing-ops/data/curated
+07-logistics-shipment-fleet-routing-ops/data/quarantine
+07-logistics-shipment-fleet-routing-ops/data/reports

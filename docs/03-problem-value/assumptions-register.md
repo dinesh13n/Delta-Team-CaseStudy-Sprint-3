@@ -2,26 +2,23 @@
 
 | Field | Value |
 |---|---|
-| Stage | B: Problem Framing (Spine 3) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 3) |
 | Runbook step | B3 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/*; docs/domain-specific-spec.md (repo) |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-08, OQ-24 |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/00-preflight/ (A4, A5, A6 packs); runbook/04-OPEN-QUESTIONS-REGISTER.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-| ID | Assumption | Invalidation trigger |
+| ID | Assumption | Test |
 |---|---|---|
-| AR-1 | Operator acts for all roles provisionally | named approvers appear (OQ-05) |
-| AR-2 | Proxy KPIs are acceptable as baseline | sponsor rejects (OQ-08) |
-| AR-3 | Data is synthetic and non-personal | evidence of real data |
-| AR-4 | Local open-weights models are acceptable (OQ-02) | sponsor names models |
-| AR-5 | Platform-neutral design is acceptable (OQ-01) | platform named |
-| AR-6 | No egress available (OQ-03) | policy allows egress |
-| AR-7 | Derived curated data layer for remediation (OQ-14) | owner chooses otherwise |
-| AR-8 | Time budget is bounded but unknown (OQ-12) | deadline given |
+| ASM-B1 | Fixture defects represent production-like defects | C5, C6 |
+| ASM-B2 | Thresholds in nfrs.md are acceptable | sponsor confirmation |
+| ASM-B3 | Personas and flows in the spec are complete | stakeholder review |
+| ASM-B4 | No regulatory regime beyond generic audit expectations applies | OQ-04 |
+| ASM-B5 | Human review remains mandatory on automated recommendations | K1 |

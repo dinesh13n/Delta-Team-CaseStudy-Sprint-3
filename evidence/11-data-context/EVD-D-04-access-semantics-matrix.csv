@@ -1,0 +1,449 @@
+persona,entity,field,access,scope,purposes
+dispatcher,shipments,shipment_id,write,all active,dispatch
+dispatcher,shipments,customer_id,mask,all active,dispatch
+dispatcher,shipments,origin,write,all active,dispatch
+dispatcher,shipments,destination,write,all active,dispatch
+dispatcher,shipments,service_tier,write,all active,dispatch
+dispatcher,shipments,declared_weight_kg,write,all active,dispatch
+dispatcher,shipments,actual_weight_kg,write,all active,dispatch
+dispatcher,shipments,promised_at,write,all active,dispatch
+dispatcher,shipments,status,write,all active,dispatch
+dispatcher,shipments,customs_required,write,all active,dispatch
+dispatcher,shipments,temperature_controlled,write,all active,dispatch
+dispatcher,tracking_events,event_id,read,all,dispatch
+dispatcher,tracking_events,shipment_id,read,all,dispatch
+dispatcher,tracking_events,event_type,read,all,dispatch
+dispatcher,tracking_events,event_time,read,all,dispatch
+dispatcher,tracking_events,source_system,read,all,dispatch
+dispatcher,tracking_events,location,read,all,dispatch
+dispatcher,tracking_events,sequence_no,read,all,dispatch
+dispatcher,tracking_events,duplicate_flag,read,all,dispatch
+dispatcher,tracking_events,timezone,read,all,dispatch
+dispatcher,tracking_events,confidence,read,all,dispatch
+dispatcher,vehicles,vehicle_id,read,all,dispatch
+dispatcher,vehicles,vehicle_type,read,all,dispatch
+dispatcher,vehicles,capacity_kg,read,all,dispatch
+dispatcher,vehicles,current_location,read,all,dispatch
+dispatcher,vehicles,driver_id,mask,all,dispatch
+dispatcher,vehicles,maintenance_status,read,all,dispatch
+dispatcher,vehicles,cold_chain_capable,read,all,dispatch
+dispatcher,vehicles,fuel_level_pct,read,all,dispatch
+dispatcher,vehicles,region,read,all,dispatch
+dispatcher,routes,route_id,write,all,dispatch|route_planning
+dispatcher,routes,origin,write,all,dispatch|route_planning
+dispatcher,routes,destination,write,all,dispatch|route_planning
+dispatcher,routes,distance_km,write,all,dispatch|route_planning
+dispatcher,routes,restricted_zone_flag,write,all,dispatch|route_planning
+dispatcher,routes,weather_risk,write,all,dispatch|route_planning
+dispatcher,routes,border_risk,write,all,dispatch|route_planning
+dispatcher,routes,estimated_cost,write,all,dispatch|route_planning
+dispatcher,routes,eta_minutes,write,all,dispatch|route_planning
+dispatcher,carrier_bookings,booking_id,read,all,dispatch
+dispatcher,carrier_bookings,shipment_id,read,all,dispatch
+dispatcher,carrier_bookings,carrier,read,all,dispatch
+dispatcher,carrier_bookings,status,read,all,dispatch
+dispatcher,carrier_bookings,retry_count,read,all,dispatch
+dispatcher,carrier_bookings,partner_ref,read,all,dispatch
+dispatcher,carrier_bookings,created_at,read,all,dispatch
+dispatcher,carrier_bookings,compensation_required,read,all,dispatch
+dispatcher,ai_invocations,ai_call_id,read,all,dispatch
+dispatcher,ai_invocations,shipment_id,read,all,dispatch
+dispatcher,ai_invocations,use_case,read,all,dispatch
+dispatcher,ai_invocations,model,read,all,dispatch
+dispatcher,ai_invocations,route_candidates,read,all,dispatch
+dispatcher,ai_invocations,token_count,read,all,dispatch
+dispatcher,ai_invocations,constraint_violations,read,all,dispatch
+dispatcher,ai_invocations,recommendation,read,all,dispatch
+dispatcher,ai_invocations,human_override,read,all,dispatch
+warehouse_ops,shipments,shipment_id,read,own hub,handling
+warehouse_ops,shipments,customer_id,deny,own hub,handling
+warehouse_ops,shipments,origin,read,own hub,handling
+warehouse_ops,shipments,destination,read,own hub,handling
+warehouse_ops,shipments,service_tier,read,own hub,handling
+warehouse_ops,shipments,declared_weight_kg,read,own hub,handling
+warehouse_ops,shipments,actual_weight_kg,read,own hub,handling
+warehouse_ops,shipments,promised_at,read,own hub,handling
+warehouse_ops,shipments,status,read,own hub,handling
+warehouse_ops,shipments,customs_required,read,own hub,handling
+warehouse_ops,shipments,temperature_controlled,read,own hub,handling
+warehouse_ops,tracking_events,event_id,write,own hub,handling
+warehouse_ops,tracking_events,shipment_id,write,own hub,handling
+warehouse_ops,tracking_events,event_type,write,own hub,handling
+warehouse_ops,tracking_events,event_time,write,own hub,handling
+warehouse_ops,tracking_events,source_system,write,own hub,handling
+warehouse_ops,tracking_events,location,mask,own hub,handling
+warehouse_ops,tracking_events,sequence_no,write,own hub,handling
+warehouse_ops,tracking_events,duplicate_flag,write,own hub,handling
+warehouse_ops,tracking_events,timezone,write,own hub,handling
+warehouse_ops,tracking_events,confidence,write,own hub,handling
+warehouse_ops,vehicles,vehicle_id,read,own hub,handling
+warehouse_ops,vehicles,vehicle_type,read,own hub,handling
+warehouse_ops,vehicles,capacity_kg,read,own hub,handling
+warehouse_ops,vehicles,current_location,mask,own hub,handling
+warehouse_ops,vehicles,driver_id,deny,own hub,handling
+warehouse_ops,vehicles,maintenance_status,read,own hub,handling
+warehouse_ops,vehicles,cold_chain_capable,read,own hub,handling
+warehouse_ops,vehicles,fuel_level_pct,read,own hub,handling
+warehouse_ops,vehicles,region,read,own hub,handling
+warehouse_ops,routes,route_id,read,own hub,handling
+warehouse_ops,routes,origin,read,own hub,handling
+warehouse_ops,routes,destination,read,own hub,handling
+warehouse_ops,routes,distance_km,read,own hub,handling
+warehouse_ops,routes,restricted_zone_flag,read,own hub,handling
+warehouse_ops,routes,weather_risk,read,own hub,handling
+warehouse_ops,routes,border_risk,read,own hub,handling
+warehouse_ops,routes,estimated_cost,read,own hub,handling
+warehouse_ops,routes,eta_minutes,read,own hub,handling
+warehouse_ops,carrier_bookings,booking_id,deny,-,-
+warehouse_ops,carrier_bookings,shipment_id,deny,-,-
+warehouse_ops,carrier_bookings,carrier,deny,-,-
+warehouse_ops,carrier_bookings,status,deny,-,-
+warehouse_ops,carrier_bookings,retry_count,deny,-,-
+warehouse_ops,carrier_bookings,partner_ref,deny,-,-
+warehouse_ops,carrier_bookings,created_at,deny,-,-
+warehouse_ops,carrier_bookings,compensation_required,deny,-,-
+warehouse_ops,ai_invocations,ai_call_id,deny,-,-
+warehouse_ops,ai_invocations,shipment_id,deny,-,-
+warehouse_ops,ai_invocations,use_case,deny,-,-
+warehouse_ops,ai_invocations,model,deny,-,-
+warehouse_ops,ai_invocations,route_candidates,deny,-,-
+warehouse_ops,ai_invocations,token_count,deny,-,-
+warehouse_ops,ai_invocations,constraint_violations,deny,-,-
+warehouse_ops,ai_invocations,recommendation,deny,-,-
+warehouse_ops,ai_invocations,human_override,deny,-,-
+fleet_manager,shipments,shipment_id,read,own fleet,fleet_management
+fleet_manager,shipments,customer_id,deny,own fleet,fleet_management
+fleet_manager,shipments,origin,read,own fleet,fleet_management
+fleet_manager,shipments,destination,read,own fleet,fleet_management
+fleet_manager,shipments,service_tier,read,own fleet,fleet_management
+fleet_manager,shipments,declared_weight_kg,read,own fleet,fleet_management
+fleet_manager,shipments,actual_weight_kg,read,own fleet,fleet_management
+fleet_manager,shipments,promised_at,read,own fleet,fleet_management
+fleet_manager,shipments,status,read,own fleet,fleet_management
+fleet_manager,shipments,customs_required,read,own fleet,fleet_management
+fleet_manager,shipments,temperature_controlled,read,own fleet,fleet_management
+fleet_manager,tracking_events,event_id,read,own fleet,fleet_management
+fleet_manager,tracking_events,shipment_id,read,own fleet,fleet_management
+fleet_manager,tracking_events,event_type,read,own fleet,fleet_management
+fleet_manager,tracking_events,event_time,read,own fleet,fleet_management
+fleet_manager,tracking_events,source_system,read,own fleet,fleet_management
+fleet_manager,tracking_events,location,read,own fleet,fleet_management
+fleet_manager,tracking_events,sequence_no,read,own fleet,fleet_management
+fleet_manager,tracking_events,duplicate_flag,read,own fleet,fleet_management
+fleet_manager,tracking_events,timezone,read,own fleet,fleet_management
+fleet_manager,tracking_events,confidence,read,own fleet,fleet_management
+fleet_manager,vehicles,vehicle_id,write,own fleet,fleet_management
+fleet_manager,vehicles,vehicle_type,write,own fleet,fleet_management
+fleet_manager,vehicles,capacity_kg,write,own fleet,fleet_management
+fleet_manager,vehicles,current_location,write,own fleet,fleet_management
+fleet_manager,vehicles,driver_id,write,own fleet,fleet_management
+fleet_manager,vehicles,maintenance_status,write,own fleet,fleet_management
+fleet_manager,vehicles,cold_chain_capable,write,own fleet,fleet_management
+fleet_manager,vehicles,fuel_level_pct,write,own fleet,fleet_management
+fleet_manager,vehicles,region,write,own fleet,fleet_management
+fleet_manager,routes,route_id,read,own fleet,fleet_management
+fleet_manager,routes,origin,read,own fleet,fleet_management
+fleet_manager,routes,destination,read,own fleet,fleet_management
+fleet_manager,routes,distance_km,read,own fleet,fleet_management
+fleet_manager,routes,restricted_zone_flag,read,own fleet,fleet_management
+fleet_manager,routes,weather_risk,read,own fleet,fleet_management
+fleet_manager,routes,border_risk,read,own fleet,fleet_management
+fleet_manager,routes,estimated_cost,read,own fleet,fleet_management
+fleet_manager,routes,eta_minutes,read,own fleet,fleet_management
+fleet_manager,carrier_bookings,booking_id,deny,-,-
+fleet_manager,carrier_bookings,shipment_id,deny,-,-
+fleet_manager,carrier_bookings,carrier,deny,-,-
+fleet_manager,carrier_bookings,status,deny,-,-
+fleet_manager,carrier_bookings,retry_count,deny,-,-
+fleet_manager,carrier_bookings,partner_ref,deny,-,-
+fleet_manager,carrier_bookings,created_at,deny,-,-
+fleet_manager,carrier_bookings,compensation_required,deny,-,-
+fleet_manager,ai_invocations,ai_call_id,deny,-,-
+fleet_manager,ai_invocations,shipment_id,deny,-,-
+fleet_manager,ai_invocations,use_case,deny,-,-
+fleet_manager,ai_invocations,model,deny,-,-
+fleet_manager,ai_invocations,route_candidates,deny,-,-
+fleet_manager,ai_invocations,token_count,deny,-,-
+fleet_manager,ai_invocations,constraint_violations,deny,-,-
+fleet_manager,ai_invocations,recommendation,deny,-,-
+fleet_manager,ai_invocations,human_override,deny,-,-
+driver,shipments,shipment_id,read,assigned only,delivery
+driver,shipments,customer_id,deny,assigned only,delivery
+driver,shipments,origin,read,assigned only,delivery
+driver,shipments,destination,read,assigned only,delivery
+driver,shipments,service_tier,read,assigned only,delivery
+driver,shipments,declared_weight_kg,read,assigned only,delivery
+driver,shipments,actual_weight_kg,read,assigned only,delivery
+driver,shipments,promised_at,read,assigned only,delivery
+driver,shipments,status,read,assigned only,delivery
+driver,shipments,customs_required,read,assigned only,delivery
+driver,shipments,temperature_controlled,read,assigned only,delivery
+driver,tracking_events,event_id,deny,-,-
+driver,tracking_events,shipment_id,deny,-,-
+driver,tracking_events,event_type,deny,-,-
+driver,tracking_events,event_time,deny,-,-
+driver,tracking_events,source_system,deny,-,-
+driver,tracking_events,location,deny,-,-
+driver,tracking_events,sequence_no,deny,-,-
+driver,tracking_events,duplicate_flag,deny,-,-
+driver,tracking_events,timezone,deny,-,-
+driver,tracking_events,confidence,deny,-,-
+driver,vehicles,vehicle_id,read,own vehicle,delivery
+driver,vehicles,vehicle_type,read,own vehicle,delivery
+driver,vehicles,capacity_kg,read,own vehicle,delivery
+driver,vehicles,current_location,read,own vehicle,delivery
+driver,vehicles,driver_id,read,own vehicle,delivery
+driver,vehicles,maintenance_status,read,own vehicle,delivery
+driver,vehicles,cold_chain_capable,read,own vehicle,delivery
+driver,vehicles,fuel_level_pct,read,own vehicle,delivery
+driver,vehicles,region,read,own vehicle,delivery
+driver,routes,route_id,read,assigned only,delivery
+driver,routes,origin,read,assigned only,delivery
+driver,routes,destination,read,assigned only,delivery
+driver,routes,distance_km,read,assigned only,delivery
+driver,routes,restricted_zone_flag,read,assigned only,delivery
+driver,routes,weather_risk,read,assigned only,delivery
+driver,routes,border_risk,read,assigned only,delivery
+driver,routes,estimated_cost,read,assigned only,delivery
+driver,routes,eta_minutes,read,assigned only,delivery
+driver,carrier_bookings,booking_id,deny,-,-
+driver,carrier_bookings,shipment_id,deny,-,-
+driver,carrier_bookings,carrier,deny,-,-
+driver,carrier_bookings,status,deny,-,-
+driver,carrier_bookings,retry_count,deny,-,-
+driver,carrier_bookings,partner_ref,deny,-,-
+driver,carrier_bookings,created_at,deny,-,-
+driver,carrier_bookings,compensation_required,deny,-,-
+driver,ai_invocations,ai_call_id,deny,-,-
+driver,ai_invocations,shipment_id,deny,-,-
+driver,ai_invocations,use_case,deny,-,-
+driver,ai_invocations,model,deny,-,-
+driver,ai_invocations,route_candidates,deny,-,-
+driver,ai_invocations,token_count,deny,-,-
+driver,ai_invocations,constraint_violations,deny,-,-
+driver,ai_invocations,recommendation,deny,-,-
+driver,ai_invocations,human_override,deny,-,-
+customs_agent,shipments,shipment_id,read,customs cases,customs_clearance
+customs_agent,shipments,customer_id,read,customs cases,customs_clearance
+customs_agent,shipments,origin,read,customs cases,customs_clearance
+customs_agent,shipments,destination,read,customs cases,customs_clearance
+customs_agent,shipments,service_tier,read,customs cases,customs_clearance
+customs_agent,shipments,declared_weight_kg,read,customs cases,customs_clearance
+customs_agent,shipments,actual_weight_kg,read,customs cases,customs_clearance
+customs_agent,shipments,promised_at,read,customs cases,customs_clearance
+customs_agent,shipments,status,read,customs cases,customs_clearance
+customs_agent,shipments,customs_required,read,customs cases,customs_clearance
+customs_agent,shipments,temperature_controlled,read,customs cases,customs_clearance
+customs_agent,tracking_events,event_id,read,customs cases,customs_clearance
+customs_agent,tracking_events,shipment_id,read,customs cases,customs_clearance
+customs_agent,tracking_events,event_type,read,customs cases,customs_clearance
+customs_agent,tracking_events,event_time,read,customs cases,customs_clearance
+customs_agent,tracking_events,source_system,read,customs cases,customs_clearance
+customs_agent,tracking_events,location,mask,customs cases,customs_clearance
+customs_agent,tracking_events,sequence_no,read,customs cases,customs_clearance
+customs_agent,tracking_events,duplicate_flag,read,customs cases,customs_clearance
+customs_agent,tracking_events,timezone,read,customs cases,customs_clearance
+customs_agent,tracking_events,confidence,read,customs cases,customs_clearance
+customs_agent,vehicles,vehicle_id,deny,-,-
+customs_agent,vehicles,vehicle_type,deny,-,-
+customs_agent,vehicles,capacity_kg,deny,-,-
+customs_agent,vehicles,current_location,deny,-,-
+customs_agent,vehicles,driver_id,deny,-,-
+customs_agent,vehicles,maintenance_status,deny,-,-
+customs_agent,vehicles,cold_chain_capable,deny,-,-
+customs_agent,vehicles,fuel_level_pct,deny,-,-
+customs_agent,vehicles,region,deny,-,-
+customs_agent,routes,route_id,deny,-,-
+customs_agent,routes,origin,deny,-,-
+customs_agent,routes,destination,deny,-,-
+customs_agent,routes,distance_km,deny,-,-
+customs_agent,routes,restricted_zone_flag,deny,-,-
+customs_agent,routes,weather_risk,deny,-,-
+customs_agent,routes,border_risk,deny,-,-
+customs_agent,routes,estimated_cost,deny,-,-
+customs_agent,routes,eta_minutes,deny,-,-
+customs_agent,carrier_bookings,booking_id,deny,-,-
+customs_agent,carrier_bookings,shipment_id,deny,-,-
+customs_agent,carrier_bookings,carrier,deny,-,-
+customs_agent,carrier_bookings,status,deny,-,-
+customs_agent,carrier_bookings,retry_count,deny,-,-
+customs_agent,carrier_bookings,partner_ref,deny,-,-
+customs_agent,carrier_bookings,created_at,deny,-,-
+customs_agent,carrier_bookings,compensation_required,deny,-,-
+customs_agent,ai_invocations,ai_call_id,deny,-,-
+customs_agent,ai_invocations,shipment_id,deny,-,-
+customs_agent,ai_invocations,use_case,deny,-,-
+customs_agent,ai_invocations,model,deny,-,-
+customs_agent,ai_invocations,route_candidates,deny,-,-
+customs_agent,ai_invocations,token_count,deny,-,-
+customs_agent,ai_invocations,constraint_violations,deny,-,-
+customs_agent,ai_invocations,recommendation,deny,-,-
+customs_agent,ai_invocations,human_override,deny,-,-
+customer_support,shipments,shipment_id,read,own customers,customer_support
+customer_support,shipments,customer_id,read,own customers,customer_support
+customer_support,shipments,origin,read,own customers,customer_support
+customer_support,shipments,destination,read,own customers,customer_support
+customer_support,shipments,service_tier,read,own customers,customer_support
+customer_support,shipments,declared_weight_kg,read,own customers,customer_support
+customer_support,shipments,actual_weight_kg,read,own customers,customer_support
+customer_support,shipments,promised_at,read,own customers,customer_support
+customer_support,shipments,status,read,own customers,customer_support
+customer_support,shipments,customs_required,read,own customers,customer_support
+customer_support,shipments,temperature_controlled,read,own customers,customer_support
+customer_support,tracking_events,event_id,read,own customers,customer_support
+customer_support,tracking_events,shipment_id,read,own customers,customer_support
+customer_support,tracking_events,event_type,read,own customers,customer_support
+customer_support,tracking_events,event_time,read,own customers,customer_support
+customer_support,tracking_events,source_system,read,own customers,customer_support
+customer_support,tracking_events,location,mask,own customers,customer_support
+customer_support,tracking_events,sequence_no,read,own customers,customer_support
+customer_support,tracking_events,duplicate_flag,read,own customers,customer_support
+customer_support,tracking_events,timezone,read,own customers,customer_support
+customer_support,tracking_events,confidence,read,own customers,customer_support
+customer_support,vehicles,vehicle_id,deny,-,-
+customer_support,vehicles,vehicle_type,deny,-,-
+customer_support,vehicles,capacity_kg,deny,-,-
+customer_support,vehicles,current_location,deny,-,-
+customer_support,vehicles,driver_id,deny,-,-
+customer_support,vehicles,maintenance_status,deny,-,-
+customer_support,vehicles,cold_chain_capable,deny,-,-
+customer_support,vehicles,fuel_level_pct,deny,-,-
+customer_support,vehicles,region,deny,-,-
+customer_support,routes,route_id,deny,-,-
+customer_support,routes,origin,deny,-,-
+customer_support,routes,destination,deny,-,-
+customer_support,routes,distance_km,deny,-,-
+customer_support,routes,restricted_zone_flag,deny,-,-
+customer_support,routes,weather_risk,deny,-,-
+customer_support,routes,border_risk,deny,-,-
+customer_support,routes,estimated_cost,deny,-,-
+customer_support,routes,eta_minutes,deny,-,-
+customer_support,carrier_bookings,booking_id,read,own customers,customer_support
+customer_support,carrier_bookings,shipment_id,read,own customers,customer_support
+customer_support,carrier_bookings,carrier,read,own customers,customer_support
+customer_support,carrier_bookings,status,read,own customers,customer_support
+customer_support,carrier_bookings,retry_count,read,own customers,customer_support
+customer_support,carrier_bookings,partner_ref,read,own customers,customer_support
+customer_support,carrier_bookings,created_at,read,own customers,customer_support
+customer_support,carrier_bookings,compensation_required,read,own customers,customer_support
+customer_support,ai_invocations,ai_call_id,read,own customers,customer_support
+customer_support,ai_invocations,shipment_id,read,own customers,customer_support
+customer_support,ai_invocations,use_case,read,own customers,customer_support
+customer_support,ai_invocations,model,read,own customers,customer_support
+customer_support,ai_invocations,route_candidates,read,own customers,customer_support
+customer_support,ai_invocations,token_count,read,own customers,customer_support
+customer_support,ai_invocations,constraint_violations,read,own customers,customer_support
+customer_support,ai_invocations,recommendation,read,own customers,customer_support
+customer_support,ai_invocations,human_override,read,own customers,customer_support
+carrier_partner,shipments,shipment_id,read,own bookings,booking
+carrier_partner,shipments,customer_id,deny,own bookings,booking
+carrier_partner,shipments,origin,read,own bookings,booking
+carrier_partner,shipments,destination,read,own bookings,booking
+carrier_partner,shipments,service_tier,read,own bookings,booking
+carrier_partner,shipments,declared_weight_kg,read,own bookings,booking
+carrier_partner,shipments,actual_weight_kg,read,own bookings,booking
+carrier_partner,shipments,promised_at,read,own bookings,booking
+carrier_partner,shipments,status,read,own bookings,booking
+carrier_partner,shipments,customs_required,read,own bookings,booking
+carrier_partner,shipments,temperature_controlled,read,own bookings,booking
+carrier_partner,tracking_events,event_id,deny,-,-
+carrier_partner,tracking_events,shipment_id,deny,-,-
+carrier_partner,tracking_events,event_type,deny,-,-
+carrier_partner,tracking_events,event_time,deny,-,-
+carrier_partner,tracking_events,source_system,deny,-,-
+carrier_partner,tracking_events,location,deny,-,-
+carrier_partner,tracking_events,sequence_no,deny,-,-
+carrier_partner,tracking_events,duplicate_flag,deny,-,-
+carrier_partner,tracking_events,timezone,deny,-,-
+carrier_partner,tracking_events,confidence,deny,-,-
+carrier_partner,vehicles,vehicle_id,deny,-,-
+carrier_partner,vehicles,vehicle_type,deny,-,-
+carrier_partner,vehicles,capacity_kg,deny,-,-
+carrier_partner,vehicles,current_location,deny,-,-
+carrier_partner,vehicles,driver_id,deny,-,-
+carrier_partner,vehicles,maintenance_status,deny,-,-
+carrier_partner,vehicles,cold_chain_capable,deny,-,-
+carrier_partner,vehicles,fuel_level_pct,deny,-,-
+carrier_partner,vehicles,region,deny,-,-
+carrier_partner,routes,route_id,deny,-,-
+carrier_partner,routes,origin,deny,-,-
+carrier_partner,routes,destination,deny,-,-
+carrier_partner,routes,distance_km,deny,-,-
+carrier_partner,routes,restricted_zone_flag,deny,-,-
+carrier_partner,routes,weather_risk,deny,-,-
+carrier_partner,routes,border_risk,deny,-,-
+carrier_partner,routes,estimated_cost,deny,-,-
+carrier_partner,routes,eta_minutes,deny,-,-
+carrier_partner,carrier_bookings,booking_id,write,own carrier only,booking
+carrier_partner,carrier_bookings,shipment_id,write,own carrier only,booking
+carrier_partner,carrier_bookings,carrier,write,own carrier only,booking
+carrier_partner,carrier_bookings,status,write,own carrier only,booking
+carrier_partner,carrier_bookings,retry_count,write,own carrier only,booking
+carrier_partner,carrier_bookings,partner_ref,write,own carrier only,booking
+carrier_partner,carrier_bookings,created_at,write,own carrier only,booking
+carrier_partner,carrier_bookings,compensation_required,write,own carrier only,booking
+carrier_partner,ai_invocations,ai_call_id,deny,-,-
+carrier_partner,ai_invocations,shipment_id,deny,-,-
+carrier_partner,ai_invocations,use_case,deny,-,-
+carrier_partner,ai_invocations,model,deny,-,-
+carrier_partner,ai_invocations,route_candidates,deny,-,-
+carrier_partner,ai_invocations,token_count,deny,-,-
+carrier_partner,ai_invocations,constraint_violations,deny,-,-
+carrier_partner,ai_invocations,recommendation,deny,-,-
+carrier_partner,ai_invocations,human_override,deny,-,-
+ai_agent,shipments,shipment_id,read,request-scoped,exception_summary
+ai_agent,shipments,customer_id,deny,request-scoped,exception_summary
+ai_agent,shipments,origin,read,request-scoped,exception_summary
+ai_agent,shipments,destination,read,request-scoped,exception_summary
+ai_agent,shipments,service_tier,read,request-scoped,exception_summary
+ai_agent,shipments,declared_weight_kg,read,request-scoped,exception_summary
+ai_agent,shipments,actual_weight_kg,read,request-scoped,exception_summary
+ai_agent,shipments,promised_at,read,request-scoped,exception_summary
+ai_agent,shipments,status,read,request-scoped,exception_summary
+ai_agent,shipments,customs_required,read,request-scoped,exception_summary
+ai_agent,shipments,temperature_controlled,read,request-scoped,exception_summary
+ai_agent,tracking_events,event_id,read,request-scoped,exception_summary
+ai_agent,tracking_events,shipment_id,read,request-scoped,exception_summary
+ai_agent,tracking_events,event_type,read,request-scoped,exception_summary
+ai_agent,tracking_events,event_time,read,request-scoped,exception_summary
+ai_agent,tracking_events,source_system,read,request-scoped,exception_summary
+ai_agent,tracking_events,location,deny,request-scoped,exception_summary
+ai_agent,tracking_events,sequence_no,read,request-scoped,exception_summary
+ai_agent,tracking_events,duplicate_flag,read,request-scoped,exception_summary
+ai_agent,tracking_events,timezone,read,request-scoped,exception_summary
+ai_agent,tracking_events,confidence,read,request-scoped,exception_summary
+ai_agent,vehicles,vehicle_id,deny,-,-
+ai_agent,vehicles,vehicle_type,deny,-,-
+ai_agent,vehicles,capacity_kg,deny,-,-
+ai_agent,vehicles,current_location,deny,-,-
+ai_agent,vehicles,driver_id,deny,-,-
+ai_agent,vehicles,maintenance_status,deny,-,-
+ai_agent,vehicles,cold_chain_capable,deny,-,-
+ai_agent,vehicles,fuel_level_pct,deny,-,-
+ai_agent,vehicles,region,deny,-,-
+ai_agent,routes,route_id,read,request-scoped,exception_summary
+ai_agent,routes,origin,read,request-scoped,exception_summary
+ai_agent,routes,destination,read,request-scoped,exception_summary
+ai_agent,routes,distance_km,read,request-scoped,exception_summary
+ai_agent,routes,restricted_zone_flag,read,request-scoped,exception_summary
+ai_agent,routes,weather_risk,read,request-scoped,exception_summary
+ai_agent,routes,border_risk,read,request-scoped,exception_summary
+ai_agent,routes,estimated_cost,read,request-scoped,exception_summary
+ai_agent,routes,eta_minutes,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,booking_id,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,shipment_id,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,carrier,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,status,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,retry_count,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,partner_ref,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,created_at,read,request-scoped,exception_summary
+ai_agent,carrier_bookings,compensation_required,read,request-scoped,exception_summary
+ai_agent,ai_invocations,ai_call_id,deny,-,-
+ai_agent,ai_invocations,shipment_id,deny,-,-
+ai_agent,ai_invocations,use_case,deny,-,-
+ai_agent,ai_invocations,model,deny,-,-
+ai_agent,ai_invocations,route_candidates,deny,-,-
+ai_agent,ai_invocations,token_count,deny,-,-
+ai_agent,ai_invocations,constraint_violations,deny,-,-
+ai_agent,ai_invocations,recommendation,deny,-,-
+ai_agent,ai_invocations,human_override,deny,-,-

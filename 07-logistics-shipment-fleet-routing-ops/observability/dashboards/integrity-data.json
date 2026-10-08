@@ -1,0 +1,37 @@
+{
+  "title": "Integrity and data freshness",
+  "panels": [
+    {
+      "title": "Audit chain valid",
+      "type": "stat",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "audit_chain_valid"
+        }
+      ]
+    },
+    {
+      "title": "Data load age",
+      "type": "timeseries",
+      "unit": "s",
+      "targets": [
+        {
+          "expr": "data_load_age_seconds"
+        }
+      ]
+    },
+    {
+      "title": "Rate-limited AI calls",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "sum(increase(http_requests_total{status=\"429\"}[1h]))"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "note": "Grafana-style panel list; datasource is a variable ${DS_PROMETHEUS} to be bound at deploy [ASM: no real Grafana tested]"
+}

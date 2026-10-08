@@ -1,0 +1,8 @@
+2026-10-08T10:33:22Z
+== TG-5 semantic-layer tests
+................                                                         [100%]
+16 passed in 0.97s
+== TG-6 fixture hashes
+     20 FAILED
+     31 OK
+      1 match

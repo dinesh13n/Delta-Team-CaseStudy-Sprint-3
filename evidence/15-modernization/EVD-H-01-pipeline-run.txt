@@ -1,0 +1,47 @@
+EVD-H-01 local pipeline run (CI cannot run in the sandbox; the same commands are in .github/workflows/ci.yml) 2026-10-08T10:27:19Z
+Python Python 3.14.7
+
+$ ruff check .
+   |
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.
+[exit 1]
+
+$ ruff format --check .
+61 files already formatted
+[exit 0]
+
+$ mypy --cache-dir=/tmp/mypy_cache
+Success: no issues found in 36 source files
+[exit 0]
+
+$ python scripts/secret_scan.py
+{"mode": "working-tree", "findings": 0}
+[exit 0]
+
+$ python etl/run_daily_batch.py --sample
+{'processed': 354, 'malformed': 1, 'sample': True}
+{"run_id": "run-20261008T102724Z", "load_id": "ld-0c0f0315d16f", "totals": {"processed": 2124, "quarantined": 30}, "quarantine_ratio": 0.014124, "status": "pass"}
+[exit 0]
+
+$ python scripts/sanity_check.py
+{'status': 'ok', 'repo': '07-logistics-shipment-fleet-routing-ops', 'csv_files': 6, 'events': 3000, 'clean_repo_contract': True, 'semantic_layer': 'valid', 'evidence_dirs': 'ok', 'secret_findings': 0, 'openapi_route_diff': 'clean', 'rego_current': True}
+[exit 0]
+
+$ opa check policy/opa
+[exit 0]
+
+$ opa test policy/opa
+PASS: 7/7
+[exit 0]
+
+$ pytest -q --cov --cov-fail-under=80
+TOTAL                                  1301    168    87%
+Required test coverage of 80% reached. Total coverage: 87.09%
+86 passed, 7 xfailed, 1 warning in 15.27s
+[exit 0]
+
+$ pytest ../semantic-layer/tests -q
+................                                                         [100%]
+16 passed in 1.06s

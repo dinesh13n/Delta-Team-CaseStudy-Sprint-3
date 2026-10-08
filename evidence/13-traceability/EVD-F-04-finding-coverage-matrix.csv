@@ -1,0 +1,63 @@
+finding,severity,title,requirement,spec,planned_implementation,test_or_check,disposition,evidence
+F-01,S1,The repository is not under version control,NFR-8,system-spec,Stage 0/A (done: baseline tags) + H1,git tag verify,"DONE (repo versioned, tags)",EVD-A-01
+F-02,S2,The documented test command cannot run,FR-20,feat-06,H2,AC-25,REMEDIATE,EVD-H clean-checkout run
+F-03,S3,The documented run command is wrong,FR-20,feat-06,H2,AC-25,REMEDIATE,EVD-H README run command
+F-04,S2,No dependency lockfile for either stack,FR-20,ADR-0003,H2,AC-25,"REMEDIATE (Python lock; npm lock CONDITIONAL, no node app run)",EVD-H lock files
+F-05,S2,Documentation claims a portal that does not exist,FR-18,feat-01; OQ-06,H9/J4,AC-26,REMEDIATE (docs corrected; thin view),EVD-J
+F-06,S3,"The frontend lint gate is ""lint"": ""echo scaffold"" — a no-op that reports success.",NFR-6,nfr-spec,H1 (python); web DEFERRED,CI gate,PARTIAL (python gates; web lint deferred with portal),EVD-H CI log
+F-07,S2,"No containerisation or environment definition: no Dockerfile, no compose file, no devcontainer",FR-20,ADR-0009,M1/N3 (container-neutral recipe),AC-25,DEFER to M/N,EVD-M
+F-08,S2,"No change-control surface: no CONTRIBUTING.md, no PR template, no CODEOWNERS, no branch-protection e",NFR-8,governance,H1,file-exists test,REMEDIATE,EVD-H
+F-09,S1,A database password is hardcoded in source,"FR-19, NFR-7",security-spec,H3,AC-24; secret scan,REMEDIATE,EVD-H secret scan
+F-10,S1,.env.example ships a complete DSN with embedded credentials: postgresql://app_shared:Welcome123@loca,"FR-19, NFR-7",security-spec,H3,secret scan,REMEDIATE,EVD-H
+F-11,S2,.env.example ships AI_GATEWAY_KEY=sk-workshop-hardcoded-example — a key-shaped literal in a committe,"FR-19, NFR-7",security-spec,H3,secret scan,REMEDIATE,EVD-H
+F-12,S1,.env.example ships OT_VENDOR_TOKEN=replace-me-but-currently-shared — the comment itself documents an,"FR-19, NFR-7",security-spec,H3,secret scan,REMEDIATE,EVD-H
+F-13,S2,".env.example sets LOG_LEVEL=DEBUG as the default, meaning verbose logging of operational payloads is",FR-19,security-spec,H3,config test,REMEDIATE,EVD-H
+F-14,S1,"No secret detection anywhere: no scanner in CI, no pre-commit hooks, no rotation policy",NFR-7,security-spec,H1/H3,pre-commit + CI secret scan,REMEDIATE,EVD-H
+F-15,S2,The IaC emits a credential artifact,FR-19,ADR-0009,H3/M1,IaC scan,REMEDIATE (remove credential output),EVD-H
+F-16,S2,"No encryption posture exists: no TLS configuration, no at-rest statement, no key management, no fiel",NFR (encryption posture),security-architecture,K3/M1 (statement only),doc review,"DEFER (TLS at platform, ASM)",EVD-K
+F-17,S1,Authorisation is a client-supplied HTTP header,FR-03,feat-02,H4,"AC-04, AC-05",REMEDIATE,EVD-H
+F-18,S1,"The role check is a flat five-element allow-list with no resource, tenant, facility, purpose or risk",FR-04,feat-02,H4,AC-06,REMEDIATE,EVD-H
+F-19,S1,The allow-list contains a persona from another domain,FR-04,feat-02,H4,AC-06 (persona allow-list from semantic layer),REMEDIATE,EVD-H
+F-20,S1,The AI endpoint has no authorisation check whatsoever,"FR-03, FR-04",feat-02,H4/H7,AC-04,REMEDIATE,EVD-H
+F-21,S1,"policy/opa/access.rego is role-only (admin → all, operator → read)",FR-04,ADR-0005,H4,Rego parity test,REMEDIATE (opa run CONDITIONAL on binary),EVD-H
+F-22,S1,Prompt injection surface,FR-10,feat-04,H7,AC-13,REMEDIATE,EVD-H/L
+F-23,S2,Using str.format() on attacker-influenceable content is additionally a format-string injection surfa,FR-10,feat-04,H7,AC-14,REMEDIATE,EVD-H
+F-24,S1,"The system self-reports that no guardrail exists: the response literal is ""guardrail_status"": ""not_e",FR-11,feat-04,H7,AC-12,REMEDIATE,EVD-H
+F-25,S1,No output schema validation,FR-11,ai-summary-output.schema,H7,"AC-12, AC-15, AC-16",REMEDIATE,"EVD-F-03, EVD-H"
+F-26,S1,No human approval gate,FR-12,feat-04,H7,AC-17,REMEDIATE,EVD-H
+F-27,S1,"Model provenance is a module constant (MODEL_VERSION = ""local-sim-v1"")",FR-09,feat-04,H7,AC-12,REMEDIATE,EVD-H
+F-28,S2,Token accounting is fabricated: token_estimate = len(prompt.split()) * 2,"FR-09, FR-17",observability-spec,H7,AC-23,REMEDIATE (estimate labelled; real count only with a real model),EVD-H/J
+F-29,S1,The AI output is not derived from the record's meaning,FR-09,feat-04; E1,H7/J1,AC-12 + eval set,REMEDIATE (deterministic default; quality eval in J),EVD-J
+F-30,S1,Cross-entity primary-key collision,FR-02,feat-01,H5,AC-03,REMEDIATE,EVD-H
+F-31,S1,"Record lookup scans every column, not the key",FR-01,feat-01,H5,AC-01,REMEDIATE,EVD-H
+F-32,S1,A missed lookup silently returns the wrong record,FR-01,feat-01,H5,AC-02,REMEDIATE,EVD-H
+F-33,S2,"Three duplicate business keys in every dataset, at a consistent *-00004, *-00013, *-00019 pattern (e",FR-06,feat-03; DQ-01,H6,"AC-08, AC-10",REMEDIATE,EVD-H
+F-34,S2,One fully-blank mandatory row in every dataset — every non-key column empty (10 blank columns in shi,FR-06,DQ-02,H6,AC-08,REMEDIATE,EVD-H
+F-35,S2,"One impossible timestamp per timestamped dataset: 1900-01-01T00:00:00 in shipments.promised_at, trac",FR-06,DQ-03,H6,AC-08,REMEDIATE,EVD-H
+F-36,S2,tracking_events.confidence spans 0.001–1.42,FR-06,DQ-05,H6,AC-08,REMEDIATE,EVD-H
+F-37,S1,No semantic layer: categorical columns are polluted with workflow-status vocabulary,FR-06,semantic-layer,Stage D (done),semantic-layer tests (16 pass),DONE (D) + enforced in H6,EVD-D-01..05
+F-38,S2,Referential integrity is unenforced,"FR-06, FR-08",DQ-08,H6,"AC-08, AC-11",REMEDIATE,EVD-H
+F-39,S1,A retry storm is already visible in the data,FR-06,DQ-07,H6/M2,AC-08 (flag) + resilience tests,PARTIAL (flag in H6; retry control in M2),EVD-H/M
+F-40,S2,ETL counts defects and discards them,FR-06,feat-03,H6,AC-08,REMEDIATE,EVD-H
+F-41,S2,"The ETL has no run identifier, watermark or idempotency key",FR-07,feat-03,H6,AC-10,REMEDIATE,EVD-H
+F-42,S1,About one third of the event stream cannot be correlated,FR-14,feat-05,H8,AC-20,REMEDIATE for new events; history flagged not rewritten,EVD-H
+F-43,S1,"The audit event records only ts, action and details",FR-13,audit-event.schema,H8,AC-18,REMEDIATE,"EVD-F-03, EVD-H"
+F-44,S1,"The audit sink is a local file written by the application itself — <repo>/logs/audit.log, appended i",FR-13,ADR-0008,H8 (hash chain) / M2 (external sink DEFERRED),AC-19,PARTIAL (tamper-evident; external sink deferred),EVD-H
+F-45,S2,datetime.utcnow() yields a naive timestamp with no timezone marker,FR-13,audit-event.schema,H8,AC-18 (UTC aware ts),REMEDIATE,EVD-H
+F-46,S1,"No tracing, no metrics, no SLOs, no dashboards-as-code, no alerting, no error budget","FR-15, FR-17",observability-spec,H8/N1,"AC-21, AC-23",REMEDIATE (metrics/logs); dashboards and alerts as code in N1,EVD-H/N
+F-47,S2,CI executes commands but produces no evidence,NFR-8,nfr-spec,H1/H9,CI artefacts,REMEDIATE,EVD-H
+F-48,S2,"The Terraform is a local_file resource with no provider, no backend, no state management and no infr",FR-19,ADR-0009,M1/N3,IaC validation,"DEFER (CONDITIONAL, no platform)",EVD-M
+F-49,S2,"supply-chain/dependency-risk-register.md correctly names ""no SBOM"" and ""no provenance"" as targets, b",NFR (supply chain),security-spec,M1,SBOM present,DEFER to M1,EVD-M
+F-50,S2,The API contract omits both business endpoints,FR-16,openapi.yaml,H9,AC-22; EVD-F-03 route diff,SPECIFIED (F3); implementation check in H9,EVD-F-03
+F-51,S2,The characterization test characterises nothing,NFR-8,C8 tests,Stage C (done) + H10,characterization suite,DONE (12 tests) + H10 diff,EVD-C-08
+F-52,S2,tests/playwright/operations.spec.ts asserts that body is visible against an application that does no,FR-18,feat-01,H9/J4,AC-26,REMEDIATE or REMOVE test with explanation,EVD-J
+F-53,S2,A known architectural divergence is documented and unmanaged,NFR-8,ADR-0002,H12,ADR-0001 supersession note,REMEDIATE (ADR-0002 written; note added in H),EVD-F-01
+F-54,S2,Data remediation will break the repository's own contract test,FR-07,synthetic-data-strategy,H6,AC-10,REMEDIATE (curated layer; fixture immutable),EVD-H
+F-55,S3,"scripts/sanity_check.py hard-requires the paths docs/transformation-roadmap.md, docs/domain-specific",NFR-8,nfr-spec,H1,sanity script run,REMEDIATE,EVD-H
+F-56,S2,"The incident runbook declares itself *""intentionally incomplete""*",NFR (resilience),incident docs,M4,tabletop,DEFER to M4,EVD-M
+F-57,S2,No business KPI data exists,KPI K1..K10,metrics.yaml,Stage C (baseline) / O1,kpi tests,PARTIAL (baseline done; after-KPIs in O),"EVD-C, EVD-O"
+F-58,S3,ai_invocations.csv also has an orphan shipment reference (REC-0001 row); not in the original registe,FR-06,DQ-08,H6,AC-08,REMEDIATE,EVD-H
+F-59,S3,171 of 351 shipments have actual weight above declared weight (meaning unknown),FR-06,BR (weights),H6 (flag only),AC-08,"ACCEPT-WITH-FLAG (meaning UNKNOWN, owner UNRESOLVED)",EVD-H
+F-60,S2,data/README.md claims untrusted text payloads for prompt-injection testing; no free-text field exist,FR-10,feat-04,H7/L3,AC-13,REMEDIATE (docs corrected; injection tests use constructed payloads),EVD-L
+F-61,S3,routes.weather_risk holds numeric 1.42 in a categorical field,FR-06,DQ-04,H6,AC-08,REMEDIATE,EVD-H
+F-62,S3,Every dataset has one malformed key *-BAD1,FR-06,BR-K-*,H6,AC-08,REMEDIATE,EVD-H

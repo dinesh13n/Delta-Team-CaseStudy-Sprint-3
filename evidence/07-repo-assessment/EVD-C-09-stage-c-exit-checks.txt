@@ -1,0 +1,6 @@
+EVD-C-09 Stage C exit checks 2026-10-08T09:48:09Z
+C-X7 characterization JUnit: {'tests': '12', 'failures': '0', 'errors': '0', 'skipped': '0'}
+C-X8 tests=12 labelled=12 (labels counted on docstring lines)
+C-X9 tracked subtree files changed vs tag = 0; hash manifest non-OK = 0
+new (untracked) files in subtree: 07-logistics-shipment-fleet-routing-ops/tests/characterization/__init__.py 07-logistics-shipment-fleet-routing-ops/tests/characterization/conftest.py 07-logistics-shipment-fleet-routing-ops/tests/characterization/test_characterization_baseline.py 
+C-X10 tag baseline/v1-characterized exists = 0 (operator must create after committing; see commit plan)

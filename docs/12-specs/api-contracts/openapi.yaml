@@ -1,0 +1,620 @@
+openapi: 3.0.3
+info:
+  title: Logistics Shipment, Fleet, Routing and Exception Operations API
+  version: 1.1.0-draft
+  description: 'Target contract (runbook 02, step F3). Closes F-50. Paths are kept compatible with the brownfield
+
+    API (/health, /records/{record_id}, /ai/summarize/{record_id}); behaviour changes are listed in
+
+    docs/12-specs/api-contracts.md. Status: PROVISIONAL, approvers UNRESOLVED.
+
+    '
+servers:
+- url: http://localhost:8000
+security:
+- bearerAuth: []
+tags:
+- name: ops
+- name: data
+- name: ai
+- name: audit
+paths:
+  /health:
+    get:
+      tags:
+      - ops
+      operationId: getHealth
+      summary: Liveness probe (no authentication)
+      security: []
+      responses:
+        '200':
+          description: Process is alive
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /ready:
+    get:
+      tags:
+      - ops
+      operationId: getReady
+      summary: Readiness probe (data layer loadable, signing key present)
+      security: []
+      responses:
+        '200':
+          description: Ready
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ready'
+        '503':
+          description: Not ready
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /metrics:
+    get:
+      tags:
+      - ops
+      operationId: getMetrics
+      summary: Prometheus text exposition
+      responses:
+        '200':
+          description: Metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /shipments:
+    get:
+      tags:
+      - data
+      operationId: listShipments
+      summary: List curated shipments visible to the caller
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/ShipmentStatus'
+      responses:
+        '200':
+          description: Page of shipments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /shipments/{shipment_id}/events:
+    get:
+      tags:
+      - data
+      operationId: listShipmentEvents
+      summary: Tracking events of one shipment
+      parameters:
+      - $ref: '#/components/parameters/ShipmentId'
+      responses:
+        '200':
+          description: Events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrackingEvent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /records/{record_id}:
+    get:
+      tags:
+      - data
+      operationId: getRecord
+      summary: Read one record by exact primary key (compatibility path)
+      description: 'Exact match on the primary key column only (closes the F-16 fallback to the first row).
+
+        Unknown key returns 404. Role is taken from the verified token, never from X-User-Role.
+
+        '
+      parameters:
+      - name: record_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^SHI-[0-9]{5}$
+      responses:
+        '200':
+          description: Record (fields filtered by access policy)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /ai/summarize/{record_id}:
+    post:
+      tags:
+      - ai
+      operationId: summarizeRecord
+      summary: Suggest-only exception summary (I9)
+      description: Never executes an action. Output is schema validated; the service may abstain or fall back to the deterministic
+        provider.
+      parameters:
+      - name: record_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^SHI-[0-9]{5}$
+      responses:
+        '200':
+          description: Summary suggestion
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '503':
+          description: Provider and fallback unavailable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /ai/summaries/{summary_id}/decision:
+    post:
+      tags:
+      - ai
+      operationId: decideSummary
+      summary: Record the human approval or rejection of a suggestion
+      parameters:
+      - name: summary_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalDecision'
+      responses:
+        '200':
+          description: Decision stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Already decided
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /audit/verify:
+    get:
+      tags:
+      - audit
+      operationId: verifyAuditChain
+      summary: Verify the hash chain of the audit log
+      responses:
+        '200':
+          description: Result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditVerification'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /kpis:
+    get:
+      tags:
+      - data
+      operationId: getKpis
+      summary: Frozen KPI set K1..K10 computed from the curated layer
+      responses:
+        '200':
+          description: KPI values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KpiSet'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    ShipmentId:
+      name: shipment_id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^SHI-[0-9]{5}$
+  headers:
+    CorrelationId:
+      description: Echoed or generated request correlation id
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid token
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Forbidden:
+      description: Policy denied
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    NotFound:
+      description: Unknown key
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Invalid:
+      description: Validation error
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    RateLimited:
+      description: Too many requests
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  schemas:
+    Health:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - ok
+        repo:
+          type: string
+    Ready:
+      type: object
+      required:
+      - status
+      - checks
+      properties:
+        status:
+          type: string
+          enum:
+          - ready
+        checks:
+          type: object
+          additionalProperties:
+            type: boolean
+    Problem:
+      type: object
+      required:
+      - type
+      - title
+      - status
+      - correlation_id
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        correlation_id:
+          type: string
+        policy_decision_id:
+          type: string
+    ShipmentStatus:
+      type: string
+      description: 'Canonical values: new, queued, in_progress, manual_hold, exception, failed, closed (semantic-layer/status-taxonomy.yaml).
+        Observed data also holds out-of-domain values (for example approved); such rows carry an enum_violation flag in data_quality_flags.'
+    Shipment:
+      type: object
+      required:
+      - shipment_id
+      - status
+      properties:
+        shipment_id:
+          type: string
+        customer_id:
+          type: string
+          description: Masked for personas without access
+        origin:
+          type: string
+        destination:
+          type: string
+        service_tier:
+          type: string
+        declared_weight_kg:
+          type: number
+        actual_weight_kg:
+          type: number
+        promised_at:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/ShipmentStatus'
+        customs_required:
+          type: boolean
+        temperature_controlled:
+          type: boolean
+        data_quality_flags:
+          type: array
+          items:
+            type: string
+    ShipmentPage:
+      type: object
+      required:
+      - items
+      - total
+      - limit
+      - offset
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shipment'
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+    TrackingEvent:
+      type: object
+      required:
+      - event_id
+      - shipment_id
+      - event_type
+      - event_time
+      properties:
+        event_id:
+          type: string
+        shipment_id:
+          type: string
+        event_type:
+          type: string
+        event_time:
+          type: string
+          format: date-time
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        location:
+          type: string
+    AiSummary:
+      $ref: '#/components/schemas/AiSummaryOutput'
+    AiSummaryOutput:
+      type: object
+      required:
+      - summary_id
+      - model
+      - model_version
+      - prompt_version
+      - summary
+      - recommendation
+      - abstained
+      - guardrail_status
+      - generated_by
+      - source_count
+      - correlation_id
+      - token_source
+      - sources
+      - config_hash
+      properties:
+        summary_id:
+          type: string
+        model:
+          type: string
+        model_version:
+          type: string
+        prompt_version:
+          type: string
+        summary:
+          type: string
+          maxLength: 1200
+          nullable: true
+        recommendation:
+          type: string
+          maxLength: 400
+          nullable: true
+        abstained:
+          type: boolean
+        abstain_reason:
+          type: string
+          nullable: true
+        guardrail_status:
+          type: string
+          enum:
+          - enforced
+          - blocked
+          - not_applicable
+        generated_by:
+          type: string
+          enum:
+          - deterministic
+          - model
+          - fallback
+        fallback_reason:
+          type: string
+          nullable: true
+        source_count:
+          type: integer
+          minimum: 0
+        token_estimate:
+          type: integer
+          minimum: 0
+        requires_human_approval:
+          type: boolean
+        correlation_id:
+          type: string
+        token_source:
+          type: string
+          enum:
+          - estimate
+          - provider
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+          nullable: true
+        sources:
+          type: array
+          items:
+            type: object
+            required:
+            - dataset
+            - record_id
+            properties:
+              dataset:
+                type: string
+              record_id:
+                type: string
+        config_hash:
+          type: string
+    ApprovalDecision:
+      type: object
+      required:
+      - decision
+      properties:
+        decision:
+          type: string
+          enum:
+          - approve
+          - reject
+        reason:
+          type: string
+          maxLength: 500
+    ApprovalRecord:
+      type: object
+      required:
+      - approval_id
+      - summary_id
+      - decision
+      - decided_by
+      - decided_at
+      properties:
+        approval_id:
+          type: string
+        summary_id:
+          type: string
+        decision:
+          type: string
+          enum:
+          - approve
+          - reject
+        decided_by:
+          type: string
+        decided_at:
+          type: string
+          format: date-time
+    AuditVerification:
+      type: object
+      required:
+      - valid
+      - records
+      properties:
+        valid:
+          type: boolean
+        records:
+          type: integer
+        first_bad_index:
+          type: integer
+          nullable: true
+    KpiSet:
+      type: object
+      required:
+      - as_of
+      - kpis
+      properties:
+        as_of:
+          type: string
+          format: date-time
+        kpis:
+          type: array
+          items:
+            type: object
+            required:
+            - id
+            - name
+            - value
+            properties:
+              id:
+                type: string
+                pattern: ^K([1-9]|10)$
+              name:
+                type: string
+              value:
+                type: number
+                nullable: true
+              data_gap:
+                type: boolean

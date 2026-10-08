@@ -1,0 +1,9 @@
+{
+ "test_records_without_role_header_succeeds": {"id": "AB-03", "summary": "no identity now gives 401, role header ignored (F-17)", "spec": "FR-03, AC-04, AC-05"},
+ "test_records_clinician_role_succeeds": {"id": "AB-04", "summary": "clinician persona removed, token with that role is 403 (F-19)", "spec": "FR-04, access-semantics.yaml"},
+ "test_unknown_role_is_forbidden_with_http_200": {"id": "AB-05", "summary": "denial is HTTP 401/403 problem+json, not 200 (F-18)", "spec": "FR-05, AC-07, error-handling-spec"},
+ "test_ai_summary_without_any_role": {"id": "AB-06", "summary": "AI endpoint requires a verified token and policy (F-20)", "spec": "FR-03, AC-04"},
+ "test_ai_guardrail_status_not_enforced": {"id": "AB-07", "summary": "guardrail_status is evaluated (enforced or blocked) (F-24)", "spec": "FR-11, AC-12"},
+ "test_ai_summary_echoes_first_column": {"id": "AB-08", "summary": "summary is derived from allow-listed record facts (F-29)", "spec": "FR-09, AC-12"},
+ "test_audit_event_has_no_actor_or_correlation": {"id": "AB-09", "summary": "audit v2 carries actor, correlation id, tenant, resource, policy decision (F-43)", "spec": "FR-13, AC-18"}
+}

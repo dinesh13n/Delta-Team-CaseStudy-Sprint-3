@@ -1,0 +1,7 @@
+EVD-H-09 make smoke (extended assertions; original assertions preserved) 2026-10-08T10:27:58Z
+$ make smoke
+{'status': 'ok', 'repo': '07-logistics-shipment-fleet-routing-ops', 'csv_files': 6, 'events': 3000, 'clean_repo_contract': True, 'semantic_layer': 'valid', 'evidence_dirs': 'ok', 'secret_findings': 0, 'openapi_route_diff': 'clean', 'rego_current': True}
+[exit 0]
+
+Original assertions preserved: required files, forbidden files, manifest row counts, event count (lines 1-33 of the delivered script are unchanged; extended checks appended).
+ 1 file changed, 60 insertions(+), 1 deletion(-)

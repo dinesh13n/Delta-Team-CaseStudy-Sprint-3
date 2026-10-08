@@ -1,0 +1,4 @@
+EVD-B-01 Stage B checks 2026-10-08T09:43:15Z
+B-X3 keyword scan of problem-statement.md (AI, API, model, Python, FastAPI, database, cloud, algorithm, machine learning, LLM): matches = 0
+B-X6 subtree files changed vs v0.1 tag = 0
+artifact counts: 01=7 02=7 03=12

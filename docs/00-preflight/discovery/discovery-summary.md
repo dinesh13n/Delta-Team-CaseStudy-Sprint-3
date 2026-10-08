@@ -25,7 +25,7 @@ Classification key: **[VF]** Verified Fact (read in a cited file), **[INF]** Inf
 
 ## 2. Cross-check against the runbook
 - Independently reproduced: tree and inventory, endpoints, role header and allow-list, hardcoded credential, first-row fallback, 354/3,000 counts, duplicate keys and blank fields in each CSV, `REC-` key in all six files.
-- Contradicted: F-42 magnitude (983 nulls, 32.8%, not 66.4%). See assumptions-unknowns.md section 3.
+- Confirmed: F-42 magnitude (1,992 of 3,000 = 66.4% null or empty). An earlier null-only count was incomplete (D-012). See assumptions-unknowns.md section 3.
 - Documentation drift confirmed: README `uvicorn apps/api.main:app` is not a valid module path; `clinician` in a logistics role list.
 
 ## 3. Readiness for the next step

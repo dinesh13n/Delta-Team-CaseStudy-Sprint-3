@@ -2,23 +2,25 @@
 
 | Field | Value |
 |---|---|
-| Stage | B: Stakeholders (Spine 2) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 2) |
 | Runbook step | B2 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/* |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-05 |
-| Residual risks | No independent approver exists |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/00-preflight/ (A4, A5, A6 packs); runbook/04-OPEN-QUESTIONS-REGISTER.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-| Provisional item (Stage A) | Confirmed? | Note |
+| Contract item (A5) | Confirmed? | Note |
 |---|---|---|
-| Role slots PROVISIONAL | Yes, unchanged | OQ-05 still open |
-| Write boundary on baseline subtree | **Changed at G4** (see docs/14-transformation/transformation-authorisation.md) | operator instruction of 2026-10-08 |
-| Agent may push to main | Confirmed | push scope granted |
-| No external AI calls with repo data | Confirmed | OQ-02, OQ-03 open |
-| Evidence retention in-repo | Confirmed (D-002) | OQ-10 |
+| Write boundaries | Confirmed by operator, amended by D-009 | needs CTO ratification |
+| Environment boundaries | Confirmed | sandbox plus operator machine only |
+| Data constraints | Confirmed | synthetic only |
+| Tool/agent permissions | Confirmed by operator instruction | no external model calls (OQ-02) |
+| Approval rules | PROVISIONAL | self-approval |
+| Stop conditions | Confirmed | |
+No contract item has been overturned. No owner confirmed by a third party [UNK].

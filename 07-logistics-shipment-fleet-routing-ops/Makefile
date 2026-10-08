@@ -1,12 +1,54 @@
-PYTHON ?= python3
+# Targets are the transformation gates (docs/14-transformation/transformation-gates.md).
+VENV ?= .venv
+PYTHON ?= $(VENV)/bin/python
+SEMANTIC ?= ../semantic-layer
 
-.PHONY: test smoke etl package
+.PHONY: install test cov lint format type secrets smoke etl rego semantic characterization gates run package
+
+install:
+	python3 -m venv $(VENV)
+	$(PYTHON) -m pip install --require-hashes -r requirements-dev.txt
 
 test:
 	$(PYTHON) -m pytest -q
+
+cov:
+	$(PYTHON) -m pytest -q --cov --cov-report=term-missing --cov-report=xml --junitxml=junit.xml --cov-fail-under=80
+
+lint:
+	$(PYTHON) -m ruff check .
+	$(PYTHON) -m ruff format --check .
+
+format:
+	$(PYTHON) -m ruff format .
+
+type:
+	$(PYTHON) -m mypy --cache-dir=.mypy_cache
+
+secrets:
+	$(PYTHON) scripts/secret_scan.py
 
 smoke:
 	$(PYTHON) scripts/sanity_check.py
 
 etl:
 	$(PYTHON) etl/run_daily_batch.py --sample
+
+rego:
+	$(PYTHON) scripts/generate_rego.py --check
+	opa check policy/opa
+	opa test policy/opa
+
+semantic:
+	$(PYTHON) -m pytest -q $(SEMANTIC)/tests
+
+characterization:
+	$(PYTHON) -m pytest -q tests/characterization
+
+gates: lint type secrets etl test smoke semantic
+
+run:
+	$(PYTHON) -m uvicorn apps.api.main:app --reload
+
+package:
+	@echo "container recipe: Dockerfile (platform-neutral, ADR-0009)"

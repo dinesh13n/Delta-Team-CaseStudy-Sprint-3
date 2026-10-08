@@ -1,0 +1,87 @@
+{
+  "title": "AI: use, fallback, guardrail, human decisions",
+  "panels": [
+    {
+      "title": "AI requests by provider",
+      "type": "timeseries",
+      "unit": "reqps",
+      "targets": [
+        {
+          "expr": "sum by (generated_by) (rate(ai_requests_total[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "Abstain share",
+      "type": "timeseries",
+      "unit": "percentunit",
+      "targets": [
+        {
+          "expr": "sum(rate(ai_requests_total{abstained=\"true\"}[15m])) / sum(rate(ai_requests_total[15m]))"
+        }
+      ]
+    },
+    {
+      "title": "Fallbacks by reason",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "sum by (reason) (rate(ai_fallback_total[15m]))"
+        }
+      ]
+    },
+    {
+      "title": "Schema violations",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "increase(ai_guardrail_blocked_total[1h])"
+        }
+      ]
+    },
+    {
+      "title": "AI p95 latency",
+      "type": "timeseries",
+      "unit": "s",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(ai_request_duration_seconds_bucket[10m])))"
+        }
+      ]
+    },
+    {
+      "title": "Token estimate rate",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "rate(ai_tokens_total[5m])"
+        }
+      ]
+    },
+    {
+      "title": "Human decisions",
+      "type": "timeseries",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "sum by (decision) (increase(ai_decisions_total[1d]))"
+        }
+      ]
+    },
+    {
+      "title": "Circuit open",
+      "type": "stat",
+      "unit": "",
+      "targets": [
+        {
+          "expr": "ai_circuit_open"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "note": "Grafana-style panel list; datasource is a variable ${DS_PROMETHEUS} to be bound at deploy [ASM: no real Grafana tested]"
+}

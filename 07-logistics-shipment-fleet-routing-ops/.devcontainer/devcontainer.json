@@ -1,0 +1,7 @@
+{
+  "name": "logistics-ops",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "postCreateCommand": "make install && make etl",
+  "forwardPorts": [8000],
+  "containerEnv": { "APP_ENV": "local" }
+}

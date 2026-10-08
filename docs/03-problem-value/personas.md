@@ -2,27 +2,27 @@
 
 | Field | Value |
 |---|---|
-| Stage | B: Problem Framing (Spine 3) |
+| Stage | B: Qualification, Stakeholders and Problem Framing (Spine 3) |
 | Runbook step | B3 (runbook/02-TRANSFORMATION-RUNBOOK.md) |
 | Version | v1.0 |
 | Date | 2026-10-08 |
 | Author / Agent | Claude Code agent (claude-sonnet-5-5), operator Dinesh |
-| Status | Draft, PROVISIONAL approval (OQ-05) |
-| Evidence sources | docs/00-preflight/discovery/*; docs/00-preflight/operating-contract/*; docs/00-preflight/stage-a-gate.md; docs/01-engagement/*; docs/domain-specific-spec.md (repo) |
-| Assumptions | See assumptions in body |
-| Unresolved issues | OQ-08, OQ-24 |
-| Residual risks | Self-approved gate until named approvers exist |
+| Status | Draft, PROVISIONAL (approvers UNRESOLVED, OQ-05) |
+| Evidence sources | docs/domain-specific-spec.md |
+| Assumptions | See body |
+| Unresolved issues | See body |
+| Residual risks | See body |
 
 Classification: **[VF]** Verified Fact, **[INF]** Inference, **[ASM]** Assumption, **[UNK]** Unknown.
 
-Source: eight names in docs/domain-specific-spec.md [VF]. Descriptions are [INF]; no persona was interviewed.
-| Persona | Role in operations (inferred) | Main data touched |
+Eight personas from `docs/domain-specific-spec.md` [VF]:
+| Persona | Goal (ASM from the spec) | Key risk |
 |---|---|---|
-| dispatcher | Assigns routes and responds to exceptions | shipments, routes, carrier_bookings |
-| warehouse_ops | Handles hub scans and handoffs | tracking_events |
-| fleet_manager | Manages vehicles and capacity | vehicles, routes |
-| driver | Carries out pickups and deliveries | vehicles, tracking_events |
-| customs_agent | Clears cross-border shipments | shipments (customs_required) |
-| customer_support | Answers customer questions about status | shipments, tracking_events |
-| carrier_partner | External party receiving bookings | carrier_bookings |
-| ai_agent | Automated actor that prepares recommendations | ai_invocations |
+| dispatcher | assign work, resolve delays | acting on wrong record |
+| warehouse_ops | hub scans, handling | duplicate or stale scan events |
+| fleet_manager | vehicle readiness and capacity | stale vehicle data |
+| driver | pickup and delivery | seeing others' locations |
+| customs_agent | clearance | missing or wrong documents |
+| customer_support | answer customers | unverifiable status |
+| carrier_partner | booking confirmation | duplicate bookings, retries |
+| ai_agent | automated assistant (non-human) | unbounded actions |

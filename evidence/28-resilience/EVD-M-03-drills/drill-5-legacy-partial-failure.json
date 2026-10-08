@@ -1,0 +1,51 @@
+{
+  "findings": [
+    "F-M3-06: the legacy batch counts rows and prints a number. It writes no report, no reject list and does not fail on damaged rows: partial failure is silent. Kept for coexistence only; it must not be used as a control.",
+    "F-M3-07 (FIXED during M3): before this drill the ETL wrote curated/quarantine files directly, so a crash mid-run left a mix of new and old files. Found by reading the write sequence while designing this drill; fixed with staged writes and os.replace publication (tests/test_data_resilience.py). The 'before' behaviour was not reproduced by execution.",
+    "Publication is atomic per file, not across all files: a reader can see new curated shipments with old curated events for a moment during publish. Acceptable for the batch window; a versioned directory swap is the platform-level fix."
+  ],
+  "hypothesis": "Damaged input and a mid-run crash must not leave a silent partial result; the new ETL's evidence is complete where the legacy batch's is not.",
+  "id": "DRILL-5",
+  "method": "Feed identical corrupted shipments to the legacy reconcile script and the ETL; then crash the ETL while processing the 4th of 6 entities and compare the published layers byte for byte.",
+  "name": "Legacy batch partial failure and audit-evidence completeness",
+  "observations": {
+    "etl": {
+      "curated": 347,
+      "processed": 354,
+      "quarantine_has_reason_per_row": true,
+      "quarantine_has_source_row": true,
+      "quarantined": 7,
+      "reconciles": true,
+      "rules_seen": {
+        "BR-10": 4,
+        "BR-11": 1,
+        "BR-K-shipments": 3,
+        "BR-P-shipments": 2,
+        "ROW-SHAPE": 2
+      }
+    },
+    "etl_crash": {
+      "crashed_with": "injected: disk full while processing the 4th entity",
+      "published_layers_unchanged": true,
+      "staging_files_left_behind": []
+    },
+    "input": {
+      "damage": "row 10 short by 3 columns, row 20 blank customer_id, last row truncated mid-field",
+      "shipment_rows": 354
+    },
+    "legacy_batch": {
+      "exit_code": 0,
+      "new_files_written": [],
+      "reports_rejected_rows": false,
+      "stderr_tail": "",
+      "stdout": "legacy reconciled 354"
+    }
+  },
+  "pass_criteria": [
+    "ETL: processed = curated + quarantined, every quarantined row has rules and a source row",
+    "ETL crash: published layers byte-identical to the last good run, exit non-zero",
+    "legacy batch evidence is recorded as found (not asserted to be good)"
+  ],
+  "run_utc": "2026-10-08T11:17:31Z",
+  "verdict": "PASS"
+}

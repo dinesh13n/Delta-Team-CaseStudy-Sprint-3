@@ -1,0 +1,8 @@
+audit valid: PASS
+ai valid: PASS
+ai abstention valid: PASS
+audit missing actor (must be rejected): PASS
+audit extra field (must be rejected): PASS
+ai no approval (must be rejected): PASS
+ai abstain with text (must be rejected): PASS
+ai answer with null (must be rejected): PASS

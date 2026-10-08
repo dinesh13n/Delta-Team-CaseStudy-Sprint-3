@@ -25,10 +25,33 @@
 - Operator requested Python 3.14 and latest Node. Probe EVD-A-03c shows pinned dependencies do not install on 3.14.
 - Decision: baseline (Stage C) on Python 3.11; target runtime 3.14 plus upgraded pins from Stage H. Status: proposed, pending operator confirmation.
 
-## D-007 Runbook correction: F-42 correlation-id figure (2026-10-08)
+## D-007 Runbook correction: F-42 correlation-id figure (2026-10-08) [SUPERSEDED by D-012]
 - Independent count (EVD-A-04b, file hash matches the A1 baseline): 983 of 3,000 events have null correlation_id (32.8%), not 1,992 (66.4%) as the runbook states in F-42, the Overview and the README.
 - Decision: the discovery pack uses the measured figure. Runbook text (01, 00, README, 02 Stage C5) to be corrected after operator approval. Status: proposed.
 
 ## D-008 Runbook corrections applied (2026-10-08, operator-approved)
 - Applied to runbook/00, 01, 02, 04 and README (md and docx): F-42 and all "two-thirds / 66.4% / 1,992" wording replaced by 983 of 3,000 (32.8%); tag references changed to `baseline/v0.1-as-delivered-bytes` with an execution note in Step A1; A-X3 now reads 44 top-level spine directories plus 5 nested (closes D-005); OQ-04 note covers both tags.
 - Runbook step reference: this resolves the stale text noted under A1/A2 and the discrepancy logged in D-007 (found at Step A4). D-007 status: applied.
+
+## D-009 Stage H authorisation by operator instruction (2026-10-08)
+- On 2026-10-08 the operator instructed the agent to complete runbook 02 end to end and push the result. This is recorded as operator authorisation to execute Stages B to R, including writes to the delivered subtree from Stage H (runbook Step G4 / OQ-11).
+- Limits: it is the operator's authorisation, not the CTO's. It is flagged for CTO ratification (GOV-02). Stop conditions in stop-conditions.md still apply. Status: RECORDED, awaiting ratification.
+
+## D-010 Runbook deviations found during Stage C (2026-10-08) [C1 item SUPERSEDED by D-012]
+- C1 text: correlation completeness 33.6% should read 67.2% (follows from D-007).
+- F-38: ai_invocations.csv also has one orphan shipment reference; register extended with F-58, F-59, F-60 (EVD-C-07-findings-index.json).
+- Document 01 section 6.3 and F-22 claim the data holds injection payloads; none exist (max field length 19).
+- Decision: runbook text corrections batched into one pass at the end of execution (step reference: runbook C1, C5, Doc 01 6.3). Status: PROPOSED.
+
+## D-011 New findings from Stage D (2026-10-08)
+- F-61: routes.weather_risk holds the numeric value 1.42 in a categorical field (EVD-D-02).
+- F-62: every dataset has one malformed key `*-BAD1` (EVD-D-05 BR-P rules report 2 pattern violations per dataset: REC-0001 and the BAD1 key).
+- Status: RECORDED; to be added to the findings register in the end-of-run runbook correction pass.
+
+## D-012 Reversal of the F-42 correction (2026-10-08, found during Stage H8)
+- Error: D-007, D-008 and D-010 said the runbook's F-42 figure (1,992 of 3,000 events, 66.4%) was wrong and "corrected" it to 983 (32.8%). That count looked only at JSON `null`. EVD-A-04c shows 983 null AND 1,009 events with an empty-string `correlation_id`, so 1,992 events (66.4%) carry no usable id and 1,008 (33.6%) do.
+- Decision: the runbook figures (F-42 66.4%, C1 33.6%) were right. The F-42 wording in runbook 01, 02 and README is restored to "about two thirds, 1,992 of 3,000". D-007 and the F-42 and C1 parts of D-008 and D-010 are SUPERSEDED. The tag-reference and A-X3 corrections in D-008 stand.
+- KPI K4 is amended (not to improve results; the baseline gets worse): usable share = non-null AND non-empty. Baseline restated to 33.6%; the literal non-null share (67.2%) is kept as a secondary figure in the KPI sheet. NFR-3 and DQ-06 mean non-empty.
+- Other statements affected were updated in docs 00, 01, 04, 07, 11, 12 and in the runbook docx. Evidence files are not edited; EVD-A-04c is added and EVD-A-04b is superseded for this figure only.
+- Lesson recorded: a one-pattern grep is not an independent count; profile by value class (null, empty, present).
+- Status: APPLIED.

@@ -1,0 +1,16 @@
+2026-10-08T10:31:24Z
+== ruff check
+All checks passed!
+== ruff format
+61 files already formatted
+== mypy
+Success: no issues found in 31 source files
+== secret scan (tree)
+{"mode": "working-tree", "findings": 0}
+== route coverage / openapi
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+11 passed, 1 warning in 2.08s
+== rego
+data.logistics.access_test.test_ai_agent_has_no_vehicle_access: PASS (380.559µs)
+--------------------------------------------------------------------------------
+PASS: 7/7

@@ -1,0 +1,61 @@
+# PROVISIONAL. Limits come from the A6 envelope assumptions.
+status: PROVISIONAL
+principle: only declared fields enter a prompt; untrusted values are data, never instructions
+allowed_fields:
+  shipments:
+  - shipment_id
+  - service_tier
+  - status
+  - promised_at
+  - customs_required
+  - temperature_controlled
+  tracking_events:
+  - event_type
+  - event_time
+  - sequence_no
+  - source_system
+  routes:
+  - distance_km
+  - restricted_zone_flag
+  - weather_risk
+  - border_risk
+  - eta_minutes
+  carrier_bookings:
+  - status
+  - retry_count
+  - compensation_required
+redact_or_tokenise:
+- shipments.customer_id
+- vehicles.driver_id
+- vehicles.current_location
+- tracking_events.location
+forbidden_fields:
+- vehicles.driver_id
+- vehicles.current_location
+- tracking_events.location
+- shipments.customer_id
+untrusted_text_handling: delimit and label every free-text value as data; strip control sequences; reject template
+  syntax; never concatenate into instructions
+max_context_tokens: 8000
+max_record_tokens: 2000
+provenance_required:
+- source dataset
+- record identifier
+- retrieval time
+- semantic layer version
+output:
+  format: structured, validated against a declared schema
+  must_include:
+  - summary
+  - recommendation
+  - sources
+  - confidence
+  - model_version
+  - prompt_version
+  abstain_when: required fields are missing or sources conflict
+human_approval:
+  required_for:
+  - any recommendation that changes a shipment, route or booking
+  not_required_for:
+  - read-only summaries shown to a person
+  approver: persona with write access to the entity

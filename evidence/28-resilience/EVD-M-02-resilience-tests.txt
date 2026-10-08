@@ -1,0 +1,15 @@
+2026-10-08T10:54:48Z
+tests/test_resilience.py::test_breaker_opens_after_threshold_and_rejects_without_calling PASSED [  7%]
+tests/test_resilience.py::test_breaker_half_open_probe_then_close_or_reopen PASSED [ 15%]
+tests/test_resilience.py::test_success_resets_failure_count PASSED       [ 23%]
+tests/test_resilience.py::test_timeout_stops_waiting PASSED              [ 30%]
+tests/test_resilience.py::test_bulkhead_limits_concurrency PASSED        [ 38%]
+tests/test_resilience.py::test_slow_model_times_out_and_falls_back PASSED [ 46%]
+tests/test_resilience.py::test_repeated_model_failure_opens_the_breaker_and_stops_calling_it PASSED [ 53%]
+tests/test_resilience.py::test_ai_disabled_mode_keeps_the_core_workflow PASSED [ 61%]
+tests/test_resilience.py::test_model_provider_unconfigured_still_serves_a_summary PASSED [ 69%]
+tests/test_prompt_lock.py::test_registry_loads_when_files_match_the_lock PASSED [ 76%]
+tests/test_prompt_lock.py::test_edited_prompt_file_is_refused PASSED     [ 84%]
+tests/test_prompt_lock.py::test_missing_lock_entry_is_refused PASSED     [ 92%]
+tests/test_prompt_lock.py::test_gateway_construction_fails_closed_on_a_modified_prompt PASSED [100%]
+======================== 13 passed, 1 warning in 1.46s =========================

@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "declared_utc": "2026-10-08",
+  "note": "PROPOSED starting values (P3). Investigation = a person looks; change-block = the change is not promoted until a reviewed decision. Not tuned on production data: none exists.",
+  "data": {
+    "quarantine_ratio_abs_increase_investigate": 0.02,
+    "quarantine_ratio_hard_limit": 0.05,
+    "entity_row_count_change_investigate": 0.2,
+    "flag_rate_abs_change_investigate": 0.1,
+    "new_flag_investigate": true
+  },
+  "runtime": {
+    "fallback_rate_investigate": 0.2,
+    "reject_share_investigate": 0.5,
+    "leak_events_investigate": 1,
+    "min_requests_for_rates": 30
+  }
+}

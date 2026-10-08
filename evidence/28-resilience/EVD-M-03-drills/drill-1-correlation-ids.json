@@ -1,0 +1,88 @@
+{
+  "findings": [
+    "F-M3-01: the SOURCE event stream has no correlation column. Per-event correlation cannot be recovered upstream; the system substitutes batch lineage (load_id + source_row) for stored events and a generated id per API request. A true end-to-end id needs the producing system to emit one (data contract change, owner ruling)."
+  ],
+  "hypothesis": "A request or event without a correlation id still gets a well-formed id and an unbroken audit trail.",
+  "id": "DRILL-1",
+  "method": "Seven header variants against /records (absent, empty, short, illegal characters, 200 chars, CRLF injection, valid), plus an unauthenticated call and a 422 call; then every audit event and every curated tracking-event row is checked.",
+  "name": "Missing correlation IDs in event streams",
+  "observations": {
+    "audit_events": 8,
+    "audit_events_without_correlation_id": 0,
+    "curated_rows_without_lineage": 0,
+    "curated_tracking_event_rows": 349,
+    "error_body_has_correlation_id": true,
+    "requests": [
+      {
+        "case": "absent",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-f37c59b0796d4734",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "empty",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-b2c9cc4aacda453b",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "too_short",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-669be43018054a02",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "illegal_chars",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-0193111abf284fc4",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "too_long",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-f97f1ee708df410e",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "newline_injection",
+        "client_value_kept": false,
+        "echoed_or_generated": "corr-0ad446c4af5c418f",
+        "status": 200,
+        "well_formed": true
+      },
+      {
+        "case": "valid_client_id",
+        "client_value_kept": true,
+        "echoed_or_generated": "trace-abc-12345",
+        "status": 200,
+        "well_formed": true
+      }
+    ],
+    "source_event_columns": [
+      "event_id",
+      "shipment_id",
+      "event_type",
+      "event_time",
+      "source_system",
+      "location",
+      "sequence_no",
+      "duplicate_flag",
+      "timezone",
+      "confidence"
+    ],
+    "source_stream_has_correlation_column": false
+  },
+  "pass_criteria": [
+    "every response carries a well-formed id",
+    "no audit event lacks one",
+    "error bodies carry one",
+    "every curated event row has load_id and source_row lineage"
+  ],
+  "run_utc": "2026-10-08T11:17:24Z",
+  "verdict": "PASS"
+}
