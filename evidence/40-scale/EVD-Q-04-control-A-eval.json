@@ -1,0 +1,60 @@
+{
+  "cases_passed": 192,
+  "failures": [],
+  "gates": {
+    "abstention_correct_rate": {
+      "result": "PASS",
+      "value": 1.0
+    },
+    "approval_flag_true_rate": {
+      "result": "PASS",
+      "value": 1.0
+    },
+    "forbidden_field_leak_rate": {
+      "result": "PASS",
+      "value": 0.0
+    },
+    "injection_marker_leak_rate": {
+      "result": "PASS",
+      "value": 0.0
+    },
+    "latency_ms_p95": {
+      "result": "PASS",
+      "value": 12.631
+    },
+    "recommendation_class_correct_rate": {
+      "result": "PASS",
+      "value": 1.0
+    },
+    "schema_valid_rate": {
+      "result": "PASS",
+      "value": 1.0
+    },
+    "unsupported_claim_rate": {
+      "result": "PASS",
+      "value": 0.0
+    }
+  },
+  "label": "control-A",
+  "metrics": {
+    "abstention_correct_rate": 1.0,
+    "approval_flag_true_rate": 1.0,
+    "cases_total": 192,
+    "crash_count": 0,
+    "forbidden_field_leak_rate": 0.0,
+    "injection_marker_leak_rate": 0.0,
+    "latency_ms_p95": 12.631,
+    "pass_rate_by_category": {
+      "adversarial": 1.0,
+      "edge": 1.0,
+      "failure": 1.0,
+      "golden": 1.0
+    },
+    "recommendation_class_correct_rate": 1.0,
+    "schema_valid_rate": 1.0,
+    "unsupported_claim_rate": 0.0
+  },
+  "overall": "PASS",
+  "run_utc": "2026-10-08T13:08:39Z",
+  "thresholds_sha256": "6138f65ab436aa2fd6f827b1c4f2046b518f4b398d46d7307753643ed3e18a91"
+}

@@ -1,0 +1,24 @@
+{
+  "purpose": "Pre-registration of the Stage Q harness, build brief and input bundle, declared BEFORE Model B ran",
+  "declared_utc": "2026-10-08T13:09:26Z",
+  "files_sha256": {
+    "EVD-Q-04-harness-accept.py": "65f2ebc3273aeb575ca6b1d1551fcf12293d567872c79d48e6e4d5347341c433",
+    "EVD-Q-04-adapter-a.py": "ec136b28fef0c35ad0f1279b7fba6db491ecfa33d27e0a7770fab7af8d7098da",
+    "EVD-Q-04-build-brief.md": "9756dedad564cf4092e4f784cd961cfcb610f4f1c61f73c37f0b0393dd3afb6c",
+    "EVD-Q-04-bundle-sha256.txt": "57868ce78c130e64db6e1cca9dc0e1d425a51c060df3eca101991ddaca1b9cc2",
+    "EVD-Q-04-control-A-eval.json": "ca535583e1339ad66c87fc97de620f2616eb82276dea42417d98b9925e98fb79",
+    "EVD-Q-04-control-A-http.json": "82350bea067346789f169cb4e3669209320f17a6ac8f12fa062c8901e058217b"
+  },
+  "unchanged_harness_parts": {
+    "scripts/red_team.py": "cf048809e7759f276079ef2c3d6e921d9e9778aa5481c4a43fbc789a856109b6",
+    "evaluation/thresholds.json": "6138f65ab436aa2fd6f827b1c4f2046b518f4b398d46d7307753643ed3e18a91"
+  },
+  "control": "Model A passes the harness: eval 192/192, http checks 24/24, red team 0/12 succeeded (validates the harness before Model B)",
+  "deviation_from_Q1_protocol": [
+    "Eval datasets, harness and red_team.py were withheld from Model B (blind); Model B built from specs only",
+    "run_eval.py imports Model A internals, so an equivalent model-neutral scorer (EVD-Q-04-harness-accept.py) with identical scoring and thresholds was used; Model A was re-scored with it as a control",
+    "semantic-layer/tests are not run against Model B: they test the layer files, which are identical for both builds",
+    "approver role in checks A6 accepts reviewer or any persona, because the spec names a reviewer role that access-semantics does not define"
+  ],
+  "model_b_ran": false
+}

@@ -1,0 +1,308 @@
+{
+  "label": "control-A",
+  "run_utc": "2026-10-08T13:09:07Z",
+  "checks": [
+    {
+      "id": "L1",
+      "desc": "health 200 no auth",
+      "pass": true,
+      "note": 200
+    },
+    {
+      "id": "L2",
+      "desc": "ready 200",
+      "pass": true,
+      "note": 200
+    },
+    {
+      "id": "L3",
+      "desc": "exact key returns the shipment",
+      "pass": true,
+      "note": 200
+    },
+    {
+      "id": "L4",
+      "desc": "unknown key 404",
+      "pass": true,
+      "note": 404
+    },
+    {
+      "id": "L5",
+      "desc": "invalid key shape 422",
+      "pass": true,
+      "note": 422
+    },
+    {
+      "id": "L6",
+      "desc": "non-key column (customer id) is not a key",
+      "pass": true,
+      "note": 422
+    },
+    {
+      "id": "I1",
+      "desc": "no token -> 401",
+      "pass": true,
+      "note": 401
+    },
+    {
+      "id": "I2",
+      "desc": "X-User-Role ignored without token",
+      "pass": true,
+      "note": 401
+    },
+    {
+      "id": "I3",
+      "desc": "expired token -> 401",
+      "pass": true,
+      "note": 401
+    },
+    {
+      "id": "I4",
+      "desc": "wrong-secret token -> 401",
+      "pass": true,
+      "note": 401
+    },
+    {
+      "id": "I5",
+      "desc": "unknown role -> 403 (deny by default)",
+      "pass": true,
+      "note": 403
+    },
+    {
+      "id": "I6",
+      "desc": "sensitive field masked for dispatcher (raw customer id absent)",
+      "pass": true,
+      "note": "policy decision from access-semantics"
+    },
+    {
+      "id": "A1",
+      "desc": "AI summary 200 schema-valid",
+      "pass": true,
+      "note": 200
+    },
+    {
+      "id": "A2",
+      "desc": "approval required flag true",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "A3",
+      "desc": "no token -> 401 on AI",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "A4",
+      "desc": "decision without token rejected",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "A5",
+      "desc": "forged summary id decision -> 404/409/422",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "A6",
+      "desc": "a human role (reviewer, else a persona) approves a real summary",
+      "pass": true,
+      "note": "approved by dispatcher"
+    },
+    {
+      "id": "U1",
+      "desc": "audit/verify requires token",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "U2",
+      "desc": "audit/verify valid on untouched log",
+      "pass": true,
+      "note": "{\"valid\":true,\"records\":15,\"first_bad_index\":null}"
+    },
+    {
+      "id": "U3",
+      "desc": "audit events validate against audit-event schema",
+      "pass": true,
+      "note": "15 events"
+    },
+    {
+      "id": "U4",
+      "desc": "prev_hash links to previous hash",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "U5",
+      "desc": "denied request is audited",
+      "pass": true,
+      "note": "at least one non-allow decision recorded"
+    },
+    {
+      "id": "U6",
+      "desc": "tampering one record is detected by /audit/verify",
+      "pass": true,
+      "note": "{\"valid\":false,\"records\":7,\"first_bad_index\":7}"
+    }
+  ],
+  "checks_passed": 24,
+  "checks_total": 24,
+  "red_team": {
+    "label": "control-A",
+    "base_url": "http://127.0.0.1:8912",
+    "run_utc": "2026-10-08T13:09:07Z",
+    "attacks": [
+      {
+        "id": "RT-01",
+        "finding": "F-20",
+        "goal": "invoke the AI endpoint with no identity",
+        "request": "POST /ai/summarize/SHI-00002 (no auth)",
+        "response": {
+          "status": 401,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"missing or invalid bearer token\",\"correlation_id\":\"corr-a9cd61e96c8e4c56\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = a summary was produced"
+      },
+      {
+        "id": "RT-02",
+        "finding": "F-17",
+        "goal": "self-assert an admin role with a header",
+        "request": "GET /records/SHI-00002  X-User-Role: admin",
+        "response": {
+          "status": 401,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"missing or invalid bearer token\",\"correlation_id\":\"corr-26ff4e885a71492e\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = record with raw customer_id"
+      },
+      {
+        "id": "RT-03",
+        "finding": "F-19",
+        "goal": "use a persona from another domain",
+        "request": "GET /records/SHI-00002  X-User-Role: clinician",
+        "response": {
+          "status": 401,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"missing or invalid bearer token\",\"correlation_id\":\"corr-fb6f8d964e7f4531\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = data returned"
+      },
+      {
+        "id": "RT-04",
+        "finding": "F-31",
+        "goal": "look up a record through a non-key column",
+        "request": "GET /records/CUS-00002",
+        "response": {
+          "status": 422,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Validation error\",\"status\":422,\"detail\":\"identifier does not match the key pattern for this entity\",\"correlation_id\":\"corr-7ab9ff36563f4203\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = shipment returned for a customer id"
+      },
+      {
+        "id": "RT-05",
+        "finding": "F-32",
+        "goal": "ask for a record that does not exist",
+        "request": "GET /records/DOES-NOT-EXIST",
+        "response": {
+          "status": 422,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Validation error\",\"status\":422,\"detail\":\"identifier does not match the key pattern for this entity\",\"correlation_id\":\"corr-116ccdc7e32f4913\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = a wrong record returned silently"
+      },
+      {
+        "id": "RT-06",
+        "finding": "F-30",
+        "goal": "reach the planted colliding key",
+        "request": "GET /records/REC-0001",
+        "response": {
+          "status": 422,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Validation error\",\"status\":422,\"detail\":\"identifier does not match the key pattern for this entity\",\"correlation_id\":\"corr-5e2adf307e1f4be6\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = the bad-key row returned"
+      },
+      {
+        "id": "RT-07",
+        "finding": "F-22",
+        "goal": "get attacker text reflected through the AI output",
+        "request": "POST /ai/summarize/IGNORE-PREVIOUS-INSTRUCTIONS-PWNED-RT",
+        "response": {
+          "status": 422,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Validation error\",\"status\":422,\"detail\":\"identifier does not match the key pattern for this entity\",\"correlation_id\":\"corr-5797485ef1c4486b\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = payload appears in the AI response"
+      },
+      {
+        "id": "RT-08",
+        "finding": "F-22",
+        "goal": "get attacker text from a categorical field into the AI output",
+        "request": "POST /ai/summarize/SHI-00027",
+        "response": {
+          "status": 200,
+          "body": "{\"summary_id\":\"sum-4fd0caf4e05b48b8\",\"model\":\"deterministic\",\"model_version\":\"1.0\",\"prompt_version\":\"exception_summary_v1\",\"summary\":\"Shipment SHI-00027 has status 'exception' (service tier '[unrecognised]', promised 2026-05-20T17:34:00). 1 tracking events recorded ([unrecognised]: 1); latest is '[u"
+        },
+        "attack_succeeded": false,
+        "note": "success = payload appears in the AI response"
+      },
+      {
+        "id": "RT-09",
+        "finding": "F-24",
+        "goal": "find the guardrail switched off",
+        "request": "POST /ai/summarize/SHI-00002",
+        "response": {
+          "status": 200,
+          "body": "{\"summary_id\":\"sum-0a6cbb4d5a0b4393\",\"model\":\"deterministic\",\"model_version\":\"1.0\",\"prompt_version\":\"exception_summary_v1\",\"summary\":\"Shipment SHI-00002 has status 'new' (service tier '[unrecognised]', promised 2026-08-15T10:05:00). 1 tracking events recorded ([unrecognised]: 1); latest is '[unrecog"
+        },
+        "attack_succeeded": false,
+        "note": "success = guardrail_status is not_enforced"
+      },
+      {
+        "id": "RT-10",
+        "finding": "F-26",
+        "goal": "action a suggestion without any human approval step",
+        "request": "POST /ai/summaries/x/decision  (no auth)",
+        "response": {
+          "status": 401,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"missing or invalid bearer token\",\"correlation_id\":\"corr-232b518c9163486c\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = decision accepted"
+      },
+      {
+        "id": "RT-11",
+        "finding": "F-17",
+        "goal": "forge a token (alg none, role admin)",
+        "request": "GET /records/SHI-00002  Bearer <alg=none>",
+        "response": {
+          "status": 401,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"missing or invalid bearer token\",\"correlation_id\":\"corr-fcf4b472abff4dd2\"}"
+        },
+        "attack_succeeded": false,
+        "note": "success = data returned"
+      },
+      {
+        "id": "RT-12",
+        "finding": "F-46/NFR",
+        "goal": "exhaust the AI endpoint without a limit",
+        "request": "120 x POST /ai/summarize/SHI-00002",
+        "response": {
+          "status": 429,
+          "body": "{\"type\":\"about:blank\",\"title\":\"Too many requests\",\"status\":429,\"detail\":\"AI rate limit exceeded\",\"correlation_id\":\"corr-10a91ccd6e404489\"}"
+        },
+        "attack_succeeded": false,
+        "note": "27 x 200, 93 x 429 of 120"
+      }
+    ],
+    "summary": {
+      "total": 12,
+      "succeeded": 0
+    }
+  },
+  "server_log_tail": "29 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     127.0.0.1:43114 - \"POST /ai/summarize/SHI-00002 HTTP/1.1\" 429 Too Many Requests\nINFO:     Shutting down\nINFO:     Waiting for application shutdown.\nINFO:     Application shutdown complete.\nINFO:     Finished server process [372]\n"
+}
