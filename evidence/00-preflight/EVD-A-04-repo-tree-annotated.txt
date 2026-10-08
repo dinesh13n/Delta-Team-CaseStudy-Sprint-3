@@ -1,0 +1,52 @@
+EVD-A-04  Annotated repository tree (read-only), 2026-10-08. Format: path | role
+./.env.example | environment template with credential-shaped values
+./.github/workflows/ci.yml | CI workflow
+./Makefile | project/support file
+./PRODUCTION_EVIDENCE_PACK_TEMPLATE.md | project/support file
+./README.md | project/support file
+./api-examples/http-requests.http | project/support file
+./apps/__init__.py | project/support file
+./apps/api/__init__.py | project/support file
+./apps/api/main.py | FastAPI app: 3 routes (/health, /records/{id}, /ai/summarize/{id})
+./apps/api/services/__init__.py | project/support file
+./apps/api/services/ai_gateway.py | simulated AI summariser, no model call
+./apps/api/services/audit.py | local-file audit writer
+./apps/api/services/domain_service.py | CSV record loader (shipments.csv only)
+./apps/web/package.json | Angular-style scaffold (no framework installed)
+./apps/web/src/app/api.service.ts | Angular-style scaffold (no framework installed)
+./apps/web/src/app/operations.component.ts | Angular-style scaffold (no framework installed)
+./data/README.md | data metadata/contract
+./data/contracts/openapi-fragment.yaml | data metadata/contract
+./data/manifest.json | data metadata/contract
+./data/quality_issues.json | data metadata/contract
+./data/synthetic/ai_invocations.csv | synthetic fixture
+./data/synthetic/carrier_bookings.csv | synthetic fixture
+./data/synthetic/events.jsonl | synthetic fixture
+./data/synthetic/routes.csv | synthetic fixture
+./data/synthetic/shipments.csv | synthetic fixture
+./data/synthetic/tracking_events.csv | synthetic fixture
+./data/synthetic/vehicles.csv | synthetic fixture
+./docs/ADR/0001-partial-modernization.md | documentation
+./docs/architecture/current-state.md | documentation
+./docs/architecture/known-gaps.md | documentation
+./docs/architecture/target-state-principles.md | documentation
+./docs/discovery/README.md | documentation
+./docs/domain-specific-spec.md | documentation
+./docs/runbooks/failure-injection-drills.md | documentation
+./docs/runbooks/incident-response.md | documentation
+./docs/transformation-roadmap.md | documentation
+./etl/__init__.py | project/support file
+./etl/run_daily_batch.py | batch validation counter, prints dict
+./infra/terraform/main.tf | Terraform stub
+./legacy/__init__.py | project/support file
+./legacy/reconcile_legacy.py | legacy row counter; hardcoded shared DB creds
+./observability/otel-notes.md | project/support file
+./policy/opa/access.rego | OPA policy stub
+./pyproject.toml | project/support file
+./requirements.txt | project/support file
+./scripts/sanity_check.py | fixture/doc-presence checker
+./security/threat-model.md | project/support file
+./supply-chain/dependency-risk-register.md | project/support file
+./tests/playwright/operations.spec.ts | Playwright smoke spec (not wired)
+./tests/test_api_contract.py | pytest test
+./tests/test_characterization.py | pytest test

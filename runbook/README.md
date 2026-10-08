@@ -41,8 +41,7 @@ overwrite prior evidence, and to preserve baselines for before/after comparison.
 is possible today, which is why Step A1 establishes version control and an immutable
 as-delivered tag before anything else happens.
 
-**2. The system's deficiency is provability, not just code quality.** Two-thirds of the event
-stream carries no correlation ID. The audit record has no actor. The audit sink is a local file
+**2. The system's deficiency is provability, not just code quality.** About one third (32.8%) of the event stream carries no correlation ID. The audit record has no actor. The audit sink is a local file
 the audited process writes. The pipeline produces no evidence. Four of the five rubric criteria
 are scored on demonstrable proof, so evidence infrastructure is Stage A, not a late-stage
 activity.

@@ -53,8 +53,7 @@ records written authorisation.
 `07-logistics-shipment-fleet-routing-ops/`. Author a `.gitignore` that excludes at minimum
 `logs/`, `generated-env.txt`, `.env`, `.venv/`, `__pycache__/`, `.pytest_cache/`,
 `node_modules/`. Commit the delivered tree **exactly as received**, with no edits, as the
-first commit. Tag it `baseline/v0-as-delivered` and record the commit SHA. Compute a
-SHA-256 manifest of every delivered file.
+first commit. Tag it `baseline/v0.1-as-delivered-bytes` and record the commit SHA. Compute a SHA-256 manifest of every delivered file. Execution note (2026-10-08): a first tag, `baseline/v0-as-delivered`, was found to differ from the received bytes in 6 CSV files because of Windows CRLF conversion; `.gitattributes` was added and `baseline/v0.1-as-delivered-bytes` is the byte-exact reference used by every check below (decision-log D-003).
 
 **Inputs.** The delivered repository tree.
 
@@ -69,7 +68,7 @@ the entire Stage O value argument — can be verified. The `.gitignore` is autho
 step because **F-14** and **F-44** mean that without it, a real `.env` and the in-process
 audit log become committable on the very first developer action.
 
-**Outputs.** Initialised repository; `.gitignore`; tag `baseline/v0-as-delivered`;
+**Outputs.** Initialised repository; `.gitignore`; tag `baseline/v0.1-as-delivered-bytes`;
 `evidence/00-preflight/EVD-A-01-baseline-file-manifest.sha256`.
 
 **Evidence.** Commit SHA and tag; the SHA-256 manifest; terminal transcript of the init and
@@ -255,14 +254,14 @@ orientation produces qualification decisions built on unexamined assumptions.
 
 | # | Criterion | Verification method |
 |---|---|---|
-| A-X1 | Repository is version-controlled and `baseline/v0-as-delivered` resolves to a commit | `git show baseline/v0-as-delivered` |
+| A-X1 | Repository is version-controlled and `baseline/v0.1-as-delivered-bytes` resolves to a commit | `git show baseline/v0.1-as-delivered-bytes` |
 | A-X2 | The as-delivered commit is byte-identical to what was received | SHA-256 manifest comparison |
-| A-X3 | All 43 spine directories and the `evidence/` mirror exist | Directory listing diff against the spine specification |
+| A-X3 | All 44 top-level spine directories (plus 5 nested) and the `evidence/` mirror exist | Directory listing diff against the spine specification |
 | A-X4 | All 37 Stage-A artifacts exist and each carries the complete mandatory header | Automated header-presence check across `docs/00-preflight/**` |
 | A-X5 | Every statement is classified Verified Fact / Inference / Assumption / Unknown | Reviewer sample of ≥10 statements per artifact |
 | A-X6 | No transformation recommendation appears in any 0A artifact | Reviewer read-through (Spine 0A prohibits it) |
 | A-X7 | Every unresolved owner is marked `PROVISIONAL` and appears in `open-governance-decisions.md`; none are invented | Cross-check against Document 00 §6 |
-| A-X8 | No application file has been modified since the baseline tag | `git diff baseline/v0-as-delivered -- apps etl legacy data scripts` returns empty |
+| A-X8 | No application file has been modified since the baseline tag | `git diff baseline/v0.1-as-delivered-bytes -- apps etl legacy data scripts` returns empty |
 
 ---
 
@@ -355,7 +354,7 @@ honest rather than ceremonial.
 | B-X3 | The problem statement names no technology and no AI | Keyword scan of `problem-statement.md` |
 | B-X4 | Every NFR is measurable (has a metric, a threshold and a measurement method) | Reviewer check of each NFR row |
 | B-X5 | Success criteria are traceable to a business requirement | `success-criteria.md` cross-reference column is complete |
-| B-X6 | Repository application code still matches `baseline/v0-as-delivered` | `git diff` empty for `apps`, `etl`, `legacy`, `data`, `scripts` |
+| B-X6 | Repository application code still matches `baseline/v0.1-as-delivered-bytes` | `git diff` empty for `apps`, `etl`, `legacy`, `data`, `scripts` |
 
 ---
 
@@ -481,7 +480,7 @@ totals. Compare results against `data/manifest.json` and `data/quality_issues.js
 3 duplicate keys per CSV at the `*-00004`/`*-00013`/`*-00019` pattern; 1 fully-blank row per
 CSV; `1900-01-01T00:00:00` in each timestamp column; `confidence` max 1.42; `REC-0001` as the
 first-row key of all six CSVs; 1 orphan FK each in `tracking_events` and `carrier_bookings`;
-3 shipments with duplicate carrier bookings; 1,992 of 3,000 events with null `correlation_id`.
+3 shipments with duplicate carrier bookings; 983 of 3,000 events (32.8%) with null `correlation_id`.
 
 **Inputs.** `data/synthetic/*`; `data/manifest.json`; `data/quality_issues.json`.
 **Depends on.** **A1** — profiling must run against the tagged baseline so the figures are
@@ -580,7 +579,7 @@ acceptance standard cannot be met. The explicit intended-versus-defect labelling
 Challenge 2 acceptance standard asks for.
 **Outputs.** `tests/characterization/` (new); updated `docs/07-repo-assessment/characterization-test-plan.md`.
 **Evidence.** JUnit XML showing all characterization tests green against
-`baseline/v0-as-delivered` behaviour; commit SHA; tag `baseline/v1-characterized`.
+`baseline/v0.1-as-delivered-bytes` behaviour; commit SHA; tag `baseline/v1-characterized`.
 → `evidence/07-repo-assessment/EVD-C-08-characterization-junit.xml`
 **Addresses.** F-17, F-19, F-20, F-24, F-29, F-30, F-31, F-32, F-40, F-43, F-46, F-51.
 **Rubric.** 1, 4.
@@ -603,7 +602,7 @@ Challenge 2 acceptance standard asks for.
 | C-X6 | Each confirmed root cause carries supporting evidence, contradictory evidence and a confidence level | `evidence-confidence-matrix.md` has no blank cells |
 | C-X7 | Characterization tests exist for all 11 behaviours in Step C8 and all pass | `EVD-C-08` JUnit XML |
 | C-X8 | Each characterization test is labelled intended-legacy or defect-scheduled-for-change | Docstring review of every test |
-| C-X9 | No application file changed: `git diff baseline/v0-as-delivered -- apps etl legacy data scripts infra policy` is empty | Git diff |
+| C-X9 | No application file changed: `git diff baseline/v0.1-as-delivered-bytes -- apps etl legacy data scripts infra policy` is empty | Git diff |
 | C-X10 | Tag `baseline/v1-characterized` exists | `git show` |
 
 ---
@@ -1099,7 +1098,7 @@ updated `docs/00-preflight/operating-contract/provisional-operating-contract.md`
 | G-X4 | Every deliberate behaviour change has a feature flag and a rollback path | `feature-flag-plan.md` vs `rollback-strategy.md` |
 | G-X5 | Transformation gates are defined and are not negotiable per-increment | `transformation-gates.md` |
 | G-X6 | **Written authorisation to modify the repository exists, naming scope and approver** | `EVD-G-04` |
-| G-X7 | Repository application code still matches `baseline/v0-as-delivered` | `git diff` empty |
+| G-X7 | Repository application code still matches `baseline/v0.1-as-delivered-bytes` | `git diff` empty |
 
 ---
 
@@ -1174,7 +1173,7 @@ secrets inventory and the sensitive-field handling checklist, including location
 **Why.** Challenge 4's acceptance standard is that **no sensitive value should be required in
 committed code or unsafe example configuration**. Note that removing a secret from the working
 tree does not remove it from history: because Step A1 committed the as-delivered tree, these
-values exist in the `baseline/v0-as-delivered` commit. The rotation plan and the history
+values exist in the `baseline/v0.1-as-delivered-bytes` commit. The rotation plan and the history
 disposition must both be recorded — this is a real operational consequence of the A1 decision
 and must be stated, not quietly handled.
 **Outputs.** Sanitised files; `docs/27-hardening/secrets-hardening.md` (seeded here, completed
@@ -1694,7 +1693,7 @@ record confusion (**F-30**/**F-31**), and unguarded prompt interpolation (**F-22
 **Depends on.** **K2** (the attack-surface map directs the campaign), **L2** (functional
 baseline first).
 **Why.** Attempting to reproduce the exact original defects produces the most persuasive
-possible security evidence: a documented attack that worked against `baseline/v0-as-delivered`
+possible security evidence: a documented attack that worked against `baseline/v0.1-as-delivered-bytes`
 and fails against `repo/v2-validated`. This is high-value material for rubric criterion 5.
 **Outputs.** `docs/26-tevv/red-team-plan.md`, `red-team-findings.md`.
 **Evidence.** Attack transcripts, before and after. → `evidence/26-tevv/EVD-L-03-*`
@@ -1830,8 +1829,8 @@ is a static literal. **Rubric.** 3.
 **Action.** Select one business event and reconstruct it completely: actor → request → policy
 decision → data accessed → model and prompt version → recommendation → human approval → final
 action → audit record → trace ID. Produce the **before/after** comparison showing what could
-not be reconstructed on `baseline/v0-as-delivered` and what can now.
-**Inputs.** N1 instrumentation; H8 audit; C5 correlation baseline (66.4% null).
+not be reconstructed on `baseline/v0.1-as-delivered-bytes` and what can now.
+**Inputs.** N1 instrumentation; H8 audit; C5 correlation baseline (32.8% null, 983 of 3,000).
 **Depends on.** **N1** (traces), **H8** (audit schema), **C5** (the before-state measurement).
 **Why.** This is simultaneously the Challenge 8 acceptance standard (*explain one business
 event end to end*) and the Challenge 14 acceptance standard (*show what happened, who
@@ -2077,7 +2076,7 @@ actions. **Evidence.** Side-by-side scorecard. → `evidence/40-scale/EVD-Q-02-c
 
 **Action.** Build the demo script around the strongest evidence rather than around features:
 (1) the Step C2 quick-start failing on the as-delivered baseline, then succeeding; (2) the
-Step L3 red-team attack succeeding against `baseline/v0-as-delivered` and failing against
+Step L3 red-team attack succeeding against `baseline/v0.1-as-delivered-bytes` and failing against
 `repo/v2-validated`; (3) the Step N2 end-to-end reconstruction, before and after;
 (4) the Step M3 AI-disabled degraded-mode drill; (5) the Step Q2 model comparison;
 (6) the Step N4 cost-per-outcome figure. Rehearse. Prepare answers for the predictable

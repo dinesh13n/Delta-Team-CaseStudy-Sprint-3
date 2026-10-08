@@ -24,3 +24,11 @@
 ## D-006 Runtime versions (2026-10-08)
 - Operator requested Python 3.14 and latest Node. Probe EVD-A-03c shows pinned dependencies do not install on 3.14.
 - Decision: baseline (Stage C) on Python 3.11; target runtime 3.14 plus upgraded pins from Stage H. Status: proposed, pending operator confirmation.
+
+## D-007 Runbook correction: F-42 correlation-id figure (2026-10-08)
+- Independent count (EVD-A-04b, file hash matches the A1 baseline): 983 of 3,000 events have null correlation_id (32.8%), not 1,992 (66.4%) as the runbook states in F-42, the Overview and the README.
+- Decision: the discovery pack uses the measured figure. Runbook text (01, 00, README, 02 Stage C5) to be corrected after operator approval. Status: proposed.
+
+## D-008 Runbook corrections applied (2026-10-08, operator-approved)
+- Applied to runbook/00, 01, 02, 04 and README (md and docx): F-42 and all "two-thirds / 66.4% / 1,992" wording replaced by 983 of 3,000 (32.8%); tag references changed to `baseline/v0.1-as-delivered-bytes` with an execution note in Step A1; A-X3 now reads 44 top-level spine directories plus 5 nested (closes D-005); OQ-04 note covers both tags.
+- Runbook step reference: this resolves the stale text noted under A1/A2 and the discrepancy logged in D-007 (found at Step A4). D-007 status: applied.

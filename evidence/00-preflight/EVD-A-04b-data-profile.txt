@@ -1,0 +1,14 @@
+EVD-A-04b  Read-only data profile, 2026-10-08. events.jsonl sha256 matches baseline manifest.
+ai_invocations.csv rows 354 key ai_call_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+carrier_bookings.csv rows 354 key booking_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+routes.csv rows 354 key route_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+shipments.csv rows 354 key shipment_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+tracking_events.csv rows 354 key event_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+vehicles.csv rows 354 key vehicle_id duplicate_keys 3 rows_with_blank 1 REC-prefixed_keys 1
+events 3000 null_correlation_id 983 32.8 pct
+business_entity {'routes': 527, 'vehicles': 475, 'shipments': 474, 'carrier_bookings': 519, 'tracking_events': 500, 'ai_invocations': 505}
+event_type {'Carrier booking saga': 763, 'Exception investigation to delivery evidence': 764, 'Booking to pickup': 758, 'Hub scan to route assignment': 715}
+severity {'info': 593, 'debug': 589, 'warn': 630, 'error': 590, 'critical': 598}
+actor {'fleet_manager': 388, 'customer_support': 394, 'dispatcher': 362, 'warehouse_ops': 363, 'ai_agent': 356, 'customs_agent': 398, 'carrier_partner': 383, 'driver': 356}
+event_id_dupes 0 payload_hash_dupes 0
+cost_units_sum 6735.3 latency_ms_max 14999

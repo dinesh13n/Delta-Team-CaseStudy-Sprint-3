@@ -298,7 +298,7 @@ questions; rehearse to 18. **Owner.** Transformation Lead — **UNRESOLVED.** **
 
 **Question.** Step A1 commits the as-delivered tree, which contains `Welcome123`,
 `sk-workshop-hardcoded-example` and a shared vendor token (F-09, F-10, F-12). Removing them at
-Step H3 does not remove them from the `baseline/v0-as-delivered` commit. Is history rewritten,
+Step H3 does not remove them from the `baseline/v0-as-delivered` and `baseline/v0.1-as-delivered-bytes` commits. Is history rewritten,
 or is the baseline preserved with the values treated as compromised and rotated?
 **Why it matters.** It is a genuine trade-off between evidential integrity (the baseline tag is
 the anchor of every before/after claim) and secret hygiene. A reviewer will notice either choice.
