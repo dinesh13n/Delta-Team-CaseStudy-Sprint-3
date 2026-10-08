@@ -1,0 +1,4 @@
+# Preserve the exact bytes of the as-delivered brownfield subtree.
+# Without this, core.autocrlf=true on Windows rewrote the six delivered CSVs
+# from CRLF to LF at commit time (see evidence/00-preflight/EVD-A-01-delivered-vs-committed.csv).
+07-logistics-shipment-fleet-routing-ops/** -text
