@@ -1,0 +1,9 @@
+dimension,predeclared_threshold_or_rule,model_a_claude_sonnet_5_5,model_b,source_a
+functional_completeness_frs,all in-scope FR implemented,measured by suite (see gate),NOT RUN,docs/12-specs/acceptance-criteria.md
+test_pass_rate_repo_suite,0 failures,176 passed / 1 skipped (no opa binary) / 7 expected xfail,NOT RUN,evidence rerun 2026-10-08 Python 3.11
+red_team_attacks_succeeding,0 of 12,0 of 12,NOT RUN,EVD-L-03-redteam-v2.json
+evaluation_thresholds,evaluation/thresholds.json sha 6138f65a...,met (see tevv-results.md),NOT RUN,EVD-L-02-final-eval-run.json
+semantic_layer_fidelity,semantic-layer/tests all pass,passes,NOT RUN,semantic-layer/tests
+latency,per thresholds.json,deterministic provider only,NOT RUN,EVD-M-02-load-probe.json
+token_cost,per cost envelope,no real model; not comparable,NOT RUN,docs/32-finops
+divergence_from_implementation_prd,count of unmatched requirements,not measured for Model B,NOT RUN,docs/17-implementation-prd

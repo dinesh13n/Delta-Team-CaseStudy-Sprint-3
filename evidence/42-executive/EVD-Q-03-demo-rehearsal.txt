@@ -1,0 +1,39 @@
+# Q3 demo rehearsal | 2026-10-08T12:10:47Z | author-run (one person), no audience
+
+=== BEAT 1 | t+0s | Quick-start on the as-delivered baseline fails (C2), then succeeds on v2 (H2)
+ERROR tests/test_api_contract.py - RuntimeError: The starlette.testclient mod...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.53s
+[baseline pytest exit: 2]
+XFAIL tests/characterization/test_characterization_baseline.py::test_audit_event_has_no_actor_or_correlation - APPROVED CHANGE AB-09: audit v2 carries actor, correlation id, tenant, resource, policy decision (F-43) (spec FR-13, AC-18)
+176 passed, 1 skipped, 7 xfailed, 1 warning in 18.29s
+[v2 pytest exit: 0]
+
+=== BEAT 2 | t+21s | Red team: 12 attacks, baseline vs v2 (stored campaign, L3)
+baseline {'total': 12, 'succeeded': 10} 2026-10-08T10:58:52Z
+v2 {'total': 12, 'succeeded': 0} 2026-10-08T10:58:53Z
+
+=== BEAT 3 | t+21s | End-to-end reconstruction (N2), run again now
+/tmp/v311/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+chain_complete True | events 3 | coverage {'correlation_id': '10/10', 'actor_subject': '10/10', 'policy_decision': '10/10', 'resource_id': '10/10'} | tamper trusted: False
+2026-10-08T12:11:09.023Z | record.read | by alice (dispatcher) | on shipment SHI-00027 | policy=allow rule=access:dispatcher.shipments | outcome=success | corr=trace-n2-0001
+2026-10-08T12:11:09.032Z | ai.summary | by alice (dispatcher) | on shipment SHI-00027 | policy=allow rule=access:dispatcher.shipments | outcome=success | ai=deterministic | guardrail=enforced | data=ld-89446323a790 | corr=trace-n2-0001
+2026-10-08T12:11:09.039Z | ai.decision | by alice (dispatcher) | on ai_summary sum-0b831c1f02c345f5 | policy=allow rule=access:dispatcher.shipments | outcome=success | approval=apr-61d19c191a024fda | corr=trace-n2-0001
+[exit 0]
+
+=== BEAT 4 | t+22s | AI-disabled / timeout degraded mode drills (M3), run again now
+/tmp/v311/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+DRILL-1 PASS Missing correlation IDs in event streams
+DRILL-2 PASS AI gateway timeout and core-workflow degradation
+DRILL-3 PASS Duplicate event replay against idempotency
+DRILL-4 PASS Stale master data traced downstream
+DRILL-5 PASS Legacy batch partial failure and audit-evidence completeness
+[exit 0]
+
+=== BEAT 5 | t+28s | Model comparison (Q2): NOT PERFORMED, see model-comparison.md
+
+=== BEAT 6 | t+28s | Cost per outcome (N4): formula and unknowns, see cost-per-outcome.md
+
+TOTAL elapsed: 28 s
