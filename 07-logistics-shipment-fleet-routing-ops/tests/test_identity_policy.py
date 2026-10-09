@@ -2,6 +2,7 @@
 
 import json
 import subprocess
+import sys
 from itertools import product
 from pathlib import Path
 
@@ -103,7 +104,7 @@ def test_issued_token_round_trip() -> None:
 
 # ---- policy as code parity (ADR-0005) --------------------------------------------------------------
 def test_generated_rego_is_current() -> None:
-    assert subprocess.run(["python", str(ROOT / "scripts" / "generate_rego.py"), "--check"]).returncode == 0
+    assert subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_rego.py"), "--check"]).returncode == 0
 
 
 def _opa() -> str | None:

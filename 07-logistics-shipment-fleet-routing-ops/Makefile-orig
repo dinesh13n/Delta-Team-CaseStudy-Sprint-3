@@ -9,9 +9,8 @@ BOOTSTRAP_PYTHON ?= python3
 PYTHON ?= $(VENV)/bin/python
 endif
 SEMANTIC ?= ../semantic-layer
-ROLE ?= dispatcher
 
-.PHONY: install test cov lint format type secrets smoke etl rego semantic characterization gates run token package
+.PHONY: install test cov lint format type secrets smoke etl rego semantic characterization gates run package
 
 install:
 	$(BOOTSTRAP_PYTHON) -m venv $(VENV)
@@ -57,10 +56,6 @@ gates: lint type secrets etl test smoke semantic
 
 run:
 	$(PYTHON) -m uvicorn apps.api.main:app --reload
-
-# Local-only dev bearer token for the /ops/ view; needs AUTH_SECRET set to the server's secret.
-token:
-	$(PYTHON) -m scripts.issue_dev_token $(ROLE)
 
 package:
 	@echo "container recipe: Dockerfile (platform-neutral, ADR-0009)"
