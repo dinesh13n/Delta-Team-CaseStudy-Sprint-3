@@ -12,6 +12,7 @@
 
 | File | What changed |
 |---|---|
+| `04-Presenter-Guide-v1.0.docx` | New: a short guide to presenting: order and timing, problem statement, architecture, functional flow, technical implementation, key points, likely questions |
 | `02-CTO-Presentation-v2.1.pptx` | v2.1: slide 10 now compares Repo 1.0, Repo 2.0 and Repo 3.0 (the repository rebuilt from the semantic layer alone) |
 | `01-CTO-Briefing-v2.1.docx` (and `.md`) | v2.1: Repo 3.0 column added to the tables in sections 1 and 4.1 |
 | `01-CTO-Briefing-v2.0.docx` (and `.md`) | New section 7 on the blind rebuild from the semantic layer; Team Delta named; styled Word output |
@@ -52,6 +53,7 @@ NODE_PATH=$(npm root -g) node deliverables/_build/build_deck.js       # 02-CTO-P
 pandoc deliverables/01-CTO-Briefing.md -o deliverables/01-CTO-Briefing.docx --resource-path=deliverables   # v1.0
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2.js    # v2.0 deck
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2_1.js  # v2.1 deck
+NODE_PATH=$(npm root -g) node deliverables/_build/build_presenter_guide.js  # presenter guide
 python deliverables/_build/build_briefing_docx.py deliverables/01-CTO-Briefing-v2.1.md   # v2.1 briefing (styled)
 ```
 
