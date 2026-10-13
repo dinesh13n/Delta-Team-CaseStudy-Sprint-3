@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Purpose | Everything the CTO needs to understand the engagement and to present it, in one folder |
-| Version | v2.1 (v2.0 and v1.0 kept) |
+| Version | v2.2 deck; v2.1 briefing (earlier versions kept) |
 | Date | 2026-10-13 |
 | Author / Agent | Claude Code agent, operator Dinesh |
 | Status | Final draft for CTO review |
@@ -12,6 +12,7 @@
 
 | File | What changed |
 |---|---|
+| `02-CTO-Presentation-v2.2.pptx` | v2.2: built from the presenter-edited v2.1 (team order and date kept); new slide 6 "Problem statement: what we were handed"; 30 slides; slides after 5 move down by one |
 | `04-Presenter-Guide-v1.0.docx` | New: a short guide to presenting: order and timing, problem statement, architecture, functional flow, technical implementation, key points, likely questions |
 | `02-CTO-Presentation-v2.1.pptx` | v2.1: slide 10 now compares Repo 1.0, Repo 2.0 and Repo 3.0 (the repository rebuilt from the semantic layer alone) |
 | `01-CTO-Briefing-v2.1.docx` (and `.md`) | v2.1: Repo 3.0 column added to the tables in sections 1 and 4.1 |
@@ -54,6 +55,7 @@ pandoc deliverables/01-CTO-Briefing.md -o deliverables/01-CTO-Briefing.docx --re
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2.js    # v2.0 deck
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2_1.js  # v2.1 deck
 NODE_PATH=$(npm root -g) node deliverables/_build/build_presenter_guide.js  # presenter guide
+python deliverables/_build/add_problem_slide_v2_2.py <edited v2.1>.pptx deliverables/02-CTO-Presentation-v2.2.pptx  # v2.2 deck
 python deliverables/_build/build_briefing_docx.py deliverables/01-CTO-Briefing-v2.1.md   # v2.1 briefing (styled)
 ```
 
