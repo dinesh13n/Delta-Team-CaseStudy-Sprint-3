@@ -69,7 +69,7 @@ for sec in d.sections:
     sec.left_margin = sec.right_margin = Cm(2.0)
     sec.top_margin = sec.bottom_margin = Cm(2.0)
     footer = sec.footer.paragraphs[0] if sec.footer.paragraphs else sec.footer.add_paragraph()
-    footer.text = "Team Delta  ·  From Brownfield to Governed AI  ·  CTO Briefing v2.0"
+    footer.text = "Team Delta  ·  From Brownfield to Governed AI  ·  CTO Briefing " + (src.stem.split("-")[-1] if "-v" in src.stem else "")
     for r in footer.runs:
         r.font.size, r.font.color.rgb, r.font.name = Pt(8.5), GREY, "Calibri"
 for t in d.tables:

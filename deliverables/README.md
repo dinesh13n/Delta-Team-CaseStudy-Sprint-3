@@ -3,15 +3,17 @@
 | Field | Value |
 |---|---|
 | Purpose | Everything the CTO needs to understand the engagement and to present it, in one folder |
-| Version | v2.0 (v1.0: 2026-10-08) |
+| Version | v2.1 (v2.0 and v1.0 kept) |
 | Date | 2026-10-13 |
 | Author / Agent | Claude Code agent, operator Dinesh |
 | Status | Final draft for CTO review |
 
-## Current version: v2.0 (2026-10-13)
+## Current version: v2.1 (2026-10-13)
 
-| File | What changed from v1.0 |
+| File | What changed |
 |---|---|
+| `02-CTO-Presentation-v2.1.pptx` | v2.1: slide 10 now compares Repo 1.0, Repo 2.0 and Repo 3.0 (the repository rebuilt from the semantic layer alone) |
+| `01-CTO-Briefing-v2.1.docx` (and `.md`) | v2.1: Repo 3.0 column added to the tables in sections 1 and 4.1 |
 | `01-CTO-Briefing-v2.0.docx` (and `.md`) | New section 7 on the blind rebuild from the semantic layer; Team Delta named; styled Word output |
 | `02-CTO-Presentation-v2.0.pptx` | New title "From Brownfield to Governed AI", Team Delta on the title slide (Dinesh Naik presenting), agenda and section dividers, new part 03 on the semantic-layer rebuild, icon cards; 29 slides |
 | `diagrams/07-semantic-layer-rebuild` | New diagram (draw.io, SVG, PNG) |
@@ -49,7 +51,8 @@ python deliverables/_build/build_workbook.py                          # 03-Evide
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck.js       # 02-CTO-Presentation.pptx
 pandoc deliverables/01-CTO-Briefing.md -o deliverables/01-CTO-Briefing.docx --resource-path=deliverables   # v1.0
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2.js    # v2.0 deck
-python deliverables/_build/build_briefing_docx.py deliverables/01-CTO-Briefing-v2.0.md   # v2.0 briefing (styled)
+NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2_1.js  # v2.1 deck
+python deliverables/_build/build_briefing_docx.py deliverables/01-CTO-Briefing-v2.1.md   # v2.1 briefing (styled)
 ```
 
 Edit diagram content in `_build/diagram_specs.py`, so the draw.io files, images and slides stay identical. Alternatively, edit the `.drawio` or the slide directly and accept that the copies will differ.
