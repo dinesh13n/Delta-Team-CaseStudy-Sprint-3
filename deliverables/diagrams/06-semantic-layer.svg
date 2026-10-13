@@ -69,10 +69,10 @@
 <rect x="870" y="455" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
 <text x="1060.0" y="505.1" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Generated policy (Rego)</text>
 <rect x="870" y="567" width="380" height="90" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
-<text x="1060.0" y="607.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">A second model</text>
-<text x="1060.0" y="626.7" font-size="15" text-anchor="middle" fill="#0B3C49">rebuild from the layer (Stage Q)</text>
+<text x="1060.0" y="607.5" font-size="15" text-anchor="middle" fill="#0B3C49" font-weight="bold">Rebuilds from the layer</text>
+<text x="1060.0" y="626.7" font-size="15" text-anchor="middle" fill="#0B3C49">Stage Q subset; blind rebuild of v2.0</text>
 <rect x="10" y="709" width="1260" height="70" rx="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
-<text x="19" y="739.8" font-size="14" fill="#41545A" xml:space="preserve">Stage Q on v1.0: a second model rebuilt a four-behaviour subset; safety gates 5 of 5, fidelity gates 0 of 2. The 8 gaps it exposed are specified in v2.0 but not yet</text>
-<text x="19" y="757.7" font-size="14" fill="#41545A" xml:space="preserve">re-tested.</text>
+<text x="19" y="739.8" font-size="14" fill="#41545A" xml:space="preserve">Tested twice. Stage Q (v1.0): a second model rebuilt a subset; safety 5 of 5, fidelity 0 of 2. Blind rebuild of v2.0 alone: 29 of 30 checks and 41 of 41 AI</text>
+<text x="19" y="757.7" font-size="14" fill="#41545A" xml:space="preserve">decisions match; 0 of 354 original rows accepted.</text>
 <line x1="830.0" y1="364.2" x2="850.0" y2="366.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
 </svg>

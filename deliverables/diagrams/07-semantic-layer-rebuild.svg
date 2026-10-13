@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="784" viewBox="0 0 1280 784" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#41545A"/></marker></defs>
+<rect width="1280" height="784" fill="#FFFFFF"/>
+<text x="12" y="40" font-size="26" font-weight="bold" fill="#0B3C49">Can the semantic layer rebuild the system on its own?</text>
+<rect x="10" y="74" width="1260" height="250" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="98" font-size="16" font-weight="bold" fill="#0B3C49">Step 1: rebuild from the semantic layer alone</text>
+<rect x="30" y="134" width="222" height="150" rx="6" fill="#F2A541" stroke="#C98118" stroke-width="1.6"/>
+<text x="141.0" y="183.7" font-size="16" text-anchor="middle" fill="#1B1B1B" font-weight="bold">Input</text>
+<text x="141.0" y="204.2" font-size="16" text-anchor="middle" fill="#1B1B1B">semantic-layer/ only:</text>
+<text x="141.0" y="224.7" font-size="16" text-anchor="middle" fill="#1B1B1B">21 files from commit</text>
+<text x="141.0" y="245.2" font-size="16" text-anchor="middle" fill="#1B1B1B">a6fc839</text>
+<rect x="278" y="134" width="222" height="150" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="389.0" y="194.0" font-size="16" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Blind builder agent</text>
+<text x="389.0" y="214.4" font-size="16" text-anchor="middle" fill="#FFFFFF">reads nothing else; all</text>
+<text x="389.0" y="234.9" font-size="16" text-anchor="middle" fill="#FFFFFF">57 actions audited</text>
+<rect x="526" y="134" width="222" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="637.0" y="183.7" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">PRD</text>
+<text x="637.0" y="204.2" font-size="16" text-anchor="middle" fill="#0B3C49">10 API operations, 5</text>
+<text x="637.0" y="224.7" font-size="16" text-anchor="middle" fill="#0B3C49">workflows, each cited</text>
+<text x="637.0" y="245.2" font-size="16" text-anchor="middle" fill="#0B3C49">to the layer</text>
+<rect x="774" y="134" width="222" height="150" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="885.0" y="194.0" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Application</text>
+<text x="885.0" y="214.4" font-size="16" text-anchor="middle" fill="#0B3C49">own synthetic data; 175</text>
+<text x="885.0" y="234.9" font-size="16" text-anchor="middle" fill="#0B3C49">tests pass</text>
+<rect x="1022" y="134" width="222" height="150" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="1133.0" y="183.7" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">GAPS.md</text>
+<text x="1133.0" y="204.2" font-size="16" text-anchor="middle" fill="#7B241C">67 assumptions, 17 not</text>
+<text x="1133.0" y="224.7" font-size="16" text-anchor="middle" fill="#7B241C">buildable, 24 layer</text>
+<text x="1133.0" y="245.2" font-size="16" text-anchor="middle" fill="#7B241C">defects</text>
+<rect x="10" y="344" width="1260" height="190" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="368" font-size="16" font-weight="bold" fill="#0B3C49">Step 2: the same probes against both applications</text>
+<rect x="30" y="394" width="300" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="180.0" y="444.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Original application</text>
+<text x="180.0" y="464.7" font-size="16" text-anchor="middle" fill="#0B3C49">Repo 2.0 as built</text>
+<rect x="950" y="394" width="300" height="110" rx="6" fill="#FFFFFF" stroke="#1F7A8C" stroke-width="1.6"/>
+<text x="1100.0" y="444.2" font-size="16" text-anchor="middle" fill="#0B3C49" font-weight="bold">Rebuilt application</text>
+<text x="1100.0" y="464.7" font-size="16" text-anchor="middle" fill="#0B3C49">from the layer only</text>
+<rect x="400" y="384" width="480" height="130" rx="6" fill="#0B3C49" stroke="#0B3C49" stroke-width="1.6"/>
+<text x="640.0" y="434.0" font-size="16" text-anchor="middle" fill="#FFFFFF" font-weight="bold">Probe script</text>
+<text x="640.0" y="454.4" font-size="16" text-anchor="middle" fill="#FFFFFF">30 HTTP checks, plus the AI decision for every</text>
+<text x="640.0" y="474.9" font-size="16" text-anchor="middle" fill="#FFFFFF">shipment, on each app&#x27;s data and on swapped data</text>
+<rect x="10" y="554" width="1260" height="220" rx="4" fill="#F3F7F8" stroke="#C5D6DA" stroke-width="1.2"/>
+<text x="20" y="578" font-size="16" font-weight="bold" fill="#0B3C49">Step 3: what came back</text>
+<rect x="30" y="604" width="222" height="140" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="141.0" y="669.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">Status codes</text>
+<text x="141.0" y="689.7" font-size="16" text-anchor="middle" fill="#1E5631">29 of 30 match</text>
+<rect x="278" y="604" width="222" height="140" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="389.0" y="659.0" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">AI decisions</text>
+<text x="389.0" y="679.4" font-size="16" text-anchor="middle" fill="#1E5631">41 of 41 agree on the</text>
+<text x="389.0" y="699.9" font-size="16" text-anchor="middle" fill="#1E5631">same data</text>
+<rect x="526" y="604" width="222" height="140" rx="6" fill="#E5F3EB" stroke="#2E8B57" stroke-width="1.6"/>
+<text x="637.0" y="669.2" font-size="16" text-anchor="middle" fill="#1E5631" font-weight="bold">AI response fields</text>
+<text x="637.0" y="689.7" font-size="16" text-anchor="middle" fill="#1E5631">the same 19</text>
+<rect x="774" y="604" width="222" height="140" rx="6" fill="#FCEBEA" stroke="#C0392B" stroke-width="1.6"/>
+<text x="885.0" y="659.0" font-size="16" text-anchor="middle" fill="#7B241C" font-weight="bold">Original data</text>
+<text x="885.0" y="679.4" font-size="16" text-anchor="middle" fill="#7B241C">0 of 354 rows accepted</text>
+<text x="885.0" y="699.9" font-size="16" text-anchor="middle" fill="#7B241C">(original: 349)</text>
+<rect x="1022" y="604" width="222" height="140" rx="6" fill="#FFFFFF" stroke="#9AA5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1133.0" y="659.0" font-size="16" text-anchor="middle" fill="#5F6E71" font-weight="bold">Not rebuilt</text>
+<text x="1133.0" y="679.4" font-size="16" text-anchor="middle" fill="#5F6E71">CI, Docker, policy</text>
+<text x="1133.0" y="699.9" font-size="16" text-anchor="middle" fill="#5F6E71">file, web view</text>
+<line x1="252.0" y1="209.0" x2="278.0" y2="209.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="500.0" y1="209.0" x2="526.0" y2="209.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="748.0" y1="209.0" x2="774.0" y2="209.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="996.0" y1="209.0" x2="1022.0" y2="209.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="330.0" y1="449.0" x2="400.0" y2="449.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="950.0" y1="449.0" x2="880.0" y2="449.0" stroke="#41545A" stroke-width="1.8" marker-end="url(#ah)"/>
+</svg>

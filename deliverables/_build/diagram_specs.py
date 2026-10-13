@@ -239,14 +239,40 @@ def semantic():
     n.append(B("ts2", 427, 570, 390, 48, "5 conformance tests: app matches layer", "good", 15))
     n.append(L("use", 850, 10, 420, 620, "Used by"))
     us = ["Policy engine\naccess decisions", "ETL validation\nrules and taxonomy", "AI gateway\ncontext and decision rules",
-          "Generated policy (Rego)", "A second model\nrebuild from the layer (Stage Q)"]
+          "Generated policy (Rego)", "Rebuilds from the layer\nStage Q subset; blind rebuild of v2.0"]
     for i, t in enumerate(us):
         n.append(B(f"u{i}", 870, 55 + i * 112, 380, 90, t, "box", 15))
     e.append(E("ym", "use"))
     n.append(B("qn", 10, 645, 1260, 70,
-               "Stage Q on v1.0: a second model rebuilt a four-behaviour subset; safety gates 5 of 5, fidelity gates 0 of 2. The 8 gaps it exposed are specified in v2.0 but not yet re-tested.",
+               "Tested twice. Stage Q (v1.0): a second model rebuilt a subset; safety 5 of 5, fidelity 0 of 2. Blind rebuild of v2.0 alone: 29 of 30 checks and 41 of 41 AI decisions match; 0 of 354 original rows accepted.",
                "note", 14, "left"))
     return {"name": "06-semantic-layer", "title": "Semantic layer v2.0: business knowledge owned outside the code and the model", "nodes": n, "edges": e}
 
 
-DIAGRAMS = [journey(), arch_v1(), arch_v2(), ai_path(), evidence_chain(), semantic()]
+def rebuild():
+    n, e = [], []
+    n.append(L("l_build", 10, 10, 1260, 250, "Step 1: rebuild from the semantic layer alone"))
+    steps = [("in", "Input\nsemantic-layer/ only: 21 files from commit a6fc839", "accent"),
+             ("ag", "Blind builder agent\nreads nothing else; all 57 actions audited", "core"),
+             ("prd", "PRD\n10 API operations, 5 workflows, each cited to the layer", "box"),
+             ("app", "Application\nown synthetic data; 175 tests pass", "box"),
+             ("gap", "GAPS.md\n67 assumptions, 17 not buildable, 24 layer defects", "bad")]
+    for i, (id_, t, k) in enumerate(steps):
+        n.append(B(id_, 30 + i * 248, 70, 222, 150, t, k, 16))
+        if i:
+            e.append(E(steps[i - 1][0], id_))
+    n.append(L("l_cmp", 10, 280, 1260, 190, "Step 2: the same probes against both applications"))
+    n.append(B("orig", 30, 330, 300, 110, "Original application\nRepo 2.0 as built", "box", 16))
+    n.append(B("reb", 950, 330, 300, 110, "Rebuilt application\nfrom the layer only", "box", 16))
+    n.append(B("probe", 400, 320, 480, 130, "Probe script\n30 HTTP checks, plus the AI decision for every shipment, on each app's data and on swapped data", "core", 16))
+    e += [E("orig", "probe"), E("reb", "probe")]
+    n.append(L("l_res", 10, 490, 1260, 220, "Step 3: what came back"))
+    res = [("Status codes\n29 of 30 match", "good"), ("AI decisions\n41 of 41 agree on the same data", "good"),
+           ("AI response fields\nthe same 19", "good"), ("Original data\n0 of 354 rows accepted (original: 349)", "bad"),
+           ("Not rebuilt\nCI, Docker, policy file, web view", "ghost")]
+    for i, (t, k) in enumerate(res):
+        n.append(B(f"r{i}", 30 + i * 248, 540, 222, 140, t, k, 16))
+    return {"name": "07-semantic-layer-rebuild", "title": "Can the semantic layer rebuild the system on its own?", "nodes": n, "edges": e}
+
+
+DIAGRAMS = [journey(), arch_v1(), arch_v2(), ai_path(), evidence_chain(), semantic(), rebuild()]

@@ -3,12 +3,22 @@
 | Field | Value |
 |---|---|
 | Purpose | Everything the CTO needs to understand the engagement and to present it, in one folder |
-| Version | v1.0 |
-| Date | 2026-10-08 |
+| Version | v2.0 (v1.0: 2026-10-08) |
+| Date | 2026-10-13 |
 | Author / Agent | Claude Code agent, operator Dinesh |
 | Status | Final draft for CTO review |
 
-## Read in this order
+## Current version: v2.0 (2026-10-13)
+
+| File | What changed from v1.0 |
+|---|---|
+| `01-CTO-Briefing-v2.0.docx` (and `.md`) | New section 7 on the blind rebuild from the semantic layer; Team Delta named; styled Word output |
+| `02-CTO-Presentation-v2.0.pptx` | New title "From Brownfield to Governed AI", Team Delta on the title slide (Dinesh Naik presenting), agenda and section dividers, new part 03 on the semantic-layer rebuild, icon cards; 29 slides |
+| `diagrams/07-semantic-layer-rebuild` | New diagram (draw.io, SVG, PNG) |
+
+The v1.0 files below are kept unchanged for reference.
+
+## Read in this order (v1.0 pack)
 
 | # | File | What it is | Open with |
 |---|---|---|---|
@@ -37,7 +47,9 @@ python deliverables/_build/build_diagrams.py                         # .drawio, 
 NODE_PATH=$(npm root -g) node deliverables/_build/render_png.js       # .png
 python deliverables/_build/build_workbook.py                          # 03-Evidence-Register.xlsx
 NODE_PATH=$(npm root -g) node deliverables/_build/build_deck.js       # 02-CTO-Presentation.pptx
-pandoc deliverables/01-CTO-Briefing.md -o deliverables/01-CTO-Briefing.docx --resource-path=deliverables
+pandoc deliverables/01-CTO-Briefing.md -o deliverables/01-CTO-Briefing.docx --resource-path=deliverables   # v1.0
+NODE_PATH=$(npm root -g) node deliverables/_build/build_deck_v2.js    # v2.0 deck
+python deliverables/_build/build_briefing_docx.py deliverables/01-CTO-Briefing-v2.0.md   # v2.0 briefing (styled)
 ```
 
 Edit diagram content in `_build/diagram_specs.py`, so the draw.io files, images and slides stay identical. Alternatively, edit the `.drawio` or the slide directly and accept that the copies will differ.

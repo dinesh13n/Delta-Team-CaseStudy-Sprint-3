@@ -3992,12 +3992,12 @@
     "fs": 15,
     "align": "center",
     "_lines": [
-     "A second model",
-     "rebuild from the layer (Stage Q)"
+     "Rebuilds from the layer",
+     "Stage Q subset; blind rebuild of v2.0"
     ],
     "lines": [
-     "A second model",
-     "rebuild from the layer (Stage Q)"
+     "Rebuilds from the layer",
+     "Stage Q subset; blind rebuild of v2.0"
     ]
    },
    {
@@ -4010,12 +4010,12 @@
     "fs": 14,
     "align": "left",
     "_lines": [
-     "Stage Q on v1.0: a second model rebuilt a four-behaviour subset; safety gates 5 of 5, fidelity gates 0 of 2. The 8 gaps it exposed are specified in v2.0 but not yet",
-     "re-tested."
+     "Tested twice. Stage Q (v1.0): a second model rebuilt a subset; safety 5 of 5, fidelity 0 of 2. Blind rebuild of v2.0 alone: 29 of 30 checks and 41 of 41 AI",
+     "decisions match; 0 of 354 original rows accepted."
     ],
     "lines": [
-     "Stage Q on v1.0: a second model rebuilt a four-behaviour subset; safety gates 5 of 5, fidelity gates 0 of 2. The 8 gaps it exposed are specified in v2.0 but not yet",
-     "re-tested."
+     "Tested twice. Stage Q (v1.0): a second model rebuilt a subset; safety 5 of 5, fidelity 0 of 2. Blind rebuild of v2.0 alone: 29 of 30 checks and 41 of 41 AI",
+     "decisions match; 0 of 354 original rows accepted."
     ]
    }
   ],
@@ -4028,6 +4028,455 @@
     "y1": 300.2,
     "x2": 850.0,
     "y2": 302.0
+   }
+  ]
+ },
+ {
+  "name": "07-semantic-layer-rebuild",
+  "title": "Can the semantic layer rebuild the system on its own?",
+  "W": 1280,
+  "H": 720,
+  "styles": {
+   "lane": [
+    "F3F7F8",
+    "C5D6DA",
+    "0B3C49",
+    false,
+    true
+   ],
+   "box": [
+    "FFFFFF",
+    "1F7A8C",
+    "0B3C49",
+    false,
+    true
+   ],
+   "core": [
+    "0B3C49",
+    "0B3C49",
+    "FFFFFF",
+    false,
+    true
+   ],
+   "accent": [
+    "F2A541",
+    "C98118",
+    "1B1B1B",
+    false,
+    true
+   ],
+   "bad": [
+    "FCEBEA",
+    "C0392B",
+    "7B241C",
+    false,
+    true
+   ],
+   "good": [
+    "E5F3EB",
+    "2E8B57",
+    "1E5631",
+    false,
+    true
+   ],
+   "ghost": [
+    "FFFFFF",
+    "9AA5A8",
+    "5F6E71",
+    true,
+    true
+   ],
+   "note": [
+    "FFFFFF",
+    "FFFFFF",
+    "41545A",
+    false,
+    false
+   ],
+   "start": [
+    "C0392B",
+    "C0392B",
+    "FFFFFF",
+    false,
+    true
+   ],
+   "goal": [
+    "2E8B57",
+    "2E8B57",
+    "FFFFFF",
+    false,
+    true
+   ],
+   "chip": [
+    "1F7A8C",
+    "1F7A8C",
+    "FFFFFF",
+    false,
+    true
+   ]
+  },
+  "nodes": [
+   {
+    "id": "l_build",
+    "x": 10,
+    "y": 10,
+    "w": 1260,
+    "h": 250,
+    "kind": "lane",
+    "fs": 16,
+    "align": "left",
+    "_lines": [
+     "Step 1: rebuild from the semantic layer alone"
+    ],
+    "lines": [
+     "Step 1: rebuild from the semantic layer alone"
+    ]
+   },
+   {
+    "id": "in",
+    "x": 30,
+    "y": 70,
+    "w": 222,
+    "h": 150,
+    "kind": "accent",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Input",
+     "semantic-layer/ only:",
+     "21 files from commit",
+     "a6fc839"
+    ],
+    "lines": [
+     "Input",
+     "semantic-layer/ only:",
+     "21 files from commit",
+     "a6fc839"
+    ]
+   },
+   {
+    "id": "ag",
+    "x": 278,
+    "y": 70,
+    "w": 222,
+    "h": 150,
+    "kind": "core",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Blind builder agent",
+     "reads nothing else; all",
+     "57 actions audited"
+    ],
+    "lines": [
+     "Blind builder agent",
+     "reads nothing else; all",
+     "57 actions audited"
+    ]
+   },
+   {
+    "id": "prd",
+    "x": 526,
+    "y": 70,
+    "w": 222,
+    "h": 150,
+    "kind": "box",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "PRD",
+     "10 API operations, 5",
+     "workflows, each cited",
+     "to the layer"
+    ],
+    "lines": [
+     "PRD",
+     "10 API operations, 5",
+     "workflows, each cited",
+     "to the layer"
+    ]
+   },
+   {
+    "id": "app",
+    "x": 774,
+    "y": 70,
+    "w": 222,
+    "h": 150,
+    "kind": "box",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Application",
+     "own synthetic data; 175",
+     "tests pass"
+    ],
+    "lines": [
+     "Application",
+     "own synthetic data; 175",
+     "tests pass"
+    ]
+   },
+   {
+    "id": "gap",
+    "x": 1022,
+    "y": 70,
+    "w": 222,
+    "h": 150,
+    "kind": "bad",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "GAPS.md",
+     "67 assumptions, 17 not",
+     "buildable, 24 layer",
+     "defects"
+    ],
+    "lines": [
+     "GAPS.md",
+     "67 assumptions, 17 not",
+     "buildable, 24 layer",
+     "defects"
+    ]
+   },
+   {
+    "id": "l_cmp",
+    "x": 10,
+    "y": 280,
+    "w": 1260,
+    "h": 190,
+    "kind": "lane",
+    "fs": 16,
+    "align": "left",
+    "_lines": [
+     "Step 2: the same probes against both applications"
+    ],
+    "lines": [
+     "Step 2: the same probes against both applications"
+    ]
+   },
+   {
+    "id": "orig",
+    "x": 30,
+    "y": 330,
+    "w": 300,
+    "h": 110,
+    "kind": "box",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Original application",
+     "Repo 2.0 as built"
+    ],
+    "lines": [
+     "Original application",
+     "Repo 2.0 as built"
+    ]
+   },
+   {
+    "id": "reb",
+    "x": 950,
+    "y": 330,
+    "w": 300,
+    "h": 110,
+    "kind": "box",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Rebuilt application",
+     "from the layer only"
+    ],
+    "lines": [
+     "Rebuilt application",
+     "from the layer only"
+    ]
+   },
+   {
+    "id": "probe",
+    "x": 400,
+    "y": 320,
+    "w": 480,
+    "h": 130,
+    "kind": "core",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Probe script",
+     "30 HTTP checks, plus the AI decision for every",
+     "shipment, on each app's data and on swapped data"
+    ],
+    "lines": [
+     "Probe script",
+     "30 HTTP checks, plus the AI decision for every",
+     "shipment, on each app's data and on swapped data"
+    ]
+   },
+   {
+    "id": "l_res",
+    "x": 10,
+    "y": 490,
+    "w": 1260,
+    "h": 220,
+    "kind": "lane",
+    "fs": 16,
+    "align": "left",
+    "_lines": [
+     "Step 3: what came back"
+    ],
+    "lines": [
+     "Step 3: what came back"
+    ]
+   },
+   {
+    "id": "r0",
+    "x": 30,
+    "y": 540,
+    "w": 222,
+    "h": 140,
+    "kind": "good",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Status codes",
+     "29 of 30 match"
+    ],
+    "lines": [
+     "Status codes",
+     "29 of 30 match"
+    ]
+   },
+   {
+    "id": "r1",
+    "x": 278,
+    "y": 540,
+    "w": 222,
+    "h": 140,
+    "kind": "good",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "AI decisions",
+     "41 of 41 agree on the",
+     "same data"
+    ],
+    "lines": [
+     "AI decisions",
+     "41 of 41 agree on the",
+     "same data"
+    ]
+   },
+   {
+    "id": "r2",
+    "x": 526,
+    "y": 540,
+    "w": 222,
+    "h": 140,
+    "kind": "good",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "AI response fields",
+     "the same 19"
+    ],
+    "lines": [
+     "AI response fields",
+     "the same 19"
+    ]
+   },
+   {
+    "id": "r3",
+    "x": 774,
+    "y": 540,
+    "w": 222,
+    "h": 140,
+    "kind": "bad",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Original data",
+     "0 of 354 rows accepted",
+     "(original: 349)"
+    ],
+    "lines": [
+     "Original data",
+     "0 of 354 rows accepted",
+     "(original: 349)"
+    ]
+   },
+   {
+    "id": "r4",
+    "x": 1022,
+    "y": 540,
+    "w": 222,
+    "h": 140,
+    "kind": "ghost",
+    "fs": 16,
+    "align": "center",
+    "_lines": [
+     "Not rebuilt",
+     "CI, Docker, policy",
+     "file, web view"
+    ],
+    "lines": [
+     "Not rebuilt",
+     "CI, Docker, policy",
+     "file, web view"
+    ]
+   }
+  ],
+  "edges": [
+   {
+    "from": "in",
+    "to": "ag",
+    "dashed": false,
+    "x1": 252.0,
+    "y1": 145.0,
+    "x2": 278.0,
+    "y2": 145.0
+   },
+   {
+    "from": "ag",
+    "to": "prd",
+    "dashed": false,
+    "x1": 500.0,
+    "y1": 145.0,
+    "x2": 526.0,
+    "y2": 145.0
+   },
+   {
+    "from": "prd",
+    "to": "app",
+    "dashed": false,
+    "x1": 748.0,
+    "y1": 145.0,
+    "x2": 774.0,
+    "y2": 145.0
+   },
+   {
+    "from": "app",
+    "to": "gap",
+    "dashed": false,
+    "x1": 996.0,
+    "y1": 145.0,
+    "x2": 1022.0,
+    "y2": 145.0
+   },
+   {
+    "from": "orig",
+    "to": "probe",
+    "dashed": false,
+    "x1": 330.0,
+    "y1": 385.0,
+    "x2": 400.0,
+    "y2": 385.0
+   },
+   {
+    "from": "reb",
+    "to": "probe",
+    "dashed": false,
+    "x1": 950.0,
+    "y1": 385.0,
+    "x2": 880.0,
+    "y2": 385.0
    }
   ]
  }
